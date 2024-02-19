@@ -13,7 +13,7 @@ class UserService: UserDetailsService {
 
     @Throws(UsernameNotFoundException::class)
     override fun loadUserByUsername(username: String): UserDetails {
-        println("In the user details service")
+        println("In the user details service") // For verification
 
         return userRepository.findByEmail(username)
             .orElseThrow { UsernameNotFoundException("user is not valid") }
