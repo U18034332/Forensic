@@ -1,7 +1,8 @@
 package com.nlc.forensic.entity
 
+import com.nlc.forensic.enums.UserRoles
 import jakarta.persistence.*
-import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 
@@ -10,30 +11,34 @@ import org.springframework.security.core.userdetails.UserDetails
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var userId: Int? = null,
+    @Column(name = "id")
+    var id: Int? = null,
 
-    @Column(unique=true)
-    var email: String = "",
+    @Column(name = "first_name")
+var firstName: String? = null,
 
-    var passcode: String = "",
+@Column(name = "last_name")
+var lastName: String? = null,
 
-    @ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(
-        name="user_role_junction",
-        joinColumns = [JoinColumn(name="user_id")],
-        inverseJoinColumns = [JoinColumn(name="role_id")]
-    )
-    var authorities: Set<Roles> = HashSet()
+@Column(name = "username")
+var email: String? = null,
+
+@Column(name = "password")
+var passcode: String? = null,
+
+@Enumerated(value = EnumType.STRING)
+var role: UserRoles? = null
+
 ) : UserDetails {
-    override fun getAuthorities(): Collection<out GrantedAuthority> {
-        return authorities
+    override fun getAuthorities(): List<SimpleGrantedAuthority> {
+       return listOf(SimpleGrantedAuthority(role?.name))
     }
 
-    override fun getPassword(): String {
+    override fun getPassword(): String? {
         return passcode
     }
 
-    override fun getUsername(): String {
+    override fun getUsername(): String? {
         return email
     }
 
