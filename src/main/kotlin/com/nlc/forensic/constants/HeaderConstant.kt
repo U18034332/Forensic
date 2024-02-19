@@ -1,4 +1,5 @@
 package com.nlc.forensic.constants
 
-object HeaderConstan {
+object HeaderConstant {
+    const val AUTHORIZATION = "Authorization"
 }
