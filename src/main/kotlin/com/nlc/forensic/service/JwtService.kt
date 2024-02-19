@@ -3,6 +3,7 @@ package com.nlc.forensic.service
 import com.nlc.forensic.entity.User
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 import java.util.*
 import java.util.function.Function
@@ -52,4 +53,12 @@ class JwtService {
         return extractClaim(token) { claims: Claims -> claims.expiration }
     }
 
+    public fun extractUserEmail(token: String): String{
+        return extractClaim(token, Claims::getSubject)
+    }
+
+    public fun isValid(token: String, user: UserDetails): Boolean{
+        val userName = extractUserEmail(token)
+        return userName == user.username && !isTokenExpired(token)
+    }
 }
