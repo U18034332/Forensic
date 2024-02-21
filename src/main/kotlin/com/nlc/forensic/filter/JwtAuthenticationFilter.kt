@@ -1,4 +1,4 @@
-package com.nlc.forensic.utility
+package com.nlc.forensic.filter
 
 import com.nlc.forensic.service.JwtService
 import com.nlc.forensic.service.UserService
@@ -15,13 +15,12 @@ import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import java.io.IOException
 
-
 @Component
 class JwtAuthenticationFilter(
     private val jwtService: JwtService,
     private val userDetailsService: UserService
-) : OncePerRequestFilter() {
 
+): OncePerRequestFilter() {
     @Throws(ServletException::class, IOException::class)
     override fun doFilterInternal(
         request: HttpServletRequest,
@@ -52,9 +51,10 @@ class JwtAuthenticationFilter(
                     SecurityContextHolder.getContext().authentication = authToken
                 }
             } catch (e: UsernameNotFoundException) {
-                // Handle exception as needed
+                logger.error("User not found: $username")
             }
         }
         filterChain.doFilter(request, response)
     }
+
 }
