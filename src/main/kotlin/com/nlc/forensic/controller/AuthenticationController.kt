@@ -1,6 +1,7 @@
 package com.nlc.forensic.controller
 
 import com.nlc.forensic.dto.AuthenticationResponse
+import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.service.AuthenticationService
 import org.springframework.http.ResponseEntity
@@ -16,7 +17,7 @@ class AuthenticationController(private val authService: AuthenticationService) {
 
     @PostMapping("login")
     fun login(
-        @RequestBody request: User?
+        @RequestBody request: UserLoginRequest?
     ): ResponseEntity<AuthenticationResponse> {
         return ResponseEntity.ok(authService.authenticate(request!!))
     }

@@ -1,6 +1,7 @@
 package com.nlc.forensic.service
 
 import com.nlc.forensic.dto.AuthenticationResponse
+import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.JwtToken
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.repository.JwtTokenRepository
@@ -42,15 +43,15 @@ class AuthenticationService(private val userRepository: UserRepository,
 
     }
 
-    fun authenticate(request: User): AuthenticationResponse {
+    fun authenticate(request: UserLoginRequest): AuthenticationResponse {
         authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(
-                request.email,
-                request.passcode
+                request.username,
+                request.password
             )
         )
 
-        val user = request.email?.let { userRepository.findByEmail(it).orElseThrow() }
+        val user = request.username.let { userRepository.findByEmail(it).orElseThrow() }
         val jwt = user?.let { jwtService.generateToken(it) }
 
         if (user != null) {

@@ -29,8 +29,9 @@ class SecurityConfig {
                 auth
                     .requestMatchers("/api/auth/login","api/auth/register")
                     .permitAll()
+                    .requestMatchers("/admin_only/**", "/admin").hasAuthority("ADMIN")
                     .anyRequest()
-                    .permitAll()
+                    .authenticated()
 
             }.userDetailsService(userService)
             .sessionManagement { session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
