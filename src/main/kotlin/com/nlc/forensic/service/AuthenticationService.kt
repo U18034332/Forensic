@@ -43,7 +43,7 @@ class AuthenticationService(private val userRepository: UserRepository,
 
     }
 
-    fun authenticate(request: UserLoginRequest): AuthenticationResponse {
+    fun authenticate(request: User): AuthenticationResponse {
         authenticationManager.authenticate(
             UsernamePasswordAuthenticationToken(
                 request.username,
@@ -51,7 +51,7 @@ class AuthenticationService(private val userRepository: UserRepository,
             )
         )
 
-        val user = request.username.let { userRepository.findByEmail(it).orElseThrow() }
+        val user = request.username.let { request.username?.let { it1 -> userRepository.findByEmail(it1).orElseThrow() } }
         val jwt = user?.let { jwtService.generateToken(it) }
 
         if (user != null) {

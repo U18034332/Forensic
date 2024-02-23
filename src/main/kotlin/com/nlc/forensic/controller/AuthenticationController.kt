@@ -1,5 +1,6 @@
 package com.nlc.forensic.controller
 
+import com.google.gson.Gson
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.User
@@ -10,19 +11,18 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-
 @RestController
 @RequestMapping("/api/auth/")
 class AuthenticationController(private val authService: AuthenticationService) {
 
     @PostMapping("login")
     fun login(
-        @RequestBody request: UserLoginRequest?
+        @RequestBody request: User?
     ): ResponseEntity<AuthenticationResponse> {
         return ResponseEntity.ok(authService.authenticate(request!!))
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     fun register(@RequestBody request: User): ResponseEntity<AuthenticationResponse> {
         return ResponseEntity.ok(authService.addNewUser(request))
     }
