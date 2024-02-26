@@ -1,7 +1,6 @@
 package com.nlc.forensic.service
 
 import com.nlc.forensic.dto.AuthenticationResponse
-import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.JwtToken
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.repository.JwtTokenRepository
@@ -67,8 +66,8 @@ class AuthenticationService(private val userRepository: UserRepository,
     }
 
     private fun revokeAllTokenByUser(user: User) {
-        val validTokens = user.id?.let { tokenRepository.findAllTokensByUser(it) }
-        if (validTokens.isNullOrEmpty()) {
+        val validTokens = user.id.let { tokenRepository.findAllTokensByUser(it) }
+        if (validTokens.isEmpty()) {
             return
         }
 
