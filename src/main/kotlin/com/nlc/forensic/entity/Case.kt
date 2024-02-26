@@ -6,15 +6,16 @@ import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "case")
+@Table(name = "cases")
 data class Case(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    val caseID: Long = 0,
+    val caseId: Long = 0,
     val caseNumber: String = "",
     var type: String = "",
     var status: String = "",
     @ManyToOne
+    @JoinColumn(name = "user_id")
     var assignedTo: User? = null,
 
     @field:CreatedDate

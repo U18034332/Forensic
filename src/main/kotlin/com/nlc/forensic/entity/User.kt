@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails
 data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     var id: Long = 0,
 
     @Column(name = "first_name")
