@@ -19,6 +19,10 @@ class AuthenticationController(private val authService: AuthenticationService) {
     fun login(
         @RequestBody request: User?
     ): ResponseEntity<AuthenticationResponse> {
+        if (request != null) {
+            println(request.email)
+            println(request.passcode)
+        }
         return ResponseEntity.ok(authService.authenticate(request!!))
     }
 

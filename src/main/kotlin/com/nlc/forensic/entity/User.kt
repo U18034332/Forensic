@@ -12,7 +12,7 @@ data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    var id: Int? = null,
+    var id: Long = 0,
 
     @Column(name = "first_name")
 var firstName: String? = null,
