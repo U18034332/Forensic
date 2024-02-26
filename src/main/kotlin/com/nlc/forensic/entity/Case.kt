@@ -12,7 +12,7 @@ data class Case(
     @GeneratedValue(strategy = GenerationType.AUTO)
     val caseID: Long = 0,
     val caseNumber: String = "",
-    var description: String = "",
+    var type: String = "",
     var status: String = "",
     @ManyToOne
     var assignedTo: User? = null,

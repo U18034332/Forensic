@@ -9,6 +9,4 @@ interface JwtTokenRepository: JpaRepository<JwtToken, Int> {
 
     @Query("SELECT t FROM JwtToken t JOIN t.user u WHERE u.id = :userId AND t.loggedOut = false")
     fun findAllTokensByUser(userId: Long): List<JwtToken>
-
-    fun findByToken(token: String): Optional<JwtToken>
 }
