@@ -15,7 +15,7 @@ data class Case(
     var type: String = "",
     var status: String = "",
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "assigned_user")
     var assignedTo: User? = null,
 
     @field:CreatedDate
