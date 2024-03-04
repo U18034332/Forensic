@@ -1,4 +1,6 @@
+// dashboard.page.ts
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  total: any
 
-  constructor() { }
+  constructor(private dashService: DashboardService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getData()    
   }
 
+  getData():void{
+    this.dashService.getData()
+    .subscribe((response) => {
+      this.total = response
+      console.log('Login response:', response);
+      // Redirect to dashboard or handle success
+    }, error => {
+      console.error('Dashboard failed:', error);
+      // Handle error, show error message, etc.
+    });
+  }
 }
+
+

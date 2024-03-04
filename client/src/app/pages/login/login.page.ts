@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Router } from '@angular/router'; // Import Router
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +8,8 @@ import { Router } from '@angular/router'; // Import Router
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  token: string = ''
+
   constructor(
     private authService: AuthenticationService,
     private router: Router
@@ -16,7 +18,10 @@ export class LoginPage {
   login(email: any, passcode: any): void {
     this.authService.login(email, passcode)
       .subscribe((response) => {
-        console.log('Login response:', response); // Log the response
+        const token = response.token;
+        this.authService.setToken(token)
+        this.token = this.authService.getToken()
+        console.log('Login response:', this.token);
         // Redirect to dashboard or handle success
         this.router.navigate(['/dashboard']);
       }, error => {

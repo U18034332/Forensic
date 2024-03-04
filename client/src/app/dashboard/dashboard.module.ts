@@ -5,16 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 import { DashboardPage } from './dashboard.page';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    HttpClientModule
   ],
-  declarations: [DashboardPage]
+  declarations: [DashboardPage],
+  providers: [AuthenticationService, DashboardService]
 })
 export class DashboardPageModule {}

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/api/case_manager/")
+@RequestMapping("/api/dashboard/")
 class CaseManagementController(private val caseManagementService: CaseManagementService) {
     @GetMapping("total")
     fun getTotalNumberOfCases(): ResponseEntity<Long>{
