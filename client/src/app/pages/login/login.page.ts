@@ -27,7 +27,7 @@ export class LoginPage {
         this.router.navigate(['/dashboard']);
       }, error => {
         console.error('Login failed:', error);
-        this.errorMessage = 'Invalid login. Please check your credentials.';
+        this.errorMessage = error.error.message;
       });
   }
 }

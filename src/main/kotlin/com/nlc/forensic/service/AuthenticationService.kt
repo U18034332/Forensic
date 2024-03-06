@@ -7,6 +7,7 @@ import com.nlc.forensic.entity.User
 import com.nlc.forensic.repository.JwtTokenRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -52,12 +53,17 @@ class AuthenticationService(private val userRepository: UserRepository,
     }
 
     fun authenticate(request: User): AuthenticationResponse {
-        authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken(
-                request.username,
-                request.password
+        try {
+            authenticationManager.authenticate(
+                UsernamePasswordAuthenticationToken(
+                    request.username,
+                    request.password
+                )
             )
-        )
+        } catch (exception: BadCredentialsException) {
+            return AuthenticationResponse(null, ResponseConstant.INVALID_CREDENTIALS)
+        }
+
 
         val user = request.username.let { request.username?.let { it1 -> userRepository.findByEmail(it1).orElseThrow() } }
         val jwt = user?.let { jwtService.generateToken(it) }

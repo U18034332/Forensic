@@ -1,10 +1,12 @@
 package com.nlc.forensic.controller
 
 import com.google.gson.Gson
+import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.service.AuthenticationService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -19,10 +21,11 @@ class AuthenticationController(private val authService: AuthenticationService) {
     fun login(
         @RequestBody request: User?
     ): ResponseEntity<AuthenticationResponse> {
-        if (request != null) {
-            println(request.email)
-            println(request.passcode)
+        if (authService.authenticate(request!!).token == null) {
+            return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(AuthenticationResponse(null, ResponseConstant.INVALID_CREDENTIALS))
         }
-        return ResponseEntity.ok(authService.authenticate(request!!))
+        return ResponseEntity.ok(authService.authenticate(request))
     }
 }
