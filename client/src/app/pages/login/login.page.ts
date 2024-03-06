@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  token: string = ''
+  token: string = '';
+  errorMessage: string = '';
 
   constructor(
     private authService: AuthenticationService,
@@ -19,17 +20,18 @@ export class LoginPage {
     this.authService.login(email, passcode)
       .subscribe((response) => {
         const token = response.token;
-        this.authService.setToken(token)
-        this.token = this.authService.getToken()
+        this.authService.setToken(token);
+        this.token = this.authService.getToken();
         console.log('Login response:', this.token);
         // Redirect to dashboard or handle success
         this.router.navigate(['/dashboard']);
       }, error => {
         console.error('Login failed:', error);
-        // Handle error, show error message, etc.
+        this.errorMessage = 'Invalid login. Please check your credentials.';
       });
   }
 }
+
 
 
 

@@ -1,0 +1,14 @@
+.error-message {
+    background-color: #f8d7da; /* Background color for error message */
+    color: #721c24; /* Text color for error message */
+    border: 1px solid #f5c6cb; /* Border color for error message */
+    border-radius: 4px; /* Border radius for error message */
+    display: flex; /* Flex display to align items horizontally */
+    align-items: center; /* Align items in the center horizontally */
+  }
+  
+  .error-icon {
+    margin-right: 8px; /* Margin between the icon and error message */
+    color: #721c24; /* Color of the error icon */
+  }
+  

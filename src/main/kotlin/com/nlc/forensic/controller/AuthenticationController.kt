@@ -25,9 +25,4 @@ class AuthenticationController(private val authService: AuthenticationService) {
         }
         return ResponseEntity.ok(authService.authenticate(request!!))
     }
-
-    @PostMapping("/register")
-    fun register(@RequestBody request: User): ResponseEntity<AuthenticationResponse> {
-        return ResponseEntity.ok(authService.addNewUser(request))
-    }
 }

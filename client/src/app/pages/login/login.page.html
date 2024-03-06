@@ -1,22 +1,26 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       Login
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <form (ngSubmit)="login(email.value, passcode.value)">
-    <ion-item>
-      <ion-label position="floating">Username</ion-label>
+    <ion-item lines="none">
+      <ion-label position="floating" color="primary">Username</ion-label>
       <ion-input type="text" #email required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Password</ion-label>
+    <ion-item lines="none">
+      <ion-label position="floating" color="primary">Password</ion-label>
       <ion-input type="password" #passcode required></ion-input>
     </ion-item>
-    <ion-button type="submit" expand="block">Login</ion-button>
+    <ion-button type="submit" expand="block" color="primary">Login</ion-button>
   </form>
+  <div *ngIf="errorMessage" class="ion-padding error-message">
+    <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+    <span>{{ errorMessage }}</span>
+  </div>
 </ion-content>
 

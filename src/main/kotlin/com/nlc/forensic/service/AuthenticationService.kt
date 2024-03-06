@@ -1,5 +1,6 @@
 package com.nlc.forensic.service
 
+import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.entity.JwtToken
 import com.nlc.forensic.entity.User
@@ -21,7 +22,14 @@ class AuthenticationService(private val userRepository: UserRepository,
     fun addNewUser(request: User): AuthenticationResponse{
         // Check if user already exists. If exists then authenticate the user
         if (request.email?.let { userRepository.findByEmail(it).isPresent } == true) {
-            return AuthenticationResponse(null, "User already exists")
+            return AuthenticationResponse(null, ResponseConstant.USER_ALREADY_EXIST)
+        }
+
+        // Check if the parameters are all set
+        if (request.email.isNullOrBlank() || request.role?.name.isNullOrBlank() ||
+            request.firstName.isNullOrBlank() ||
+            request.lastName.isNullOrBlank()) {
+            return AuthenticationResponse(null, ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
         }
 
         val user = User(
@@ -31,6 +39,7 @@ class AuthenticationService(private val userRepository: UserRepository,
             passcode = passwordEncoder.encode(request.passcode),
             role = request.role
         )
+
 
         val savedUser = userRepository.save(user)
 
