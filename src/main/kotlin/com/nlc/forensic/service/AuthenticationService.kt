@@ -2,6 +2,7 @@ package com.nlc.forensic.service
 
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
+import com.nlc.forensic.dto.PasswordDTO
 import com.nlc.forensic.dto.UserDTO
 import com.nlc.forensic.entity.JwtToken
 import com.nlc.forensic.entity.User
@@ -107,11 +108,11 @@ class AuthenticationService(private val userRepository: UserRepository,
             .joinToString("")
     }
 
-    fun updateUserPassword(request: String): UserDTO? {
+    fun updateUserPassword(request: String): PasswordDTO? {
         val user = userRepository.findByEmail(request)
         val newPasscode = generateRandomPassword(16)
         user.get().passcode = passwordEncoder.encode(newPasscode)
         userRepository.save(user.get())
-        return user.get().email?.let { UserDTO(it, newPasscode) }
+        return user.get().email?.let { PasswordDTO(it, newPasscode) }
     }
 }

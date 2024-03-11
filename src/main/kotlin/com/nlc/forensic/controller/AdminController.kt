@@ -2,6 +2,7 @@ package com.nlc.forensic.controller
 
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
+import com.nlc.forensic.dto.UserDTO
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.service.AuthenticationService
 import com.nlc.forensic.service.UserService
@@ -29,7 +30,7 @@ class AdminController(private val authService: AuthenticationService, private va
     }
 
 
-    @DeleteMapping("/users/{email}")
+    @DeleteMapping("/remove/{email}")
     fun deleteUserByEmail(@PathVariable email: String?): ResponseEntity<String> {
         if (email.isNullOrBlank()) {
             return ResponseEntity.badRequest().body(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
@@ -41,6 +42,11 @@ class AdminController(private val authService: AuthenticationService, private va
         } catch (userNotFound: UsernameNotFoundException) {
             ResponseEntity.badRequest().body(ResponseConstant.USER_NOT_EXISTS)
         }
+    }
+
+    @GetMapping("/get/all/users")
+    fun getUsers(): ResponseEntity<List<UserDTO>> {
+        return ResponseEntity.ok(userService.getAllUsers())
     }
 
 }
