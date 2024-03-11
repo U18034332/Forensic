@@ -31,4 +31,5 @@ class UserService: UserDetailsService {
         }
         userRepository.delete(user.get())
     }
+
 }

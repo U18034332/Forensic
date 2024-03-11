@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("api/admin_only")
 class AdminController(private val authService: AuthenticationService, private val userService: UserService) {
-    @GetMapping("/admin")
-    fun getAdmin(): String{
-        return "Admin login"
-    }
+//    @GetMapping("/admin")
+//    fun getAdmin(): String{
+//        return "Admin login"
+//    }
     @PostMapping("/add_user")
     fun register(@RequestBody request: User): ResponseEntity<AuthenticationResponse> {
         if (authService.addNewUser(request).message == ResponseConstant.USER_ALREADY_EXIST) {
@@ -39,7 +39,7 @@ class AdminController(private val authService: AuthenticationService, private va
             userService.deleteUser(username.username)
             ResponseEntity.ok(ResponseConstant.USER_REMOVED)
         } catch (userNotFound: UsernameNotFoundException) {
-            ResponseEntity.badRequest().body(ResponseConstant.COULD_NOT_DELETE_USER)
+            ResponseEntity.badRequest().body(ResponseConstant.USER_NOT_EXISTS)
         }
     }
 

@@ -13,14 +13,14 @@ export class DashboardPage implements OnInit {
   constructor(private dashService: DashboardService) { }
 
   ngOnInit(): void {
-    this.getData()    
+    this.getData()
   }
 
   getData():void{
     this.dashService.getData()
     .subscribe((response) => {
       this.total = response
-      console.log('Login response:', response);
+      console.log('Dashboard response:', response);
       // Redirect to dashboard or handle success
     }, error => {
       console.error('Dashboard failed:', error);
