@@ -8,13 +8,17 @@ import { CodeVerificationPageRoutingModule } from './code-verification-routing.m
 
 import { CodeVerificationPage } from './code-verification.page';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CodeVerificationPageRoutingModule
+    CodeVerificationPageRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [CodeVerificationPage]
 })
 export class CodeVerificationPageModule {}
+export class AppModule { }

@@ -1,6 +1,6 @@
 .container {
-display: flex;
-height: 100vh;
+    display: flex;
+    height: 100vh;
 }
 
 .left-panel {
@@ -19,21 +19,18 @@ height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 200px;
-    padding-right: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .logo {
     margin-bottom: 20px;
-  /* Set width or height depending on your logo's aspect ratio */
     width: 150px;
 }
 
 h1, h2 {
     text-align: center;
 }
-
-
 
 .code-verification {
     background-color: white;
@@ -43,18 +40,7 @@ h1, h2 {
     width: 300px;
 }
 
-h3 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-    }
-
-input[type="text"],
-
-button[type="block"] {
+button[type="submit"] {
     width: 100%;
     padding: 10px;
     border: none;
@@ -64,6 +50,6 @@ button[type="block"] {
     cursor: pointer;
 }
 
-button[type="block"]:hover {
+button[type="submit"]:hover {
     background-color: #0056b3;
 }
