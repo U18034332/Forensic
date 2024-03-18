@@ -1,14 +1,52 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>dashboard</ion-title>
+
+    <ion-thumbnail slot="start">
+      <img alt="NLC Logo" src="assets/icon/NLC-Logo.png"  style="display: inline ; height: 45px ;margin-left: 20px;padding-block: 2px; border-left-width: 0px;" />
+    </ion-thumbnail>
+
+
+
+
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon name="moon"></ion-icon>
+      </ion-button>
+      <ion-button >
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+      <ion-button >
+        <ion-icon name="notifications"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content>
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">dashboard</ion-title>
+      <ion-title>Menu Content</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-chip>Total cases: {{total}}</ion-chip>
+  <ion-content class="ion-padding">This is the menu content.
+
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"> Tap the button in the toolbar to open the menu. </ion-content>
+</div>
+
 </ion-content>
