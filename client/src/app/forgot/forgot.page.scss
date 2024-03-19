@@ -15,7 +15,7 @@ height: 100vh;
 
 .right-panel {
     flex: 1;
-    background: linear-gradient(to right, orange, red, blue);
+    background: linear-gradient(to top right, red, yellow, blue);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@ height: 100vh;
 .logo {
     margin-bottom: 20px;
   /* Set width or height depending on your logo's aspect ratio */
-    width: 150px;
+    width: 500px;
 }
 
 h1, h2 {

@@ -15,17 +15,17 @@
 
 .right-panel {
     flex: 1;
-    background: linear-gradient(to right, orange, red, blue);
+    background: linear-gradient(to top right, red, yellow, blue);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 200px;
+    padding-right: 100px;
 }
 
 .logo {
     margin-bottom: 20px;
-    width: 150px;
+    width: 500px;
 }
 
 h1, h2 {

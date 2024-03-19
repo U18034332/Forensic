@@ -30,6 +30,9 @@ export class LoginPage {
         this.errorMessage = 'Invalid login. Please check your credentials.';
       });
   }
+  forgotPw() : void {
+    this.router.navigate(['/forgot'])
+  }
 }
 
 
