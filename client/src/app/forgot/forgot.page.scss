@@ -24,9 +24,11 @@ height: 100vh;
 }
 
 .logo {
-    margin-bottom: 20px;
+margin-bottom: 20px;
   /* Set width or height depending on your logo's aspect ratio */
-    width: 500px;
+width: 100%;
+height: auto;
+max-width: 400px; /* To ensure the logo does not exceed 500px */
 }
 
 h1, h2 {
