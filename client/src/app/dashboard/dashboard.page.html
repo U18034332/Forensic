@@ -1,8 +1,9 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-thumbnail slot="start" class="logo">
-      <img alt="NLC Logo" src="assets/icon/NLC-Logo.png" />
+      <img alt="NLC Logo" src="assets/icon/NLC-Logo.png" class="logo-img" />
     </ion-thumbnail>
+
 
     <ion-buttons slot="end">
       <ion-button>
@@ -21,64 +22,66 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- Main content -->
-  <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Dashboard</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <ion-list>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="home" slot="start"></ion-icon>
-          Dashboard
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="document-text" slot="start"></ion-icon>
-          Incident Report
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="briefcase" slot="start"></ion-icon>
-          Case Management
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="cash" slot="start"></ion-icon>
-          Grant Case Management
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="folder-open" slot="start"></ion-icon>
-          Document Management
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="bar-chart" slot="start"></ion-icon>
-          Audit Trail
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="chatbubbles" slot="start"></ion-icon>
-          Discuss
-        </ion-item>
-        <ion-item button lines="none" detail="false">
-          <ion-icon name="calendar" slot="start"></ion-icon>
-          Calendar
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+<!-- Side menu -->
 
-  <!-- Side menu -->
+<ion-menu contentId="main-content" class="side-menu">
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false" >
+        <ion-icon name="home" slot="start"></ion-icon>
+        Dashboard
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="document-text" slot="start"></ion-icon>
+        Incident Report
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="briefcase" slot="start"></ion-icon>
+        Case Management
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="cash" slot="start"></ion-icon>
+        Grant Case Management
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="cash" slot="start"></ion-icon>
+        Referals A & F
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="folder-open" slot="start"></ion-icon>
+        Document Management
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="bar-chart" slot="start"></ion-icon>
+        Audit Trail
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="chatbubbles" slot="start"></ion-icon>
+        Discuss
+      </ion-item>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        Calendar
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<ion-content>
+
+  <!-- Main content -->
   <div class="ion-page" id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
+    <ion-header class="ion-no-border">
+      <ion-toolbar >
+        <ion-buttons  slot="start"  >
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Dashboard</ion-title>
+        
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      Tap the button in the toolbar to open the menu.
+      <ion-title>Dashboard</ion-title>
     </ion-content>
   </div>
 </ion-content>

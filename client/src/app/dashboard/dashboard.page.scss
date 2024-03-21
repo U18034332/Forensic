@@ -2,6 +2,20 @@ ion-buttons ion-button {
   margin-right: 20px; /* Adjust this value as needed */
 }
 
-.logo{
+.logo {
   margin-left: 1%;
+}
+
+.logo-img {
+  width: 40px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  padding-top: 10px;
+}
+
+.ion-side-menu-button{
+  padding-bottom: 2em;
+  
+}
+.side-menu ion-item:first-child {
+  padding-top: 2em; /* Additional padding for the top item */
 }
