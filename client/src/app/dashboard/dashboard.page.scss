@@ -19,3 +19,18 @@ ion-buttons ion-button {
 .side-menu ion-item:first-child {
   padding-top: 2em; /* Additional padding for the top item */
 }
+
+ion-card {
+  --border-radius: 15px; /* This will give the card rounded corners */
+  --background: #f2f2f2; /* This is a light grey background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the cards */
+}
+
+ion-card-title {
+  color: #323232; /* Sets the title color to a darker shade for contrast */
+}
+
+/* Additional styles to enhance the appearance of the card content */
+ion-card-content {
+  padding: 16px; /* Adjust padding as needed */
+}
