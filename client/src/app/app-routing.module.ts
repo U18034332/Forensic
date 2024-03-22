@@ -27,6 +27,27 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+
+  {
+    path: 'personal-settings',
+    loadChildren: () => import('./personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
+  },
+  {
+    path: 'ps-storage',
+    loadChildren: () => import('./ps-storage/ps-storage.module').then( m => m.PsStoragePageModule)
+  },
+  {
+    path: 'audit-logs',
+    loadChildren: () => import('./audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule)
+  },
+  {
+    path: 'portal-users',
+    loadChildren: () => import('./portal-users/portal-users.module').then( m => m.PortalUsersPageModule)
+  },
+  {
+    path: 'profiles',
+    loadChildren: () => import('./profiles/profiles.module').then( m => m.ProfilesPageModule)
+  },
 ];
 
 @NgModule({
