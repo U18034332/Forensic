@@ -10,16 +10,16 @@
     </div>
     <div class="right-panel">
       <div class="login-form">
-        <form>
+        <form (ngSubmit) = "login(email.value,passcode.value)">
           <ion-text >Login</ion-text>
           <ion-list>
             <ion-item>
               <ion-label position="floating">Username</ion-label>
-              <ion-input type="text"  name="username" required></ion-input>
+              <ion-input type="text"  #email required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"  name="password" required></ion-input>
+              <ion-input type="password"  #passcode required></ion-input>
             </ion-item>
           </ion-list>
           <ion-row>
@@ -38,10 +38,9 @@
           </ion-row>
           <ion-button type="submit" expand="block" color="primary">Login</ion-button>
         </form>
-        <div *ngIf="errorMessage" class="error-message">
-          <ion-text color="danger">
-            <p>{{ errorMessage }}</p>
-          </ion-text>
+        <div *ngIf="errorMessage" class="ion-padding error-message">
+          <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+          <span>{{ errorMessage }}</span>
         </div>
       </div>
     </div>
