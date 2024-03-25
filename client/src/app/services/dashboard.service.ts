@@ -8,7 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class DashboardService {
 
-  private apiUrl = 'http://localhost:8080/api/dashboard';
+  private apiUrl = 'http://localhost:8080/api/v1/dashboard';
   private authToken = this.authService.getToken();
 
   constructor(private http: HttpClient,private authService: AuthenticationService) { }

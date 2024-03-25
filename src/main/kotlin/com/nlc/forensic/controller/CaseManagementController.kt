@@ -1,5 +1,6 @@
 package com.nlc.forensic.controller
 
+import com.nlc.forensic.dto.CaseWidgetsDTO
 import com.nlc.forensic.dto.TotalByProvinceDTO
 import com.nlc.forensic.service.CaseManagementService
 import org.springframework.http.ResponseEntity
@@ -10,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/api/v1/dashboard/")
+@RequestMapping("/api/v1/dashboard/total/")
 class CaseManagementController(private val caseManagementService: CaseManagementService) {
-    @GetMapping("total")
-    fun getTotalNumberOfCases(): ResponseEntity<Long>{
-        return ResponseEntity.ok(caseManagementService.totalCases())
+    @GetMapping("widgets")
+    fun getTotalNumberOfCases(): ResponseEntity<CaseWidgetsDTO>{
+        return ResponseEntity.ok(caseManagementService.casesWidgetsSummary())
     }
 
-    @GetMapping("province/{province}")
-    fun getTotalByProvince(@PathVariable province: String): ResponseEntity<TotalByProvinceDTO> {
+    @GetMapping("provinces")
+    fun getTotalByProvince(): ResponseEntity<TotalByProvinceDTO> {
         return ResponseEntity.ok(caseManagementService.totalCasesPerProvince())
     }
 }
