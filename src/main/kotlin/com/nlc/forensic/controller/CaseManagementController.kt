@@ -1,5 +1,6 @@
 package com.nlc.forensic.controller
 
+import com.nlc.forensic.dto.TotalByProvinceDTO
 import com.nlc.forensic.service.CaseManagementService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,7 +18,7 @@ class CaseManagementController(private val caseManagementService: CaseManagement
     }
 
     @GetMapping("province/{province}")
-    fun getTotalByProvince(@PathVariable province: String): ResponseEntity<Int> {
-        return ResponseEntity.ok(caseManagementService.totalCasesPerProvince(province))
+    fun getTotalByProvince(@PathVariable province: String): ResponseEntity<TotalByProvinceDTO> {
+        return ResponseEntity.ok(caseManagementService.totalCasesPerProvince())
     }
 }

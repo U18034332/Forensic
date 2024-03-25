@@ -1,5 +1,7 @@
 package com.nlc.forensic.service
 
+import com.nlc.forensic.constants.Provinces
+import com.nlc.forensic.dto.TotalByProvinceDTO
 import com.nlc.forensic.repository.CaseRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -14,7 +16,17 @@ class CaseManagementService {
         return caseRepository.count()
     }
 
-    fun totalCasesPerProvince(province: String): Int {
-        return caseRepository.countByProvince(province)
+    fun totalCasesPerProvince(): TotalByProvinceDTO {
+        return TotalByProvinceDTO(
+            caseRepository.countByProvince(Provinces.MP),
+            caseRepository.countByProvince(Provinces.GP),
+            caseRepository.countByProvince(Provinces.LP),
+            caseRepository.countByProvince(Provinces.NW),
+            caseRepository.countByProvince(Provinces.FS),
+            caseRepository.countByProvince(Provinces.KZN),
+            caseRepository.countByProvince(Provinces.NC),
+            caseRepository.countByProvince(Provinces.EC),
+            caseRepository.countByProvince(Provinces.WC)
+        )
     }
 }
