@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
 
 
 @Component({
@@ -7,14 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  total: any
 
-  constructor() { }
+  constructor(private dashService: DashboardService) { }
 
-<<<<<<< HEAD
-  ngOnInit() {
-  }
-
-=======
   ngOnInit(): void {
     this.getData()
   }
@@ -30,5 +27,5 @@ export class DashboardPage implements OnInit {
       // Handle error, show error message, etc.
     });
   }
->>>>>>> origin/login
 }
+
