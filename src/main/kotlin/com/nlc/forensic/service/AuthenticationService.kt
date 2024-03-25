@@ -2,11 +2,14 @@ package com.nlc.forensic.service
 
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
+import com.nlc.forensic.dto.PasswordDTO
+import com.nlc.forensic.dto.UserDTO
 import com.nlc.forensic.entity.JwtToken
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.repository.JwtTokenRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.security.authentication.AuthenticationManager
+import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
@@ -52,12 +55,17 @@ class AuthenticationService(private val userRepository: UserRepository,
     }
 
     fun authenticate(request: User): AuthenticationResponse {
-        authenticationManager.authenticate(
-            UsernamePasswordAuthenticationToken(
-                request.username,
-                request.password
+        try {
+            authenticationManager.authenticate(
+                UsernamePasswordAuthenticationToken(
+                    request.username,
+                    request.password
+                )
             )
-        )
+        } catch (exception: BadCredentialsException) {
+            return AuthenticationResponse(null, ResponseConstant.INVALID_CREDENTIALS)
+        }
+
 
         val user = request.username.let { request.username?.let { it1 -> userRepository.findByEmail(it1).orElseThrow() } }
         val jwt = user?.let { jwtService.generateToken(it) }
@@ -93,4 +101,18 @@ class AuthenticationService(private val userRepository: UserRepository,
         tokenRepository.save(token)
     }
 
+    fun generateRandomPassword(length: Int): String {
+        val chars = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+        return (1..length)
+            .map { chars.random() }
+            .joinToString("")
+    }
+
+    fun updateUserPassword(request: String): PasswordDTO? {
+        val user = userRepository.findByEmail(request)
+        val newPasscode = generateRandomPassword(16)
+        user.get().passcode = passwordEncoder.encode(newPasscode)
+        userRepository.save(user.get())
+        return user.get().email?.let { PasswordDTO(it, newPasscode) }
+    }
 }
