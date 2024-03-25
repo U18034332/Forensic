@@ -17,36 +17,36 @@ const routes: Routes = [
   },
   {
     path: 'forgot',
-    loadChildren: () => import('./forgot/forgot.module').then( m => m.ForgotPageModule)
+    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
   },
   {
     path: 'code-verification',
-    loadChildren: () => import('./code-verification/code-verification.module').then( m => m.CodeVerificationPageModule)
+    loadChildren: () => import('./pages/code-verification/code-verification.module').then( m => m.CodeVerificationPageModule)
   },
   {
     path: 'change-password',
-    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
 
   {
     path: 'personal-settings',
-    loadChildren: () => import('./personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
+    loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
   },
   {
     path: 'ps-storage',
-    loadChildren: () => import('./ps-storage/ps-storage.module').then( m => m.PsStoragePageModule)
+    loadChildren: () => import('./pages/ps-storage/ps-storage.module').then( m => m.PsStoragePageModule)
   },
   {
     path: 'audit-logs',
-    loadChildren: () => import('./audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule)
+    loadChildren: () => import('./pages/audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule)
   },
   {
     path: 'portal-users',
-    loadChildren: () => import('./portal-users/portal-users.module').then( m => m.PortalUsersPageModule)
+    loadChildren: () => import('./pages/portal-users/portal-users.module').then( m => m.PortalUsersPageModule)
   },
   {
     path: 'profiles',
-    loadChildren: () => import('./profiles/profiles.module').then( m => m.ProfilesPageModule)
+    loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule)
   },
 ];
 
