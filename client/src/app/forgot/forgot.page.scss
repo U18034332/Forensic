@@ -15,8 +15,10 @@ height: 100vh;
 
 .right-panel {
     flex: 1;
-    background: linear-gradient(to top right, red, yellow, blue);
+    background: radial-gradient(circle at center, rgba(217, 217, 217, 0.697) 0%, rgba(217, 217, 217, 0) 100%),
+    linear-gradient(to top right, rgba(200, 41, 41, 1), rgba(255, 196, 89, 1), rgb(46, 88, 146));
     display: flex;
+    border-radius: 30px 10px 15px 30px;
     align-items: center;
     justify-content: center;
     padding-left: 200px;
