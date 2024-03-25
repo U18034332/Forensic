@@ -14,6 +14,9 @@ data class Case(
     val caseNumber: String = "",
     var type: String = "",
     var status: String = "",
+    var province: String = "",
+    var channel: String = "",
+    var complexity: String = "",
     @ManyToOne
     @JoinColumn(name = "assigned_user")
     var assignedTo: User? = null,
