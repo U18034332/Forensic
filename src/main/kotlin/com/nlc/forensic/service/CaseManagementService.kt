@@ -13,4 +13,8 @@ class CaseManagementService {
     fun totalCases(): Long{
         return caseRepository.count()
     }
+
+    fun totalCasesPerProvince(province: String): Int {
+        return caseRepository.countByProvince(province)
+    }
 }
