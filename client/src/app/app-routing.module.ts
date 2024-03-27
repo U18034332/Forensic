@@ -48,6 +48,10 @@ const routes: Routes = [
     path: 'profiles',
     loadChildren: () => import('./profiles/profiles.module').then( m => m.ProfilesPageModule)
   },
+  {
+    path: 'incident-report',
+    loadChildren: () => import('./incident-report/incident-report.module').then( m => m.IncidentReportPageModule)
+  },
 ];
 
 @NgModule({
