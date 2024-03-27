@@ -78,11 +78,127 @@
         
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
-      <ion-title>Incident Report</ion-title>
-      
+    <!-- Previous content remains unchanged -->
+
+<ion-content class="ion-padding">
+  <ion-title>Incident Report</ion-title>
   
-    </ion-content>
+  <!-- Segment buttons -->
+  <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="filedReports">
+      <ion-label>Filed Reports</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="assessment">
+      <ion-label>Assessment</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Content based on segment selection -->
+  <div [ngSwitch]="selectedSegment">
+    <div *ngSwitchCase="'filedReports'">
+  <!-- Non-Funded Reports Section -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Non-Funded Reports</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Placeholder for Non-Funded Reports Data Table -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>Report Number : </ion-col>
+          <ion-col>Accept/Decline : </ion-col>
+          <ion-col>Date Reported :</ion-col>
+          <ion-col>Channel </ion-col>
+          <ion-col>Province</ion-col>
+          <ion-col>Case Type </ion-col>
+          <ion-col>Priority </ion-col>
+          <ion-col>Status : </ion-col>
+          <ion-col>Division</ion-col>
+          <ion-col>Level Detected </ion-col>
+          <ion-col>Assesment Stage</ion-col>
+          <ion-col>Start Date </ion-col>
+          <ion-col>Report Document</ion-col>
+          <ion-col>Actions </ion-col>
+          <ion-col>Last Modified</ion-col>
+          <ion-col>Assignged Too  </ion-col>
+          <!-- More headers as needed -->
+        </ion-row>
+        <ion-row>
+              <ion-col>{{ nonFundedReportCase.reportNumber }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.acceptDecline }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.dateReported }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.channel }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.province }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.caseType }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.priority }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.status }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.division }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.levelDetected }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.assessmentStage }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.startDate }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.reportDocument }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.actions }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.lastModified }}</ion-col>
+              <ion-col>{{ nonFundedReportCase.assignedToo }}</ion-col>
+            </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Funded Reports Section -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Funded Reports</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Placeholder for Funded Reports Data Table -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>Report Number : </ion-col>
+          <ion-col>Accept/Decline : </ion-col>
+          <ion-col>Date Reported :</ion-col>
+          <ion-col>Channel </ion-col>
+          <ion-col>Province</ion-col>
+          <ion-col>Case Type </ion-col>
+          <ion-col>Priority </ion-col>
+          <ion-col>Status : </ion-col>
+          <ion-col>Division</ion-col>
+          <ion-col>Level Detected </ion-col>
+          <ion-col>Assesment Stage</ion-col>
+          <ion-col>Start Date </ion-col>
+          <ion-col>Orgin</ion-col>
+          <ion-col>Project Number </ion-col>
+          <ion-col>Last Modified</ion-col>
+          <ion-col>Assignged Too  </ion-col>
+          <!-- More headers as needed -->
+        </ion-row>
+        <ion-row>
+              <ion-col>{{ fundedReportCase.reportNumber }}</ion-col>
+              <ion-col>{{ fundedReportCase.acceptDecline }}</ion-col>
+              <ion-col>{{ fundedReportCase.dateReported }}</ion-col>
+              <ion-col>{{ fundedReportCase.channel }}</ion-col>
+              <ion-col>{{ fundedReportCase.province }}</ion-col>
+              <ion-col>{{ fundedReportCase.caseType }}</ion-col>
+              <ion-col>{{ fundedReportCase.priority }}</ion-col>
+              <ion-col>{{ fundedReportCase.status }}</ion-col>
+              <ion-col>{{ fundedReportCase.division }}</ion-col>
+              <ion-col>{{ fundedReportCase.levelDetected }}</ion-col>
+              <ion-col>{{ fundedReportCase.assessmentStage }}</ion-col>
+              <ion-col>{{ fundedReportCase.startDate }}</ion-col>
+              <ion-col>{{ fundedReportCase.origin }}</ion-col>
+              <ion-col>{{ fundedReportCase.projectNumber }}</ion-col>
+              <ion-col>{{ fundedReportCase.lastModified }}</ion-col>
+              <ion-col>{{ fundedReportCase.assignedToo }}</ion-col>
+              
+              </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+  </div>
+</ion-content>
+
 
 
 

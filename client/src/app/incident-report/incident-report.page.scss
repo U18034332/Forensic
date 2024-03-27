@@ -20,4 +20,11 @@ ion-buttons ion-button {
     padding-top: 2em; /* Additional padding for the top item */
 }
 
+ion-card-content {
+  ion-grid {
+    overflow-x: auto;
+  }
+}
+
+
 
