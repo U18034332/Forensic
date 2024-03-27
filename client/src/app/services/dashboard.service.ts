@@ -11,7 +11,7 @@ export class DashboardService {
   private apiUrl = 'http://localhost:8080/api/v1/dashboard/total';
   private authToken = this.authService.getToken();
 
-  constructor(private http: HttpClient,public authService: AuthenticationService) { }
+  constructor(private http: HttpClient,private authService: AuthenticationService) { }
 
   // Function to send GET request with authentication
   getData(): Observable<any> {
