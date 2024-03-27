@@ -19,7 +19,7 @@ export class DashboardService {
       'Authorization': `Bearer ${this.authToken}`
     });
 
-    return this.http.get<any>(`${this.apiUrl}/provinces`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/widgets`, { headers });
   }
 
   // Function to send POST request with authentication

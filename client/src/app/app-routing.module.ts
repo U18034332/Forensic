@@ -33,27 +33,27 @@ const routes: Routes = [
   {
     path: 'personal-settings',
     loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule),
-    canActivate: [AuthenticationGuard]
+    //canActivate: [AuthenticationGuard]
   },
   {
     path: 'ps-storage',
     loadChildren: () => import('./pages/ps-storage/ps-storage.module').then( m => m.PsStoragePageModule),
-    canActivate: [AuthenticationGuard]
+    //canActivate: [AuthenticationGuard]
   },
   {
     path: 'audit-logs',
     loadChildren: () => import('./pages/audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule),
-    canActivate: [AuthenticationGuard]
+    //canActivate: [AuthenticationGuard]
   },
   {
     path: 'portal-users',
     loadChildren: () => import('./pages/portal-users/portal-users.module').then( m => m.PortalUsersPageModule),
-    canActivate: [AuthenticationGuard]
+    //canActivate: [AuthenticationGuard]
   },
   {
     path: 'profiles',
     loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule),
-    canActivate: [AuthenticationGuard]
+    //canActivate: [AuthenticationGuard]
   },
 ];
 

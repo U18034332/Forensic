@@ -8,7 +8,10 @@ import { DashboardService } from '../services/dashboard.service';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  total: any
+  amountWithHeld: number = 0
+  newCases = 0
+  closedCases = 0
+  issues = 0
 
   constructor(private dashService: DashboardService) { }
 
@@ -19,7 +22,10 @@ export class DashboardPage implements OnInit {
   getData():void{
     this.dashService.getData()
     .subscribe((response) => {
-      this.total = response
+      this.amountWithHeld = response.amountWithHeld
+      this.closedCases = response.closedCases
+      this.newCases = response.newCases
+      this.issues = response.issues
       console.log('Dashboard response:', response);
       // Redirect to dashboard or handle success
     }, error => {
