@@ -10,30 +10,29 @@
     </div>
     <div class="right-panel">
       <div class="login-form">
-        <form (ngSubmit) = "login(email.value,passcode.value)">
-          <ion-text >Login</ion-text>
+        <form (ngSubmit)="login(email.value, passcode.value)">
+          <ion-text>Login</ion-text>
           <ion-list>
             <ion-item>
               <ion-label position="floating">Username</ion-label>
-              <ion-input type="text"  #email required></ion-input>
+              <ion-input type="text" #email required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password"  #passcode required></ion-input>
+              <ion-input type="password" #passcode required></ion-input>
             </ion-item>
           </ion-list>
           <ion-row>
             <ion-col>
               <ion-item lines="none">
-                <ion-checkbox slot="start"  name="rememberMe"></ion-checkbox>
+                <ion-checkbox slot="start" name="rememberMe"></ion-checkbox>
                 <ion-label>Remember me</ion-label>
               </ion-item>
             </ion-col>
-            
           </ion-row>
           <ion-row>
-          <ion-col>
-              <ion-button (click)="forgotPw()" fill="clear" size="small" class="forgot-password" >Forgot password?</ion-button>
+            <ion-col>
+              <ion-button (click)="forgotPw()" fill="clear" size="small" class="forgot-password">Forgot password?</ion-button>
             </ion-col>
           </ion-row>
           <ion-button type="submit" expand="block" color="primary">Login</ion-button>

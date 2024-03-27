@@ -8,10 +8,10 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class DashboardService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/dashboard';
+  private apiUrl = 'http://localhost:8080/api/v1/dashboard/total';
   private authToken = this.authService.getToken();
 
-  constructor(private http: HttpClient,private authService: AuthenticationService) { }
+  constructor(private http: HttpClient,public authService: AuthenticationService) { }
 
   // Function to send GET request with authentication
   getData(): Observable<any> {
@@ -19,7 +19,7 @@ export class DashboardService {
       'Authorization': `Bearer ${this.authToken}`
     });
 
-    return this.http.get<any>(`${this.apiUrl}/total`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/provinces`, { headers });
   }
 
   // Function to send POST request with authentication
