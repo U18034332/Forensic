@@ -56,6 +56,30 @@ const routes: Routes = [
     path: 'case-management',
     loadChildren: () => import('./case-management/case-management.module').then( m => m.CaseManagementPageModule)
   },
+  {
+    path: 'grant-case-management',
+    loadChildren: () => import('./grant-case-management/grant-case-management.module').then( m => m.GrantCaseManagementPageModule)
+  },
+  {
+    path: 'doc-management',
+    loadChildren: () => import('./doc-management/doc-management.module').then( m => m.DocManagementPageModule)
+  },
+  {
+    path: 'audit-trail',
+    loadChildren: () => import('./audit-trail/audit-trail.module').then( m => m.AuditTrailPageModule)
+  },
+  {
+    path: 'discuss',
+    loadChildren: () => import('./discuss/discuss.module').then( m => m.DiscussPageModule)
+  },
+  {
+    path: 'calender',
+    loadChildren: () => import('./calender/calender.module').then( m => m.CalenderPageModule)
+  },
+  {
+    path: 'agencies-and-firms',
+    loadChildren: () => import('./agencies-and-firms/agencies-and-firms.module').then( m => m.AgenciesAndFirmsPageModule)
+  },
 ];
 
 @NgModule({
