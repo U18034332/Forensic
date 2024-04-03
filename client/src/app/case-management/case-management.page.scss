@@ -20,6 +20,30 @@ ion-buttons ion-button {
     padding-top: 2em; /* Additional padding for the top item */
 }
 
+/* CaseManagementPage.scss */
+.inline-toolbar {
+  --background: transparent;
+  --border-width: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 0;
+}
+
+.case-management-button {
+  --background: #800080; /* Purple color */
+  --border-radius: 8px;
+  margin-left: 8px; /* Adds margin to the left of the button */
+  margin-right: 8px; /* Adds margin to the right of the button */
+}
+
+ion-title {
+  font-size: 1.2em; /* Adjust title size if necessary */
+  padding-right: 8px; /* Adds space between title and buttons */
+}
+
+
 .custom-table table {
   width: 100%;
   border-collapse: collapse;

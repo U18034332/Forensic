@@ -80,10 +80,21 @@
     </ion-header>
     <!-- Previous content remains unchanged -->
 
-<ion-content class="ion-padding">
-  <ion-title>Case Management</ion-title>
-  
-  <ion-content>
+<ion-content>
+  <ion-toolbar class="inline-toolbar">
+    <ion-title>Case Management</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="case-management-button" (click)="presentAddFileDialog()" fill="solid">Add File</ion-button>
+      <ion-button class="case-management-button" (click)="presentAddCaseDialog()" fill="solid">Add Case</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- The rest of your content -->
+
+
+  <div class="ion-page" id="main-content">
+
+  </div>
   <!-- Table starts here -->
   <ion-grid>
     <ion-row>
