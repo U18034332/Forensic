@@ -1,25 +1,24 @@
 package com.nlc.forensic.controller
 
-import com.nlc.forensic.dto.CaseWidgetsDTO
-import com.nlc.forensic.dto.TotalByProvinceDTO
+import com.nlc.forensic.entity.Case
 import com.nlc.forensic.service.CaseManagementService
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/api/v1/dashboard/total/")
+@RequestMapping("api/v1/case_management/")
 class CaseManagementController(private val caseManagementService: CaseManagementService) {
-    @GetMapping("widgets")
-    fun getTotalNumberOfCases(): ResponseEntity<CaseWidgetsDTO>{
-        return ResponseEntity.ok(caseManagementService.casesWidgetsSummary())
+
+    @PostMapping("create")
+    fun createCase(case: Case): ResponseEntity<String> {
+        if (case == null) {
+            return ResponseEntity.badRequest().body("Case could not be created.")
+        }
+        caseManagementService.createNewCase(case)
+        return ResponseEntity.ok("Case created.")
     }
 
-    @GetMapping("provinces")
-    fun getTotalByProvince(): ResponseEntity<TotalByProvinceDTO> {
-        return ResponseEntity.ok(caseManagementService.totalCasesPerProvince())
-    }
 }
