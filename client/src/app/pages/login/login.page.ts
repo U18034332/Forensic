@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
-import { AuthenticationDto } from 'src/app/dto/authentication';
+import { AuthenticationDto } from '../../dto/authentication.interface';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,6 @@
 package com.nlc.forensic.controller
 
+import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.entity.Case
 import com.nlc.forensic.service.CaseManagementService
 import org.springframework.http.ResponseEntity
@@ -14,11 +15,12 @@ class CaseManagementController(private val caseManagementService: CaseManagement
 
     @PostMapping("create")
     fun createCase(case: Case): ResponseEntity<String> {
-        if (case == null) {
-            return ResponseEntity.badRequest().body("Case could not be created.")
+        return try {
+            caseManagementService.createNewCase(case)
+            ResponseEntity.ok(ResponseConstant.CASE_CREATED)
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body(e.message)
         }
-        caseManagementService.createNewCase(case)
-        return ResponseEntity.ok("Case created.")
     }
 
 }
