@@ -19,4 +19,7 @@ class CaseManagementService(private val caseRepository: CaseRepository) {
         return case
     }
 
+    fun getAllCases(): List<Case> {
+        return caseRepository.findAll()
+    }
 }
