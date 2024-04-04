@@ -22,4 +22,19 @@ class CaseManagementService(private val caseRepository: CaseRepository) {
     fun getAllCases(): List<Case> {
         return caseRepository.findAll()
     }
+
+    fun update(case: Case): Case {
+        val exitingCase = caseRepository.findByCaseNumber(case.caseNumber)
+        if (exitingCase.isEmpty) {
+            throw IllegalArgumentException(ResponseConstant.CASE_UPDATE_FAIL)
+        }
+        exitingCase.get().assignedTo = case.assignedTo
+        exitingCase.get().channel = case.channel
+        exitingCase.get().complexity = case.complexity
+        exitingCase.get().province = case.province
+        exitingCase.get().status = case.status
+        exitingCase.get().type = case.type
+        caseRepository.save(exitingCase.get())
+        return case
+    }
 }
