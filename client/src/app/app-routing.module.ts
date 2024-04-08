@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {
@@ -14,16 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
-    canActivate: [AuthenticationGuard] 
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   {
     path: 'forgot',
-<<<<<<< HEAD
     loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
-=======
-    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule),
->>>>>>> feature/incidentReport
   },
   {
     path: 'code-verification',
@@ -36,7 +30,6 @@ const routes: Routes = [
 
   {
     path: 'personal-settings',
-<<<<<<< HEAD
     loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
   },
   {
@@ -86,30 +79,6 @@ const routes: Routes = [
   {
     path: 'agencies-and-firms',
     loadChildren: () => import('./pages/agencies-and-firms/agencies-and-firms.module').then( m => m.AgenciesAndFirmsPageModule)
-=======
-    loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'ps-storage',
-    loadChildren: () => import('./pages/ps-storage/ps-storage.module').then( m => m.PsStoragePageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'audit-logs',
-    loadChildren: () => import('./pages/audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'portal-users',
-    loadChildren: () => import('./pages/portal-users/portal-users.module').then( m => m.PortalUsersPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'profiles',
-    loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule),
-    //canActivate: [AuthenticationGuard]
->>>>>>> feature/incidentReport
   },
 ];
 
