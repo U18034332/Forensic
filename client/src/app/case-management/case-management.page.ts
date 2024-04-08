@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // Import ModalController and other necessary components for your forms
 import { ModalController } from '@ionic/angular';
+import { AddCaseComponent } from './add-case/add-case.page';
 
 @Component({
   selector: 'app-case-management',
@@ -36,10 +37,10 @@ export class CaseManagementPage implements OnInit {
   async presentAddCaseDialog() {
     console.log("Add Case button clicked");
     // Replace with your form presentation logic
-    // const modal = await this.modalController.create({
-    //   component: YourAddCaseComponent, // Replace with your component
-    //   cssClass: 'your-custom-class' // Use a custom class if needed
-    // });
-    // return await modal.present();
+     const modal = await this.modalController.create({
+       component: AddCaseComponent, // Replace with your component
+       cssClass: 'your-custom-class' // Use a custom class if needed
+     });
+     return await modal.present();
   }
 }
