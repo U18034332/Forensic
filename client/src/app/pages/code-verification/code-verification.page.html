@@ -1,0 +1,25 @@
+<ion-content>
+  <div class="container">
+    <div class="left-panel">
+      <img src="assets/icon/NLC-Logo.png" alt="Logo" class="logo">
+      <ion-text>
+        <h1>NATIONAL LOTTERIES COMMISSION</h1>
+        <h2>Forensic</h2>
+      </ion-text>
+    </div>
+    <div class="right-panel">
+      <div class="code-verification">
+        <ion-title>Validate Code</ion-title>
+        <ion-content>
+          <form [formGroup]="codeForm" (ngSubmit)="validateCode()">
+            <ion-item>
+              <ion-label position="floating">Enter the 6-digit code you received on Email.</ion-label>
+              <ion-input formControlName="token" type="text" inputmode="numeric" maxlength="6"></ion-input>
+            </ion-item>
+            <ion-button type="submit" expand="block" [disabled]="!codeForm.valid">Validate Code</ion-button>
+          </form>
+        </ion-content>
+      </div>
+    </div>
+  </div>
+</ion-content>
