@@ -29,8 +29,7 @@ ion-card-content {
 /* For non-funded cards */
 .non-funded-card {
   width: 90vw; /* Adjust the percentage as needed */
-  margin: auto; /* Center the card horizontally */
-  display: flex; /* Use flexbox */
+  margin: auto; /* Center the card horizontally */ /* Use flexbox */
   justify-content: center; /* Center content horizontally */
   padding: 20px; /* Apply padding to all sides */
 }
@@ -38,8 +37,7 @@ ion-card-content {
 /* For funded cards */
 .funded-card {
   width: 90vw; /* Adjust the percentage as needed */
-  margin: auto; /* Center the card horizontally */
-  display: flex; /* Use flexbox */
+  margin: auto; /* Center the card horizontally */ /* Use flexbox */
   justify-content: center; /* Center content horizontally */
   padding: 20px; /* Apply padding to all sides */
 }
@@ -68,3 +66,19 @@ ion-card-content {
   padding: 20px; /* Apply padding to all sides */
 }
 
+.inline-toolbar {
+  --background: transparent;
+  --border-width: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 0;
+}
+
+.incident-report-button {
+  --background: #800080; /* Purple color */
+  --border-radius: 8px;
+  margin-left: 8px; /* Adds margin to the left of the button */
+  margin-right: 8px; /* Adds margin to the right of the button */
+}

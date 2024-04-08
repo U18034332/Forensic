@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 // The ReportCase interface should match the structure you plan to receive from your backend
 interface ReportCase {
@@ -35,7 +36,8 @@ export class IncidentReportPage implements OnInit {
   fundedReportCase!: ReportCase;
   assessmentReportCases!: ReportCase[];
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
+
 
   ngOnInit() {
     // Initialize your example report cases here or fetch them from the backend
@@ -133,6 +135,11 @@ export class IncidentReportPage implements OnInit {
     // Implementation for declining a report
     console.log('Decline report:', report);
     // Update the status of the report to "Declined" or perform an action
+  }
+   
+async presentAddReport() {
+    // Implementation of your method to present the add report functionality
+    console.log('Add report functionality will be implemented here');
   }
 
   // You can add more methods as needed for your functionality
