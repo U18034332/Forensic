@@ -17,40 +17,40 @@ const routes: Routes = [
   },
   {
     path: 'forgot',
-    loadChildren: () => import('./forgot/forgot.module').then( m => m.ForgotPageModule)
+    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
   },
   {
     path: 'code-verification',
-    loadChildren: () => import('./code-verification/code-verification.module').then( m => m.CodeVerificationPageModule)
+    loadChildren: () => import('./pages/code-verification/code-verification.module').then( m => m.CodeVerificationPageModule)
   },
   {
     path: 'change-password',
-    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
+    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
 
   {
     path: 'personal-settings',
-    loadChildren: () => import('./personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
+    loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule)
   },
   {
     path: 'ps-storage',
-    loadChildren: () => import('./ps-storage/ps-storage.module').then( m => m.PsStoragePageModule)
+    loadChildren: () => import('./pages/ps-storage/ps-storage.module').then( m => m.PsStoragePageModule)
   },
   {
     path: 'audit-logs',
-    loadChildren: () => import('./audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule)
+    loadChildren: () => import('./pages/audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule)
   },
   {
     path: 'portal-users',
-    loadChildren: () => import('./portal-users/portal-users.module').then( m => m.PortalUsersPageModule)
+    loadChildren: () => import('./pages/portal-users/portal-users.module').then( m => m.PortalUsersPageModule)
   },
   {
     path: 'profiles',
-    loadChildren: () => import('./profiles/profiles.module').then( m => m.ProfilesPageModule)
+    loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule)
   },
   {
     path: 'incident-report',
-    loadChildren: () => import('./incident-report/incident-report.module').then( m => m.IncidentReportPageModule)
+    loadChildren: () => import('./pages/incident-report/incident-report.module').then( m => m.IncidentReportPageModule)
   },
   {
     path: 'case-management',
@@ -58,27 +58,27 @@ const routes: Routes = [
   },
   {
     path: 'grant-case-management',
-    loadChildren: () => import('./grant-case-management/grant-case-management.module').then( m => m.GrantCaseManagementPageModule)
+    loadChildren: () => import('./pages/grant-case-management/grant-case-management.module').then( m => m.GrantCaseManagementPageModule)
   },
   {
     path: 'doc-management',
-    loadChildren: () => import('./doc-management/doc-management.module').then( m => m.DocManagementPageModule)
+    loadChildren: () => import('./pages/doc-management/doc-management.module').then( m => m.DocManagementPageModule)
   },
   {
     path: 'audit-trail',
-    loadChildren: () => import('./audit-trail/audit-trail.module').then( m => m.AuditTrailPageModule)
+    loadChildren: () => import('./pages/audit-trail/audit-trail.module').then( m => m.AuditTrailPageModule)
   },
   {
     path: 'discuss',
-    loadChildren: () => import('./discuss/discuss.module').then( m => m.DiscussPageModule)
+    loadChildren: () => import('./pages/discuss/discuss.module').then( m => m.DiscussPageModule)
   },
   {
     path: 'calender',
-    loadChildren: () => import('./calender/calender.module').then( m => m.CalenderPageModule)
+    loadChildren: () => import('./pages/calender/calender.module').then( m => m.CalenderPageModule)
   },
   {
     path: 'agencies-and-firms',
-    loadChildren: () => import('./agencies-and-firms/agencies-and-firms.module').then( m => m.AgenciesAndFirmsPageModule)
+    loadChildren: () => import('./pages/agencies-and-firms/agencies-and-firms.module').then( m => m.AgenciesAndFirmsPageModule)
   },
 ];
 
