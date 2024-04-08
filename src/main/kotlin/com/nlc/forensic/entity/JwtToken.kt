@@ -17,7 +17,7 @@ class JwtToken {
     @Column(name = "is_logged_out")
     var loggedOut: Boolean = false
 
-    @ManyToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "user_id")
     var user: User? = null
 

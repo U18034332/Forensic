@@ -8,7 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class DashboardService {
 
-  private apiUrl = 'http://localhost:8080/api/dashboard';
+  private apiUrl = 'http://localhost:8080/api/v1/dashboard/total';
   private authToken = this.authService.getToken();
 
   constructor(private http: HttpClient,private authService: AuthenticationService) { }
@@ -19,7 +19,7 @@ export class DashboardService {
       'Authorization': `Bearer ${this.authToken}`
     });
 
-    return this.http.get<any>(`${this.apiUrl}/total`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/widgets`, { headers });
   }
 
   // Function to send POST request with authentication
