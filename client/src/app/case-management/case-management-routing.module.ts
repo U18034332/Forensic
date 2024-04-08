@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CaseManagementPage
+  },
+  {
+    path: 'add-case',
+    loadChildren: () => import('./add-case/add-case.module').then(m => m.AddCaseModule)
   }
 ];
 
