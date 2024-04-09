@@ -12,5 +12,6 @@ data class FundingIncidentReportDTO(
     var description: String,
     var sector: String,
     var detectionLevel: String,
-    var detectionDivision: String
+    var detectionDivision: String,
+    var assessmentStage: Int
 )
