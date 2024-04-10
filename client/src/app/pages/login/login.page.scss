@@ -15,6 +15,8 @@
   .container {
   display: flex;
   height: 100vh;
+  overflow: hidden;
+  border-radius: 0px 0px 0px 0px ;
 }
 
 .left-panel {
@@ -25,7 +27,8 @@
   align-items: center;
   justify-content: center;
   padding-right: 20px;
-  
+  position: relative; /* Ensure this is positioned */
+  z-index: 2; /* Higher than the right-panel */
 }
 
 .logo {
@@ -44,12 +47,16 @@ h1, h2 {
 
 .right-panel {
   flex: 1;
-  background: linear-gradient(to top right, red, yellow, blue);
+  background: radial-gradient(circle at center, rgba(217, 217, 217, 0.697) 0%, rgba(217, 217, 217, 0) 100%),
+    linear-gradient(to top right, rgba(200, 41, 41, 1), rgba(255, 196, 89, 1), rgb(46, 88, 146));
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px 10px 15px 30px;
   padding-left: 200px;
   padding-right: 100px;
+  z-index: 1; /* This ensures that right-panel stays under left-panel */
+  position: relative; /* Same as above */
 }
 
 .login-form {

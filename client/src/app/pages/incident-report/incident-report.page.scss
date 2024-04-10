@@ -1,0 +1,84 @@
+ion-buttons ion-button {
+    margin-right: 20px; /* Adjust this value as needed */
+}
+
+.logo {
+    margin-left: 1%;
+}
+
+.logo-img {
+    width: 40px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    padding-top: 10px;
+}
+
+.ion-side-menu-button{
+    padding-bottom: 2em;
+  
+}
+.side-menu ion-item:first-child {
+    padding-top: 2em; /* Additional padding for the top item */
+}
+
+ion-card-content {
+    ion-grid {
+    overflow-x: auto;
+}
+}
+
+/* For non-funded cards */
+.non-funded-card {
+  width: 90vw; /* Adjust the percentage as needed */
+  margin: auto; /* Center the card horizontally */ /* Use flexbox */
+  justify-content: center; /* Center content horizontally */
+  padding: 20px; /* Apply padding to all sides */
+}
+
+/* For funded cards */
+.funded-card {
+  width: 90vw; /* Adjust the percentage as needed */
+  margin: auto; /* Center the card horizontally */ /* Use flexbox */
+  justify-content: center; /* Center content horizontally */
+  padding: 20px; /* Apply padding to all sides */
+}
+
+/* For the segment buttons */
+ion-segment {
+  display: flex;
+  justify-content: center;
+}
+
+/* For the segment content */
+.segment-content {
+  padding: 20px; /* Apply padding to all sides */
+}
+
+/* Center the ion-title within ion-card-header */
+ion-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Adjust the ion-card-content */
+ion-card-content {
+  padding: 20px; /* Apply padding to all sides */
+}
+
+.inline-toolbar {
+  --background: transparent;
+  --border-width: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 0;
+}
+
+.incident-report-button {
+  --background: #800080; /* Purple color */
+  --border-radius: 8px;
+  margin-left: 8px; /* Adds margin to the left of the button */
+  margin-right: 8px; /* Adds margin to the right of the button */
+}
