@@ -13,4 +13,5 @@ object ResponseConstant {
     const val USER_REMOVED = "User successfully removed."
     const val CASE_CREATED = "Case successfully created."
     const val CASE_UPDATED = "Case successfully updated."
+    const val REPORT_CREATED = "Report successfully created."
 }

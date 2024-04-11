@@ -22,23 +22,21 @@ export class LoginPage {
   ) { }
 
   login(): void {
-    // this.authService.login(this.authDto.username, this.authDto.password)
-  //   .subscribe((response) => {
-  //     const token = response.token;
-  //     this.authService.setToken(token);
-  //     this.token = this.authService.getToken();
-  //     console.log('Login response:', this.token);
-  //     this.authService.setIsLoggedIn(true)
-  //     console.log(this.authService.isLoggedIn())
-  //     // Redirect to dashboard or handle success
-  //     this.router.navigate(['/dashboard']);
-  //   }, error => {
-  //     console.error('Login failed:', error);
-  //     this.authService.setIsLoggedIn(false)
-  //     this.errorMessage = error.error.message;
-  //   });
-  this.authService.setIsLoggedIn(true);
-  this.router.navigate(['/dashboard']);  // Temporary token bypass !
+     this.authService.login(this.authDto.username, this.authDto.password)
+    .subscribe((response) => {
+      const token = response.token;
+      this.authService.setToken(token);
+      this.token = this.authService.getToken();
+      console.log('Login response:', this.token);
+      this.authService.setIsLoggedIn(true)
+      console.log(this.authService.isLoggedIn())
+      // Redirect to dashboard or handle success
+      this.router.navigate(['/dashboard']);
+    }, error => {
+      console.error('Login failed:', error);
+      this.authService.setIsLoggedIn(false)
+      this.errorMessage = error.error.message;
+    });
   }
 
 

@@ -11,18 +11,21 @@ data class FundingIncidentReport(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "funding_report_id")
-    var id: Long,
-    val reportNumber: String,
-    var acceptance: String,
-    var dateReported: String,
+    var id: Long = 0L,
+    val reportNumber: String = "",
+    val projectNumber: String,
+    var acceptance: String = "",
+    var dateReported: Date,
     var channel: String,
     var province: String,
     var caseType: String,
     var priority: String,
     var status: String,
+    var organisation: String,
+    var sector: String,
     var detectionDivision: String,
+    val description: String,
     var detectionLevel: String,
     var assessmentStage: Int,
     var startDate: Date,
-    var lastModifiedBy: LastModifiedBy
 )
