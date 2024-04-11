@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IncidentReportPage } from './incident-report.page';
 import { IncidentReportPageRoutingModule } from './incident-report-routing.module';
-import { AddReportPageModule } from './add-report/add-report.module';
 
 
 
@@ -15,7 +14,6 @@ import { AddReportPageModule } from './add-report/add-report.module';
     FormsModule,
     IonicModule,
     IncidentReportPageRoutingModule,
-    AddReportPageModule,
   ],
   declarations:[ IncidentReportPage,
                 ],})
