@@ -1,5 +1,6 @@
 ion-buttons ion-button {
-    margin-right: 20px; /* Adjust this value as needed */
+      margin-right: 20px; /* Adjust this value as needed */
+      --border-radius: 8px;
 }
 
 .logo {
@@ -78,9 +79,9 @@ ion-card-content {
 
 .incident-report-button {
   --background: #800080; /* Purple color */
-  --border-radius: 8px;
   margin-left: 8px; /* Adds margin to the left of the button */
   margin-right: 8px; /* Adds margin to the right of the button */
+  width: max-content;
 }
 
 .ion-segment-button{
