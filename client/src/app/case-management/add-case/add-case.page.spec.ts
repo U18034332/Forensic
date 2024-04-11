@@ -1,12 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AddCasePage } from './add-case.page';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { AddCaseComponent } from './add-case.page'; // Update import
 
-describe('AddCasePage', () => {
-  let component: AddCasePage;
-  let fixture: ComponentFixture<AddCasePage>;
+describe('AddCaseComponent', () => { // Update component name
+  let component: AddCaseComponent;
+  let fixture: ComponentFixture<AddCaseComponent>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(AddCasePage);
+    TestBed.configureTestingModule({
+      declarations: [AddCaseComponent], // Declare AddCaseComponent
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AddCaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

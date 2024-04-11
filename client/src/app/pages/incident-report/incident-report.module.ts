@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { IncidentReportPageRoutingModule } from './incident-report-routing.module';
-
 import { IncidentReportPage } from './incident-report.page';
+import { IncidentReportPageRoutingModule } from './incident-report-routing.module';
+import { AddReportPageModule } from './add-report/add-report.module';
+
+
 
 
 @NgModule({
@@ -15,8 +15,10 @@ import { IncidentReportPage } from './incident-report.page';
     FormsModule,
     IonicModule,
     IncidentReportPageRoutingModule,
-    
+    AddReportPageModule,
   ],
-  declarations: [IncidentReportPage]
-})
+  declarations:[ IncidentReportPage,
+                ]
+                })
+                
 export class IncidentReportPageModule {}

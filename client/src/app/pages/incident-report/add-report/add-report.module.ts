@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { AddReportPageRoutingModule } from './add-report-routing.module';
-
 import { AddReportPage } from './add-report.page';
 
 @NgModule({
@@ -15,6 +12,7 @@ import { AddReportPage } from './add-report.page';
     IonicModule,
     AddReportPageRoutingModule
   ],
-  declarations: [AddReportPage]
+  declarations: [AddReportPage],
+  exports: [AddReportPage] // Add this line
 })
 export class AddReportPageModule {}

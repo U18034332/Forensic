@@ -5,11 +5,4 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './add-report.page.html',
   styleUrls: ['./add-report.page.scss'],
 })
-export class AddReportPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
+export class AddReportPage {}

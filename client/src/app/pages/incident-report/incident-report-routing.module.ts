@@ -9,7 +9,7 @@ const routes: Routes = [
     component: IncidentReportPage
   },
   {
-    path: 'add-case',
+    path: 'add-report',
     loadChildren: () => import('./add-report/add-report.module').then(m => m.AddReportPageModule)
   }
 ];
