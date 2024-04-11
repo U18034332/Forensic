@@ -20,45 +20,92 @@
   </ion-toolbar>
 </ion-header>
 
-
 <!-- Side menu -->
 
-<ion-menu contentId="main-content" class="side-menu"  side="start">
+<ion-menu contentId="main-content" class="side-menu" side="start">
   <ion-content class="ion-padding">
     <ion-list>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" >
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
         <ion-icon name="home" slot="start"></ion-icon>
         Dashboard
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/incident-report']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/incident-report']"
+      >
         <ion-icon name="document-text" slot="start"></ion-icon>
         Incident Report
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/case-management']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/case-management']"
+      >
         <ion-icon name="briefcase" slot="start"></ion-icon>
         Case Management
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/grant-case-management']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/grant-case-management']"
+      >
         <ion-icon name="cash" slot="start"></ion-icon>
         Grant Case Management
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['referals']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['referals']"
+      >
         <ion-icon name="cash" slot="start"></ion-icon>
         Referals A & F
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/document-management']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/document-management']"
+      >
         <ion-icon name="folder-open" slot="start"></ion-icon>
         Document Management
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/audit-logs']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/audit-logs']"
+      >
         <ion-icon name="bar-chart" slot="start"></ion-icon>
         Audit Trail
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/discuss']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/discuss']"
+      >
         <ion-icon name="chatbubbles" slot="start"></ion-icon>
         Discuss
       </ion-item>
-      <ion-item class="ion-side-menu-button" button lines="none" detail="false" [routerLink] = "['/calendar']">
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        [routerLink]="['/calendar']"
+      >
         <ion-icon name="calendar" slot="start"></ion-icon>
         Calendar
       </ion-item>
@@ -67,73 +114,64 @@
 </ion-menu>
 
 <ion-content>
-
   <!-- Main content -->
   <div class="ion-page" id="main-content">
     <ion-header class="ion-no-border">
-      <ion-toolbar >
-        <ion-buttons  slot="start"  >
+      <ion-toolbar>
+        <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
       <ion-title>Dashboard</ion-title>
       <ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" size-md="3">
-        <ion-card >       <!--button (click)="gotoAmountWithheld()"-->
-          <ion-card-content>
-            <ion-card-title>Amount Withheld</ion-card-title>
-            R {{amountWithHeld}}
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col size="6" size-md="3">
-        <ion-card >       <!--button (click)="gotoNewCases()"-->
-          <ion-card-content>
-            <ion-card-title>New Cases</ion-card-title>
-            {{newCases}}
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col size="6" size-md="3">
-        <ion-card >     <!--button (click)="gotoClosedCases()"-->
-          <ion-card-content>
-            <ion-card-title>Closed Cases</ion-card-title>
-            {{closedCases}}
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      
-      <ion-col size="6" size-md="3">
-        <ion-card >     <!--button (click)="gotoIssues()"-->
-          <ion-card-content>
-            <ion-card-title>Issues</ion-card-title>
-            {{issues}}
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" size-md="3">
+              <ion-card>
+                <!--button (click)="gotoAmountWithheld()"-->
+                <ion-card-content>
+                  <ion-card-title>Amount Withheld</ion-card-title>
+                  R {{amountWithHeld}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
 
-  <ion-title> Cases By Province </ion-title>
+            <ion-col size="6" size-md="3">
+              <ion-card>
+                <!--button (click)="gotoNewCases()"-->
+                <ion-card-content>
+                  <ion-card-title>New Cases</ion-card-title>
+                  {{newCases}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
 
+            <ion-col size="6" size-md="3">
+              <ion-card>
+                <!--button (click)="gotoClosedCases()"-->
+                <ion-card-content>
+                  <ion-card-title>Closed Cases</ion-card-title>
+                  {{closedCases}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
 
+            <ion-col size="6" size-md="3">
+              <ion-card>
+                <!--button (click)="gotoIssues()"-->
+                <ion-card-content>
+                  <ion-card-title>Issues</ion-card-title>
+                  {{issues}}
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
 
-
-  
-
-    </ion-content>
+        <ion-title> Cases By Province </ion-title>
+      </ion-content>
     </ion-content>
   </div>
 </ion-content>
-
-
-
-
-
