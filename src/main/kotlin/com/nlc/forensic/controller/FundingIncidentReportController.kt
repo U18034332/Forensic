@@ -7,6 +7,7 @@ import com.nlc.forensic.service.FundingIncidentReportService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -22,7 +23,7 @@ class FundingIncidentReportController(
     }
 
     @PostMapping("create")
-    fun createReport(fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
+    fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
         if (fundingIncidentReportDTO.projectNumber.isBlank()) {
             return ResponseEntity.badRequest().body(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
         }
