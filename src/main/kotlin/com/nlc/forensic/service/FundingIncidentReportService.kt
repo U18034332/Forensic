@@ -1,7 +1,9 @@
 package com.nlc.forensic.service
 
+import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.enums.AcceptanceStatus
 import com.nlc.forensic.repository.FundingIncidentReportRepository
 import org.springframework.stereotype.Service
 
@@ -35,6 +37,16 @@ class FundingIncidentReportService(
 
     fun getAllFundingReports(): List<FundingIncidentReport> {
         return fundingIncidentReportRepository.findAll()
+    }
+
+    fun acceptOrDeclineReport(acceptanceDTO: CaseAcceptanceDTO) {
+        val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
+        updatedCase.acceptance = acceptanceDTO.acceptance
+        if (acceptanceDTO.acceptance == AcceptanceStatus.ACCEPTED.name) {
+            updatedCase.assignedTo = acceptanceDTO.allocateTo
+            fundingIncidentReportRepository.save(updatedCase)
+        }
+        fundingIncidentReportRepository.save(updatedCase)
     }
 
 }

@@ -4,4 +4,5 @@ import com.nlc.forensic.entity.FundingIncidentReport
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface FundingIncidentReportRepository: JpaRepository<FundingIncidentReport, Long> {
+    fun findByReportNumber(reportNumber: String): FundingIncidentReport
 }

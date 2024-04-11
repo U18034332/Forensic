@@ -15,6 +15,9 @@ data class FundingIncidentReport(
     val reportNumber: String = "",
     val projectNumber: String,
     var acceptance: String = "",
+    @ManyToOne
+    @JoinColumn(name = "assigned_user")
+    var assignedTo: User? = null,
     var dateReported: Date,
     var channel: String,
     var province: String,
