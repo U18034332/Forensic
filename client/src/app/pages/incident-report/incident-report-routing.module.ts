@@ -4,18 +4,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { IncidentReportPage } from './incident-report.page';
 
 const routes: Routes = [
-  {
+    {
     path: '',
     component: IncidentReportPage
-  },
-  {
+    },
+    {
     path: 'add-report',
     loadChildren: () => import('./add-report/add-report.module').then(m => m.AddReportPageModule)
-  }
+    }
 ];
 
-@NgModule({
+    @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
+  exports: [RouterModule],})
+    
 export class IncidentReportPageRoutingModule {}

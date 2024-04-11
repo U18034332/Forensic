@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular' ;
 import {AddReportPage} from './add-report/add-report.page';
-import { Router } from '@angular/router';
+
 
 
 // The ReportCase interface should match the structure you plan to receive from your backend
@@ -40,9 +40,8 @@ export class IncidentReportPage implements OnInit {
   assessmentReportCases!: ReportCase[];
   
 
-  constructor(private modalController: ModalController,
-              private router: Router )
-              { }
+  
+   constructor(public modalController: ModalController) {}
 
 
   ngOnInit() {
@@ -151,9 +150,11 @@ export class IncidentReportPage implements OnInit {
      });
      return await modal.present();
   }
+}
+
   // You can add more methods as needed for your functionality
   
-  }
+
   
 
 

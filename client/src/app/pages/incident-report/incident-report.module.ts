@@ -18,7 +18,6 @@ import { AddReportPageModule } from './add-report/add-report.module';
     AddReportPageModule,
   ],
   declarations:[ IncidentReportPage,
-                ]
-                })
+                ],})
                 
 export class IncidentReportPageModule {}
