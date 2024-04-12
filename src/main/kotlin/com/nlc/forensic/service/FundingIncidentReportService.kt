@@ -5,12 +5,14 @@ import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
 import com.nlc.forensic.enums.AcceptanceStatus
 import com.nlc.forensic.repository.FundingIncidentReportRepository
+import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
 
 
 @Service
 class FundingIncidentReportService(
-    private val fundingIncidentReportRepository: FundingIncidentReportRepository
+    private val fundingIncidentReportRepository: FundingIncidentReportRepository,
+    private val userRepository: UserRepository
 ) {
     fun createFundingIncidentReport(fundingIncidentReportDTO: FundingIncidentReportDTO): FundingIncidentReport {
         val newReport = FundingIncidentReport (
@@ -43,7 +45,8 @@ class FundingIncidentReportService(
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
         updatedCase.acceptance = acceptanceDTO.acceptance
         if (acceptanceDTO.acceptance == AcceptanceStatus.ACCEPTED.name) {
-            updatedCase.assignedTo = acceptanceDTO.allocateTo
+            val userToAllocateTo = userRepository.findByEmail(acceptanceDTO.allocateTo)
+            updatedCase.assignedTo = userToAllocateTo.get()
             fundingIncidentReportRepository.save(updatedCase)
         }
         fundingIncidentReportRepository.save(updatedCase)
