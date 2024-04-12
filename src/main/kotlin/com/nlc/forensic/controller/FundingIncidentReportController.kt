@@ -26,10 +26,12 @@ class FundingIncidentReportController(
 
     @PostMapping("create")
     fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
-        if (fundingIncidentReportDTO.projectNumber.isBlank()) {
-            return ResponseEntity.badRequest().body(gson.toJson(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET))
+        return try {
+            fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
+            ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_CREATED))
+
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body((gson.toJson(e.message)))
         }
-        fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
-        return ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_CREATED))
     }
 }

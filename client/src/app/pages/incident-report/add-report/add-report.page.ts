@@ -22,7 +22,7 @@ export class AddReportPage {
     .subscribe((response)=> {
       console.log(response)
     } , error => {
-      console.log(error)
+      console.log(error.error)
     }
     );
     this.reportModal.dismiss()
