@@ -1,5 +1,5 @@
 <div class="incident-report-form">
-  <form #reportForm="ngForm" (ngSubmit)="onSubmit(reportForm)">
+  <form (ngSubmit)="onSubmit()">
     <h2>Incident Report Info:</h2>
 
     <div class="form-inline">
@@ -17,7 +17,7 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="projectNumber">Project Number:</label>
-        <input type="text" id="projectNumber" name="projectNumber" [(ngModel)]="report.priority" />
+        <input type="text" id="projectNumber" name="projectNumber" [(ngModel)]="report.projectNumber" />
       </div>
 
       <div class="form-group">
@@ -177,7 +177,6 @@
       <button
         type="submit"
         class="btn btn-primary"
-        [disabled]="!reportForm.valid"
       >
         Add Report
       </button>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { FundingIncidentReport } from 'src/app/dto/funding-incident-report.interface';
 import { ModalController } from '@ionic/angular';
+import { FundingIncidentReportService } from 'src/app/services/funding-incident-report.service';
 
 @Component({
   selector: 'app-report-form', // ensure this selector is correct
@@ -9,21 +9,30 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./add-report.page.scss'],
 })
 export class AddReportPage {
-  constructor(private modal: ModalController) { }
+  constructor(
+    private reportModal: ModalController,
+    private incidentReport: FundingIncidentReportService 
+  ) { }
   report: FundingIncidentReport = {} as FundingIncidentReport
 
   // Function to handle form submission - Renamed to match the HTML template
-  onSubmit(form: NgForm) {
-    console.log(form.value)
+  onSubmit() {
     console.log(this.report)
-    this.modal.dismiss()
+    this.incidentReport.postData(this.report)
+    .subscribe((response)=> {
+      console.log(response)
+    } , error => {
+      console.log(error)
+    }
+    );
+    this.reportModal.dismiss()
   }
 
   // Function to handle cancel action - Added to match the HTML template
   onCancel() {
     console.log('Cancel action triggered')
     this.report = {} as FundingIncidentReport
-    this.modal.dismiss()
+    this.reportModal.dismiss()
     
   }
 }

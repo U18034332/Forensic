@@ -144,11 +144,11 @@ export class IncidentReportPage implements OnInit {
   async presentAddReportDialog() {
     console.log("Add Case button clicked");
     // Replace with your form presentation logic
-     const modal = await this.modalController.create({
+     const md = await this.modalController.create({
        component: AddReportPage, // Replace with your component
        cssClass: 'your-custom-class' // Use a custom class if needed
      });
-     return await modal.present();
+     return await md.present();
   }
 }
 

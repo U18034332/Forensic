@@ -1,5 +1,6 @@
 package com.nlc.forensic.controller
 
+import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/incident-report/funding/")
 class FundingIncidentReportController(
-    private val fundingIncidentReportService: FundingIncidentReportService
+    private val fundingIncidentReportService: FundingIncidentReportService,
+    private val gson: Gson
 ) {
     @GetMapping("get/all")
     fun getIncidentReports(): ResponseEntity<List<FundingIncidentReport>> {
@@ -25,9 +27,9 @@ class FundingIncidentReportController(
     @PostMapping("create")
     fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
         if (fundingIncidentReportDTO.projectNumber.isBlank()) {
-            return ResponseEntity.badRequest().body(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
+            return ResponseEntity.badRequest().body(gson.toJson(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET))
         }
         fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
-        return ResponseEntity.ok(ResponseConstant.REPORT_CREATED)
+        return ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_CREATED))
     }
 }

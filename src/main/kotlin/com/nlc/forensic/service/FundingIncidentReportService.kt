@@ -25,9 +25,9 @@ class FundingIncidentReportService(
             priority = fundingIncidentReportDTO.priority,
             status = fundingIncidentReportDTO.status,
             organisation = fundingIncidentReportDTO.organisation,
-            detectionDivision = fundingIncidentReportDTO.detectionSource,
-            description = fundingIncidentReportDTO.description,
-            detectionLevel = fundingIncidentReportDTO.detectionLevel,
+            detectionDivision = fundingIncidentReportDTO.divisionDetected,
+            description = fundingIncidentReportDTO.allocatedDescription,
+            detectionLevel = fundingIncidentReportDTO.levelDetected,
             sector = fundingIncidentReportDTO.sector,
             assessmentStage = fundingIncidentReportDTO.assessmentStage
 
