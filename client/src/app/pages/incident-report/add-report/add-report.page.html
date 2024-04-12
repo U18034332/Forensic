@@ -5,24 +5,24 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate" ngModel />
+        <input type="date" id="startDate" name="startDate" [(ngModel)]="report.startDate" />
       </div>
 
       <div class="form-group">
         <label for="dateReported">Date Reported:</label>
-        <input type="date" id="dateReported" name="dateReported" ngModel />
+        <input type="date" id="dateReported" name="dateReported" [(ngModel)]="report.dateReported" />
       </div>
     </div>
 
     <div class="form-inline">
       <div class="form-group">
         <label for="projectNumber">Project Number:</label>
-        <input type="text" id="projectNumber" name="projectNumber" ngModel />
+        <input type="text" id="projectNumber" name="projectNumber" [(ngModel)]="report.priority" />
       </div>
 
       <div class="form-group">
         <label for="province">Province:</label>
-        <select id="province" name="province" ngModel>
+        <select id="province" name="province" [(ngModel)]="report.province">
           <option value="">Select Province</option>
           <option>Gauteng</option>
           <option>Free State</option>
@@ -38,7 +38,7 @@
 
       <div class="form-group">
         <label for="caseType">Case Type:</label>
-        <select id="caseType" name="caseType" ngModel>
+        <select id="caseType" name="caseType" [(ngModel)]="report.caseType">
           <option value="">Select Type</option>
           <option>Fraud</option>
           <option>Forgery</option>
@@ -55,7 +55,7 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="channel">Channel:</label>
-        <select id="channel" name="channel" ngModel>
+        <select id="channel" name="channel" [(ngModel)]="report.channel">
           <option value="">Select Channel</option>
           <option>E-mail</option>
           <option>Hot-Line</option>
@@ -66,7 +66,7 @@
 
       <div class="form-group">
         <label for="priority">Priority:</label>
-        <select id="priority" name="priority" ngModel>
+        <select id="priority" name="priority" [(ngModel)]="report.priority">
           <option value="">Select Priority</option>
           <option>Simple</option>
           <option>Medium</option>
@@ -76,7 +76,7 @@
 
       <div class="form-group">
         <label for="status">Status:</label>
-        <select id="status" name="status" ngModel>
+        <select id="status" name="status" [(ngModel)]="report.status">
           <option value="">Select Status</option>
           <option>New</option>
           <option>Closed</option>
@@ -91,7 +91,7 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="organisation">Organisation:</label>
-        <select id="organisation" name="organisation" ngModel>
+        <select id="organisation" name="organisation" [(ngModel)]="report.organisation">
           <option value="">Select Organisation</option>
           <option>NPO’s</option>
           <option>NGO’s</option>
@@ -106,7 +106,7 @@
 
       <div class="form-group">
         <label for="sourceDetection">Source Detection:</label>
-        <select id="sourceDetection" name="sourceDetection" ngModel>
+        <select id="sourceDetection" name="sourceDetection" [(ngModel)]="report.sourceDetection">
           <option value="">Select Source Detection</option>
           <option>Non Compliance</option>
           <option>Highjacked Organizations</option>
@@ -124,7 +124,7 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="sector">Sector:</label>
-        <select id="sector" name="sector" ngModel>
+        <select id="sector" name="sector" [(ngModel)]="report.sector">
           <option value="">Select Sector</option>
           <option>Arts & Culture</option>
           <option>Sports</option>
@@ -135,7 +135,7 @@
 
       <div class="form-group">
         <label for="levelDetected">Level Detected:</label>
-        <select id="levelDetected" name="levelDetected" ngModel>
+        <select id="levelDetected" name="levelDetected" [(ngModel)]="report.levelDetected">
           <option value="">Select Level Detected</option>
           <option>Divisional</option>
           <option>Departmental</option>
@@ -146,7 +146,7 @@
 
       <div class="form-group">
         <label for="allocatedDescription">Allocated Description:</label>
-        <select id="allocatedDescription" name="allocatedDescription" ngModel>
+        <select id="allocatedDescription" name="allocatedDescription" [(ngModel)]="report.allocatedDescription">
           <option value="">Select Allocated Description</option>
           <option>Description 1</option>
           <option>Description 2</option>
@@ -158,7 +158,7 @@
 
       <div class="form-group">
         <label for="divisionDetected">Division Detected:</label>
-        <select id="divisionDetected" name="divisionDetected" ngModel>
+        <select id="divisionDetected" name="divisionDetected" [(ngModel)]="report.divisionDetected">
           <option value="">Select Division Detected</option>
           <option>Finance</option>
           <option>Office to The Commissioner</option>
