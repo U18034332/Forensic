@@ -47,8 +47,8 @@ export class IncidentReportPage implements OnInit {
   ngOnInit() {
     // Initialize your example report cases here or fetch them from the backend
     this.nonFundedReportCase = {
-      reportNumber: '',
-      acceptDecline: '',
+      reportNumber: '7777',
+      acceptDecline: 'Accepcted',
       dateReported: '',
       channel: '',
       province: '',
@@ -70,8 +70,8 @@ export class IncidentReportPage implements OnInit {
     };
 
     this.fundedReportCase = {
-      reportNumber: '',
-      acceptDecline: '',
+      reportNumber: '5555',
+      acceptDecline: 'Decline',
       dateReported: '',
       channel: '',
       province: '',

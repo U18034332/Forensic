@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IncidentReportPage } from './incident-report.page';
 import { IncidentReportPageRoutingModule } from './incident-report-routing.module';
-
+import { SharedModule } from '../../shared.module';
 
 
 
@@ -14,6 +14,7 @@ import { IncidentReportPageRoutingModule } from './incident-report-routing.modul
     FormsModule,
     IonicModule,
     IncidentReportPageRoutingModule,
+    SharedModule,
   ],
   declarations:[ IncidentReportPage,
                 ],})
