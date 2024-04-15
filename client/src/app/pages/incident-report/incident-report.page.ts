@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular' ;
 import {AddReportPage} from './add-report/add-report.page';
+import { FundingIncidentReportService } from 'src/app/services/funding-incident-report.service';
+import { Grid } from 'gridjs';
 
 
 
@@ -38,10 +40,14 @@ export class IncidentReportPage implements OnInit {
   nonFundedReportCase!: ReportCase;
   fundedReportCase!: ReportCase;
   assessmentReportCases!: ReportCase[];
+  grid: Grid 
   
 
   
-   constructor(public modalController: ModalController) {}
+   constructor(
+    public modalController: ModalController,
+    private incidentReportsService: FundingIncidentReportService
+  ) {}
 
 
   ngOnInit() {
@@ -117,6 +123,7 @@ export class IncidentReportPage implements OnInit {
       },
       // ... Add more assessment cases as needed
     ];
+    this.getFundingIncidentReports()
   }
 
   segmentChanged(event: any) {
@@ -150,9 +157,28 @@ export class IncidentReportPage implements OnInit {
      });
      return await md.present();
   }
-}
 
-  // You can add more methods as needed for your functionality
+  getFundingIncidentReports() {
+    this.incidentReportsService.getData().subscribe(
+      (response) => {
+        console.log(response);
+        // this.assessmentReportCases = response;
+
+        // Initialize Grid.js with the fetched data
+        // this.grid = new Grid({
+        //   columns: Object.keys(this.assessmentReportCases[0]), // Use the keys of the first report case as columns
+        //   data: this.assessmentReportCases.map(report => Object.values(report)) // Map data to match columns
+        // });
+
+        // // Render the grid to a DOM element
+        // this.grid.render(document.getElementById('grid-container'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+}
   
 
   

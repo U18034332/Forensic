@@ -80,21 +80,13 @@
     <ion-toolbar class="inline-toolbar">
       <ion-title>Incident Report</ion-title>
       <ion-buttons slot="end">
-        <ion-button
-          class="incident-report-button"
-          (click)="presentAddReportDialog()"
-          fill="solid"
-          >Add Report</ion-button
-        >
+        <ion-button class="incident-report-button" (click)="presentAddReportDialog()"fill="solid">Add Report</ion-button>
       </ion-buttons>
     </ion-toolbar>
 
     <!-- Segment buttons -->
 
-    <ion-segment
-      [(ngModel)]="selectedSegment"
-      (ionChange)="segmentChanged($event)"
-    >
+    <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)">
       <ion-segment-button value="filedReports">
         <ion-label>Filed Reports</ion-label>
       </ion-segment-button>
@@ -234,11 +226,7 @@
                 <ion-col>{{ report.reportNumber }}</ion-col>
                 <ion-col>{{ report.stage }}</ion-col>
                 <ion-col>{{ report.startDate }}</ion-col>
-                <ion-chip
-                  [color]="report.status === 'In Progress' ? 'primary' : 'secondary'"
-                >
-                  {{ report.status }}
-                </ion-chip>
+                <ion-col>{{ report.status }}</ion-col>
                 <ion-col>{{ report.priority }}</ion-col>
                 <ion-col>{{ report.assessedBy }}</ion-col>
                 <ion-col>

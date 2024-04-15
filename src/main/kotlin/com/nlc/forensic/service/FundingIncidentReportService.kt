@@ -9,6 +9,7 @@ import com.nlc.forensic.repository.FundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.security.InvalidParameterException
+import java.util.*
 
 
 @Service
@@ -34,8 +35,24 @@ class FundingIncidentReportService(
             ) {
             throw InvalidParameterException(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
         }
-
+        var reportPrefix = "RP-LEGAL"
+        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "finance") {
+            reportPrefix = "RP-FINANCE"
+        }
+        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "office of the commissioner") {
+            reportPrefix = "RP-COMMISSIONER"
+        }
+        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "regulatory compliance") {
+            reportPrefix = "RP-REG"
+        }
+        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "ict") {
+            reportPrefix = "RP-ICT"
+        }
+        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "operations") {
+            reportPrefix = "RP-OPERATIONS"
+        }
         val newReport = FundingIncidentReport (
+            reportNumber = generateReportNumberFromDatabaseId(reportPrefix),
             startDate = fundingIncidentReportDTO.startDate!!,
             dateReported = fundingIncidentReportDTO.dateReported!!,
             projectNumber = fundingIncidentReportDTO.projectNumber,
@@ -72,4 +89,8 @@ class FundingIncidentReportService(
         fundingIncidentReportRepository.save(updatedCase)
     }
 
+    fun generateReportNumberFromDatabaseId(prefix: String): String {
+        val latestReportId = fundingIncidentReportRepository.count()
+        return "${prefix}-${latestReportId + 1}"
+    }
 }
