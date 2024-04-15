@@ -67,6 +67,10 @@ const routes: Routes = [
     loadChildren: () => import('./case-management/case-management.module').then( m => m.CaseManagementPageModule),
     //canActivate: [AuthenticationGuard]
   },
+  {
+    path: 'allocate-user',
+    loadChildren: () => import('./pages/incident-report/allocate-user/allocate-user.module').then( m => m.AllocateUserPageModule)
+  },
     
 
 

@@ -1,0 +1,81 @@
+/* Add your custom styles here */
+
+/* Padding to all sides of the screen */
+.content-padding {
+  padding: 20px;
+}
+
+/* Spacing between users */
+.user-card {
+  margin-bottom: 20px;
+}
+
+/* Buttons at the bottom of the page */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 20px;
+  width: calc(100% - 40px); /* Subtracting the padding from both sides */
+  padding: 0 20px; /* To maintain spacing from edges */
+}
+
+.send-button,
+.cancel-button {
+  flex: 1;
+  margin: 0 5px; /* Add spacing between buttons */
+}
+
+.user-dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: block;
+  
+}
+
+.user-card ion-item ion-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.title{
+    padding-left: 15px;
+    font-weight: 600;
+
+}
+.card-item-wrapper {
+  padding: 10px; /* Add padding to the card item wrapper */
+}
+
+/* Add spacing to the left of the checkboxes */
+ion-checkbox {
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+ion-button {
+  margin: 10px;
+}
+
+ion-avatar{
+    margin-left: 10px;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --inner-border-width: 0;
+}
+
+ion-label {
+  font-size: 1.2em;
+}
+
+ion-checkbox {
+  --background: #ffffff;
+  --border-color: #000000;
+  --border-style: solid;
+  --border-width: 1px;
+}
+
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular' ;
 import {AddReportPage} from './add-report/add-report.page';
+import { AllocateUserPage } from './allocate-user/allocate-user.page';
 
 
 
@@ -130,10 +131,15 @@ export class IncidentReportPage implements OnInit {
     // Navigate to the report details or perform an action
   }
 
-  acceptReport(report: ReportCase) {
+  async acceptReport(report: ReportCase) {
     // Implementation for accepting a report
     console.log('Accept report:', report);
     // Update the status of the report to "Accepted" or perform an action
+      const modal = await this.modalController.create({
+       component: AllocateUserPage, // Replace with your component
+       cssClass: 'your-custom-class' // Use a custom class if needed
+      });
+      return await modal.present();
   }
 
   declineReport(report: ReportCase) {
@@ -144,12 +150,13 @@ export class IncidentReportPage implements OnInit {
   async presentAddReportDialog() {
     console.log("Add Case button clicked");
     // Replace with your form presentation logic
-     const modal = await this.modalController.create({
+        const modal = await this.modalController.create({
        component: AddReportPage, // Replace with your component
        cssClass: 'your-custom-class' // Use a custom class if needed
-     });
-     return await modal.present();
+      });
+      return await modal.present();
   }
+  
 }
 
   // You can add more methods as needed for your functionality
