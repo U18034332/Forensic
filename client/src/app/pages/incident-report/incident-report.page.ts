@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular' ;
 import {AddReportPage} from './add-report/add-report.page';
 import { FundingIncidentReportService } from 'src/app/services/funding-incident-report.service';
-import { Grid } from 'gridjs';
+import { Grid, h } from 'gridjs';
 
 
 
@@ -128,22 +128,23 @@ export class IncidentReportPage implements OnInit {
 
   segmentChanged(event: any) {
     this.selectedSegment = event.detail.value;
+    this.getFundingIncidentReports();
   }
 
   // Implementation of the methods to handle the report actions
-  viewReport(report: ReportCase) {
+  viewReport(report: any) {
     // Implementation for viewing a report
     console.log('View report:', report);
     // Navigate to the report details or perform an action
   }
 
-  acceptReport(report: ReportCase) {
+  acceptReport(report: any) {
     // Implementation for accepting a report
     console.log('Accept report:', report);
     // Update the status of the report to "Accepted" or perform an action
   }
 
-  declineReport(report: ReportCase) {
+  declineReport(report: any) {
     // Implementation for declining a report
     console.log('Decline report:', report);
     // Update the status of the report to "Declined" or perform an action
@@ -162,22 +163,78 @@ export class IncidentReportPage implements OnInit {
     this.incidentReportsService.getData().subscribe(
       (response) => {
         console.log(response);
-        // this.assessmentReportCases = response;
-
+        this.assessmentReportCases = response;
+  
         // Initialize Grid.js with the fetched data
-        // this.grid = new Grid({
-        //   columns: Object.keys(this.assessmentReportCases[0]), // Use the keys of the first report case as columns
-        //   data: this.assessmentReportCases.map(report => Object.values(report)) // Map data to match columns
-        // });
+        this.grid = new Grid({
+          columns: [
+            'Report Number',
+            'Stage',
+            'Start Date',
+            'Status',
+            'Priority',
+            'Assessed By',
+            {
+              name: 'View',
+              formatter: (cell, row) => {
+                return h('button', {
+                  className: 'py-2 mb-4 px-4 border rounded-md text-white bg-blue-600',
+                  onClick: () => this.viewReport(row.cells[0].data)
+                }, `View ${row.cells[0].data}`);
+              }
+            },
+            {
+              name: 'Accept/Decline',
+              formatter: (cell, row) => {
+              return h('div', {}, [
+                h('ion-button', {
+                  style: {
+                    '--background': '#28A745', // Green color for "Accept" button
+                    '--color': '#FFFFFF', // White text color
+                    padding: '8px 16px', // Padding for button
+                    border: 'none', // Remove border
+                    'border-radius': '4px', // Rounded corners
+                    cursor: 'pointer' // Show pointer on hover
+                  },
+                onClick: () => this.acceptReport(row.cells[0].data)
+                }, 'Accept'),
+                h('ion-button', {
+                style: {
+                  '--background': '#DC3545', // Red color for "Decline" button
+                  '--color': '#FFFFFF', // White text color
+                  padding: '8px 16px', // Padding for button
+                  border: 'none', // Remove border
+                  'border-radius': '4px', // Rounded corners
+                  cursor: 'pointer' // Show pointer on hover
+                },
+                onClick: () => this.declineReport(row.cells[0].data)
+                  }, 'Decline')
+                ]);
+            }
 
-        // // Render the grid to a DOM element
-        // this.grid.render(document.getElementById('grid-container'));
+          }
+        ],
+          data: this.assessmentReportCases.map(report => [
+            report.reportNumber,
+            report.stage,
+            report.startDate,
+            report.status,
+            report.priority,
+            report.assessedBy
+          ]),
+          pagination: true,
+          search: true
+    });
+  
+        // Render the grid to a DOM element
+        this.grid.render(document.getElementById('grid-container'));
       },
       (err) => {
         console.log(err);
       }
     );
   }
+
 }
   
 

@@ -1,3 +1,9 @@
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS with Grid.js Example</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css">
+</head>
+
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-thumbnail slot="start" class="logo">
@@ -206,46 +212,7 @@
 
       <!-- Assessment Segment -->
       <div *ngSwitchCase="'assessment'">
-        <ion-card class="assessment" style="height: 300px">
-          <ion-card-header>
-            <ion-card-subtitle>Assessment</ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-grid>
-              <ion-row>
-                <ion-col>Report Number</ion-col>
-                <ion-col>Stage</ion-col>
-                <ion-col>Start Date</ion-col>
-                <ion-col>Status</ion-col>
-                <ion-col>Priority</ion-col>
-                <ion-col>Assessed By</ion-col>
-                <ion-col>View</ion-col>
-                <ion-col>Accept/Decline</ion-col>
-              </ion-row>
-              <ion-row *ngFor="let report of assessmentReportCases">
-                <ion-col>{{ report.reportNumber }}</ion-col>
-                <ion-col>{{ report.stage }}</ion-col>
-                <ion-col>{{ report.startDate }}</ion-col>
-                <ion-col>{{ report.status }}</ion-col>
-                <ion-col>{{ report.priority }}</ion-col>
-                <ion-col>{{ report.assessedBy }}</ion-col>
-                <ion-col>
-                  <ion-button fill="outline" (click)="viewReport(report)">
-                    View RP-5678
-                  </ion-button>
-                </ion-col>
-                <ion-col>
-                  <ion-button color="success" (click)="acceptReport(report)">
-                    Accept
-                  </ion-button>
-                  <ion-button color="danger" (click)="declineReport(report)">
-                    Decline
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
+      <div id="grid-container"></div>
       </div>
 
       <!-- ... other parts of your template ... -->
