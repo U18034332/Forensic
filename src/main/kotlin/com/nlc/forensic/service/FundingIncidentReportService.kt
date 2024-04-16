@@ -81,11 +81,12 @@ class FundingIncidentReportService(
     fun acceptOrDeclineReport(acceptanceDTO: CaseAcceptanceDTO) {
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
         updatedCase.acceptance = acceptanceDTO.acceptance
-        if (acceptanceDTO.acceptance == AcceptanceStatus.ACCEPTED.name) {
+        if (acceptanceDTO.acceptance == AcceptanceStatus.ACCEPTED.getValue()) {
             val userToAllocateTo = userRepository.findByEmail(acceptanceDTO.allocateTo)
             updatedCase.assignedTo = userToAllocateTo.get()
             fundingIncidentReportRepository.save(updatedCase)
         }
+        updatedCase.status = "Closed"
         fundingIncidentReportRepository.save(updatedCase)
     }
 

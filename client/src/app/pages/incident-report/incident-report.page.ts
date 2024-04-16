@@ -222,7 +222,9 @@ export class IncidentReportPage implements OnInit {
             report.priority,
             report.assessedBy
           ]),
-          pagination: true,
+          pagination: {
+            limit: 3
+          },
           search: true
     });
   
