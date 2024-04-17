@@ -79,19 +79,30 @@ class FundingIncidentReportService(
     }
 
     fun acceptOrDeclineReport(acceptanceDTO: CaseAcceptanceDTO) {
+        if (acceptanceDTO.acceptance.isBlank() ||
+            acceptanceDTO.reportNumber.isBlank()
+            ) {
+            throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
+        }
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
         updatedCase.acceptance = acceptanceDTO.acceptance
-        if (acceptanceDTO.acceptance == AcceptanceStatus.ACCEPTED.getValue()) {
+        if (acceptanceDTO.acceptance.lowercase(Locale.getDefault()) == "accepted") {
             val userToAllocateTo = userRepository.findByEmail(acceptanceDTO.allocateTo)
             updatedCase.assignedTo = userToAllocateTo.get()
             fundingIncidentReportRepository.save(updatedCase)
+            return
         }
         updatedCase.status = "Closed"
+        updatedCase.assignedTo = null
         fundingIncidentReportRepository.save(updatedCase)
     }
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {
         val latestReportId = fundingIncidentReportRepository.count()
         return "${prefix}-${latestReportId + 1}"
+    }
+
+    fun getAllTheDeclinedReports(): List<FundingIncidentReport> {
+        return fundingIncidentReportRepository.findByAcceptance("Declined")
     }
 }

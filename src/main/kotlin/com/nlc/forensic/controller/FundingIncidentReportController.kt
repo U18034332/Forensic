@@ -2,6 +2,7 @@ package com.nlc.forensic.controller
 
 import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
+import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
 import com.nlc.forensic.service.FundingIncidentReportService
@@ -24,11 +25,27 @@ class FundingIncidentReportController(
         return ResponseEntity.ok(fundingIncidentReportService.getAllFundingReports())
     }
 
+    @GetMapping("get/declined")
+    fun getDeclinedReports(): ResponseEntity<List<FundingIncidentReport>> {
+        return ResponseEntity.ok(fundingIncidentReportService.getAllTheDeclinedReports())
+    }
+
     @PostMapping("create")
     fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
         return try {
             fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
             ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_CREATED))
+
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body((gson.toJson(e.message)))
+        }
+    }
+
+    @PostMapping("acceptance")
+    fun reportAcceptance(@RequestBody acceptanceDTO: CaseAcceptanceDTO): ResponseEntity<String> {
+        return try {
+            fundingIncidentReportService.acceptOrDeclineReport(acceptanceDTO)
+            ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_ACCEPTANCE))
 
         } catch (e: Exception) {
             ResponseEntity.badRequest().body((gson.toJson(e.message)))
