@@ -9,6 +9,7 @@ object ResponseConstant {
     const val CASE_FAIL = "Case creation failed. Please check the parameters."
     const val CASE_UPDATE_FAIL = "Case update failed. Please check case number."
     const val REPORT_UPDATE_FAIL = "Report could not be accepted/declined. Check the parameters."
+    const val EMAIL_NOT_PROVIDED = "The email field is not set. Please enter the email."
 
     // System success
     const val USER_REMOVED = "User successfully removed."

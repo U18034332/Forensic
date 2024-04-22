@@ -23,26 +23,33 @@ class AuthenticationService(private val userRepository: UserRepository,
 
 ) {
     fun addNewUser(request: User): AuthenticationResponse{
+        // Check if the email is provided
+        if (request.email.isNullOrBlank()) {
+            return AuthenticationResponse(null, ResponseConstant.EMAIL_NOT_PROVIDED)
+        }
+
         // Check if user already exists. If exists then authenticate the user
-        if (request.email?.let { userRepository.findByEmail(it).isPresent } == true) {
+        if (userRepository.findByEmail(request.email!!).isPresent) {
+            println(userRepository.findByEmail(request.email!!))
             return AuthenticationResponse(null, ResponseConstant.USER_ALREADY_EXIST)
         }
 
-        // Check if the parameters are all set
-        if (request.email.isNullOrBlank() || request.role?.name.isNullOrBlank() ||
+        // Check if other required parameters are provided
+        if (request.role?.name.isNullOrBlank() ||
             request.firstName.isNullOrBlank() ||
-            request.lastName.isNullOrBlank()) {
+            request.lastName.isNullOrBlank() ||
+            request.passcode.isNullOrBlank()
+        ) {
             return AuthenticationResponse(null, ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
         }
 
         val user = User(
-            firstName = request.firstName,
-            lastName = request.lastName,
-            email = request.email,
-            passcode = passwordEncoder.encode(request.passcode),
-            role = request.role
+            firstName = request.firstName!!,
+            lastName = request.lastName!!,
+            email = request.email!!,
+            passcode = passwordEncoder.encode(request.passcode!!),
+            role = request.role!!
         )
-
 
         val savedUser = userRepository.save(user)
 
@@ -51,6 +58,7 @@ class AuthenticationService(private val userRepository: UserRepository,
         saveUserToken(jwt, savedUser)
 
         return AuthenticationResponse(jwt, "User registration was successful")
+
 
     }
 

@@ -66,8 +66,8 @@ class FundingIncidentReportService(
             description = fundingIncidentReportDTO.allocatedDescription,
             detectionLevel = fundingIncidentReportDTO.levelDetected,
             sector = fundingIncidentReportDTO.sector,
-            assessmentStage = fundingIncidentReportDTO.assessmentStage
-
+            assessmentStage = fundingIncidentReportDTO.assessmentStage,
+            lastModifiedBy = null
         )
         fundingIncidentReportRepository.save(newReport)
 

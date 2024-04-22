@@ -31,8 +31,5 @@ data class FundingIncidentReport(
     var detectionLevel: String,
     var assessmentStage: Int,
     var startDate: Date,
-<<<<<<< HEAD
-=======
-    var lastModifiedBy: User
->>>>>>> ionic
+    var lastModifiedBy: User?
 )
