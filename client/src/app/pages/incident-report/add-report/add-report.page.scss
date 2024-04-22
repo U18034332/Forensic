@@ -1,5 +1,5 @@
 .incident-report-form {
-  max-width: 800px; /* Adjust width as necessary */
+  max-width: 1200px; /* Adjust width as necessary */
   margin: auto; /* Center the form on the page */
   padding: 2rem;
   background-color: #fff; /* White background for the form */
@@ -7,6 +7,17 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   font-family: 'Arial', sans-serif; /* Modern sans-serif font */
   overflow: scroll;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Adjust this as necessary, possibly to 'flex-start' */
+  padding-bottom: 1rem;
+}
+
+.form-header h2 {
+  margin-right: 1rem; /* This adds some space between the h2 and the select */
 }
 
 .incident-report-form h2 {
@@ -24,15 +35,16 @@
 }
 
 .form-group {
-  flex: 1;
-  min-width: 200px; /* Minimum width of form elements */
+  display: flex;
+  align-items: flex-end;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: .5rem;
-  color: #555; /* Slightly lighter than header color */
-  font-weight: 600; /* Bold font for labels */
+    margin-right: 0.5rem;
+    display: block;
+    margin-bottom: .5rem;
+    color: #555; /* Slightly lighter than header color */
+    font-weight: 600; /* Bold font for labels */
 }
 
 .form-group input[type="date"],

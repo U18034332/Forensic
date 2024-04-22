@@ -5,6 +5,7 @@ import { FundingIncidentReportService } from 'src/app/services/funding-incident-
 import { Grid, h } from 'gridjs';
 import { CaseAcceptance } from 'src/app/dto/case-acceptance.interface';
 import { CaseAcceptanceService } from 'src/app/services/case-acceptance.service';
+import { AllocateUserPage } from './allocate-user/allocate-user.page';
 
 
 
@@ -144,7 +145,7 @@ export class IncidentReportPage implements OnInit {
     // Navigate to the report details or perform an action
   }
 
-  acceptReport(reportNumber: any) {
+  async acceptReport(reportNumber: any) {
     // Implementation for accepting a report
     this.caseAcceptance.reportNumber = reportNumber
     this.caseAcceptance.acceptance = "Accepted"
@@ -160,6 +161,11 @@ export class IncidentReportPage implements OnInit {
     )
     console.log('Accept report:', this.caseAcceptance);
     // Update the status of the report to "Accepted" or perform an action
+      const modal = await this.modalController.create({
+       component: AllocateUserPage, // Replace with your component
+       cssClass: 'your-custom-class' // Use a custom class if needed
+      });
+      return await modal.present();
   }
 
   declineReport(reportNumber: any) {
@@ -336,9 +342,3 @@ export class IncidentReportPage implements OnInit {
   }
 
 }
-  
-
-  
-
-
-

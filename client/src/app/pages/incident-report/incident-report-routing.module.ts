@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'add-report',
     loadChildren: () => import('./add-report/add-report.module').then(m => m.AddReportPageModule)
     }
+    
 ];
 
     @NgModule({

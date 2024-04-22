@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { CaseManagementPageRoutingModule } from './case-management-routing.module';
 import { CaseManagementPage } from './case-management.page';
 import { AddCaseModule } from './add-case/add-case.module';
+import { SharedModule } from '../shared.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { AddCaseModule } from './add-case/add-case.module';
     IonicModule, // Ensure IonicModule is imported here
     CaseManagementPageRoutingModule,
     AddCaseModule,
+    SharedModule
   ],
   declarations: [CaseManagementPage]
 })
