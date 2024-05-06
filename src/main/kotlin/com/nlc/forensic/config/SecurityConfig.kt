@@ -27,7 +27,7 @@ class SecurityConfig {
             .csrf { it.disable() }
             .authorizeHttpRequests { auth ->
                 auth
-                    .requestMatchers("/api/auth/login", "/api/auth/forgot_password")
+                    .requestMatchers("/api/auth/login", "/api/admin_only/**")
                     .permitAll()
                     .requestMatchers("/api/admin_only/**").hasAuthority("ADMIN")
                     .anyRequest()

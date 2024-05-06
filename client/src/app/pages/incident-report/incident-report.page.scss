@@ -91,4 +91,6 @@ ion-card-content {
 /* Alternatively, targeting #main-content id */
 #main-content {
   display: block; /* or whatever the default display value should be */
+  height: 1000px; /* Set a fixed height */
+  overflow: auto; /* Enable scrolling when content overflows */
 }

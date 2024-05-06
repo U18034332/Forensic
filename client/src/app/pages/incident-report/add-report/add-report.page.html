@@ -5,19 +5,34 @@
     <div class="form-group">
       <div class="form-group">
         <label for="startDate">Start Date:</label>
-        <input type="date" id="startDate" name="startDate" [(ngModel)]="report.startDate" />
+        <input
+          type="date"
+          id="startDate"
+          name="startDate"
+          [(ngModel)]="report.startDate"
+        />
       </div>
 
       <div class="form-group">
         <label for="dateReported">Date Reported:</label>
-        <input type="date" id="dateReported" name="dateReported" [(ngModel)]="report.dateReported" />
+        <input
+          type="date"
+          id="dateReported"
+          name="dateReported"
+          [(ngModel)]="report.dateReported"
+        />
       </div>
     </div>
-
+    <br />
     <div class="form-inline">
       <div class="form-group">
         <label for="projectNumber">Project Number:</label>
-        <input type="text" id="projectNumber" name="projectNumber" [(ngModel)]="report.projectNumber" />
+        <input
+          type="text"
+          id="projectNumber"
+          name="projectNumber"
+          [(ngModel)]="report.projectNumber"
+        />
       </div>
 
       <div class="form-group">
@@ -91,7 +106,11 @@
     <div class="form-inline">
       <div class="form-group">
         <label for="organisation">Organisation:</label>
-        <select id="organisation" name="organisation" [(ngModel)]="report.organisation">
+        <select
+          id="organisation"
+          name="organisation"
+          [(ngModel)]="report.organisation"
+        >
           <option value="">Select Organisation</option>
           <option>NPO’s</option>
           <option>NGO’s</option>
@@ -106,7 +125,11 @@
 
       <div class="form-group">
         <label for="sourceDetection">Source Detection:</label>
-        <select id="sourceDetection" name="sourceDetection" [(ngModel)]="report.sourceDetection">
+        <select
+          id="sourceDetection"
+          name="sourceDetection"
+          [(ngModel)]="report.sourceDetection"
+        >
           <option value="">Select Source Detection</option>
           <option>Non Compliance</option>
           <option>Highjacked Organizations</option>
@@ -135,7 +158,11 @@
 
       <div class="form-group">
         <label for="levelDetected">Level Detected:</label>
-        <select id="levelDetected" name="levelDetected" [(ngModel)]="report.levelDetected">
+        <select
+          id="levelDetected"
+          name="levelDetected"
+          [(ngModel)]="report.levelDetected"
+        >
           <option value="">Select Level Detected</option>
           <option>Divisional</option>
           <option>Departmental</option>
@@ -146,7 +173,11 @@
 
       <div class="form-group">
         <label for="allocatedDescription">Allocated Description:</label>
-        <select id="allocatedDescription" name="allocatedDescription" [(ngModel)]="report.allocatedDescription">
+        <select
+          id="allocatedDescription"
+          name="allocatedDescription"
+          [(ngModel)]="report.allocatedDescription"
+        >
           <option value="">Select Allocated Description</option>
           <option>Description 1</option>
           <option>Description 2</option>
@@ -158,7 +189,11 @@
 
       <div class="form-group">
         <label for="divisionDetected">Division Detected:</label>
-        <select id="divisionDetected" name="divisionDetected" [(ngModel)]="report.divisionDetected">
+        <select
+          id="divisionDetected"
+          name="divisionDetected"
+          [(ngModel)]="report.divisionDetected"
+        >
           <option value="">Select Division Detected</option>
           <option>Finance</option>
           <option>Office to The Commissioner</option>
@@ -174,12 +209,7 @@
       <button type="button" class="btn btn-secondary" (click)="onCancel()">
         Cancel
       </button>
-      <button
-        type="submit"
-        class="btn btn-primary"
-      >
-        Add Report
-      </button>
+      <button type="submit" class="btn btn-primary">Add Report</button>
     </div>
   </form>
 </div>

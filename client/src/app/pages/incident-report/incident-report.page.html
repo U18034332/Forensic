@@ -1,30 +1,9 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-thumbnail slot="start" class="logo">
-      <img alt="NLC Logo" src="assets/icon/NLC-Logo.png" class="logo-img" />
-    </ion-thumbnail>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="moon"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon name="settings"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon name="notifications"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon name="person-circle"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
+<app-top-nav></app-top-nav>
 <!-- Side menu -->
 
 <app-side-nav></app-side-nav>
 
-<ion-content style="height: 100%; width: 100%;">
+<ion-content style="height: 100%; width: 100%">
   <!-- Main content -->
   <div class="ion-page" id="main-content">
     <ion-header class="ion-no-border">
@@ -39,13 +18,21 @@
     <ion-toolbar class="inline-toolbar">
       <ion-title>Incident Report</ion-title>
       <ion-buttons slot="end">
-        <ion-button class="incident-report-button" (click)="presentAddReportDialog()"fill="solid">Add Report</ion-button>
+        <ion-button
+          class="incident-report-button"
+          (click)="presentAddReportDialog()"
+          fill="solid"
+          >Add Report</ion-button
+        >
       </ion-buttons>
     </ion-toolbar>
 
     <!-- Segment buttons -->
 
-    <ion-segment [(ngModel)]="selectedSegment" (ionChange)="segmentChanged($event)">
+    <ion-segment
+      [(ngModel)]="selectedSegment"
+      (ionChange)="segmentChanged($event)"
+    >
       <ion-segment-button value="filedReports">
         <ion-label>Filed Reports</ion-label>
       </ion-segment-button>
@@ -60,7 +47,7 @@
     <div [ngSwitch]="selectedSegment">
       <div *ngSwitchCase="'filedReports'">
         <!-- Non-Funded Reports Section -->
-        <ion-card class="non-funded-card" style="height: 50%; width: 100%;">
+        <ion-card class="non-funded-card" style="height: 50%; width: 100%">
           <ion-card-header>
             <ion-card-title>Non-Funded Reports</ion-card-title>
           </ion-card-header>
@@ -110,13 +97,14 @@
 
         <!-- Funded Reports Section -->
 
-        <ion-card class="funded-card" style="height: 90%; width: 100%;">
+        <ion-card class="funded-card" style="height: 90%; width: 100%">
           <ion-card-header>
             <ion-card-title>Funded Reports</ion-card-title>
           </ion-card-header>
         </ion-card>
-        <ion-infinite-scroll><div id="funded-reports-grid"></div></ion-infinite-scroll>
-        
+        <ion-infinite-scroll
+          ><div id="funded-reports-grid"></div
+        ></ion-infinite-scroll>
       </div>
 
       <!-- Content based on segment selection -->
@@ -125,7 +113,7 @@
 
       <!-- Assessment Segment -->
       <div *ngSwitchCase="'assessment'">
-          <ion-title>Funded Reports</ion-title>
+        <ion-title>Funded Reports</ion-title>
         <div id="assessment-grid"></div>
       </div>
 

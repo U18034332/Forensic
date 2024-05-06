@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddReportPageRoutingModule } from './add-report-routing.module'; // Adjust the import path as needed
 import { AddReportPage } from './add-report.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
