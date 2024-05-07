@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { CaseManagementPageRoutingModule } from './case-management-routing.module';
 import { CaseManagementPage } from './case-management.page';
 import { AddCaseModule } from './add-case/add-case.module';
-import { SharedModule } from '../shared.module';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
   imports: [

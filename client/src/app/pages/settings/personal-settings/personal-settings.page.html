@@ -1,0 +1,68 @@
+<app-top-nav></app-top-nav>
+
+<!--Settings Section-->
+<app-setting-side-nav></app-setting-side-nav>
+
+<ion-content>
+  <div class="ion-page" id="main-content">
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-title>Personal Settings</ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="20px">
+            <ion-item lines="none" class="profile-upload-item">
+              <ion-avatar slot="start" class="profile-avatar">
+                <img
+                  [src]="profilePicUrl || 'path-to-default-profile-pic.jpg'"
+                />
+              </ion-avatar>
+            </ion-item>
+          </ion-col>
+          <ion-col class="personal-details">
+            <ion-label>
+              <h2>Kelsey Kreppel</h2>
+              <p>kelseykreppelnlc&#64;gmail.com</p>
+              <p>084 678 1234</p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="12">
+            <ion-label class="upload-label" class="ion-padding"
+              >Upload Profile Picture</ion-label
+            >
+
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              class="file-input"
+            />
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-list>
+              <ion-list-header> Task Notifications </ion-list-header>
+              <ion-item>
+                <ion-label>Assigned</ion-label>
+                <ion-toggle
+                  slot="end"
+                  [(ngModel)]="notifications.assigned"
+                ></ion-toggle>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </div>
+</ion-content>

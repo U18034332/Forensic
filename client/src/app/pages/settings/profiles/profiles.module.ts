@@ -2,19 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
-import { AuditLogsPageRoutingModule } from './audit-logs-routing.module';
-import { AuditLogsPage } from './audit-logs.page';
-import { SharedModule } from '../../shared.module';
+import { ProfilesPageRoutingModule } from './profiles-routing.module';
+import { ProfilesPage } from './profiles.page';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AuditLogsPageRoutingModule,
+    ProfilesPageRoutingModule,
     SharedModule
   ],
-  declarations: [AuditLogsPage]
+  declarations: [ProfilesPage]
 })
-export class AuditLogsPageModule {}
+export class ProfilesPageModule {}

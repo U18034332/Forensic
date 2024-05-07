@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-top-nav',
-  templateUrl: './top-nav.component.html',
-  styleUrls: ['./top-nav.component.scss'],
+  selector: 'app-setting-side-nav',
+  templateUrl: './setting-side-nav.component.html',
+  styleUrls: ['./setting-side-nav.component.scss'],
 })
-export class TopNavComponent  implements OnInit {
+export class SettingSideNavComponent  implements OnInit {
 
   constructor(private router: Router) { }
 
@@ -14,4 +15,5 @@ export class TopNavComponent  implements OnInit {
   navigateTo(path: string) {
     this.router.navigateByUrl(path);
   }
+
 }

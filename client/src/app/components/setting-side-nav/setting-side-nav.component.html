@@ -1,0 +1,66 @@
+<ion-menu contentId="main-content" class="side-menu" side="start">
+  <ion-menu-button></ion-menu-button>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item class="ion-side-menu-button" button lines="none" detail="false">
+        <ion-icon name="person-circle-outline" slot="start"></ion-icon>
+        Personal Settings
+      </ion-item>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-icon name="analytics-outline" slot="start"></ion-icon>
+          Data Administration
+        </ion-item-divider>
+
+        <ion-item
+          class="ion-side-menu-button"
+          button
+          lines="none"
+          detail="false"
+          (click)="navigateTo('/ps-storage')"
+        >
+          <ion-icon slot="start"></ion-icon>
+          Storage
+        </ion-item>
+
+        <ion-item
+          class="ion-side-menu-button"
+          button
+          lines="none"
+          detail="false"
+          (click)="navigateTo('/audit-logs')"
+        >
+          <ion-icon slot="start"></ion-icon>
+          Audit Logs
+        </ion-item>
+      </ion-item-group>
+      <ion-item-group>
+        <ion-item-divider>
+          <ion-icon name="id-card-outline" slot="start"></ion-icon>
+          Manage Users
+        </ion-item-divider>
+
+        <ion-item
+          class="ion-side-menu-button"
+          button
+          lines="none"
+          detail="false"
+          (click)="navigateTo('/portal-users')"
+        >
+          <ion-icon slot="start"></ion-icon>
+          Portal Users
+        </ion-item>
+      </ion-item-group>
+      <ion-item
+        class="ion-side-menu-button"
+        button
+        lines="none"
+        detail="false"
+        (click)="navigateTo('/profiles')"
+      >
+        <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+        Profiles
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

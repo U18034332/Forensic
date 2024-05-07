@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { AuditTrailPageRoutingModule } from './audit-trail-routing.module';
-import { AuditTrailPage } from './audit-trail.page';
+import { AuditLogsPageRoutingModule } from './audit-logs-routing.module';
+import { AuditLogsPage } from './audit-logs.page';
 import { SharedModule } from 'src/app/shared.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AuditTrailPageRoutingModule,
+    AuditLogsPageRoutingModule,
     SharedModule
   ],
-  declarations: [AuditTrailPage]
+  declarations: [AuditLogsPage]
 })
-export class AuditTrailPageModule {}
+export class AuditLogsPageModule {}

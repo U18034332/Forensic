@@ -9,11 +9,16 @@ import { FormsModule } from '@angular/forms';
 import { GridJsAngularComponent } from 'gridjs-angular';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from './shared.module';
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, GridJsAngularComponent, MaterialModule, BrowserAnimationsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, GridJsAngularComponent, MaterialModule, BrowserAnimationsModule, CommonModule, SharedModule],
+  exports: [
+        SharedModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
