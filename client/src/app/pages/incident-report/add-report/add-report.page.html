@@ -2,7 +2,7 @@
   <form (ngSubmit)="onSubmit()">
     <h2>Incident Report Info:</h2>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <mat-form-field appearance="fill">
         <mat-label>Start Date:</mat-label>
         <input
@@ -24,13 +24,13 @@
           [(ngModel)]="report.dateReported"
         />
       </mat-form-field>
-    </div>
+    </div> -->
 
     <br />
 
     <div class="form-inline">
       <mat-form-field appearance="fill">
-        <mat-label>Project Number:</mat-label>
+        <mat-label value="">Project Number:</mat-label>
         <input
           matInput
           type="text"
@@ -57,7 +57,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Case Type:</mat-label>
+        <mat-label value="Select">Case Type:</mat-label>
         <mat-select id="caseType" name="caseType" [(ngModel)]="report.caseType">
           <mat-option value="">Select Type</mat-option>
           <mat-option>Fraud</mat-option>
@@ -74,7 +74,7 @@
 
     <div class="form-inline">
       <mat-form-field appearance="fill">
-        <mat-label>Channel:</mat-label>
+        <mat-label value="Select">Channel:</mat-label>
         <mat-select id="channel" name="channel" [(ngModel)]="report.channel">
           <mat-option value="">Select Channel</mat-option>
           <mat-option>E-mail</mat-option>
@@ -87,7 +87,7 @@
       <mat-form-field appearance="fill">
         <mat-label>Priority:</mat-label>
         <mat-select id="priority" name="priority" [(ngModel)]="report.priority">
-          <mat-option value="">Select Priority</mat-option>
+          <mat-option value="Select">Select Priority</mat-option>
           <mat-option>Simple</mat-option>
           <mat-option>Medium</mat-option>
           <mat-option>Complex</mat-option>

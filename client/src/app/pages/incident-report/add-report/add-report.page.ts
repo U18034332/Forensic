@@ -12,24 +12,57 @@ export class AddReportPage {
   constructor(
     private reportModal: ModalController,
     private incidentReport: FundingIncidentReportService 
-  ) { }
-  report: FundingIncidentReport = {} as FundingIncidentReport
+  ) {
+    // Initialize FundingIncidentReport object with default values
+    this.report = {
+      province: '',
+      caseType: '',
+      channel: '',
+      priority: '',
+      status: '',
+      organisation: '',
+      sourceDetection: '',
+      sector: '',
+      levelDetected: '',
+      allocatedDescription: '',
+      divisionDetected: '',
+      startDate: '',  // Add startDate property
+      dateReported: '',  // Add dateReported property
+      projectNumber: ''  // Add projectNumber property
+    };
+  }
+
+  report: FundingIncidentReport;
 
   onSubmit() {
-    console.log(this.report)
+    console.log(this.report);
     this.incidentReport.postData(this.report)
-    .subscribe((response)=> {
-      console.log(response);
-    } , error => {
-      console.log(error.error)
-    });
+      .subscribe((response)=> {
+        console.log(response);
+      }, error => {
+        console.log(error.error);
+      });
     this.reportModal.dismiss();
   }
 
   onCancel() {
     console.log('Cancel action triggered');
-    this.report = {} as FundingIncidentReport;
+    this.report = {
+    province: '',
+      caseType: '',
+      channel: '',
+      priority: '',
+      status: '',
+      organisation: '',
+      sourceDetection: '',
+      sector: '',
+      levelDetected: '',
+      allocatedDescription: '',
+      divisionDetected: '',
+      startDate: '',  // Add startDate property
+      dateReported: '',  // Add dateReported property
+      projectNumber: ''  // Add projectNumber property
+    };
     this.reportModal.dismiss();   
   }
 }
-
