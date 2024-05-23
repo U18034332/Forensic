@@ -6,32 +6,8 @@ import { Grid, h } from 'gridjs';
 import { CaseAcceptance } from 'src/app/dto/case-acceptance.interface';
 import { CaseAcceptanceService } from 'src/app/services/case-acceptance.service';
 import { AllocateUserPage } from './allocate-user/allocate-user.page';
+import { ReportCase } from 'src/app/dto/report-case.interface';
 
-
-
-// The ReportCase interface should match the structure you plan to receive from your backend
-interface ReportCase {
-  reportNumber: string;
-  acceptance: string;
-  dateReported: string;
-  channel: string;
-  province: string;
-  caseType: string;
-  priority: string;
-  status: string;
-  detectionDivision: string;
-  levelDetected: string;
-  assessmentStage: string;
-  startDate: string;
-  reportDocument: string;
-  actions: string;
-  lastModified: string;
-  assignedToo: string;
-  projectNumber: string;
-  organisation: string;
-  stage: string;
-  assessedBy: string;
-}
 
 @Component({
   selector: 'app-incident-report',
@@ -40,12 +16,11 @@ interface ReportCase {
 })
 export class IncidentReportPage implements OnInit {
   selectedSegment: string = 'filedReports';
-  nonFundedReportCase!: ReportCase;
-  fundedReportCase!: ReportCase;
+  nonFundedReportCase: ReportCase = {} as ReportCase;
+  fundedReportCase: ReportCase = {} as ReportCase;
   assessmentReportCases!: ReportCase[];
-  grid: Grid 
-  
-
+  grid: Grid
+  caseAcceptance: CaseAcceptance = {} as CaseAcceptance;
   
    constructor(
     public modalController: ModalController,
@@ -53,84 +28,12 @@ export class IncidentReportPage implements OnInit {
     private caseAcceptanceService: CaseAcceptanceService
   ) {}
 
-
   ngOnInit() {
     // Initialize your example report cases here or fetch them from the backend
-    this.nonFundedReportCase = {
-      reportNumber: '',
-      acceptance: '',
-      dateReported: '',
-      channel: '',
-      province: '',
-      caseType: '',
-      priority: '',
-      status: '',
-      detectionDivision: '',
-      levelDetected: '',
-      assessmentStage: '',
-      startDate: '',
-      reportDocument: '',
-      actions: '',
-      lastModified: '',
-      assignedToo: '',
-      projectNumber: '',
-      organisation: '',
-      stage: '',
-      assessedBy: ''
-    };
-
-    this.fundedReportCase = {
-      reportNumber: '',
-      acceptance: '',
-      dateReported: '',
-      channel: '',
-      province: '',
-      caseType: '',
-      priority: '',
-      status: '',
-      detectionDivision: '',
-      levelDetected: '',
-      assessmentStage: '',
-      startDate: '',
-      reportDocument: '',
-      actions: '',
-      lastModified: '',
-      assignedToo: '',
-      projectNumber: '',
-      organisation: '',
-      stage: '',
-      assessedBy: ''
-    };
-
-    this.assessmentReportCases = [
-      {
-        reportNumber: 'RP-NP-TH098',
-        acceptance: '',
-        dateReported: '',
-        channel: '',
-        province: '',
-        caseType: '',
-        priority: 'Complex',
-        status: 'In Progress',
-        detectionDivision: '',
-        levelDetected: '',
-        assessmentStage: 'Stage 1/2',
-        startDate: '23/07/20',
-        reportDocument: '',
-        actions: '',
-        lastModified: '',
-        assignedToo: 'User 1',
-        projectNumber: '',
-        organisation: '',
-        stage: '',
-        assessedBy: 'User 1'
-      },
-      // ... Add more assessment cases as needed
-    ];
     this.getFundingIncidentReports()
     this.getFiledReports()
   }
-  caseAcceptance: CaseAcceptance = {} as CaseAcceptance
+  
 
   segmentChanged(event: any) {
     this.selectedSegment = event.detail.value;
@@ -177,12 +80,11 @@ export class IncidentReportPage implements OnInit {
 
     }, error => {
       console.log(error)
-    }
-
-    )
+    })
     console.log('Decline report:', reportNumber);
-    // Update the status of the report to "Declined" or perform an action
   }
+
+
   async presentAddReportDialog() {
     console.log("Add Case button clicked");
     // Replace with your form presentation logic
@@ -192,6 +94,7 @@ export class IncidentReportPage implements OnInit {
      });
      return await md.present();
   }
+
 
   getFundingIncidentReports() {
     this.incidentReportsService.getData().subscribe(
@@ -340,5 +243,4 @@ export class IncidentReportPage implements OnInit {
       }
     );
   }
-
 }
