@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './doc-management.page.html',
   styleUrls: ['./doc-management.page.scss'],
 })
-export class DocManagementPage implements OnInit {
+export class DocManagementPage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

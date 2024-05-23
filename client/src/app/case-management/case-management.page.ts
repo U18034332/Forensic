@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 // Import ModalController and other necessary components for your forms
 import { ModalController } from '@ionic/angular';
 import { AddCaseComponent } from './add-case/add-case.page';
@@ -8,15 +8,13 @@ import { AddCaseComponent } from './add-case/add-case.page';
   templateUrl: './case-management.page.html',
   styleUrls: ['./case-management.page.scss'],
 })
-export class CaseManagementPage implements OnInit {
+export class CaseManagementPage {
   subFilesExpanded: boolean = false;
   annexures: string[] = ['Annexure A', 'Annexure B', 'Annexure C', 'Annexure D', 'Annexure E', 'Annexure F'];
 
   // Inject ModalController or any other services needed
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() {
-  }
 
   toggleSubFiles(): void {
     this.subFilesExpanded = !this.subFilesExpanded;

@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './code-verification.page.html',
   styleUrls: ['./code-verification.page.scss'],
 })
-export class CodeVerificationPage implements OnInit {
+export class CodeVerificationPage {
   codeForm!: FormGroup; // Define a FormGroup to hold our form data
   errorMessage: string = ''; // To display error messages if needed
 
@@ -14,10 +14,6 @@ export class CodeVerificationPage implements OnInit {
     this.codeForm = this.formBuilder.group({
       token: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]]
     });
-  }
-
-  ngOnInit() {
-    // You can keep ngOnInit if you have additional initialization logic
   }
 
   validateCode() {

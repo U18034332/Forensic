@@ -5,12 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
 })
-export class ChangePasswordPage implements OnInit {
+export class ChangePasswordPage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
  
   token: string = '';
   errorMessage: string = '';

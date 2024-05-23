@@ -14,7 +14,7 @@ export class FundingIncidentReportService {
   constructor(private http: HttpClient,private authService: AuthenticationService) { }
 
   // Function to send GET request with authentication
-  getData(): Observable<any> {
+  getData(): Observable<JSON> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.authToken}`
     });

@@ -6,12 +6,9 @@ import { Router } from '@angular/router'; // Import Router
   templateUrl: './forgot.page.html',
   styleUrls: ['./forgot.page.scss'],
 })
-export class ForgotPage implements OnInit {
+export class ForgotPage {
 
   constructor(private router: Router) { } // Inject Router in the constructor
-
-  ngOnInit() {
-  }
 
   sendCode(): void {
     this.router.navigate(['/code-verification']);

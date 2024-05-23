@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './discuss.page.html',
   styleUrls: ['./discuss.page.scss'],
 })
-export class DiscussPage implements OnInit {
+export class DiscussPage {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

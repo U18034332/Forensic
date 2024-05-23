@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './audit-trail.page.html',
   styleUrls: ['./audit-trail.page.scss'],
 })
-export class AuditTrailPage implements OnInit {
+export class AuditTrailPage {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
 }

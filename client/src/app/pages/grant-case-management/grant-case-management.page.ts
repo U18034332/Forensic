@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './grant-case-management.page.html',
   styleUrls: ['./grant-case-management.page.scss'],
 })
-export class GrantCaseManagementPage implements OnInit {
+export class GrantCaseManagementPage {
   // Added property to track the expanded state of the Sub Files section
   subFilesExpanded: boolean = false;
 
@@ -13,9 +13,6 @@ export class GrantCaseManagementPage implements OnInit {
   annexures: string[] = ['Annexure A', 'Annexure B', 'Annexure C', 'Annexure D', 'Annexure E', 'Annexure F'];
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   // Added method to toggle the Sub Files section
   toggleSubFiles(): void {
