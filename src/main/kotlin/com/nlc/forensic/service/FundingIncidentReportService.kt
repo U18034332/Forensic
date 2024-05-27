@@ -85,16 +85,28 @@ class FundingIncidentReportService(
             throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
         }
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
-        updatedCase.acceptance = acceptanceDTO.acceptance
+        if (updatedCase != null) {
+            updatedCase.acceptance = acceptanceDTO.acceptance
+        }
         if (acceptanceDTO.acceptance.lowercase(Locale.getDefault()) == "accepted") {
             val userToAllocateTo = userRepository.findByEmail(acceptanceDTO.allocateTo)
-            updatedCase.assignedTo = userToAllocateTo.get()
-            fundingIncidentReportRepository.save(updatedCase)
+            if (updatedCase != null) {
+                updatedCase.assignedTo = userToAllocateTo.get()
+            }
+            if (updatedCase != null) {
+                fundingIncidentReportRepository.save(updatedCase)
+            }
             return
         }
-        updatedCase.status = "Closed"
-        updatedCase.assignedTo = null
-        fundingIncidentReportRepository.save(updatedCase)
+        if (updatedCase != null) {
+            updatedCase.status = "Closed"
+        }
+        if (updatedCase != null) {
+            updatedCase.assignedTo = null
+        }
+        if (updatedCase != null) {
+            fundingIncidentReportRepository.save(updatedCase)
+        }
     }
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {
@@ -106,9 +118,9 @@ class FundingIncidentReportService(
         return fundingIncidentReportRepository.findByAcceptance("Declined")
     }
 
-    fun getReportByReportNumber(reportNumber: String): FundingIncidentReport {
+    fun getReportByReportNumber(reportNumber: String): FundingIncidentReport? {
         if (reportNumber.isEmpty()) {
-            throw InvalidParameterException("The report number can not be empty")
+            throw IllegalArgumentException("The report number can not be empty")
         }
         return fundingIncidentReportRepository.findByReportNumber(reportNumber)
     }
