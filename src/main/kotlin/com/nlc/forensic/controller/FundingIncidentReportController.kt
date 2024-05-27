@@ -6,12 +6,9 @@ import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
 import com.nlc.forensic.service.FundingIncidentReportService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 
 @RestController
@@ -51,4 +48,21 @@ class FundingIncidentReportController(
             ResponseEntity.badRequest().body((gson.toJson(e.message)))
         }
     }
+
+    @GetMapping("get-report")
+    fun getByReportNumber(@RequestParam reportNumber: String): ResponseEntity<Any> {
+        return try {
+            val report = fundingIncidentReportService.getReportByReportNumber(reportNumber)
+            if (report != null) {
+                ResponseEntity.ok(report)
+            } else {
+                ResponseEntity.status(HttpStatus.NOT_FOUND).body("Report not found for report number: $reportNumber")
+            }
+        } catch (e: IllegalArgumentException) {
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid report number: $reportNumber")
+        } catch (e: Exception) {
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: ${e.message}")
+        }
+    }
+
 }

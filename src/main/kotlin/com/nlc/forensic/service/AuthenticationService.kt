@@ -22,7 +22,7 @@ class AuthenticationService(private val userRepository: UserRepository,
     private val authenticationManager: AuthenticationManager
 
 ) {
-    fun addNewUser(request: User): AuthenticationResponse{
+    fun addNewUser(request: User): AuthenticationResponse {
         // Check if the email is provided
         if (request.email.isNullOrBlank()) {
             return AuthenticationResponse(null, ResponseConstant.EMAIL_NOT_PROVIDED)
@@ -30,12 +30,11 @@ class AuthenticationService(private val userRepository: UserRepository,
 
         // Check if user already exists. If exists then authenticate the user
         if (userRepository.findByEmail(request.email!!).isPresent) {
-            println(userRepository.findByEmail(request.email!!))
             return AuthenticationResponse(null, ResponseConstant.USER_ALREADY_EXIST)
         }
 
         // Check if other required parameters are provided
-        if (request.role?.name.isNullOrBlank() ||
+        if (request.role == null ||
             request.firstName.isNullOrBlank() ||
             request.lastName.isNullOrBlank() ||
             request.passcode.isNullOrBlank()
@@ -43,24 +42,30 @@ class AuthenticationService(private val userRepository: UserRepository,
             return AuthenticationResponse(null, ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
         }
 
-        val user = User(
-            firstName = request.firstName!!,
-            lastName = request.lastName!!,
-            email = request.email!!,
-            passcode = passwordEncoder.encode(request.passcode!!),
-            role = request.role!!
-        )
+        try {
+            val user = User(
+                firstName = request.firstName!!,
+                lastName = request.lastName!!,
+                email = request.email!!,
+                passcode = passwordEncoder.encode(request.passcode!!),
+                role = request.role!!
+            )
 
-        val savedUser = userRepository.save(user)
+            val savedUser = userRepository.save(user)
 
-        val jwt = jwtService.generateToken(savedUser)
+            val jwt = jwtService.generateToken(savedUser)
 
-        saveUserToken(jwt, savedUser)
+            saveUserToken(jwt, savedUser)
 
-        return AuthenticationResponse(jwt, "User registration was successful")
-
-
+            return AuthenticationResponse(jwt, "User registration was successful")
+        } catch (ex: Exception) {
+            // Log the exception for debugging
+            ex.printStackTrace()
+            // Return a generic error message
+            return AuthenticationResponse(null, "Internal server error")
+        }
     }
+
 
     fun authenticate(request: User): AuthenticationResponse {
         try {

@@ -12,22 +12,23 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("api/admin_only")
+@RequestMapping("api/admin-only")
 class AdminController(private val authService: AuthenticationService, private val userService: UserService) {
 //    @GetMapping("/admin")
 //    fun getAdmin(): String{
 //        return "Admin login"
 //    }
-    @PostMapping("/add_user")
+    @PostMapping("/add-user")
     fun register(@RequestBody request: User): ResponseEntity<AuthenticationResponse> {
-        if (authService.addNewUser(request).message == ResponseConstant.USER_ALREADY_EXIST) {
-            return ResponseEntity.badRequest().body(authService.addNewUser(request))
+        val response = authService.addNewUser(request)
+
+        return when (response.message) {
+            ResponseConstant.USER_ALREADY_EXIST,
+            ResponseConstant.REQUIRED_PARAMETERS_NOT_SET -> ResponseEntity.badRequest().body(response)
+            else -> ResponseEntity.ok(response)
         }
-        if (authService.addNewUser(request).message == ResponseConstant.REQUIRED_PARAMETERS_NOT_SET) {
-            return ResponseEntity.badRequest().body(authService.addNewUser(request))
-        }
-        return ResponseEntity.ok(authService.addNewUser(request))
     }
+
 
 
     @DeleteMapping("/remove/{email}")

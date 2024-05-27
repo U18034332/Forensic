@@ -105,4 +105,11 @@ class FundingIncidentReportService(
     fun getAllTheDeclinedReports(): List<FundingIncidentReport> {
         return fundingIncidentReportRepository.findByAcceptance("Declined")
     }
+
+    fun getReportByReportNumber(reportNumber: String): FundingIncidentReport {
+        if (reportNumber.isEmpty()) {
+            throw InvalidParameterException("The report number can not be empty")
+        }
+        return fundingIncidentReportRepository.findByReportNumber(reportNumber)
+    }
 }
