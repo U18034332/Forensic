@@ -18,6 +18,7 @@ data class FundingIncidentReport(
     @ManyToOne
     @JoinColumn(name = "assigned_user")
     var assignedTo: User? = null,
+    var declineReason: String = "",
     var dateReported: Date,
     var channel: String,
     var province: String,

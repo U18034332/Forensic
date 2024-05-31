@@ -79,35 +79,28 @@ class FundingIncidentReportService(
     }
 
     fun acceptOrDeclineReport(acceptanceDTO: CaseAcceptanceDTO) {
-        if (acceptanceDTO.acceptance.isBlank() ||
-            acceptanceDTO.reportNumber.isBlank()
-            ) {
+        require(acceptanceDTO.acceptance.isNotBlank() && acceptanceDTO.reportNumber.isNotBlank()) {
             throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
         }
+
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
-        if (updatedCase != null) {
-            updatedCase.acceptance = acceptanceDTO.acceptance
-        }
-        if (acceptanceDTO.acceptance.lowercase(Locale.getDefault()) == "accepted") {
-            val userToAllocateTo = userRepository.findByEmail(acceptanceDTO.allocateTo)
-            if (updatedCase != null) {
+            ?: return // No need to proceed if the case doesn't exist
+
+        updatedCase.acceptance = acceptanceDTO.acceptance
+
+        if (acceptanceDTO.acceptance.equals("accepted", ignoreCase = true)) {
+            userRepository.findByEmail(acceptanceDTO.allocateTo).let { userToAllocateTo ->
                 updatedCase.assignedTo = userToAllocateTo.get()
             }
-            if (updatedCase != null) {
-                fundingIncidentReportRepository.save(updatedCase)
-            }
-            return
-        }
-        if (updatedCase != null) {
+        } else {
             updatedCase.status = "Closed"
-        }
-        if (updatedCase != null) {
             updatedCase.assignedTo = null
+            updatedCase.declineReason = acceptanceDTO.reason
         }
-        if (updatedCase != null) {
-            fundingIncidentReportRepository.save(updatedCase)
-        }
+
+        fundingIncidentReportRepository.save(updatedCase)
     }
+
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {
         val latestReportId = fundingIncidentReportRepository.count()

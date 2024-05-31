@@ -31,7 +31,7 @@ class JwtService {
     }
 
     private fun getSignInKey(): SecretKey {
-        var secretKey = dotenv["JWT_SECRET_KEY"]
+        val secretKey = dotenv["JWT_SECRET_KEY"]
         val keyBytes = Base64.getUrlDecoder().decode(secretKey)
         return SecretKeySpec(keyBytes, "HmacSHA256")
     }
