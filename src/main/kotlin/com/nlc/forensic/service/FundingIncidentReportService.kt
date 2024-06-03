@@ -19,60 +19,63 @@ class FundingIncidentReportService(
 ) {
     fun createFundingIncidentReport(
         fundingIncidentReportDTO: FundingIncidentReportDTO)
-    : FundingIncidentReport {
-        if (fundingIncidentReportDTO.dateReported == null ||
-            fundingIncidentReportDTO.startDate ==null ||
-            fundingIncidentReportDTO.projectNumber.isBlank() ||
-            fundingIncidentReportDTO.channel.isBlank() ||
-            fundingIncidentReportDTO.caseType.isBlank() ||
-            fundingIncidentReportDTO.divisionDetected.isBlank()||
-            fundingIncidentReportDTO.levelDetected.isBlank() ||
-            fundingIncidentReportDTO.organisation.isBlank() ||
-            fundingIncidentReportDTO.sector.isBlank() ||
-            fundingIncidentReportDTO.sourceDetection.isBlank() ||
-            fundingIncidentReportDTO.priority.isBlank() ||
-            fundingIncidentReportDTO.allocatedDescription.isBlank()
-            ) {
-            throw InvalidParameterException(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
+            : FundingIncidentReport? {
+
+        // Check for required parameters
+        with(fundingIncidentReportDTO) {
+            requireNotNull(dateReported)
+            requireNotNull(startDate)
+            require(projectNumber.isNotBlank())
+            require(channel.isNotBlank())
+            require(caseType.isNotBlank())
+            require(divisionDetected.isNotBlank())
+            require(levelDetected.isNotBlank())
+            require(organisation.isNotBlank())
+            require(sector.isNotBlank())
+            require(sourceDetection.isNotBlank())
+            require(priority.isNotBlank())
+            require(allocatedDescription.isNotBlank())
         }
-        var reportPrefix = "RP-LEGAL"
-        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "finance") {
-            reportPrefix = "RP-FINANCE"
+
+        val reportPrefix = when (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault())) {
+            "finance" -> "RP-FINANCE"
+            "office of the commissioner" -> "RP-COMMISSIONER"
+            "regulatory compliance" -> "RP-REG"
+            "ict" -> "RP-ICT"
+            "operations" -> "RP-OPERATIONS"
+            else -> "RP-LEGAL"
         }
-        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "office of the commissioner") {
-            reportPrefix = "RP-COMMISSIONER"
+
+        val newReport: FundingIncidentReport? = fundingIncidentReportDTO.startDate?.let {
+            fundingIncidentReportDTO.dateReported?.let { it1 ->
+                FundingIncidentReport (
+                    reportNumber = generateReportNumberFromDatabaseId(reportPrefix),
+                    startDate = it,
+                    dateReported = it1,
+                    projectNumber = fundingIncidentReportDTO.projectNumber,
+                    province = fundingIncidentReportDTO.province,
+                    caseType = fundingIncidentReportDTO.caseType,
+                    channel = fundingIncidentReportDTO.channel,
+                    priority = fundingIncidentReportDTO.priority,
+                    status = fundingIncidentReportDTO.status,
+                    organisation = fundingIncidentReportDTO.organisation,
+                    detectionDivision = fundingIncidentReportDTO.divisionDetected,
+                    description = fundingIncidentReportDTO.allocatedDescription,
+                    detectionLevel = fundingIncidentReportDTO.levelDetected,
+                    sector = fundingIncidentReportDTO.sector,
+                    assessmentStage = fundingIncidentReportDTO.assessmentStage,
+                    lastModifiedBy = null
+                )
+            }
         }
-        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "regulatory compliance") {
-            reportPrefix = "RP-REG"
+
+        if (newReport != null) {
+            fundingIncidentReportRepository.save(newReport)
         }
-        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "ict") {
-            reportPrefix = "RP-ICT"
-        }
-        if (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault()) == "operations") {
-            reportPrefix = "RP-OPERATIONS"
-        }
-        val newReport = FundingIncidentReport (
-            reportNumber = generateReportNumberFromDatabaseId(reportPrefix),
-            startDate = fundingIncidentReportDTO.startDate!!,
-            dateReported = fundingIncidentReportDTO.dateReported!!,
-            projectNumber = fundingIncidentReportDTO.projectNumber,
-            province = fundingIncidentReportDTO.province,
-            caseType = fundingIncidentReportDTO.caseType,
-            channel = fundingIncidentReportDTO.channel,
-            priority = fundingIncidentReportDTO.priority,
-            status = fundingIncidentReportDTO.status,
-            organisation = fundingIncidentReportDTO.organisation,
-            detectionDivision = fundingIncidentReportDTO.divisionDetected,
-            description = fundingIncidentReportDTO.allocatedDescription,
-            detectionLevel = fundingIncidentReportDTO.levelDetected,
-            sector = fundingIncidentReportDTO.sector,
-            assessmentStage = fundingIncidentReportDTO.assessmentStage,
-            lastModifiedBy = null
-        )
-        fundingIncidentReportRepository.save(newReport)
 
         return newReport
     }
+
 
     fun getAllFundingReports(): List<FundingIncidentReport> {
         return fundingIncidentReportRepository.findAll()
@@ -84,7 +87,7 @@ class FundingIncidentReportService(
         }
 
         val updatedCase = fundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
-            ?: return // No need to proceed if the case doesn't exist
+            ?: throw InvalidParameterException("The report number is invalid.")
 
         updatedCase.acceptance = acceptanceDTO.acceptance
 
