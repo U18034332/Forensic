@@ -32,5 +32,4 @@ data class FundingIncidentReport(
     var detectionLevel: String,
     var assessmentStage: Int,
     var startDate: Date,
-    var lastModifiedBy: User?
 )

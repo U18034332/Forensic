@@ -2,7 +2,6 @@ package com.nlc.forensic.entity
 
 import jakarta.persistence.*
 import java.sql.Date
-import java.util.*
 
 
 @Entity
@@ -14,16 +13,20 @@ data class NonFundingIncidentReport(
     val id: Long = 0L,
     val reportNumber: String = "",
     var acceptance: String = "",
-    var declineReason: String = "",
-    var channel: String,
-    var province: String,
-    var caseType: String,
-    var priority: String,
-    var status: String,
-    var detectionDivision: String,
-    val description: String,
-    var detectionLevel: String,
-    var assessmentStage: Int,
     var dateReported: Date? = null,
     var startDate: Date? = null,
+    var channel: String = "",
+    var province: String = "",
+    var caseType: String = "",
+    var priority: String = "",
+    var status: String = "",
+    var divisionDetected: String = "",
+    var levelDetected: String = "",
+    var allocatedDescription: String = "",
+    var declineReason: String = "",
+    @ManyToOne
+    @JoinColumn(name = "assigned_user")
+    var assignedTo: User? = null,
+    var assessmentStage: Int = 0,
+
 )

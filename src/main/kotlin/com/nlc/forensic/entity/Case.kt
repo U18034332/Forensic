@@ -4,6 +4,7 @@ import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
+import java.util.Date
 
 @Entity
 @Table(name = "cases")
@@ -16,7 +17,12 @@ data class Case(
     var status: String = "",
     var province: String = "",
     var channel: String = "",
-    var complexity: String = "",
+    var severity: String = "",
+    var priority: String = "",
+    var detectionLevel: String = "",
+    val allocatedDescription: String = "",
+    val detectionDivision: String = "",
+    val caseEndDate: Date?,
     @ManyToOne
     @JoinColumn(name = "assigned_user")
     var assignedTo: User? = null,

@@ -63,8 +63,7 @@ class FundingIncidentReportService(
                     description = fundingIncidentReportDTO.allocatedDescription,
                     detectionLevel = fundingIncidentReportDTO.levelDetected,
                     sector = fundingIncidentReportDTO.sector,
-                    assessmentStage = fundingIncidentReportDTO.assessmentStage,
-                    lastModifiedBy = null
+                    assessmentStage = fundingIncidentReportDTO.assessmentStage
                 )
             }
         }
