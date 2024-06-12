@@ -3,8 +3,11 @@ package com.nlc.forensic.repository
 import com.nlc.forensic.entity.Case
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
+import org.springframework.stereotype.Repository
 import java.util.Optional
 
+
+@Repository
 interface CaseRepository: JpaRepository<Case, Long> {
     fun findByCaseId(id: Long): Optional<Case>
     fun findByCaseNumber(caseNumber: String): Optional<Case>

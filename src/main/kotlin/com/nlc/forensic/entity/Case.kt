@@ -12,6 +12,7 @@ data class Case(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val caseId: Long = 0,
+    @Column(name = "case_number")
     val caseNumber: String = "",
     var type: String = "",
     var status: String = "",
