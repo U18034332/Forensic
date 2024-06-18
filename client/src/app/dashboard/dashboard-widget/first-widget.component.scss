@@ -1,0 +1,72 @@
+
+
+
+
+.card-containers {
+    display: flex;
+    justify-content:space-evenly; /* Adjust space between cards */
+    align-items: inline; /* Align items to the start of the container */
+    margin: 40px;
+  }
+  
+  .floating-card, .floating-card-2 , .floating-card-3, .floating-card-4 {
+    display: inline-block;
+    margin: 25px;
+    border-radius: 17px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    width: 250px;
+    background-color: rgb(202, 200, 200); 
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 16px;
+    
+    /* Adjust the width as needed */
+    /* Subtracting margins from width to avoid overflow */
+    /* Adjust the margin if necessary */
+  }
+  /* Optional hover effects */
+  .floating-card:hover, .floating-card-2:hover, .floating-card-3:hover, .floating-card-4:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+                0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  .apply-button {
+    background-color: #ffffff; /* Green */
+    color: rgb(0, 0, 0);
+    
+    border-radius: 10px ;
+    border-color: #ffffff;
+    
+    display: inline-block;
+  }
+    .apply-button:hover {
+    background-color: #b4b4b4;
+    border-radius: 10px;
+    border-color: #ffffff;
+  }
+  
+  .view-button {
+    background-color: #ffffff; /* Blue */
+    color: rgb(0, 0, 0);
+    
+    border-radius: 10px ;
+    border-color: #ffffff;
+    
+    display:block;
+    
+    
+  }
+  
+  .view-button:hover {
+    background-color: #bebebe;
+    border-color: #ffffff;
+  }
+  
+  .mat-card-actions {
+    margin-top: 16px; /* Adjust as needed */
+    display: flex;
+    justify-content: center;
+  }

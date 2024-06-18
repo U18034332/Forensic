@@ -1,0 +1,49 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="button-list">
+        <button mat-raised-button (click)="navigateTo('/dashboard')" class="mat-list-dashboard">
+          <mat-icon class="button-icon">dashboard</mat-icon>
+          Dashboard
+        </button>
+        <button mat-raised-button (click)="navigateTo('/incident-report')" class="mat-list-incident-report">
+          <mat-icon class="button-icon">report</mat-icon>
+          Incident Report
+        </button>
+        <button mat-raised-button (click)="navigateTo('/case-management')" class="mat-list-case-management">
+          <mat-icon class="button-icon">gavel</mat-icon>
+          Case Management
+        </button>
+        <button mat-raised-button (click)="navigateTo('/grant-case-management')" class="mat-list-grant">
+          <mat-icon class="button-icon">assignment</mat-icon>
+          Grant Case Management
+        </button>
+        <button mat-raised-button (click)="navigateTo('/doc-management')" class="mat-list-docs">
+          <mat-icon class="button-icon">description</mat-icon>
+          Document Management
+        </button>
+        <button mat-raised-button (click)="navigateTo('/audit-trail')" class="mat-list-audi-trail">
+          <mat-icon class="button-icon">track_changes</mat-icon>
+          Audit Trail
+        </button>
+        <button mat-raised-button (click)="navigateTo('/discuss')" class="mat-list-discuss">
+          <mat-icon class="button-icon">chat</mat-icon>
+          Discuss
+        </button>
+        <button mat-raised-button (click)="navigateTo('/calendar')" class="mat-list-calendar">
+          <mat-icon class="button-icon">event</mat-icon>
+          Calendar
+        </button>
+        <button mat-raised-button (click)="navigateTo('/agencies-and-firms')" class="mat-list-referrals">
+          <mat-icon class="button-icon">group</mat-icon>
+          Referrals A & F
+        </button>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <button mat-icon-button class="menu-icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+  

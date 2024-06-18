@@ -1,0 +1,38 @@
+/* Global styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  /* Global container styles */
+  .example-container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2em;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: start;
+    justify-content: start;
+  }
+  
+  .mat-tab-label {
+    font-size: 50px;
+  }
+  
+  .hedding {
+    margin-left: 50px;
+    margin-right: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  /* Ensure border radius is visible on all sides */
+  .mat-drawer-container {
+    border-radius: 10px;
+    overflow: hidden; /* Ensure overflow is hidden to display rounded corners properly */
+
+  }
+  

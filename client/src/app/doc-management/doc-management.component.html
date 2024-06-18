@@ -1,0 +1,21 @@
+<div class="title">
+    Document Management
+</div>
+
+<div class="doc-management-view" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+    <mat-card class="doc-management-card">
+      <mat-card-content>
+        <div class="drop-area">
+          <div class="file-upload">
+            <label for="fileInput">
+              <mat-icon>cloud_upload</mat-icon>
+              <span>Drag & Drop files here or click to select</span>
+            </label>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden>
+          </div>
+           <mat-progress-bar *ngIf="progress !== undefined" mode="determinate" [value]="progress"></mat-progress-bar> 
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

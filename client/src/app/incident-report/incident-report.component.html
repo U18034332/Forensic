@@ -1,0 +1,47 @@
+<div class="header">
+  <div class="title">
+    Incident Report
+  </div>
+  <button mat-raised-button color="primary" class="add-report-button" (click)="openAddReportDialog()">Add Report</button>
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Filed Reports">
+    <!-- Content for 'Filed Reports' tab -->
+  </mat-tab>
+  <mat-tab label="Assessment">
+    <ng-template matTabContent>
+      <!-- Content for 'Assessment' tab -->
+      <div>
+        <button mat-button [cdkMenuTriggerFor]="recommendedMenu" aria-label="Recommended Actions">Recommended</button>
+        <button mat-button (click)="openNotRecommendedDialog()">Not Recommended</button>
+      </div>
+    
+      <ng-template #recommendedMenu>
+        <div class="example-menu" cdkMenu>
+          <button class="example-menu-item" cdkMenuItem>Users</button>
+          <button class="example-menu-item" cdkMenuItem>Firms</button>
+        </div>
+      </ng-template>
+    
+      <div *ngIf="showRecommended">
+        <!-- Content for recommended option -->
+        <mat-form-field appearance="fill">
+          <mat-label>Select Option</mat-label>
+          <mat-select [(value)]="selectedOption" placeholder="Select an option">
+            <mat-option value="users">Users</mat-option>
+            <mat-option value="firms">Firms</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+     <!-- Content for not recommended reason -->
+      <!-- <div *ngIf="showNotRecommended">
+       
+        <mat-form-field appearance="fill">
+          <mat-label>Reason for Not Recommended</mat-label>
+          <textarea matInput [(ngModel)]="notRecommendedReason" rows="5" placeholder="Enter reason"></textarea>
+        </mat-form-field>
+      </div> -->
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

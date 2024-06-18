@@ -1,0 +1,224 @@
+<!-- <div class="incident-report-form">
+    <form (ngSubmit)="onSubmit()">
+      <h2>Incident Report Info:</h2>
+  
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <mat-label>Start Date:</mat-label>
+          <input
+            matInput
+            type="date"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="report.startDate"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Date Reported:</mat-label>
+          <input
+            matInput
+            type="date"
+            id="dateReported"
+            name="dateReported"
+            [(ngModel)]="report.dateReported"
+          />
+        </mat-form-field>
+      </div>
+  
+      <br />
+  
+      <div class="form-inline">
+        <mat-form-field appearance="fill">
+          <mat-label>Project Number:</mat-label>
+          <input
+            matInput
+            type="text"
+            id="projectNumber"
+            name="projectNumber"
+            [(ngModel)]="report.projectNumber"
+          />
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Province:</mat-label>
+          <mat-select id="province" name="province" [(ngModel)]="report.province">
+            <mat-option value="">Select Province</mat-option>
+            <mat-option value="Gauteng">Gauteng</mat-option>
+            <mat-option value="Free State">Free State</mat-option>
+            <mat-option value="Eastern Cape">Eastern Cape</mat-option>
+            <mat-option value="KwaZulu-Natal">KwaZulu-Natal</mat-option>
+            <mat-option value="Limpopo">Limpopo</mat-option>
+            <mat-option value="Mpumalanga">Mpumalanga</mat-option>
+            <mat-option value="Northern Cape">Northern Cape</mat-option>
+            <mat-option value="North West">North West</mat-option>
+            <mat-option value="Western Cape">Western Cape</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Case Type:</mat-label>
+          <mat-select id="caseType" name="caseType" [(ngModel)]="report.caseType">
+            <mat-option value="">Select Type</mat-option>
+            <mat-option value="Fraud">Fraud</mat-option>
+            <mat-option value="Forgery">Forgery</mat-option>
+            <mat-option value="Ethical issues">Ethical issues</mat-option>
+            <mat-option value="Nepotism">Nepotism</mat-option>
+            <mat-option value="Supply chain management">Supply chain management</mat-option>
+            <mat-option value="Misappropriation of funds">Misappropriation of funds</mat-option>
+            <mat-option value="Theft">Theft</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-inline">
+        <mat-form-field appearance="fill">
+          <mat-label>Channel:</mat-label>
+          <mat-select id="channel" name="channel" [(ngModel)]="report.channel">
+            <mat-option value="">Select Channel</mat-option>
+            <mat-option value="E-mail">E-mail</mat-option>
+            <mat-option value="Hot-Line">Hot-Line</mat-option>
+            <mat-option value="Walk-ins">Walk-ins</mat-option>
+            <mat-option value="Website">Website</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Priority:</mat-label>
+          <mat-select id="priority" name="priority" [(ngModel)]="report.priority">
+            <mat-option value="">Select Priority</mat-option>
+            <mat-option value="Simple">Simple</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="Complex">Complex</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Status:</mat-label>
+          <mat-select id="status" name="status" [(ngModel)]="report.status">
+            <mat-option value="">Select Status</mat-option>
+            <mat-option value="New">New</mat-option>
+            <mat-option value="Closed">Closed</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <h2>Report Detection:</h2>
+  
+      <div class="form-inline">
+        <mat-form-field appearance="fill">
+          <mat-label>Organisation:</mat-label>
+          <mat-select
+            id="organisation"
+            name="organisation"
+            [(ngModel)]="report.organisation"
+          >
+            <mat-option value="">Select Organisation</mat-option>
+            <mat-option value="NPO’s">NPO’s</mat-option>
+            <mat-option value="NGO’s">NGO’s</mat-option>
+            <mat-option value="Section 21 Companies">Section 21 Companies</mat-option>
+            <mat-option value="Public benefit trusts">Public benefit trusts</mat-option>
+            <mat-option value="Sporting bodies and sport clubs">Sporting bodies and sport clubs</mat-option>
+            <mat-option value="Educational institutions">Educational institutions</mat-option>
+            <mat-option value="Recreational clubs">Recreational clubs</mat-option>
+            <mat-option value="Cultural bodies">Cultural bodies</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Source Detection:</mat-label>
+          <mat-select
+            id="sourceDetection"
+            name="sourceDetection"
+            [(ngModel)]="report.sourceDetection"
+          >
+            <mat-option value="">Select Source Detection</mat-option>
+            <mat-option value="Non Compliance">Non Compliance</mat-option>
+            <mat-option value="Highjacked Organizations">Highjacked Organizations</mat-option>
+            <mat-option value="Non Related NLC Agent">Non Related NLC Agent</mat-option>
+            <mat-option value="Delinquency (Internal and External)">Delinquency (Internal and External)</mat-option>
+            <mat-option value="Delinquency Organizations/Directors">Delinquency Organizations/Directors</mat-option>
+            <mat-option value="Double dipping from funders">Double dipping from funders</mat-option>
+            <mat-option value="Fraudulent Financial Statements">Fraudulent Financial Statements</mat-option>
+            <mat-option value="2 step verification on directors">2 step verification on directors</mat-option>
+            <mat-option value="IP and MAC device detection">IP and MAC device detection</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="form-inline">
+        <mat-form-field appearance="fill">
+          <mat-label>Sector:</mat-label>
+          <mat-select id="sector" name="sector" [(ngModel)]="report.sector">
+            <mat-option value="">Select Sector</mat-option>
+            <mat-option value="Arts & Culture">Arts & Culture</mat-option>
+            <mat-option value="Sports">Sports</mat-option>
+            <mat-option value="Miscellaneous">Miscellaneous</mat-option>
+            <mat-option value="Charities">Charities</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Level Detected:</mat-label>
+          <mat-select
+            id="levelDetected"
+            name="levelDetected"
+            [(ngModel)]="report.levelDetected"
+          >
+            <mat-option value="">Select Level Detected</mat-option>
+            <mat-option value="Divisional">Divisional</mat-option>
+            <mat-option value="Departmental">Departmental</mat-option>
+            <mat-option value="Sub Departmental">Sub Departmental</mat-option>
+            <mat-option value="Process">Process</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Allocated Description:</mat-label>
+          <mat-select
+            id="allocatedDescription"
+            name="allocatedDescription"
+            [(ngModel)]="report.allocatedDescription"
+          >
+            <mat-option value="">Select Allocated Description</mat-option>
+            <mat-option value="Description 1">Description 1</mat-option>
+            <mat-option value="Description 2">Description 2</mat-option>
+            <mat-option value="Description 3">Description 3</mat-option>
+            <mat-option value="Description 4">Description 4</mat-option>
+            <mat-option value="Description 5">Description 5</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Division Detected:</mat-label>
+          <mat-select
+            id="divisionDetected"
+            name="divisionDetected"
+            [(ngModel)]="report.divisionDetected"
+          >
+            <mat-option value="">Select Division Detected</mat-option>
+            <mat-option value="Finance">Finance</mat-option>
+            <mat-option value="Office to The Commissioner">Office to The Commissioner</mat-option>
+            <mat-option value="Regulatory Compliance">Regulatory Compliance</mat-option>
+            <mat-option value="ICT">ICT</mat-option>
+            <mat-option value="Operations">Operations</mat-option>
+            <mat-option value="Legal">Legal</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  
+      <div class="buttons">
+        <button mat-button type="button" color="warn" (click)="onCancel()">
+          Cancel
+        </button>
+        <button mat-raised-button type="submit" color="primary">
+          Add Report
+        </button>
+      </div>
+    </form>
+  </div>
+  
+   -->

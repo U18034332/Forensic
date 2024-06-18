@@ -1,0 +1,234 @@
+/* incident-report.component.scss */
+
+.custom-table {
+  margin-left: 20px;
+  overflow-y: auto;
+}
+
+.sub-files-header {
+  cursor: pointer;
+}
+
+.status.open {
+  color: green;
+}
+
+.status.closed {
+  color: red;
+}
+
+.status.in-progress {
+  color: orange;
+}
+
+.mat-header-row,
+.mat-row {
+  display: flex;
+  align-items: center;
+}
+
+.mat-header-cell,
+.mat-cell {
+  flex: 1;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+.mat-cell {
+  text-align: center;
+}
+
+.mat-drawer {
+  padding-right: 20px;
+  align-items: center;
+}
+
+.example-container {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin-bottom: 2em;
+  padding-inline-end: 20px;
+  writing-mode: horizontal-tb;
+}
+
+.example-sidenav-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: block;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-inline-end: 20px;
+  writing-mode: horizontal-tb;
+}
+
+.mat-list-dashboard,
+.mat-list-incident-report,
+.mat-list-case-management,
+.mat-list-grant,
+.mat-list-referrals,
+.mat-list-docs,
+.mat-list-audit-trail,
+.mat-list-discuss,
+.mat-list-calendar {
+  margin-bottom: 2em;
+  transition: all 0.3s ease;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(202, 200, 200);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mat-list-dashboard:hover,
+.mat-list-incident-report:hover,
+.mat-list-case-management:hover,
+.mat-list-grant:hover,
+.mat-list-referrals:hover,
+.mat-list-docs:hover,
+.mat-list-audit-trail:hover,
+.mat-list-discuss:hover,
+.mat-list-calendar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+mat-nav-list a {
+  display: block;
+  margin-bottom: 1em;
+  padding-inline-end: 20px;
+  writing-mode: horizontal-tb;
+}
+
+.mat-elevation-z8 {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.example-sidenav {
+  width: 50px;
+  display: block;
+
+  @media (min-width: 768px) {
+    width: 20%;
+  }
+}
+
+.addFile-c-m-button {
+  float: right;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.addCase-c-m-button {
+  float: right;
+  border-radius: 5px;
+}
+
+.title {
+  margin-left: 15px;
+  margin-top: 45px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.tabs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-tab-label {
+  font-size: 50px;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-right: 30px;
+}
+
+/* Add padding to the drawer and content */
+.mat-drawer-container,
+.mat-drawer-content {
+  padding: 10px;
+}
+
+/* Ensure border radius is visible on all sides */
+.mat-drawer-container {
+  border-radius: 10px;
+  overflow: hidden; /* Ensure overflow is hidden to display rounded corners properly */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-report-button {
+  margin-left: auto;
+}
+
+/* New Styles for Incident Report Component */
+.recommended-options {
+  margin-top: 10px;
+}
+
+.reason-textarea {
+  margin-top: 10px;
+}
+
+/* Styles for Menu */
+.example-menu {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 180px;
+  max-width: 280px;
+  background-color: rgba(255, 255, 255);
+  padding: 6px 0;
+}
+
+.example-menu-item,
+.example-standalone-trigger {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  /* Standard property */
+  -webkit-user-select: none; 
+  user-select: none; /* Safari and older versions of iOS support */
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+}
+
+.example-menu-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.example-menu-item:active {
+  background-color: rgb(170, 170, 170);
+}
+
+.example-standalone-item {
+  background-color: rgb(239, 239, 239);
+}
+
+.example-standalone-item:hover {
+  background-color: rgb(208, 208, 208);
+}
+
+.example-standalone-item[aria-expanded='true'] {
+  background-color: rgb(208, 208, 208);
+}

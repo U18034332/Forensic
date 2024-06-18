@@ -1,0 +1,11 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Add some space between the buttons */
+  }
+  
+  .full-width-button {
+    width: 100%; /* Make the button take up the full width of its container */
+    height: 50px; /* Set a consistent height for the buttons */
+  }
+  
