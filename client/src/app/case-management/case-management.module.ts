@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { CaseManagementPageRoutingModule } from './case-management-routing.module';
-import { CaseManagementPage } from './case-management.page';
-import { AddCaseModule } from './add-case/add-case.module';
-import { SharedModule } from '../shared.module';
-
+import { CaseManagementRoutingModule } from './case-management-routing.module';
+import { CaseManagementComponent } from './case-management.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
+import { CoreModule } from '../core/core.module';
 @NgModule({
+  declarations: [
+    CaseManagementComponent
+  ],
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule, // Ensure IonicModule is imported here
-    CaseManagementPageRoutingModule,
-    AddCaseModule,
-    SharedModule
-  ],
-  declarations: [CaseManagementPage]
+    CaseManagementRoutingModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatTableModule,
+    CoreModule
+  ]
 })
-export class CaseManagementPageModule {}
+export class CaseManagementModule { }

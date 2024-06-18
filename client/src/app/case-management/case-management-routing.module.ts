@@ -1,21 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { CaseManagementPage } from './case-management.page';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: CaseManagementPage
-  },
-  {
-    path: 'add-case',
-    loadChildren: () => import('./add-case/add-case.module').then(m => m.AddCaseModule)
-  }
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class CaseManagementPageRoutingModule {}
+export class CaseManagementRoutingModule { }

@@ -1,86 +1,34 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from './guards/authentication.guard';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { IncidentReportComponent } from './incident-report/incident-report.component';
+import { CaseManagementComponent } from './case-management/case-management.component';
+import { GrantCaseManagementComponent } from './grant-case-management/grant-case-management.component';
+import { DocManagementComponent } from './doc-management/doc-management.component';
+import { AuditTrailComponent } from './audit-trail/audit-trail.component';
+import { DiscussComponent } from './discuss/discuss.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { AgenciesAndFirmsComponent } from './agencies-and-firms/agencies-and-firms.component';
+import { CoreModule } from './core/core.module';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule),
-    
-    canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'forgot',
-    loadChildren: () => import('./pages/forgot/forgot.module').then( m => m.ForgotPageModule)
-    
-  },
-  {
-    path: 'code-verification',
-    loadChildren: () => import('./pages/code-verification/code-verification.module').then( m => m.CodeVerificationPageModule)
-  },
-  {
-    path: 'change-password',
-    loadChildren: () => import('./pages/change-password/change-password.module').then( m => m.ChangePasswordPageModule)
-  },
-
-  {
-    path: 'personal-settings',
-    loadChildren: () => import('./pages/personal-settings/personal-settings.module').then( m => m.PersonalSettingsPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'ps-storage',
-    loadChildren: () => import('./pages/ps-storage/ps-storage.module').then( m => m.PsStoragePageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'audit-logs',
-    loadChildren: () => import('./pages/audit-logs/audit-logs.module').then( m => m.AuditLogsPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'portal-users',
-    loadChildren: () => import('./pages/portal-users/portal-users.module').then( m => m.PortalUsersPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'profiles',
-    loadChildren: () => import('./pages/profiles/profiles.module').then( m => m.ProfilesPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'incident-report',
-    loadChildren: () => import('./pages/incident-report/incident-report.module').then( m => m.IncidentReportPageModule),
-    
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'case-management',
-    loadChildren: () => import('./case-management/case-management.module').then( m => m.CaseManagementPageModule),
-    //canActivate: [AuthenticationGuard]
-  },
-  {
-    path: 'allocate-user',
-    loadChildren: () => import('./pages/incident-report/allocate-user/allocate-user.module').then( m => m.AllocateUserPageModule)
-  },
-    
-
-
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login by default
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'incident-report', component: IncidentReportComponent },
+  { path: 'case-management', component: CaseManagementComponent },
+  { path: 'grant-case-management', component: GrantCaseManagementComponent },
+  { path: 'doc-management', component: DocManagementComponent },
+  { path: 'audit-trail', component: AuditTrailComponent },
+  { path: 'discuss', component: DiscussComponent },
+  { path: 'calendar', component: CalendarComponent},
+  { path: 'agencies-and-firms', component: AgenciesAndFirmsComponent },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes),CoreModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export { routes};
