@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
+import { GrantCaseManagementData } from '../../../dto/grant-case-management.interface';
 
 @Component({
   selector: 'app-grant-case-management',
@@ -16,9 +17,7 @@ export class GrantCaseManagementComponent {
     'caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 
     'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'
   ];
-  dataSource = [
-    {caseID: 'F-C-N098', cases: 'Case 4', startDate: '24/06/20', status: 'Open', priority: 'Complex', caseType: 'Fraud', province: 'Gauteng', channel: 'Hot-Line', levelDetected: 'Level 4', teams: 'Team 3', lastModified: '27/08/20', caseEndDate: '?'},
-  ];
+  dataSource: GrantCaseManagementData [] = []
   annexures = ['Annexure 1', 'Annexure 2', 'Annexure 3'];
 
   toggleSubFiles() {
