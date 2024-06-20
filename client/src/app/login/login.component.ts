@@ -22,6 +22,7 @@ export class LoginComponent {
   login() {
     this.authService.login(this.email, this.password).subscribe(
       response => {
+        this.errorMessage = ''
         console.log(response);
         this.router.navigate(['/dashboard']);
       },
@@ -32,4 +33,3 @@ export class LoginComponent {
     );
   }
 }
-
