@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { AuditTrailModule } from './audit-trail/audit-trail.module';
 import { DiscussModule } from './discuss/discuss.module';
 import { CalendarModule } from './calendar/calendar.module';
@@ -51,6 +52,8 @@ import { DocManagementModule } from './doc-management/doc-management.module';
     MatIconModule, // Import Angular Material modules here
     MatToolbarModule,
     MatButtonModule,
+    MatCard,
+    MatCardModule,
     CoreModule,
     
     
