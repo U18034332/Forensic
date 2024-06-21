@@ -42,3 +42,5 @@ out/
 ### other ###
 .env
 env
+node_modules
+META-INF

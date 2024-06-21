@@ -7,11 +7,13 @@
 /bazel-out
 
 # Node
+node_modules
 /node_modules
 npm-debug.log
 yarn-error.log
 
 # IDEs and editors
+.gradle
 .idea/
 .project
 .classpath
@@ -39,4 +41,5 @@ testem.log
 
 # System files
 .DS_Store
+build
 Thumbs.db
