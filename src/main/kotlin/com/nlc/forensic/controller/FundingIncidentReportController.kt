@@ -27,7 +27,7 @@ class FundingIncidentReportController(
         return ResponseEntity.ok(fundingIncidentReportService.getAllTheDeclinedReports())
     }
 
-    @PostMapping("create")
+    @PostMapping("create-report")
     fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
         return try {
             fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
@@ -38,10 +38,10 @@ class FundingIncidentReportController(
         }
     }
 
-    @PostMapping("acceptance")
+    @PostMapping("assessment")
     fun reportAcceptance(@RequestBody acceptanceDTO: CaseAcceptanceDTO): ResponseEntity<String> {
         return try {
-            fundingIncidentReportService.acceptOrDeclineReport(acceptanceDTO)
+            fundingIncidentReportService.evaluateReport(acceptanceDTO)
             ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_ACCEPTANCE))
 
         } catch (e: Exception) {

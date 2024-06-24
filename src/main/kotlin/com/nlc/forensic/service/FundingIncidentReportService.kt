@@ -80,7 +80,7 @@ class FundingIncidentReportService(
         return fundingIncidentReportRepository.findAll()
     }
 
-    fun acceptOrDeclineReport(acceptanceDTO: CaseAcceptanceDTO) {
+    fun evaluateReport(acceptanceDTO: CaseAcceptanceDTO) {
         require(acceptanceDTO.acceptance.isNotBlank() && acceptanceDTO.reportNumber.isNotBlank()) {
             throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
         }

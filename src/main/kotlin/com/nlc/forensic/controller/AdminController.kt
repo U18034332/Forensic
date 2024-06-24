@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("api/admin-only")
+@RequestMapping("api/v1/admin-only")
 class AdminController(private val authService: AuthenticationService, private val userService: UserService) {
 //    @GetMapping("/admin")
 //    fun getAdmin(): String{
