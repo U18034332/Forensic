@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
+import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 
 @Component({
   selector: 'app-incident-report',
@@ -22,7 +23,21 @@ export class IncidentReportComponent {
   }
 
   openAddReportDialog(): void {
-    this.dialog.open(AddReportPanelComponent);
+    this.dialog.open(AddReportPanelComponent, {
+      width: '250px',
+      data: { reason: '' } // Initialize with empty reason
+    });
+  }
+
+  openFundingRelatedReportDialog(): void {
+    const dialogRef = this.dialog.open(FundingRelatedFormComponent, {
+      width: '10%', // Set the width to 55% of the viewport width
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The funding related form dialog was closed');
+      // Optionally handle the result if needed
+    });
   }
 
   showRecommendedDropdown(): void {
@@ -32,7 +47,7 @@ export class IncidentReportComponent {
 
   openNotRecommendedDialog(): void {
     const dialogRef = this.dialog.open(NotRecommendedDialogComponent, {
-      width: '250px',
+      width: '150px',
       data: { reason: '' } // Initialize with empty reason
     });
 

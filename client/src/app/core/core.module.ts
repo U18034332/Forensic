@@ -13,8 +13,8 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { MatNavList } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-
-
+import { MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatSidenavContainer } from '@angular/material/sidenav';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -40,6 +40,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenav,
     MatSidenavContainer,
     MatSidenavModule,
+    MatCard,
+    MatCardModule
    
   ],
   exports: [

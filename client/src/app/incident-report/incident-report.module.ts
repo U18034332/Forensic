@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCard } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
 import { MatSelectModule } from '@angular/material/select';
@@ -48,7 +50,9 @@ import { MatTabsModule } from '@angular/material/tabs';
     OverlayModule,
     MatMenuModule,
     CdkMenuModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCard,
+    MatCardModule
   ],
   
 })
