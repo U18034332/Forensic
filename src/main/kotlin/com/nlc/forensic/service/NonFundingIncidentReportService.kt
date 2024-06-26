@@ -49,6 +49,7 @@ class NonFundingIncidentReportService(
                     dateReported = it1,
                     province = reportDTO.province,
                     caseType = reportDTO.caseType,
+                    caseSubType = reportDTO.caseSubType,
                     channel = reportDTO.channel,
                     priority = reportDTO.priority,
                     status = reportDTO.status,

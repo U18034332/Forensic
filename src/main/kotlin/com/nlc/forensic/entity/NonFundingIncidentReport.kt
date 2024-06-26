@@ -18,6 +18,7 @@ data class NonFundingIncidentReport(
     var channel: String = "",
     var province: String = "",
     var caseType: String = "",
+    var caseSubType: String = "",
     var priority: String = "",
     var status: String = "",
     var divisionDetected: String = "",
