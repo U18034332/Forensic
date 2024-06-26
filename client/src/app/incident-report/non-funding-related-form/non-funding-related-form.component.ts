@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { NgForm } from '@angular/forms';
+import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
 
 @Component({
   selector: 'app-non-funding-related-form',
@@ -20,10 +23,27 @@ export class NonFundingRelatedFormComponent {
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
 
-  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>) {}
+  report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData
+  
+
+  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>,private reportService: NonFundedIncidentReportService) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  submitForm(form: NgForm) {
+    if (form.valid) {
+      console.log(this.report);
+      this.reportService.addNonFundingRelatedIncidentReport(this.report)
+        .subscribe((response) => {
+          console.log(response);
+          }, (error) => {
+            console.log(error);
+          }
+        )
+    } else {
+      console.log("Error in the form.");
+    }
+  }
 }

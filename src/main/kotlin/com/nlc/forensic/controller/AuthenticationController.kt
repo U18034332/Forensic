@@ -1,6 +1,5 @@
 package com.nlc.forensic.controller
 
-import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.dto.UserEmailDTO
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/v1/auth/")
+@RequestMapping("/api/auth/")
 class AuthenticationController(private val authService: AuthenticationService,
                                private val userRepository: UserRepository
 ) {
