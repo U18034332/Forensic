@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IncidentReportRoutingModule } from './incident-report-routing.module';
 import { IncidentReportComponent } from './incident-report.component';
-import { AddReportComponent } from './add-report/add-report.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
@@ -28,7 +27,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     IncidentReportComponent,
-    AddReportComponent,
     AddReportPanelComponent,
     FundingRelatedFormComponent,
     NonFundingRelatedFormComponent,
