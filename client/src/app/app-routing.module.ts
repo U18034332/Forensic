@@ -10,6 +10,7 @@ import { AuditTrailComponent } from './audit-trail/audit-trail.component';
 import { DiscussComponent } from './discuss/discuss.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AgenciesAndFirmsComponent } from './agencies-and-firms/agencies-and-firms.component';
+import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { CoreModule } from './core/core.module';
 
 const routes: Routes = [
@@ -22,13 +23,14 @@ const routes: Routes = [
   { path: 'doc-management', component: DocManagementComponent },
   { path: 'audit-trail', component: AuditTrailComponent },
   { path: 'discuss', component: DiscussComponent },
-  { path: 'calendar', component: CalendarComponent},
+  { path: 'calendar', component: CalendarComponent },
   { path: 'agencies-and-firms', component: AgenciesAndFirmsComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent } // Added Forgot Password route
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),CoreModule],
+  imports: [RouterModule.forRoot(routes), CoreModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export { routes};
+export { routes };
