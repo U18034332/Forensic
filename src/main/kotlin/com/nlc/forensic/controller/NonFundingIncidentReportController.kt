@@ -32,4 +32,9 @@ class NonFundingIncidentReportController(
     fun getIncidentReports(): ResponseEntity<List<NonFundingIncidentReport>> {
         return ResponseEntity.ok(nonFundingIncidentReportService.getAllNonFundingReports())
     }
+
+    @GetMapping("get/unassigned")
+    fun getUnassignedIncidentReports(): ResponseEntity<List<NonFundingIncidentReport?>> {
+        return ResponseEntity.ok(nonFundingIncidentReportService.getAllUnassignedReports())
+    }
 }

@@ -29,5 +29,4 @@ data class NonFundingIncidentReport(
     @JoinColumn(name = "assigned_user")
     var assignedTo: User? = null,
     var assessmentStage: Int = 0,
-
 )

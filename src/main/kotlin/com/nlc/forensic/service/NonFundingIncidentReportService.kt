@@ -99,6 +99,10 @@ class NonFundingIncidentReportService(
         return nonFundingIncidentReportRepository.findAll()
     }
 
+    fun getAllUnassignedReports(): List<NonFundingIncidentReport?> {
+        return nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
+    }
+
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {
         val latestReportId = nonFundingIncidentReportRepository.count()

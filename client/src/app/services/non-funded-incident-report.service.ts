@@ -24,6 +24,7 @@ export class NonFundedIncidentReportService {
       );
   }
 
+
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
