@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table';
-import { GrantCaseManagementData } from '../dto/grant-case-management.interface';
+import { GrantCaseManagementData } from '../models/grant-case-management.interface';
 
 @Component({
   selector: 'app-grant-case-management',

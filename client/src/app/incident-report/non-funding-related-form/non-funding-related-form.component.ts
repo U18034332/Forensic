@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { NonFundingIncidentReportData } from '../../models/non-funding-report.interface';
 import { NgForm } from '@angular/forms';
 import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
 

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from "rxjs";
-import { NonFundingIncidentReportData } from "../dto/non-funding-report.interface";
+import { NonFundingIncidentReportData } from "../models/non-funding-report.interface";
 import { AuthService } from "./auth-service.service";
 
 @Injectable({
