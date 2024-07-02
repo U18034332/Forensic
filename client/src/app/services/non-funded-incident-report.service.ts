@@ -39,8 +39,8 @@ export class NonFundedIncidentReportService {
   }
 
   private getAuthHeaders(): HttpHeaders {
-    this.token = this.authService.getToken(); // Ensure the latest token is fetched
-    console.log('Token in getAuthHeaders:', this.token); // Log the token in the getAuthHeaders method
+    this.token = this.authService.getToken();
+    console.log('Token in getAuthHeaders:', this.token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     });
