@@ -25,18 +25,20 @@
       <!-- Case Type -->
       <mat-form-field appearance="fill">
         <mat-label for="case-type">Case Type</mat-label>
-        <mat-select id="case-type">
+        <mat-select id="case-type" [(ngModel)]="selectedCaseType" (selectionChange)="onCaseTypeChange($event)">
           <mat-option *ngFor="let type of caseTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Sub-Type -->
-      <mat-form-field appearance="fill">
-        <mat-label for="sub-type">Sub-Type</mat-label>
-        <mat-select id="sub-type">
-          <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div *ngIf="showSubType">
+        <mat-form-field appearance="fill">
+          <mat-label for="sub-type">Sub-Type</mat-label>
+          <mat-select id="sub-type">
+            <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
       <!-- Channel -->
       <mat-form-field appearance="fill">
@@ -62,9 +64,9 @@
         </mat-select>
       </mat-form-field>
 
-      <h2> Report Detection :</h2>
+      <h2>Report Detection:</h2>
 
-  <!-- Level Detected -->
+      <!-- Level Detected -->
       <mat-form-field appearance="fill">
         <mat-label for="level-detected">Level Detected</mat-label>
         <mat-select id="level-detected">
@@ -79,7 +81,6 @@
           <mat-option *ngFor="let division of divisionsDetected" [value]="division">{{ division }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- Add other form fields here as needed -->
 
       <!-- Allocated Description -->
       <mat-form-field appearance="fill">

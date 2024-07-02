@@ -1,49 +1,78 @@
-<!-- incident-report.component.html -->
 <div class="header">
   <div class="title">
     Incident Report
   </div>
   <button mat-raised-button color="primary" class="add-report-button" (click)="openAddReportDialog()">Add Report</button>
- 
 </div>
 
 <mat-tab-group>
   <mat-tab label="Filed Reports">
     <!-- Content for 'Filed Reports' tab -->
+    <h2 class="non-funded-title">Non-Funded Reports</h2>
+    <div class="incident-details-non-funded-container custom-table">
+      <table mat-table [dataSource]="nonFundedIncidentDataSource" class="mat-elevation-z8">
+        <!-- Table header for non-funded reports -->
+        <ng-container *ngFor="let column of nonFundedDisplayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }} </th>
+          <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
+
+        <!-- Table rows for non-funded reports -->
+        <tr mat-header-row *matHeaderRowDef="nonFundedDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: nonFundedDisplayedColumns;"></tr>
+      </table>
+    </div>
+
+    <h2 class="funded-title">Funded Reports</h2>
+    <div class="incident-details-funded-container custom-table">
+      <table mat-table [dataSource]="fundedIncidentDataSource" class="mat-elevation-z8">
+        <!-- Table header for funded reports -->
+        <ng-container *ngFor="let column of fundedDisplayedColumns" [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }} </th>
+          <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
+
+        <!-- Table rows for funded reports -->
+        <tr mat-header-row *matHeaderRowDef="fundedDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: fundedDisplayedColumns;"></tr>
+      </table>
+    </div>
   </mat-tab>
+
   <mat-tab label="Assessment">
     <ng-template matTabContent>
       <!-- Content for 'Assessment' tab -->
       <div>
-        <button mat-button [cdkMenuTriggerFor]="recommendedMenu" aria-label="Recommended Actions">Recommended</button>
-        <button mat-button (click)="openNotRecommendedDialog()">Not Recommended</button>
-      </div>
+        <h2 class="non-funded-title">Non-Funded Assessments</h2>
+        <div class="incident-details-non-funded-container custom-table">
+          <table mat-table [dataSource]="nonFundedAssessmentDataSource" class="mat-elevation-z8">
+            <!-- Table header for non-funded assessments -->
+            <ng-container *ngFor="let column of nonFundedDisplayedColumns" [matColumnDef]="column">
+              <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+            </ng-container>
 
-      <ng-template #recommendedMenu>
-        <div class="example-menu" cdkMenu>
-          <button class="example-menu-item" cdkMenuItem>Users</button>
-          <button class="example-menu-item" cdkMenuItem>Firms</button>
+            <!-- Table rows for non-funded assessments -->
+            <tr mat-header-row *matHeaderRowDef="nonFundedDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: nonFundedDisplayedColumns;"></tr>
+          </table>
         </div>
-      </ng-template>
 
-      <div *ngIf="showRecommended">
-        <!-- Content for recommended option -->
-        <mat-form-field appearance="fill">
-          <mat-label>Select Option</mat-label>
-          <mat-select [(value)]="selectedOption" placeholder="Select an option">
-            <mat-option value="users">Users</mat-option>
-            <mat-option value="firms">Firms</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <h2 class="funded-title">Funded Assessments</h2>
+        <div class="incident-details-funded-container custom-table">
+          <table mat-table [dataSource]="fundedAssessmentDataSource" class="mat-elevation-z8">
+            <!-- Table header for funded assessments -->
+            <ng-container *ngFor="let column of fundedDisplayedColumns" [matColumnDef]="column">
+              <th mat-header-cell *matHeaderCellDef> {{ column | titlecase }} </th>
+              <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+            </ng-container>
+
+            <!-- Table rows for funded assessments -->
+            <tr mat-header-row *matHeaderRowDef="fundedDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: fundedDisplayedColumns;"></tr>
+          </table>
+        </div>
       </div>
-      <!-- Content for not recommended reason -->
-      <!-- <div *ngIf="showNotRecommended">
-       
-        <mat-form-field appearance="fill">
-          <mat-label>Reason for Not Recommended</mat-label>
-          <textarea matInput [(ngModel)]="notRecommendedReason" rows="5" placeholder="Enter reason"></textarea>
-        </mat-form-field>
-      </div> -->
     </ng-template>
   </mat-tab>
 </mat-tab-group>

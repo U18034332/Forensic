@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IncidentReportRoutingModule } from './incident-report-routing.module';
 import { IncidentReportComponent } from './incident-report.component';
-import { AddReportComponent } from './add-report/add-report.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
@@ -15,7 +14,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
@@ -24,11 +22,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table'; 
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatSortModule } from '@angular/material/sort'; 
 
 @NgModule({
   declarations: [
     IncidentReportComponent,
-    AddReportComponent,
     AddReportPanelComponent,
     FundingRelatedFormComponent,
     NonFundingRelatedFormComponent,
@@ -51,9 +52,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatMenuModule,
     CdkMenuModule,
     MatTabsModule,
-    MatCard,
-    MatCardModule
+    MatCardModule,
+    MatTableModule, 
+    MatPaginatorModule,
+    MatSortModule,
+    MatRadioModule
   ],
-  
 })
 export class IncidentReportModule { }
