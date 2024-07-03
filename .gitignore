@@ -35,6 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+.angular
+META-INF
+node_modules
 
 ### Kotlin ###
 .kotlin
@@ -42,3 +45,5 @@ out/
 ### other ###
 .env
 env
+node_modules
+META-INF

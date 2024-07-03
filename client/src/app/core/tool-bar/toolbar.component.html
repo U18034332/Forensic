@@ -1,0 +1,25 @@
+<mat-toolbar class="sticky-toolbar">
+  <a class="logo" href="/dashboard">
+    <img alt="NLC Logo" src="assets/NLC-Logo.png" class="logo-img" />
+  </a>
+  <span class="spacer"></span>
+
+  <button mat-button>
+    <mat-icon>settings</mat-icon>
+  </button>
+
+  <button mat-button>
+    <mat-icon>notifications</mat-icon>
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="userMenu">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-menu #userMenu="matMenu">
+    <app-user-dropdown></app-user-dropdown>
+  </mat-menu>
+</mat-toolbar>
+
+ 
+
+  

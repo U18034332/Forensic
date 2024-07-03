@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="left-panel">
+    <img src="assets/NLC-Logo.png" alt="NLC Logo" class="logo">
+    <h1>NATIONAL LOTTERIES COMMISSION</h1>
+    <h2>Forensic</h2>
+  </div>
+  <div class="right-panel">
+    <div class="login-form">
+      <h3>Log in to your account</h3>
+      <form class="example-form" (ngSubmit)="login()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="email" name="email" placeholder="admin@gmail.com" required>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput [(ngModel)]="password" name="password" type="password" placeholder="****" required>
+        </mat-form-field>
+        <div class="form-check">
+          <mat-checkbox>Remember me</mat-checkbox>
+        </div>
+        <a href="#" class="forgot-password">Forgot password?</a>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </form>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
