@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
-import { FormData } from '../incident-report.model';
+import { NgForm } from '@angular/forms';
+import { FundingIncidentReportData } from '../../dto/funding-related.interface';
 
 @Component({
   selector: 'app-funding-related-form',
@@ -9,7 +10,7 @@ import { FormData } from '../incident-report.model';
   styleUrls: ['./funding-related-form.component.scss']
 })
 export class FundingRelatedFormComponent {
-  @Output() formSubmit: EventEmitter<FormData> = new EventEmitter<FormData>();
+  @Output() formSubmit: EventEmitter<FundingIncidentReportData> = new EventEmitter<FundingIncidentReportData>();
 
   provinces: string[] = [
     'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
@@ -84,35 +85,25 @@ export class FundingRelatedFormComponent {
 
   showSubType: boolean = false;
 
+  report: FundingIncidentReportData = {} as FundingIncidentReportData;
+
   constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  onSubmit(): void {
-    const formData: FormData = {
-      title: '',
-      description: '',
-      fundingAmount: 0, // Assuming funding amount if necessary
-      selectedCaseType: this.selectedCaseType,
-      selectedProvince: this.selectedProvince,
-      selectedStatus: this.selectedStatus,
-      selectedSubType: this.selectedSubType,
-      selectedChannel: this.selectedChannel,
-      selectedPriority: this.selectedPriority,
-      selectedOrganisation: this.selectedOrganisation,
-      selectedSourceDetection: this.selectedSourceDetection,
-      selectedAllocatedDescription: this.selectedAllocatedDescription,
-      selectedSector: this.selectedSector,
-      selectedLevelDetected: this.selectedLevelDetected,
-      selectedDivisionDetected: this.selectedDivisionDetected
-    };
-    this.formSubmit.emit(formData);
-    this.dialogRef.close();
+  submitForm(form: NgForm): void {
+    if (form.valid) {
+      this.formSubmit.emit(this.report);
+      this.dialogRef.close();
+    } else {
+      console.log('Error in the form.');
+    }
   }
 
   onCaseTypeChange(event: MatSelectChange): void {
-    this.showSubType = ['Fraud', 'Forgery'].includes(event.value);
+    // Your existing case type change handling
   }
 }
+

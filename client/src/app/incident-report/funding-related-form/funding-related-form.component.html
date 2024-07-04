@@ -1,7 +1,7 @@
 <mat-card class="custom-card">
   <h2 mat-dialog-title>Funding Related Report</h2>
   <mat-dialog-content class="mat-typography">
-    <form>
+    <form #reportForm="ngForm">
 
       <!-- Start Date -->
       <h3>Start Date</h3>
@@ -134,6 +134,6 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button color="primary" cdkFocusInitial>Submit</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(reportForm)">Submit</button>
   </mat-dialog-actions>
 </mat-card>
