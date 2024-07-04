@@ -1,6 +1,7 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
+import { FormData } from '../incident-report.model';
 
 @Component({
   selector: 'app-funding-related-form',
@@ -8,6 +9,8 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./funding-related-form.component.scss']
 })
 export class FundingRelatedFormComponent {
+  @Output() formSubmit: EventEmitter<FormData> = new EventEmitter<FormData>();
+
   provinces: string[] = [
     'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo',
     'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'
@@ -81,8 +84,6 @@ export class FundingRelatedFormComponent {
 
   showSubType: boolean = false;
 
-  formSubmit: EventEmitter<any> = new EventEmitter<any>();
-
   constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>) {}
 
   onNoClick(): void {
@@ -90,7 +91,10 @@ export class FundingRelatedFormComponent {
   }
 
   onSubmit(): void {
-    const formData = {
+    const formData: FormData = {
+      title: '',
+      description: '',
+      fundingAmount: 0, // Assuming funding amount if necessary
       selectedCaseType: this.selectedCaseType,
       selectedProvince: this.selectedProvince,
       selectedStatus: this.selectedStatus,
@@ -102,8 +106,7 @@ export class FundingRelatedFormComponent {
       selectedAllocatedDescription: this.selectedAllocatedDescription,
       selectedSector: this.selectedSector,
       selectedLevelDetected: this.selectedLevelDetected,
-      selectedDivisionDetected: this.selectedDivisionDetected,
-      // Add other form fields as needed
+      selectedDivisionDetected: this.selectedDivisionDetected
     };
     this.formSubmit.emit(formData);
     this.dialogRef.close();

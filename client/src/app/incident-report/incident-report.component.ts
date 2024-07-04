@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
@@ -11,7 +12,8 @@ import { FundingRelatedReport, NonFundingRelatedReport, FormData } from './incid
   templateUrl: './incident-report.component.html',
   styleUrls: ['./incident-report.component.scss']
 })
-export class IncidentReportComponent {
+export class IncidentReportComponent implements OnInit {
+
   nonFundedDisplayedColumns: string[] = [
     'incidentID', 'incidents', 'reportDate', 'status', 'priority', 'incidentType',
     'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
@@ -22,13 +24,17 @@ export class IncidentReportComponent {
     'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
   ];
 
-  nonFundedIncidentDataSource: FormData[] = [];
-  fundedIncidentDataSource: FormData[] = [];
+  nonFundedIncidentDataSource = new MatTableDataSource<FormData>();
+  fundedIncidentDataSource = new MatTableDataSource<FormData>();
 
-  nonFundedAssessmentDataSource: FormData[] = [];
-  fundedAssessmentDataSource: FormData[] = [];
+  nonFundedAssessmentDataSource = new MatTableDataSource<FormData>();
+  fundedAssessmentDataSource = new MatTableDataSource<FormData>();
 
   constructor(public dialog: MatDialog, private reportService: ReportService) {}
+
+  ngOnInit(): void {
+    // Initialize any required data here
+  }
 
   openAddReportDialog(): void {
     const dialogRef = this.dialog.open(AddReportPanelComponent, {
@@ -68,7 +74,7 @@ export class IncidentReportComponent {
         selectedDivisionDetected: formData.selectedDivisionDetected,
       };
       this.reportService.saveReport(fundingReport).subscribe(() => {
-        this.fundedAssessmentDataSource.push(formData);
+        this.fundedAssessmentDataSource.data = [...this.fundedAssessmentDataSource.data, formData];
       });
     });
   }
@@ -96,7 +102,7 @@ export class IncidentReportComponent {
         selectedDivisionDetected: formData.selectedDivisionDetected,
       };
       this.reportService.saveReport(nonFundingReport).subscribe(() => {
-        this.nonFundedAssessmentDataSource.push(formData);
+        this.nonFundedAssessmentDataSource.data = [...this.nonFundedAssessmentDataSource.data, formData];
       });
     });
   }

@@ -1,23 +1,23 @@
 <mat-card class="custom-card">
   <h2 mat-dialog-title>Non-Funded Report</h2>
   <mat-dialog-content class="mat-typography">
-    <form>
+    <form #reportForm="ngForm">
       <!-- Start Date -->
       <mat-form-field appearance="fill">
         <mat-label for="start-date">Start Date</mat-label>
-        <input matInput id="start-date" type="date" placeholder="Select start date">
+        <input matInput id="start-date" type="date" placeholder="Select start date" [(ngModel)]="report.startDate" name="startDate">
       </mat-form-field>
 
       <!-- Date Reported -->
       <mat-form-field appearance="fill">
         <mat-label for="date-reported">Date Reported</mat-label>
-        <input matInput id="date-reported" type="date" placeholder="Select date reported">
+        <input matInput id="date-reported" type="date" placeholder="Select date reported" [(ngModel)]="report.dateReported" name="dateReported">
       </mat-form-field>
 
       <!-- Province -->
       <mat-form-field appearance="fill">
         <mat-label for="province">Province</mat-label>
-        <mat-select id="province">
+        <mat-select id="province" [(ngModel)]="report.province" name="province">
           <mat-option *ngFor="let province of provinces" [value]="province">{{ province }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -25,25 +25,23 @@
       <!-- Case Type -->
       <mat-form-field appearance="fill">
         <mat-label for="case-type">Case Type</mat-label>
-        <mat-select id="case-type" [(ngModel)]="selectedCaseType" (selectionChange)="onCaseTypeChange($event)">
+        <mat-select id="case-type" [(ngModel)]="report.caseType" name="caseType">
           <mat-option *ngFor="let type of caseTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Sub-Type -->
-      <div *ngIf="showSubType">
-        <mat-form-field appearance="fill">
-          <mat-label for="sub-type">Sub-Type</mat-label>
-          <mat-select id="sub-type">
-            <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="fill">
+        <mat-label for="sub-type">Sub-Type</mat-label>
+        <mat-select id="sub-type" [(ngModel)]="report.caseSubType" name="caseSubType">
+          <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <!-- Channel -->
       <mat-form-field appearance="fill">
         <mat-label for="channel">Channel</mat-label>
-        <mat-select id="channel">
+        <mat-select id="channel" [(ngModel)]="report.channel" name="channel">
           <mat-option *ngFor="let channel of channels" [value]="channel">{{ channel }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -51,7 +49,7 @@
       <!-- Priority -->
       <mat-form-field appearance="fill">
         <mat-label for="priority">Priority</mat-label>
-        <mat-select id="priority">
+        <mat-select id="priority" [(ngModel)]="report.priority" name="priority">
           <mat-option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -59,17 +57,17 @@
       <!-- Status -->
       <mat-form-field appearance="fill">
         <mat-label for="status">Status</mat-label>
-        <mat-select id="status">
+        <mat-select id="status" [(ngModel)]="report.status" name="status">
           <mat-option *ngFor="let status of statuses" [value]="status">{{ status }}</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <h2>Report Detection:</h2>
+      <h2> Report Detection :</h2>
 
       <!-- Level Detected -->
       <mat-form-field appearance="fill">
         <mat-label for="level-detected">Level Detected</mat-label>
-        <mat-select id="level-detected">
+        <mat-select id="level-detected" [(ngModel)]="report.levelDetected" name="levelDetected">
           <mat-option *ngFor="let level of levelsDetected" [value]="level">{{ level }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -77,7 +75,7 @@
       <!-- Division Detected -->
       <mat-form-field appearance="fill">
         <mat-label for="division-detected">Division Detected</mat-label>
-        <mat-select id="division-detected">
+        <mat-select id="division-detected" [(ngModel)]="report.divisionDetected" name="divisionDetected">
           <mat-option *ngFor="let division of divisionsDetected" [value]="division">{{ division }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -85,7 +83,7 @@
       <!-- Allocated Description -->
       <mat-form-field appearance="fill">
         <mat-label for="allocated-description">Allocated Description</mat-label>
-        <mat-select id="allocated-description">
+        <mat-select id="allocated-description" [(ngModel)]="report.allocatedDescription" name="allocatedDescription">
           <mat-option *ngFor="let description of allocatedDescriptions" [value]="description">{{ description }}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -93,6 +91,7 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Close</button>
-    <button mat-button color="primary" cdkFocusInitial>Submit</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(reportForm)">Submit</button>
   </mat-dialog-actions>
 </mat-card>
+
