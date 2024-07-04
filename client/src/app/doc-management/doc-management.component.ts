@@ -10,6 +10,8 @@ import { HttpClient, HttpEventType, HttpRequest, HttpResponse } from '@angular/c
 export class DocManagementComponent {
 
   progress: number | undefined;
+  errorMessage: string | undefined;
+  filesToUpload: File[] = [];
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -18,15 +20,17 @@ export class DocManagementComponent {
   }
 
   onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    this.uploadFile(file);
+    const files: FileList = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      this.filesToUpload.push(files.item(i)!); // Add each selected file to the filesToUpload array
+    }
   }
 
   onDrop(event: DragEvent) {
     event.preventDefault();
-    const file = event.dataTransfer?.files[0];
-    if (file) {
-      this.uploadFile(file);
+    const files = event.dataTransfer!.files;
+    for (let i = 0; i < files.length; i++) {
+      this.filesToUpload.push(files.item(i)!); // Add each dropped file to the filesToUpload array
     }
   }
 
@@ -34,21 +38,51 @@ export class DocManagementComponent {
     event.preventDefault();
   }
 
-  uploadFile(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
+  uploadFiles() {
+    if (this.filesToUpload.length === 0) {
+      this.errorMessage = 'Please select at least one file to upload.';
+      return;
+    }
 
-    const uploadReq = new HttpRequest('POST', 'https://your-upload-api-endpoint', formData, {
-      reportProgress: true,
-    });
+    // Reset progress and error message
+    this.progress = 0;
+    this.errorMessage = undefined;
 
-    this.http.request(uploadReq).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress) {
-        this.progress = Math.round((100 * event.loaded) / event.total!);
-      } else if (event instanceof HttpResponse) {
-        // File uploaded successfully
-        console.log('File uploaded:', event.body);
-      }
+    const totalFiles = this.filesToUpload.length;
+    let filesUploaded = 0;
+
+    this.filesToUpload.forEach(file => {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      const uploadReq = new HttpRequest('POST', 'https://your-upload-api-endpoint', formData, {
+        reportProgress: true,
+      });
+
+      this.http.request(uploadReq).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round((100 * event.loaded) / event.total!);
+        } else if (event instanceof HttpResponse) {
+          // File uploaded successfully
+          console.log('File uploaded:', event.body);
+          filesUploaded++;
+
+          // If all files uploaded, reset progress and clear filesToUpload array
+          if (filesUploaded === totalFiles) {
+            this.progress = undefined;
+            this.filesToUpload = []; // Clear files after successful upload
+            alert('All files uploaded successfully!');
+          }
+        }
+      }, error => {
+        // Handle upload error
+        console.error('Upload error:', error);
+        this.errorMessage = 'Failed to upload one or more files. Please try again.';
+      });
     });
+  }
+
+  removeFile(index: number) {
+    this.filesToUpload.splice(index, 1); // Remove file from filesToUpload array
   }
 }

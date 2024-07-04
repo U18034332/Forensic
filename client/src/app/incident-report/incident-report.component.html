@@ -8,7 +8,7 @@
 <mat-tab-group>
   <mat-tab label="Filed Reports">
     <!-- Content for 'Filed Reports' tab -->
-    <h2 class="non-funded-title">Non-Funded Reports</h2>
+    <h3 class="non-funded-title">Non-Funded Reports</h3>
     <div class="incident-details-non-funded-container custom-table">
       <table mat-table [dataSource]="nonFundedIncidentDataSource" class="mat-elevation-z8">
         <!-- Table header for non-funded reports -->
@@ -23,7 +23,7 @@
       </table>
     </div>
 
-    <h2 class="funded-title">Funded Reports</h2>
+    <h3 class="funded-title">Funded Reports</h3>
     <div class="incident-details-funded-container custom-table">
       <table mat-table [dataSource]="fundedIncidentDataSource" class="mat-elevation-z8">
         <!-- Table header for funded reports -->
@@ -43,7 +43,7 @@
     <ng-template matTabContent>
       <!-- Content for 'Assessment' tab -->
       <div>
-        <h2 class="non-funded-title">Non-Funded Assessments</h2>
+        <h3 class="non-funded-title">Non-Funded Assessments</h3>
         <div class="incident-details-non-funded-container custom-table">
           <table mat-table [dataSource]="nonFundedAssessmentDataSource" class="mat-elevation-z8">
             <!-- Table header for non-funded assessments -->
@@ -58,7 +58,7 @@
           </table>
         </div>
 
-        <h2 class="funded-title">Funded Assessments</h2>
+        <h3 class="funded-title">Funded Assessments</h3>
         <div class="incident-details-funded-container custom-table">
           <table mat-table [dataSource]="fundedAssessmentDataSource" class="mat-elevation-z8">
             <!-- Table header for funded assessments -->

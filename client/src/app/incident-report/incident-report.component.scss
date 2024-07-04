@@ -37,15 +37,18 @@
 /* Specific styling for funded and non-funded titles */
 .funded-title {
   margin-top: 7%;
+  margin-left: 25px;
 }
 
 .non-funded-title {
   margin-top: 2%;
+  margin-left: 25px;
 }
 
 /* Maintain the specific styling for the 'Add Report' button */
 .add-report-button {
   margin-left: 91%; /* Ensure this margin is maintained */
+  margin-bottom: 7px;
 }
 
 .incident-details-container,
