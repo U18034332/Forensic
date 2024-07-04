@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CaseManagementDigitalFormComponent } from './case-management-digital-form/case-management-digital-form.component';
+
 
 @Component({
   selector: 'app-case-management',
@@ -10,10 +13,8 @@ export class CaseManagementComponent {
 
   showFiller = false;
 
-  sideNavOpen() {
+  sideNavOpen() {}
 
-  }
-  
   subFilesExpanded = false;
   displayedColumns: string[] = [
     'caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 
@@ -26,18 +27,21 @@ export class CaseManagementComponent {
 
   toggleSubFiles() {
     this.subFilesExpanded = !this.subFilesExpanded;
+    this.router.navigate(['document-management']);
   }
 
   presentAddFileDialog() {
-    // Implement the dialog logic
     console.log('Add File dialog triggered');
+    this.router.navigate(['document-management']);
   }
 
   presentAddCaseDialog() {
-    // Implement the dialog logic
-    console.log('Add Case dialog triggered');
+    const dialogRef = this.dialog.open(CaseManagementDigitalFormComponent, {
+      width: '30%'
+    });
   }
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   navigateTo(route: string) {
     this.router.navigate([route]);

@@ -7,6 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { CoreModule } from '../core/core.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     CaseManagementComponent
@@ -18,7 +20,9 @@ import { CoreModule } from '../core/core.module';
     MatListModule,
     MatIconModule,
     MatTableModule,
-    CoreModule
+    CoreModule,
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class CaseManagementModule { }
