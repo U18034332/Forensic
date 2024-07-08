@@ -3,12 +3,12 @@ export interface GrantCaseManagementData {
     dateReported: string;
     projectNumber: string;
     province: string;
+    case: string;
     caseType: string;
-    caseSubType: string;
+    caseSubType: string
     channel: string;
     priority: string;
     status: string;
-    case: string;
     levelDetected: string;
     allocatedDescription: string;
     divisionDetected: string;
@@ -23,4 +23,3 @@ export interface GrantCaseManagementData {
     caseName: string;
     caseIds: string;
   }
-  

@@ -1,14 +1,13 @@
-export interface GrantCaseManagementData {
+export interface FundingIncidentReportData {
     startDate: string;
     dateReported: string;
     projectNumber: string;
     province: string;
     caseType: string;
-    caseSubType: string;
+    caseSubType: string
     channel: string;
     priority: string;
     status: string;
-    case: string;
     levelDetected: string;
     allocatedDescription: string;
     divisionDetected: string;
@@ -19,8 +18,12 @@ export interface GrantCaseManagementData {
     selectedProvince: string;
     selectedStatus: string;
     selectedSubType: string;
-    caseId: string;
-    caseName: string;
-    caseIds: string;
+    selectedChannel: string;
+    selectedPriority: string;
+    selectedOrganisation: string;
+    selectedSourceDetection: string;
+    selectedAllocatedDescription: string;
+    selectedSector: string;
+    selectedLevelDetected: string;
+    selectedDivisionDetected: string;
   }
-  

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSidenav } from '@angular/material/sidenav';
 import { CaseManagementDigitalFormComponent } from './case-management-digital-form/case-management-digital-form.component';
-
+import { CaseDetailsComponent } from './case-details/case-details.component';
 
 @Component({
   selector: 'app-case-management',
@@ -10,25 +11,17 @@ import { CaseManagementDigitalFormComponent } from './case-management-digital-fo
   styleUrls: ['./case-management.component.scss']
 })
 export class CaseManagementComponent {
+  @ViewChild('drawer') drawer!: MatSidenav;
 
   showFiller = false;
-
-  sideNavOpen() {}
-
   subFilesExpanded = false;
-  displayedColumns: string[] = [
-    'caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 
-    'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'
-  ];
-  dataSource = [
-    {caseID: 'F-C-N098', cases: 'Case 4', startDate: '24/06/20', status: 'Open', priority: 'Complex', caseType: 'Fraud', province: 'Gauteng', channel: 'Hot-Line', levelDetected: 'Level 4', teams: 'Team 3', lastModified: '27/08/20', caseEndDate: '?'},
-  ];
-  annexures = ['Annexure 1', 'Annexure 2', 'Annexure 3'];
+  sidenavOpen = false;
+  selectedCase: any;
+  isDetailDialogOpen = false;
 
-  toggleSubFiles() {
-    this.subFilesExpanded = !this.subFilesExpanded;
-    this.router.navigate(['document-management']);
-  }
+
+
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   presentAddFileDialog() {
     console.log('Add File dialog triggered');
@@ -41,7 +34,16 @@ export class CaseManagementComponent {
     });
   }
 
-  constructor(private router: Router, private dialog: MatDialog) {}
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+    const dialogRef = this.dialog.open(CaseDetailsComponent, {
+      width: '30%'
+    });
+  }
+
+  
+
 
   navigateTo(route: string) {
     this.router.navigate([route]);

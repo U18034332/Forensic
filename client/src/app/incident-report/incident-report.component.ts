@@ -4,7 +4,7 @@ import { FundingRelatedFormComponent } from './funding-related-form/funding-rela
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { IncidentReportService } from '../services/incident-report.service';
-import { FundingIncidentReportData } from '../dto/funding-related.interface';
+import { FundingIncidentReportData } from '../dto/funding-related-form.interface';
 import { NonFundingIncidentReportData } from '../dto/non-funding-report.interface';
 import { AssessmentFundedReport } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
