@@ -5,8 +5,6 @@ import { IncidentReportComponent } from './incident-report.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
-import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,6 +24,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table'; 
 import { MatPaginatorModule } from '@angular/material/paginator'; 
 import { MatSortModule } from '@angular/material/sort'; 
+import { AssessmentFundingComponent } from './assessment-funding/assessment-funding.component';
+import { AssessmentNonFundingComponent } from './assessment-non-funding/assessment-non-funding.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
     AddReportPanelComponent,
     FundingRelatedFormComponent,
     NonFundingRelatedFormComponent,
-    NotRecommendedDialogComponent
+    AssessmentFundingComponent,
+    AssessmentNonFundingComponent,
   ],
   imports: [
     CommonModule,

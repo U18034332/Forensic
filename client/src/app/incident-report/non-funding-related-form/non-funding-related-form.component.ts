@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { AssessmentNonFundedReport, NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
 import { NgForm } from '@angular/forms';
-
+import { IncidentReportService } from '../../services/incident-report.service';
 @Component({
   selector: 'app-non-funding-related-form',
   templateUrl: './non-funding-related-form.component.html',
@@ -26,7 +26,7 @@ export class NonFundingRelatedFormComponent {
 
   report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>) {}
+  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>, private incidentReportService: IncidentReportService) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -34,10 +34,17 @@ export class NonFundingRelatedFormComponent {
 
   submitForm(form: NgForm) {
     if (form.valid) {
-      this.formSubmit.emit(this.report);
-      this.dialogRef.close();
-    } else {
-      console.log('Error in the form.');
+      const reportData: AssessmentNonFundedReport ={
+        ...this.report,
+      };
+     this.incidentReportService.addNonFundingReport(reportData);
+     this.dialogRef.close();
+    }else {
+      console.log('Error in the form');
     }
   }
 }
+// this.formSubmit.emit(this.report);
+// this.dialogRef.close();
+// } else {
+// console.log('Error in the form.');

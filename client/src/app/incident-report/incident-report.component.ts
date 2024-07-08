@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
-import { ReportService } from './incident-report.service';
-import { FundingRelatedReport, NonFundingRelatedReport, FormData } from './incident-report.model';
+import { IncidentReportService } from '../services/incident-report.service';
+import { FundingIncidentReportData } from '../dto/funding-related.interface';
+import { NonFundingIncidentReportData } from '../dto/non-funding-report.interface';
+import { AssessmentFundedReport } from '../dto/funding-related.interface';
+import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
 
 @Component({
   selector: 'app-incident-report',
@@ -13,27 +15,26 @@ import { FundingRelatedReport, NonFundingRelatedReport, FormData } from './incid
   styleUrls: ['./incident-report.component.scss']
 })
 export class IncidentReportComponent implements OnInit {
+  fundedAssessmentReports: AssessmentFundedReport[] = [];
+  nonFundedAssessmentReports: AssessmentNonFundedReport[] = [];
 
-  nonFundedDisplayedColumns: string[] = [
-    'incidentID', 'incidents', 'reportDate', 'status', 'priority', 'incidentType',
-    'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
-  ];
-
-  fundedDisplayedColumns: string[] = [
-    'incidentID', 'incidents', 'reportDate', 'status', 'priority', 'incidentType',
-    'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
-  ];
-
-  nonFundedIncidentDataSource = new MatTableDataSource<FormData>();
-  fundedIncidentDataSource = new MatTableDataSource<FormData>();
-
-  nonFundedAssessmentDataSource = new MatTableDataSource<FormData>();
-  fundedAssessmentDataSource = new MatTableDataSource<FormData>();
-
-  constructor(public dialog: MatDialog, private reportService: ReportService) {}
+  constructor(
+    public dialog: MatDialog,
+    private incidentReportService: IncidentReportService
+  ) {}
 
   ngOnInit(): void {
-    // Initialize any required data here
+    this.loadAssessmentReports();
+  }
+
+  loadAssessmentReports(): void {
+    this.incidentReportService.getFundedAssessmentReports().subscribe(reports => {
+      this.fundedAssessmentReports = reports;
+    });
+
+    this.incidentReportService.getNonFundedAssessmentReports().subscribe(reports => {
+       this.nonFundedAssessmentReports = reports;
+      });
   }
 
   openAddReportDialog(): void {
@@ -55,27 +56,14 @@ export class IncidentReportComponent implements OnInit {
       width: '30%'
     });
 
-    dialogRef.componentInstance.formSubmit.subscribe((formData: FormData) => {
-      const fundingReport: FundingRelatedReport = {
-        title: formData.title,
-        description: formData.description,
-        fundingAmount: formData.fundingAmount || 0,
-        selectedCaseType: formData.selectedCaseType,
-        selectedProvince: formData.selectedProvince,
-        selectedStatus: formData.selectedStatus,
-        selectedSubType: formData.selectedSubType,
-        selectedChannel: formData.selectedChannel,
-        selectedPriority: formData.selectedPriority,
-        selectedOrganisation: formData.selectedOrganisation,
-        selectedSourceDetection: formData.selectedSourceDetection,
-        selectedAllocatedDescription: formData.selectedAllocatedDescription,
-        selectedSector: formData.selectedSector,
-        selectedLevelDetected: formData.selectedLevelDetected,
-        selectedDivisionDetected: formData.selectedDivisionDetected,
+    dialogRef.componentInstance.formSubmit.subscribe((formData: FundingIncidentReportData) => {
+      const fundingReport: AssessmentFundedReport = {
+        ...formData,
+        id: Date.now(),
+        status: 'new'
       };
-      this.reportService.saveReport(fundingReport).subscribe(() => {
-        this.fundedAssessmentDataSource.data = [...this.fundedAssessmentDataSource.data, formData];
-      });
+
+      this.incidentReportService.addFundingReport(fundingReport);
     });
   }
 
@@ -84,26 +72,14 @@ export class IncidentReportComponent implements OnInit {
       width: '30%'
     });
 
-    dialogRef.componentInstance.formSubmit.subscribe((formData: FormData) => {
-      const nonFundingReport: NonFundingRelatedReport = {
-        title: formData.title,
-        description: formData.description,
-        selectedCaseType: formData.selectedCaseType,
-        selectedProvince: formData.selectedProvince,
-        selectedStatus: formData.selectedStatus,
-        selectedSubType: formData.selectedSubType,
-        selectedChannel: formData.selectedChannel,
-        selectedPriority: formData.selectedPriority,
-        selectedOrganisation: formData.selectedOrganisation,
-        selectedSourceDetection: formData.selectedSourceDetection,
-        selectedAllocatedDescription: formData.selectedAllocatedDescription,
-        selectedSector: formData.selectedSector,
-        selectedLevelDetected: formData.selectedLevelDetected,
-        selectedDivisionDetected: formData.selectedDivisionDetected,
+    dialogRef.componentInstance.formSubmit.subscribe((formData: NonFundingIncidentReportData) => {
+      const nonFundingReport: AssessmentNonFundedReport = {
+        ...formData,
+        id: Date.now(),
+        status: 'assessment'
       };
-      this.reportService.saveReport(nonFundingReport).subscribe(() => {
-        this.nonFundedAssessmentDataSource.data = [...this.nonFundedAssessmentDataSource.data, formData];
-      });
+
+      this.incidentReportService.addNonFundingReport(nonFundingReport);
     });
   }
 }

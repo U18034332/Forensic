@@ -1,17 +1,20 @@
 export interface FundingIncidentReportData {
-    startDate: string;
-    dateReported: string;
-    projectNumber: string;
-    province: string;
-    caseType: string;
-    caseSubType: string
-    channel: string;
-    priority: string;
-    status: string;
-    levelDetected: string;
-    allocatedDescription: string;
-    divisionDetected: string;
-    organisation: string;
-    sourceDetection: string;
-    sector: string;
-  }
+  id?: number;
+  caseID: string;
+  cases: string;
+  startDate: Date;
+  status: string;
+  priority: string;
+  caseType: string;
+  province: string;
+  channel: string;
+  levelDetected: string;
+  teams: string;
+  lastModified: Date;
+  caseEndDate: Date;
+  // Add other fields from your form
+}
+
+export interface AssessmentFundedReport extends FundingIncidentReportData {
+  status: string;
+}

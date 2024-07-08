@@ -3,6 +3,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { NgForm } from '@angular/forms';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { AssessmentFundedReport } from '../../dto/funding-related.interface';
+import { IncidentReportService } from '../../services/incident-report.service';
 
 @Component({
   selector: 'app-funding-related-form',
@@ -87,7 +89,7 @@ export class FundingRelatedFormComponent {
 
   report: FundingIncidentReportData = {} as FundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>) {}
+  constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>, private incidentReportService: IncidentReportService) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -95,15 +97,19 @@ export class FundingRelatedFormComponent {
 
   submitForm(form: NgForm): void {
     if (form.valid) {
-      this.formSubmit.emit(this.report);
+      const reportData: AssessmentFundedReport = {
+        ...this.report,
+        // status: 'New'
+      };
+      this.incidentReportService.addFundingReport(reportData);
+      //this.formSubmit.emit(this.report);
       this.dialogRef.close();
     } else {
       console.log('Error in the form.');
     }
   }
-
   onCaseTypeChange(event: MatSelectChange): void {
-    // Your existing case type change handling
+    this.selectedCaseType = event.value;
+    // Add any additional logic needed when the case type changes
   }
 }
-
