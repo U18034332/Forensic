@@ -14,16 +14,6 @@
     z-index: 1000; /* Ensure it is above other elements */
   }
   
-  /* Ensure side-nav is below the toolbar */
-  .example-sidenav {
-    margin-top: 64px; /* Adjust this value if the toolbar height is different */
-    z-index: 900; /* Ensure it's below the toolbar */
-  }
-  
-  /* Ensure content is below the toolbar and side-nav */
-  .example-container {
-    padding-top: 64px; /* Adjust this value to match the toolbar height */
-    margin-left: 350px; /* Adjust this value to match the side-nav width */
-    z-index: 800; /* Ensure it's below the side-nav */
-  }
+ 
+
   

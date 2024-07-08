@@ -11,6 +11,8 @@ html, body {
     height: 100%;
     margin-bottom: 2em;
   }
+
+  
   
   .example-sidenav-content {
     display: flex;
@@ -36,3 +38,31 @@ html, body {
 
   }
   
+  .title {
+    margin-left: 85px;
+    margin-top: 39px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .button-group {
+    float: right;
+    margin-bottom: 20px;
+  }
+  
+  .addFile-c-m-button, .addCase-c-m-button {
+    border-radius: 5px;
+    margin-left: 5px; 
+    float: right;
+    margin-bottom: 15px;
+    margin-right: 45px;
+  }
+  
+  .custom-table {
+    margin-left: 20px;
+    overflow-y: auto;
+  }
+  
+  .sub-files-header {
+    cursor: pointer;
+  }

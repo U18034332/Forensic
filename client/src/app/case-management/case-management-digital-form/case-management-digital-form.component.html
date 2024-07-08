@@ -1,1 +1,109 @@
-<p>case-management-digital-form works!</p>
+<mat-card class="custom-card">
+    <h2 style="text-align: center;">
+        Non-Funding Related<br>Case Management Form
+      </h2>
+  <mat-dialog-content class="mat-typography">
+    <form #caseForm="ngForm">
+      <!-- Case ID -->
+      <mat-form-field appearance="fill" class="case-id-dropdown">
+        <mat-label>Case ID</mat-label>
+        <mat-select [(ngModel)]="case.caseID" name="caseId">
+          <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    
+
+      <!-- Start Date -->
+      <mat-form-field appearance="fill">
+        <mat-label for="start-date">Start Date</mat-label>
+        <input matInput id="start-date" type="date" placeholder="Selected start date" [(ngModel)]="case.startDate" name="startDate">
+      </mat-form-field>
+
+      <!-- Date Reported -->
+      <mat-form-field appearance="fill">
+        <mat-label for="date-reported">Date Reported</mat-label>
+        <input matInput id="date-reported" type="date" placeholder="Select date reported" [(ngModel)]="case.dateReported" name="dateReported">
+      </mat-form-field>
+
+      <!-- Province -->
+      <mat-form-field appearance="fill">
+        <mat-label for="province">Selected Province</mat-label>
+        <mat-select id="province" [(ngModel)]="case.province" name="province">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Case Type -->
+      <mat-form-field appearance="fill">
+        <mat-label for="case-type">Selected Case Type</mat-label>
+        <mat-select id="case-type" [(ngModel)]="case.caseType" name="caseType">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Sub-Type -->
+      <mat-form-field appearance="fill">
+        <mat-label for="sub-type">Selected Sub-Type</mat-label>
+        <mat-select id="sub-type" [(ngModel)]="case.caseSubType" name="caseSubType">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Channel -->
+      <mat-form-field appearance="fill">
+        <mat-label for="channel">Selected Channel</mat-label>
+        <mat-select id="channel" [(ngModel)]="case.channel" name="channel">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Priority -->
+      <mat-form-field appearance="fill">
+        <mat-label for="priority">Selected Priority</mat-label>
+        <mat-select id="priority" [(ngModel)]="case.priority" name="priority">
+         
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Status -->
+      <mat-form-field appearance="fill">
+        <mat-label for="status">Status</mat-label>
+        <mat-select id="status" [(ngModel)]="case.status" name="status">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <h2> Report Detection :</h2>
+
+      <!-- Level Detected -->
+      <mat-form-field appearance="fill">
+        <mat-label for="level-detected">Selected Level Detected</mat-label>
+        <mat-select id="level-detected" [(ngModel)]="case.levelDetected" name="levelDetected">
+         
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Division Detected -->
+      <mat-form-field appearance="fill">
+        <mat-label for="division-detected">Selected Division Detected</mat-label>
+        <mat-select id="division-detected" [(ngModel)]="case.divisionDetected" name="divisionDetected">
+          
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Allocated Description -->
+      <mat-form-field appearance="fill">
+        <mat-label for="allocated-description">Selected Allocated Description</mat-label>
+        <mat-select id="allocated-description" [(ngModel)]="case.allocatedDescription" name="allocatedDescription">
+          
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(caseForm)">Submit</button>
+  </mat-dialog-actions>
+</mat-card>
+

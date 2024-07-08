@@ -1,6 +1,7 @@
-export interface NonFundingIncidentReportData {
+export interface FundingIncidentReportData {
     startDate: string;
     dateReported: string;
+    projectNumber: string;
     province: string;
     caseType: string;
     caseSubType: string
@@ -10,6 +11,9 @@ export interface NonFundingIncidentReportData {
     levelDetected: string;
     allocatedDescription: string;
     divisionDetected: string;
+    organisation: string;
+    sourceDetection: string;
+    sector: string;
     selectedCaseType: string;
     selectedProvince: string;
     selectedStatus: string;
@@ -23,4 +27,3 @@ export interface NonFundingIncidentReportData {
     selectedLevelDetected: string;
     selectedDivisionDetected: string;
   }
-  

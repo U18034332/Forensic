@@ -1,14 +1,26 @@
 export interface GrantCaseManagementData {
-    caseID: string;
-    cases: string;
     startDate: string;
-    status: string;
-    priority: string;
-    caseType: string;
+    dateReported: string;
+    projectNumber: string;
     province: string;
+    caseType: string;
+    caseSubType: string;
     channel: string;
+    priority: string;
+    status: string;
+    case: string;
     levelDetected: string;
-    teams: string;
-    lastModified: string;
-    caseEndDate: string;
-}
+    allocatedDescription: string;
+    divisionDetected: string;
+    organisation: string;
+    sourceDetection: string;
+    sector: string;
+    selectedCaseType: string;
+    selectedProvince: string;
+    selectedStatus: string;
+    selectedSubType: string;
+    caseId: string;
+    caseName: string;
+    caseIds: string;
+  }
+  

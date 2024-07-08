@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { NgForm } from '@angular/forms';
-import { FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { FundingIncidentReportData } from '../../dto/funding-related-form.interface';
 
 @Component({
   selector: 'app-funding-related-form',

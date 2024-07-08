@@ -1,26 +1,25 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, tap, throwError } from "rxjs";
-import { FundingIncidentReportData } from "../dto/funding-related-form.interface";
+import { Observable, throwError } from "rxjs";
+import { tap, catchError } from "rxjs/operators";
+import { CaseManagementReportData } from "../dto/add-case-management-form.interface";
 import { AuthService } from "./auth-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FundingRelatedService {
+export class CaseManagementFormService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/incident-report/funding';
-  private token: string | null = null; // Initialize token as nullable string
+  private apiUrl = 'http://localhost:8080/api/v1/case-management';
+  private token = this.authService.getToken();
 
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.token = this.authService.getToken() || null; // Assign token or null if getToken() returns null
-  }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
-  addFundingRelatedReport(fundingReport: FundingIncidentReportData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/create-report`, fundingReport, { headers: this.getAuthHeaders() })
+  addCaseManagementReport(caseReport: CaseManagementReportData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/create-report`, caseReport, { headers: this.getAuthHeaders() })
       .pipe(
         tap((response: any) => {
-          console.log('Funding report submitted successfully', response);
+          console.log('Case report submitted successfully', response);
         }),
         catchError(this.handleError)
       );
@@ -40,7 +39,7 @@ export class FundingRelatedService {
   }
 
   private getAuthHeaders(): HttpHeaders {
-    this.token = this.authService.getToken() || null; // Update token or null if getToken() returns null
+    this.token = this.authService.getToken();
     console.log('Token in getAuthHeaders:', this.token);
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`

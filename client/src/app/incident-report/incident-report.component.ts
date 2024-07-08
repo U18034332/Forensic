@@ -15,13 +15,13 @@ import { FundingRelatedReport, NonFundingRelatedReport, FormData } from './incid
 export class IncidentReportComponent implements OnInit {
 
   nonFundedDisplayedColumns: string[] = [
-    'incidentID', 'incidents', 'reportDate', 'status', 'priority', 'incidentType',
-    'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
+    'Case ID', 'Incidents', 'Report Date', 'Status', 'priority', 'incident Type',
+    'location', 'channel', 'level Detected', 'teams', 'last Modified', 'incident End-Date'
   ];
 
   fundedDisplayedColumns: string[] = [
-    'incidentID', 'incidents', 'reportDate', 'status', 'priority', 'incidentType',
-    'location', 'channel', 'levelDetected', 'teams', 'lastModified', 'incidentEndDate'
+    'case ID', 'incidents', 'report Date', 'status', 'priority', 'incident Type',
+    'location', 'channel', 'level Detected', 'teams', 'last Modified', 'incident End-Date'
   ];
 
   nonFundedIncidentDataSource = new MatTableDataSource<FormData>();
