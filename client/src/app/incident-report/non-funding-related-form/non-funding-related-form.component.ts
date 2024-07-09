@@ -25,31 +25,28 @@ export class NonFundingRelatedFormComponent {
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
 
-  report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData
-  
+  report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>,private reportService: NonFundedIncidentReportService) {}
+  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>, private reportService: NonFundedIncidentReportService) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  submitForm(form: NgForm) {
+  submitForm(form: NgForm): void {
     if (form.valid) {
       console.log(this.report);
       this.reportService.addNonFundingRelatedIncidentReport(this.report)
         .subscribe((response) => {
           console.log(response);
-          }, (error) => {
-            console.log(error);
-          }
-        )
+          this.formSubmit.emit(this.report);
+          this.dialogRef.close();
+          form.resetForm();
+        }, (error) => {
+          console.log(error);
+        });
     } else {
       console.log("Error in the form.");
     }
   }
 }
-// this.formSubmit.emit(this.report);
-// this.dialogRef.close();
-// } else {
-// console.log('Error in the form.');
