@@ -17,7 +17,7 @@ import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
 })
 export class IncidentReportComponent implements OnInit {
 fundedAssessmentReports: AssessmentFundedReport[][] = [];
- nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
+nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
 
 
   constructor(

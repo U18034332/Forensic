@@ -102,7 +102,6 @@ export class FundingRelatedFormComponent {
         // status: 'New'
       };
       this.incidentReportService.addFundingReport(reportData);
-      //this.formSubmit.emit(this.report);
       this.dialogRef.close();
     } else {
       console.log('Error in the form.');

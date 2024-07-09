@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
 
 @Component({
