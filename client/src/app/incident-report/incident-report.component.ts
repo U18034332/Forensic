@@ -1,77 +1,99 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
-import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
+import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
+import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
+import { IncidentReportService } from '../services/incident-report.service';
+import { FundingIncidentReportData } from '../dto/funding-related.interface';
+import { NonFundingIncidentReportData } from '../dto/non-funding-report.interface';
+import { AssessmentFundedReport } from '../dto/funding-related.interface';
+import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
+
 
 @Component({
   selector: 'app-incident-report',
   templateUrl: './incident-report.component.html',
   styleUrls: ['./incident-report.component.scss']
 })
-export class IncidentReportComponent {
-  showRecommended = false;
-  showNotRecommended = false;
-  selectedOption: string = '';
-  notRecommendedReason: string = '';
+export class IncidentReportComponent implements OnInit {
+fundedAssessmentReports: AssessmentFundedReport[][] = [];
+ nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
 
-  constructor(private router: Router, public dialog: MatDialog) {}
 
-  navigateTo(route: string): void {
-    this.router.navigate([route]);
+  constructor(
+    public dialog: MatDialog,
+    private incidentReportService: IncidentReportService
+  ) {}
+
+
+  ngOnInit(): void {
+    this.loadAssessmentReports();
   }
+
+
+  loadAssessmentReports(): void {
+    this.incidentReportService.getFundedAssessmentReports().subscribe(reports => {
+      this.fundedAssessmentReports = reports.map(report => [report]);
+    });
+
+
+    this.incidentReportService.getNonFundedAssessmentReports().subscribe(reports => {
+      this.nonFundedAssessmentReports = reports.map(report => [report]);
+    });
+  }
+
 
   openAddReportDialog(): void {
-    this.dialog.open(AddReportPanelComponent, {
-      width: '250px',
-      data: { reason: '' } // Initialize with empty reason
+    const dialogRef = this.dialog.open(AddReportPanelComponent, {
+      width: '250px'
     });
-  }
 
-  openFundingRelatedReportDialog(): void {
-    const dialogRef = this.dialog.open(FundingRelatedFormComponent, {
-      width: '10%', // Set the width to 55% of the viewport width
-    });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The funding related form dialog was closed');
-      // Optionally handle the result if needed
-    });
-  }
-
-  showRecommendedDropdown(): void {
-    this.showRecommended = true;
-    this.showNotRecommended = false;
-  }
-
-  openNotRecommendedDialog(): void {
-    const dialogRef = this.dialog.open(NotRecommendedDialogComponent, {
-      width: '150px',
-      data: { reason: '' } // Initialize with empty reason
-    });
-
-    dialogRef.afterClosed().subscribe((result: string) => {
-      if (result) {
-        console.log('Received reason from dialog:', result);
-        // Optionally, you can handle the reason here
-        this.notRecommendedReason = result; // Update the reason in your component
-        this.submitNotRecommendedReason(); // Optionally, submit the reason
+      if (result === 'funding') {
+        this.openFundingRelatedReportDialog();
+      } else if (result === 'non-funding') {
+        this.openNonFundingRelatedReportDialog();
       }
     });
   }
 
-  toggleReason(): void {
-    this.showNotRecommended = !this.showNotRecommended;
-    if (!this.showNotRecommended) {
-      this.notRecommendedReason = ''; // Clear the reason if not recommended is toggled off
-    }
+
+  openFundingRelatedReportDialog(): void {
+    const dialogRef = this.dialog.open(FundingRelatedFormComponent, {
+      width: '30%'
+    });
+
+
+    dialogRef.componentInstance.formSubmit.subscribe((formData: FundingIncidentReportData) => {
+      const fundingReport: AssessmentFundedReport = {
+        ...formData,
+        id: Date.now(),
+        status: 'new'
+      };
+
+
+      this.incidentReportService.addFundingReport(fundingReport);
+    });
   }
 
-  submitNotRecommendedReason(): void {
-    console.log('Submitting reason:', this.notRecommendedReason);
-    // Clear or handle the reason as needed
-    this.notRecommendedReason = '';
-    this.showNotRecommended = false; // Close the dialog or textarea after submission
+
+  openNonFundingRelatedReportDialog(): void {
+    const dialogRef = this.dialog.open(NonFundingRelatedFormComponent, {
+      width: '30%'
+    });
+
+
+    dialogRef.componentInstance.formSubmit.subscribe((formData: NonFundingIncidentReportData) => {
+      const nonFundingReport: AssessmentNonFundedReport = {
+        ...formData,
+        id: Date.now(),
+        status: 'assessment'
+      };
+
+
+      this.incidentReportService.addNonFundingReport(nonFundingReport);
+    });
   }
 }
+

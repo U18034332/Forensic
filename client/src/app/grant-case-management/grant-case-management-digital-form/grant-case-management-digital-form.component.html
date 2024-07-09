@@ -1,0 +1,90 @@
+<mat-card class="custom-card">
+    <h2 style="text-align: center;">
+        Funding Related<br>Case Management Form
+      </h2>
+    <mat-dialog-content class="mat-typography">
+        <form #caseForm="ngForm" (ngSubmit)="submitForm(caseForm)">
+
+            <mat-form-field appearance="fill" class="case-id-dropdown">
+                <mat-label>Case ID</mat-label>
+                <mat-select [(ngModel)]="case.caseId" name="caseId">
+                  <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Start Date</mat-label>
+              <input matInput [(ngModel)]="case.startDate" name="startDate">
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Date Reported</mat-label>
+              <input matInput [(ngModel)]="case.dateReported" name="dateReported">
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Province</mat-label>
+              <mat-select [(ngModel)]="case.province" name="province">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Case Type</mat-label>
+              <mat-select [(ngModel)]="case.caseType" name="caseType">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Sub Type</mat-label>
+              <mat-select [(ngModel)]="case.caseSubType" name="caseSubType">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected channel</mat-label>
+              <mat-select [(ngModel)]="case.channel" name="channel">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Priority</mat-label>
+              <mat-select [(ngModel)]="case.priority" name="priority">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Status</mat-label>
+              <mat-select [(ngModel)]="case.status" name="status">
+                
+              </mat-select>
+            </mat-form-field>
+            
+            <h2> Report Detection :</h2>
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Division Detected</mat-label>
+              <mat-select [(ngModel)]="case.divisionDetected" name="divisionDetected">
+                
+              </mat-select>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Selected Allocated Description</mat-label>
+              <mat-select [(ngModel)]="case.allocatedDescription" name="allocatedDescription">
+                
+              </mat-select>
+            </mat-form-field>
+
+          </form>
+          
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button color="primary" cdkFocusInitial (click)="submitForm(caseForm)">Submit</button>
+    </mat-dialog-actions>
+  </mat-card>
+  

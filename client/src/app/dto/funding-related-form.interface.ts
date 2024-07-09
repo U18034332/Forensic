@@ -1,0 +1,29 @@
+// export interface FundingIncidentReportData {
+//     startDate: string;
+//     dateReported: string;
+//     projectNumber: string;
+//     province: string;
+//     caseType: string;
+//     caseSubType: string
+//     channel: string;
+//     priority: string;
+//     status: string;
+//     levelDetected: string;
+//     allocatedDescription: string;
+//     divisionDetected: string;
+//     organisation: string;
+//     sourceDetection: string;
+//     sector: string;
+//     selectedCaseType: string;
+//     selectedProvince: string;
+//     selectedStatus: string;
+//     selectedSubType: string;
+//     selectedChannel: string;
+//     selectedPriority: string;
+//     selectedOrganisation: string;
+//     selectedSourceDetection: string;
+//     selectedAllocatedDescription: string;
+//     selectedSector: string;
+//     selectedLevelDetected: string;
+//     selectedDivisionDetected: string;
+//   }

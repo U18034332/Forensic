@@ -1,0 +1,143 @@
+<mat-card class="grant-case-details-card">
+
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <h2>Grant Case Details</h2>
+  
+    <!-- Actions Menu -->
+    <div class="actions-container">
+      <button mat-button [matMenuTriggerFor]="statusMenu" class="status-action-btn">Change Status</button>
+      <mat-menu #statusMenu="matMenu" yPosition="below">
+        <button mat-menu-item>New</button>
+        <button mat-menu-item>Open</button>
+        <button mat-menu-item>In Progress</button>
+        <button mat-menu-item>Closed</button>
+      </mat-menu>
+  
+      <button mat-button [matMenuTriggerFor]="belowMenu" class="case-details-action-btn">Actions</button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item class="refer-action-btn">Refer</button>
+        <button mat-menu-item class="recommend-action-btn">Recommend</button>
+      </mat-menu>
+    </div>
+  
+    <!-- Container for Case Details -->
+    <div class="annexure-panels">
+      <h3>Annexure Section :</h3>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure A</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuA">Actions</button>
+          <mat-menu #annexureMenuA="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">View File</button>
+            <button mat-menu-item class="recommend-action-btn">Download File</button>
+            <button mat-menu-item class="recommend-action-btn">Compose / Edit Annexure</button>
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure A content here...</p>
+      </mat-expansion-panel>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure B</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuB">Actions</button>
+          <mat-menu #annexureMenuB="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure B content here...</p>
+      </mat-expansion-panel>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure C</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuC">Actions</button>
+          <mat-menu #annexureMenuC="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure C content here...</p>
+      </mat-expansion-panel>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure D</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuD">Actions</button>
+          <mat-menu #annexureMenuD="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure D content here...</p>
+      </mat-expansion-panel>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure E</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuE">Actions</button>
+          <mat-menu #annexureMenuE="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure E content here...</p>
+      </mat-expansion-panel>
+  
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Annexure F</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+          <button mat-button [matMenuTriggerFor]="annexureMenuF">Actions</button>
+          <mat-menu #annexureMenuF="matMenu" yPosition="below">
+            <button mat-menu-item class="refer-action-btn">Refer</button>
+            <button mat-menu-item class="recommend-action-btn">Recommend</button>
+          </mat-menu>
+        </mat-action-row>
+        <p>Annexure F content here...</p>
+      </mat-expansion-panel>
+    </div>
+  
+    <div class="comment-input-field">
+      <h3>Comment</h3>
+  
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Section Commenting On :</mat-label>
+          <input matInput placeholder="Section" value="">
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Leave a comment</mat-label>
+          <textarea matInput placeholder=""></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+
+        <button mat-raised-button class="comment-submit-btn">Submit</button>
+   
+
+     <!-- Close Button -->
+     <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Close</button>
+      </mat-dialog-actions>
+
+  </mat-card>
+  

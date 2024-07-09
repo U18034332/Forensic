@@ -1,13 +1,13 @@
-.example-container {
+.main-sidenav-container {
     height: 100vh;
     padding-top: 64px; /* Adjust this value to the height of your toolbar */
   }
   
-  .example-sidenav {
+  .main-sidenav-content {
     width: 350px; /* Fixed width for the drawer */
     overflow: hidden; /* Completely remove scroll */
     position: absolute;
-    top: 64px; /* Adjust this value to the height of your toolbar */
+    top: 33px; /* Adjust this value to the height of your toolbar */
     z-index: 100; /* Ensure it's above the content */
   }
   
@@ -31,8 +31,8 @@
   
   .menu-icon {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 35px;
+    left: 35px;
   }
   
   /* Add padding to the drawer and content */
@@ -76,7 +76,7 @@
   }
   
   mat-nav-list a {
-    display: block;
+    display: flex;
     margin-bottom: 1em;
     margin-top: 2em;
   }
