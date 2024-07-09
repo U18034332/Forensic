@@ -72,6 +72,3 @@ export class IncidentReportComponent implements OnInit {
     });
   }
 }
-
-
-
