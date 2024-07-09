@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { FundingIncidentReportData } from '../dto/funding-related-form.interface';
+import { FundingIncidentReportData } from '../dto/funding-related.interface';
 import { NonFundingIncidentReportData } from '../dto/non-funding-report.interface';
 import { AssessmentFundedReport } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';

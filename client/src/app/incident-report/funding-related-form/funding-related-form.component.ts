@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { NgForm } from '@angular/forms';
-import { FundingIncidentReportData } from '../../dto/funding-related-form.interface';
-import {assess}
+import { FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { AssessmentFundedReport } from '../../dto/funding-related.interface';
 import { IncidentReportService } from '../../services/incident-report.service';
 
 @Component({
