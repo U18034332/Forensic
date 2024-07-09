@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSidenav } from '@angular/material/sidenav';
 import { CaseManagementDigitalFormComponent } from './case-management-digital-form/case-management-digital-form.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
+import { AnnexureADigitalFormComponent } from './annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Import the new component
 
 @Component({
   selector: 'app-case-management',
@@ -18,8 +19,6 @@ export class CaseManagementComponent {
   sidenavOpen = false;
   selectedCase: any;
   isDetailDialogOpen = false;
-
-
 
   constructor(private router: Router, private dialog: MatDialog) {}
 
@@ -42,8 +41,11 @@ export class CaseManagementComponent {
     });
   }
 
-  
-
+  presentAddAnnexureADialog() {
+    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
+      width: '30%'
+    });
+  }
 
   navigateTo(route: string) {
     this.router.navigate([route]);

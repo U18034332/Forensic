@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
 import { DocManagementModule } from './doc-management/doc-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
 import { MatTableModule } from '@angular/material/table';
+import { AnnexureADigitalFormComponent } from '../app/case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'
 
 
 
@@ -66,7 +67,7 @@ import { MatTableModule } from '@angular/material/table';
     MatRadioModule,
     CoreModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
 
     
   ],

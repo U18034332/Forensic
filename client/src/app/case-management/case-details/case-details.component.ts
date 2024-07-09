@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'; // Import MatDialog
+import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Import the new component
 
 @Component({
   selector: 'app-case-details',
@@ -12,12 +12,15 @@ export class CaseDetailsComponent implements OnInit {
 
   panelOpenState = false;
   
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {} // Inject MatDialog
 
   ngOnInit(): void {
     this.case = this.data;
   }
 
-
-  
+  presentAddAnnexureADialog() {
+    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
+      width: '30%'
+    });
+  }
 }
