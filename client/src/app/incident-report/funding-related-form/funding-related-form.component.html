@@ -1,7 +1,7 @@
 <mat-card class="custom-card">
   <h2 mat-dialog-title>Funding Related Report</h2>
   <mat-dialog-content class="mat-typography">
-    <form>
+    <form #reportForm="ngForm">
 
       <!-- Start Date -->
       <h3>Start Date</h3>
@@ -37,19 +37,22 @@
       <h3>Case Type</h3>
       <mat-form-field appearance="fill">
         <mat-label for="case-type">Select Case Type</mat-label>
-        <mat-select id="case-type">
+        <mat-select id="case-type" [(ngModel)]="selectedCaseType" (selectionChange)="onCaseTypeChange($event)">
           <mat-option *ngFor="let type of caseTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <!-- Sub-Type -->
-      <h3>Sub-Type</h3>
-      <mat-form-field appearance="fill">
-        <mat-label for="sub-type">Select Sub-Type</mat-label>
-        <mat-select id="sub-type">
-          <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
-        </mat-select>
-      </mat-form-field>
+      <div *ngIf="showSubType">
+        <h3>Sub-Type</h3>
+        <mat-form-field appearance="fill">
+          <mat-label for="sub-type">Select Sub-Type</mat-label>
+          <mat-select id="sub-type">
+            <mat-option *ngFor="let subType of subTypes" [value]="subType">{{ subType }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
 
       <!-- Channel -->
       <h3>Channel</h3>
@@ -131,6 +134,6 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button color="primary" cdkFocusInitial>Submit</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(reportForm)">Submit</button>
   </mat-dialog-actions>
 </mat-card>

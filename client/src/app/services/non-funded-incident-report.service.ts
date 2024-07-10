@@ -24,6 +24,16 @@ export class NonFundedIncidentReportService {
       );
   }
 
+  getAllToBeAssessedNonFundingRelatedIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/unassigned`, {headers: this.getAuthHeaders() })
+    .pipe(
+      tap((response: any) => {
+        console.log(response); 
+      }),
+      catchError(this.handleError)
+    );
+  }
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';

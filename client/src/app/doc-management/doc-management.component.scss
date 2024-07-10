@@ -1,6 +1,126 @@
+/* Reset some default styles */
+* {
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+}
+
 .title {
-    margin-left: 15px;
-    margin-top: 45px;
-    font-size: 24px;
-    font-weight: bold;
-  }
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px;
+  margin: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.doc-management-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  flex: 1;
+  overflow: hidden; /* Ensure no overflow */
+}
+
+.doc-management-card {
+  width: 100%;
+  max-width: 700px;
+  padding: 70px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.drop-area {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 50px;
+  text-align: center;
+  background-color: #fafafa;
+}
+
+.file-upload {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-upload label {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  width: 100%;
+  overflow: hidden; /* Prevents clipping of the icon */
+}
+
+.file-upload mat-icon {
+  font-size: 70px; /* Adjust size as needed */
+  color: #888;
+  display: block;
+  width: 100%;
+  height: auto; /* Maintains aspect ratio */
+  overflow: visible; /* Ensures icon is fully visible */
+}
+
+.file-upload span {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #666;
+}
+
+mat-progress-bar {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  overflow: hidden; /* Ensure no overflow */
+}
+/* Additional styles for the remove button */
+.uploaded-files ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.uploaded-files li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.uploaded-files li:hover {
+  background-color: #f0f0f0;
+}
+
+.uploaded-files li button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 18px;
+}
+
+.uploaded-files li button:hover {
+  color: red; /* Adjust color for hover effect */
+}

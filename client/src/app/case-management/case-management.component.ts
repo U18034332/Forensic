@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSidenav } from '@angular/material/sidenav';
+import { CaseManagementDigitalFormComponent } from './case-management-digital-form/case-management-digital-form.component';
+import { CaseDetailsComponent } from './case-details/case-details.component';
 
 @Component({
   selector: 'app-case-management',
@@ -7,37 +11,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./case-management.component.scss']
 })
 export class CaseManagementComponent {
+  @ViewChild('drawer') drawer!: MatSidenav;
 
   showFiller = false;
-
-  sideNavOpen() {
-
-  }
-  
   subFilesExpanded = false;
-  displayedColumns: string[] = [
-    'caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 
-    'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'
-  ];
-  dataSource = [
-    {caseID: 'F-C-N098', cases: 'Case 4', startDate: '24/06/20', status: 'Open', priority: 'Complex', caseType: 'Fraud', province: 'Gauteng', channel: 'Hot-Line', levelDetected: 'Level 4', teams: 'Team 3', lastModified: '27/08/20', caseEndDate: '?'},
-  ];
-  annexures = ['Annexure 1', 'Annexure 2', 'Annexure 3'];
+  sidenavOpen = false;
+  selectedCase: any;
+  isDetailDialogOpen = false;
 
-  toggleSubFiles() {
-    this.subFilesExpanded = !this.subFilesExpanded;
-  }
+
+
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   presentAddFileDialog() {
-    // Implement the dialog logic
     console.log('Add File dialog triggered');
+    this.router.navigate(['document-management']);
   }
 
   presentAddCaseDialog() {
-    // Implement the dialog logic
-    console.log('Add Case dialog triggered');
+    const dialogRef = this.dialog.open(CaseManagementDigitalFormComponent, {
+      width: '30%'
+    });
   }
-  constructor(private router: Router) {}
+
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+    const dialogRef = this.dialog.open(CaseDetailsComponent, {
+      width: '30%'
+    });
+  }
+
+  
+
 
   navigateTo(route: string) {
     this.router.navigate([route]);

@@ -5,8 +5,6 @@ import { IncidentReportComponent } from './incident-report.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
-import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
-
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from '../core/core.module';
@@ -23,6 +20,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkMenuModule } from '@angular/cdk/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTableModule } from '@angular/material/table'; 
+import { MatPaginatorModule } from '@angular/material/paginator'; 
+import { MatSortModule } from '@angular/material/sort'; 
+import { AssessmentFundingComponent } from './assessment-funding/assessment-funding.component';
+import { AssessmentNonFundingComponent } from './assessment-non-funding/assessment-non-funding.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     AddReportPanelComponent,
     FundingRelatedFormComponent,
     NonFundingRelatedFormComponent,
-    NotRecommendedDialogComponent
+    AssessmentFundingComponent,
+    AssessmentNonFundingComponent,
   ],
   imports: [
     CommonModule,
@@ -49,9 +53,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatMenuModule,
     CdkMenuModule,
     MatTabsModule,
-    MatCard,
-    MatCardModule
+    MatCardModule,
+    MatTableModule, 
+    MatPaginatorModule,
+    MatSortModule,
+    MatRadioModule
   ],
-  
 })
 export class IncidentReportModule { }
