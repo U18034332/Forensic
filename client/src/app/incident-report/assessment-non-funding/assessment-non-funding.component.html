@@ -2,12 +2,7 @@
   <!-- Table header -->
   <ng-container matColumnDef="reportID">
     <th mat-header-cell *matHeaderCellDef> Report ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.reportID}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="cases">
-    <th mat-header-cell *matHeaderCellDef> Cases </th>
-    <td mat-cell *matCellDef="let element"> {{element.cases}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.reportNumber}} </td>
   </ng-container>
 
   <ng-container matColumnDef="startDate">
@@ -58,11 +53,6 @@
   <ng-container matColumnDef="allocatedDescription">
     <th mat-header-cell *matHeaderCellDef> Allocated Description </th>
     <td mat-cell *matCellDef="let element"> {{element.allocatedDescription}} </td>
-  </ng-container>
-  
-  <ng-container matColumnDef="teams">
-    <th mat-header-cell *matHeaderCellDef> Teams </th>
-    <td mat-cell *matCellDef="let element"> {{element.teams}} </td>
   </ng-container>
 
   <ng-container matColumnDef="lastModified">
