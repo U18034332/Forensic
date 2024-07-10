@@ -1,26 +1,41 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'; // Import MatDialog
-import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Import the new component
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 
 @Component({
   selector: 'app-case-details',
   templateUrl: './case-details.component.html',
   styleUrls: ['./case-details.component.scss']
 })
-export class CaseDetailsComponent implements OnInit {
+export class CaseDetailsComponent {
   case: any; // Define the type of your case data here
 
-  panelOpenState = false;
-  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {} // Inject MatDialog
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.case = this.data;
-  }
+  presentAddAnnexureADialog(): void {
+    const dialogConfig = new MatDialogConfig();
 
-  presentAddAnnexureADialog() {
-    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
-      width: '30%'
+    // Initial configuration for dialog
+    dialogConfig.width = '80%';
+    dialogConfig.maxHeight = '90vh';
+    dialogConfig.panelClass = 'custom-dialog-container';
+
+    // Open the dialog with initial configuration
+    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, dialogConfig);
+
+    // After dialog is opened, adjust its position if needed
+    dialogRef.afterOpened().subscribe(() => {
+      const dialogContainer = dialogRef.componentInstance.dialogRef['_containerInstance'];
+
+      // Ensure dialogContainer and _config are defined before accessing properties
+      if (dialogContainer && dialogContainer['_config']) {
+        dialogContainer['_config'].position = {
+          left: '50px',  // Adjust left position
+          top: '50px'    // Adjust top position as needed
+        };
+
+        dialogRef.updatePosition();  // Update dialog position
+      }
     });
   }
 }

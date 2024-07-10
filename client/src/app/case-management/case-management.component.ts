@@ -41,12 +41,6 @@ export class CaseManagementComponent {
     });
   }
 
-  presentAddAnnexureADialog() {
-    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
-      width: '30%'
-    });
-  }
-
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
