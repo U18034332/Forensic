@@ -11,7 +11,7 @@ export class AssessmentNonFundingComponent implements OnInit {
   @Input() dataSource: NonFundingIncidentReportData[] = [];
 
   displayedColumns: string[] = [
-    'reportID', 'startDate', 'dateReported', 'status', 'priority', 
+    'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
 

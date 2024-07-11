@@ -11,7 +11,7 @@ export class AssessmentFundingComponent implements OnInit {
   @Input() dataSource: FundingIncidentReportData[] = [];
 
   displayedColumns: string[] = [
-    'reportID', 'startDate', 'dateReported', 'status', 'priority', 
+    'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
 
