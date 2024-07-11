@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
-import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-assessment-funding',
   templateUrl: './assessment-funding.component.html',
@@ -15,7 +13,7 @@ export class AssessmentFundingComponent implements OnInit {
     'actions'
   ];
 
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
