@@ -1,6 +1,6 @@
 export interface FundingIncidentReportData {
   id?: number;
-  caseID: string;
+  reportID: string;
   cases: string;
   startDate: Date;
   status: string;
@@ -12,8 +12,11 @@ export interface FundingIncidentReportData {
   teams: string;
   lastModified: Date;
   caseEndDate: Date;
-  // Add other fields from your form
+  
+ 
 }
+  // Add other fields from your form
+
 
 export interface AssessmentFundedReport extends FundingIncidentReportData {
   status: string;

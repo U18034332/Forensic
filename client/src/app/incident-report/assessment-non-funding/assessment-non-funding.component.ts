@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-assessment-non-funding',
   templateUrl: './assessment-non-funding.component.html',
@@ -10,9 +10,14 @@ import { NonFundingIncidentReportData } from '../../dto/non-funding-report.inter
 export class AssessmentNonFundingComponent implements OnInit {
   @Input() dataSource: NonFundingIncidentReportData[] = [];
 
-  displayedColumns: string[] = ['reportID', 'cases', 'startDate', 'dateReported','status', 'priority',
-    'caseType', 'province', 'channel', 'levelDetected', 'divisionDetected', 'allocatedDescription', 'teams',
-    'lastModified', 'caseEndDate', 'actions'];
+  displayedColumns: string[] = [
+    'reportID', 'startDate', 'dateReported', 'status', 'priority', 
+    'actions'
+  ];
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+ 
 }

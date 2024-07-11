@@ -1,38 +1,38 @@
-.custom-table {
-  margin-left: 20px;
-  overflow-y: auto;
-}
+// .custom-table {
+//   margin-left: 20px;
+//   overflow-y: auto;
+// }
 
-.title {
-  margin-left: 15px;
-  margin-top: 45px;
-  font-size: 24px;
-  font-weight: bold;
-}
+// .title {
+//   margin-left: 15px;
+//   margin-top: 45px;
+//   font-size: 24px;
+//   font-weight: bold;
+// }
 
-.mat-header-row,
-.mat-row {
-  display: flex;
-  align-items: center;
-}
+// .mat-header-row,
+// .mat-row {
+//   display: flex;
+//   align-items: center;
+// }
 
-.mat-header-cell,
-.mat-cell {
-  flex: 1;
-}
+// .mat-header-cell,
+// .mat-cell {
+//   flex: 1;
+// }
 
-.mat-header-cell {
-  font-weight: bold;
-}
+// .mat-header-cell {
+//   font-weight: bold;
+// }
 
-.mat-cell {
-  text-align: center;
-}
+// .mat-cell {
+//   text-align: center;
+// }
 
-.mat-elevation-z8 {
-  margin-right: 10px;
-  margin-left: 20px;
-}
+// .mat-elevation-z8 {
+//   margin-right: 10px;
+//   margin-left: 20px;
+// }
 
 /* Specific styling for funded and non-funded titles */
 .funded-title {
@@ -43,6 +43,7 @@
 .non-funded-title {
   margin-top: 2%;
   margin-left: 25px;
+  font-weight: bold;
 }
 
 /* Maintain the specific styling for the 'Add Report' button */

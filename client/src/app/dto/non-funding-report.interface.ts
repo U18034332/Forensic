@@ -12,6 +12,8 @@ export interface NonFundingIncidentReportData {
   divisionDetected: string;
   id?: number;
   date: Date;
+  reportID:string ;
+  sector:string;
 }
 export interface AssessmentNonFundedReport extends NonFundingIncidentReportData {
   status: string;

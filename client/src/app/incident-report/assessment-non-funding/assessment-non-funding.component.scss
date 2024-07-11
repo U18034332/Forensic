@@ -1,0 +1,55 @@
+/* Ensure the table takes the full width of its container */
+.mat-elevation-z8 {
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+    margin: 20px; /* Ensure the shadow is visible around the table */
+  }
+  
+  /* Header cells with a solid background color */
+  .matHeaderCellDef {
+    background-color: #3f51b5;
+    
+    font-weight: bold;
+    padding: 16px;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  /* Data cells */
+  .mat-cell {
+    padding: 16px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+  
+  /* Row hover effect */
+  .mat-row:hover .mat-cell {
+    background-color: #f1f1f1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  }
+  
+  /* Action button styling */
+  .action-button {
+    color: #ffffff;
+    background-color: #3f51b5;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #303f9f;
+  }
+  
+  .action-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.5);
+  }
+  
+ 
