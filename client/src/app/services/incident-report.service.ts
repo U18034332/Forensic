@@ -16,7 +16,6 @@ export class IncidentReportService {
   constructor() {}
 
   addFundingReport(report: AssessmentFundedReport): void {
-    report.id = Date.now();
     const currentReports = this.fundingReportsSubject.value;
     this.fundingReportsSubject.next([...currentReports, report]);
   }

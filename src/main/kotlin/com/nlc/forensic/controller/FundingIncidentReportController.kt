@@ -5,6 +5,7 @@ import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.service.FundingIncidentReportService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -63,6 +64,11 @@ class FundingIncidentReportController(
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: ${e.message}")
         }
+    }
+
+    @GetMapping("get/unassigned")
+    fun getUnassignedIncidentReports(): ResponseEntity<List<FundingIncidentReport?>> {
+        return ResponseEntity.ok(fundingIncidentReportService.getAllUnassignedReports())
     }
 
 }

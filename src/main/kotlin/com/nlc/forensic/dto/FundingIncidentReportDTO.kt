@@ -8,6 +8,7 @@ data class FundingIncidentReportDTO(
     var projectNumber: String = "",
     var province: String = "",
     var caseType: String = "",
+    val caseSubType: String = "",
     var channel: String = "",
     var priority: String = "",
     var status: String = "",

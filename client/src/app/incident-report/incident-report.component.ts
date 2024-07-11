@@ -8,6 +8,7 @@ import { AssessmentFundedReport } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
 import { NonFundedIncidentReportService } from '../services/non-funded-incident-report.service';
 import { Router } from '@angular/router';
+import { FundingRelatedService } from '../services/funding-related.service';
 
 @Component({
   selector: 'app-incident-report',
@@ -20,7 +21,7 @@ export class IncidentReportComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private incidentReportService: IncidentReportService,
+    private fundingReportService: FundingRelatedService,
     private nonfundingReportService: NonFundedIncidentReportService,
     private router: Router
   ) {}
@@ -30,11 +31,13 @@ export class IncidentReportComponent implements OnInit {
   }
 
   loadAssessmentReports(): void {
-    this.incidentReportService.getFundedAssessmentReports().subscribe(reports => {
-      this.fundedAssessmentReports = reports.map(report => [report]);
+    this.nonfundingReportService.getAllToBeAssessedNonFundingRelatedIncidentReports().subscribe(reports => {
+      console.log(reports);
+      this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
     });
 
-    this.nonfundingReportService.getAllToBeAssessedNonFundingRelatedIncidentReports().subscribe(reports => {
+    this.fundingReportService.getAllToBeAssessedFundingRelatedIncidentReports()
+    .subscribe(reports => {
       console.log(reports);
       this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
     }, (err) => {
