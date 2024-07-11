@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("/api/v1/incident-report/funding/")
+@RequestMapping("/api/v1/admin-only/incident-report/funding/")
 class FundingIncidentReportController(
     private val fundingIncidentReportService: FundingIncidentReportService,
     private val gson: Gson

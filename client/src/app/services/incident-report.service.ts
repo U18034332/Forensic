@@ -21,17 +21,7 @@ export class IncidentReportService {
     this.fundingReportsSubject.next([...currentReports, report]);
   }
 
-  addNonFundingReport(report: AssessmentNonFundedReport): void {
-    report.id = Date.now();
-    const currentReports = this.nonFundingReportsSubject.value;
-    this.nonFundingReportsSubject.next([...currentReports, report]);
-  }
-
   getFundedAssessmentReports(): Observable<AssessmentFundedReport[]> {
     return this.fundingReports$;
-  }
-
-  getNonFundedAssessmentReports(): Observable<AssessmentNonFundedReport[]> {
-    return this.nonFundingReports$;
   }
 }

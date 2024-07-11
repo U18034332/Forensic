@@ -9,7 +9,7 @@ import { AuthService } from "./auth-service.service";
 })
 export class NonFundedIncidentReportService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/incident-report/non-funding';
+  private apiUrl = 'http://localhost:8080/api/v1/admin-only/incident-report/non-funding';
   private token = this.authService.getToken();
 
   constructor(private http: HttpClient, private authService: AuthService) { }
