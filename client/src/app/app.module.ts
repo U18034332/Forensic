@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -30,6 +31,7 @@ import { DocManagementModule } from './doc-management/doc-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
 import { MatTableModule } from '@angular/material/table';
 import { AnnexureADigitalFormComponent } from './case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Corrected import path
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,8 @@ import { AnnexureADigitalFormComponent } from './case-management/annexures/annex
     MatDialogModule,
     MatTableModule,
     MatCheckboxModule,
-    DragDropModule
+    DragDropModule,
+    BrowserModule
   ],
   providers: [
     provideAnimationsAsync()

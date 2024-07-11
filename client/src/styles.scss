@@ -67,7 +67,9 @@ html, body {
     cursor: pointer;
   }
 
-  .custom-dialog-container .mat-dialog-container {
-    padding: 0;
+
+  .cdk-overlay-pane.draggable-dialog {
+    position: absolute !important;
+    display: block;
   }
   

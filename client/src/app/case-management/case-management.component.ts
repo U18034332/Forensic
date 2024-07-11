@@ -41,6 +41,15 @@ export class CaseManagementComponent {
     });
   }
 
+  openAnnexureA() {
+    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
+      width: '80%',
+      maxHeight: '90vh',  // Adjust height to make it scrollable
+      
+    });
+  }
+  
+
   navigateTo(route: string) {
     this.router.navigate([route]);
   }

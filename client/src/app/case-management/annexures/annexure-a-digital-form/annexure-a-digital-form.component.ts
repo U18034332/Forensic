@@ -8,10 +8,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AnnexureADigitalFormComponent {
 
-  constructor(public dialogRef: MatDialogRef<AnnexureADigitalFormComponent>) { }
+  constructor(public dialogRef: MatDialogRef<AnnexureADigitalFormComponent>) {}
 
   onClose(): void {
     this.dialogRef.close();
   }
-
 }

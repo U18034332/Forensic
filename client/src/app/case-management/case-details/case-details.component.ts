@@ -1,5 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'; 
+import { Router } from '@angular/router';
 import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 
 @Component({
@@ -8,34 +9,18 @@ import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-f
   styleUrls: ['./case-details.component.scss']
 })
 export class CaseDetailsComponent {
-  case: any; // Define the type of your case data here
+    constructor(private router: Router, private dialog: MatDialog) {}
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {}
-
-  presentAddAnnexureADialog(): void {
+  openAnnexureA() {
     const dialogConfig = new MatDialogConfig();
-
-    // Initial configuration for dialog
-    dialogConfig.width = '80%';
+    dialogConfig.width = '45%';
     dialogConfig.maxHeight = '90vh';
-    dialogConfig.panelClass = 'custom-dialog-container';
+    // dialogConfig.panelClass = 'custom-dialog-container';
 
-    // Open the dialog with initial configuration
     const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, dialogConfig);
+  }
 
-    // After dialog is opened, adjust its position if needed
-    dialogRef.afterOpened().subscribe(() => {
-      const dialogContainer = dialogRef.componentInstance.dialogRef['_containerInstance'];
-
-      // Ensure dialogContainer and _config are defined before accessing properties
-      if (dialogContainer && dialogContainer['_config']) {
-        dialogContainer['_config'].position = {
-          left: '50px',  // Adjust left position
-          top: '50px'    // Adjust top position as needed
-        };
-
-        dialogRef.updatePosition();  // Update dialog position
-      }
-    });
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }

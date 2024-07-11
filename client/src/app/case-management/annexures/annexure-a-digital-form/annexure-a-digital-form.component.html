@@ -1,38 +1,67 @@
-<button mat-icon-button mat-dialog-close class="close-button">
-    <mat-icon>close</mat-icon>
-</button>
-
-<mat-card class="annexure-a-card" cdkDrag>
+<mat-card class="annexure-a-card">
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  
     <mat-card-header>
       <mat-card-title>
-        <div class="header">
-          <div>Tel: +27(12)432 1300</div>
-          <div>Info Centre: 086 00 65383</div>
-          <div>Web: www.nlcsa.org.za</div>
-          <div>National Lotteries Commission (NLC)</div>
-          <div>P.O Box 1556, Brooklyn Square 0083, Pretoria</div>
-        </div>
+          <div class="annexure-a-header">
+              <div class="left">
+                  <img src="assets/annexure-a-header-logo.png" alt="NLC Header Logo" class="header-logo">
+              </div>
+              <div class="right">
+                  <div>Tel: +27(12)432 1300</div>
+                  <div>Info Centre: 086 00 65383</div>
+                  <div>Web: <a href="http://www.nlcsa.org.za" target="_blank">www.nlcsa.org.za</a></div>
+                  <div>National Lotteries Commission (NLC)</div>
+                  <div>P.O Box 1556, Brooklyn Square 0083, Pretoria</div>
+                  <div class="case-details">
+                      Case: <br>
+                      Ref: <br>
+                      NLC-INV: <span class="date">01/10/2023</span>
+                  </div>
+              </div>
+          </div>
       </mat-card-title>
-    </mat-card-header>
+  </mat-card-header>
+  
     <mat-card-content class="content">
-      <div>
-        <div><strong>Case Ref:</strong> NLC-INV: 01/10/2023</div>
-        <div><strong>Forensic Case Assessment</strong></div>
+      <form>
+        <!-- 1. Case Ref -->
+        <div>
+          <strong>Case Ref:</strong> NLC-INV: 01/10/2023
+        </div>
+      
+        <!-- 2. Date and Source -->
         <div>
           <strong>Date:</strong> <span>______</span>
           <strong>Source:</strong> <span>______</span>
         </div>
-        <div><strong>Allegations:</strong> Corruption</div>
+      
+        <!-- 3. Allegations -->
         <div>
-          <strong>Categorisation:</strong>
-          <div>
-            <mat-checkbox>Simple</mat-checkbox>
-            <mat-checkbox>Medium</mat-checkbox>
-            <mat-checkbox>Complex</mat-checkbox>
-          </div>
+          <strong>Allegations:</strong>
+          <ul>
+            <li>Corruption</li>
+            <li>Fraud</li>
+            <li>Forgery/Uttering</li>
+            <li>Ethical issue</li>
+            <li>Nepotism / HR</li>
+            <li>Supply Chain Management</li>
+            <li>Theft</li>
+            <li>Non Compliance</li>
+            <li>Misappropriation of funds</li>
+            <li>Conflict of interest</li>
+            <li>Collusion</li>
+            <li>Scam(s)</li>
+            <li>Misconduct</li>
+            <li>Other</li>
+          </ul>
         </div>
+      
+        <!-- 4. Classification of Allegations -->
         <div>
-          <strong>Classification of allegations</strong>
+          <strong>Classification of allegations:</strong>
           <ol>
             <li>Corruption</li>
             <li>Fraud</li>
@@ -50,10 +79,22 @@
             <li>Other</li>
           </ol>
         </div>
+      
+        <!-- 5. Perpetrators / Officials Implicated -->
         <div>
           <strong>Perpetrators / officials implicated:</strong>
           <div>a) XXX</div>
         </div>
+      
+        <!-- 6. Categorisation -->
+        <div class="category-of-case">
+          <strong>Categorisation:</strong>
+          <mat-checkbox>Simple</mat-checkbox>
+          <mat-checkbox>Medium</mat-checkbox>
+          <mat-checkbox>Complex</mat-checkbox>
+        </div>
+      
+        <!-- 7. Legislative Overview -->
         <div>
           <strong>Legislative overview (Acts, guidelines, and policies applicable):</strong>
           <ol>
@@ -61,18 +102,24 @@
             <li>XXXX</li>
           </ol>
         </div>
+      
+        <!-- 8. Preliminary Information Required -->
         <div>
           <strong>Preliminary Information required:</strong>
           <ol>
             <li>XXXXXXX</li>
           </ol>
         </div>
+      
+        <!-- 9. Preliminary Procedures Performed -->
         <div>
           <strong>Preliminary Procedures performed:</strong>
           <ol>
             <li>We reviewed the allegation received via XXXX</li>
           </ol>
         </div>
+      
+        <!-- 10. Preliminary Issues -->
         <div>
           <strong>Preliminary issues:</strong>
           <ul>
@@ -80,14 +127,19 @@
             <li>XXXXX that Mr</li>
           </ul>
         </div>
+      
+        <!-- 11. Conclusion & Recommendation -->
         <div><strong>Conclusion & Recommendation:</strong></div>
+        <!-- Add content as necessary -->
+      
+        <!-- 12. Referral -->
         <div>
           <strong>REFERRAL</strong>
           <div>
             <strong>FROM:</strong> <span>Name</span> <strong>Signature:</strong> <span>______</span>
           </div>
         </div>
-      </div>
+      </form>
     </mat-card-content>
   </mat-card>
   
