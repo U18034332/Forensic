@@ -9,7 +9,7 @@ import { NonFundingIncidentReportData } from '../../dto/non-funding-report.inter
 export class AssessmentNonFundingComponent implements OnInit {
   @Input() dataSource: NonFundingIncidentReportData[] = [];
 
-  displayedColumns: string[] = ['reportID', 'startDate', 'dateReported','status', 'priority', 'view', 'actions'];
+  displayedColumns: string[] = ['reportID', 'startDate', 'dateReported','status', 'priority', 'actions'];
 
   ngOnInit(): void {}
 }
