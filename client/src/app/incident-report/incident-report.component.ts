@@ -7,6 +7,7 @@ import { IncidentReportService } from '../services/incident-report.service';
 import { AssessmentFundedReport } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
 import { NonFundedIncidentReportService } from '../services/non-funded-incident-report.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-incident-report',
@@ -20,7 +21,8 @@ export class IncidentReportComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private incidentReportService: IncidentReportService,
-    private nonfundingReportService: NonFundedIncidentReportService
+    private nonfundingReportService: NonFundedIncidentReportService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,9 @@ export class IncidentReportComponent implements OnInit {
     this.nonfundingReportService.getAllToBeAssessedNonFundingRelatedIncidentReports().subscribe(reports => {
       console.log(reports);
       this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
+    }, (err) => {
+      console.log(err);
+      this.navigateTo('/403')
     });
   }
 
@@ -70,5 +75,9 @@ export class IncidentReportComponent implements OnInit {
     dialogRef.componentInstance.formSubmit.subscribe(() => {
       this.loadAssessmentReports();
     });
+  }
+
+  navigateTo(url: string) {
+    this.router.navigateByUrl(url);
   }
 }

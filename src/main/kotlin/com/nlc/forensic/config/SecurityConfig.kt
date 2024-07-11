@@ -29,7 +29,7 @@ class SecurityConfig {
                 auth
                     .requestMatchers("/api/auth/login", "/api/auth/forgot_password")
                     .permitAll()
-                    .requestMatchers("/api/admin-only/**").hasAuthority("ADMIN")
+                    .requestMatchers("/api/v1/admin-only/**").hasAuthority("ADMIN")
                     .anyRequest()
                     .authenticated()
 

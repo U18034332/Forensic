@@ -29,10 +29,6 @@ export class NonFundingRelatedFormComponent {
 
   constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>, private reportService: NonFundedIncidentReportService) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
   submitForm(form: NgForm): void {
     if (form.valid) {
       console.log(this.report);
