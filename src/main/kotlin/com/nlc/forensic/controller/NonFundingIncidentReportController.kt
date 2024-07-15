@@ -37,4 +37,15 @@ class NonFundingIncidentReportController(
     fun getUnassignedIncidentReports(): ResponseEntity<List<NonFundingIncidentReport?>> {
         return ResponseEntity.ok(nonFundingIncidentReportService.getAllUnassignedReports())
     }
+
+    @GetMapping("get-report/{reportNumber}")
+    fun getReportWithReportNumber(@PathVariable reportNumber: String): ResponseEntity<out Any> {
+        try {
+            val report = nonFundingIncidentReportService.getIncidentReportByReportNumber(reportNumber)
+                ?: return ResponseEntity.notFound().build()
+            return ResponseEntity.ok().body(report)
+        } catch (e: Exception) {
+            return ResponseEntity.badRequest().body(e.message)
+        }
+    }
 }

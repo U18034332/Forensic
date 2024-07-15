@@ -108,4 +108,11 @@ class NonFundingIncidentReportService(
         val latestReportId = nonFundingIncidentReportRepository.count()
         return "${prefix}-${latestReportId + 1}"
     }
+
+    fun getIncidentReportByReportNumber(reportNumber: String): NonFundingIncidentReport? {
+        if (reportNumber.isEmpty()) {
+            throw IllegalArgumentException("The report number can not be empty")
+        }
+        return nonFundingIncidentReportRepository.findByReportNumber(reportNumber)
+    }
 }
