@@ -34,6 +34,17 @@
 //   margin-left: 20px;
 // }
 
+.incident-report-view{
+  padding-top: 90px;
+}
+
+.incident-report-title{
+    margin-left: 85px;
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 /* Specific styling for funded and non-funded titles */
 .funded-title {
   margin-top: 7%;
@@ -48,7 +59,7 @@
 
 /* Maintain the specific styling for the 'Add Report' button */
 .add-report-button {
-  margin-left: 91%; /* Ensure this margin is maintained */
+  margin-left: 88%; /* Ensure this margin is maintained */
   margin-bottom: 7px;
 }
 

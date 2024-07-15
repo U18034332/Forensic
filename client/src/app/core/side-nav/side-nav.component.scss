@@ -7,7 +7,7 @@
   width: 350px; /* Fixed width for the drawer */
   overflow: hidden; /* Completely remove scroll */
   position: absolute;
-  top: 33px; /* Adjust this value to the height of your toolbar */
+  top: 90px; /* Adjust this value to the height of your toolbar */
   z-index: 100; /* Ensure it's above the content */
 }
 
@@ -20,20 +20,21 @@
 .button-list button {
   padding-top: 15px;
   margin-bottom: 25px; /* Adds 15px space below each button */
-  height: 70px; /* Increase the height of the buttons to accommodate larger icons */
-  line-height: 20px; /* Align text vertically */
+  height: 60px; /* Increase the height of the buttons to accommodate larger icons */
+  line-height: 35px; /* Align text vertically */
   text-align: left; /* Align the text to the left */
 }
 
 .button-list .button-icon {
   margin-right: 50px; /* Adds padding between the icon and text */
   margin-left: 25px; /* Adds padding to the left side of the icon */
+  font-size: 22px;
 
 }
 
 .menu-icon {
   position: absolute;
-  top: 35px;
+  top: 90px;
   left: 35px;
 }
 
