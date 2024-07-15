@@ -29,6 +29,7 @@ import { AssessmentNonFundingComponent } from './assessment-non-funding/assessme
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 @NgModule({
   declarations: [
     IncidentReportComponent,
@@ -37,6 +38,7 @@ import { BrowserModule } from '@angular/platform-browser';
     NonFundingRelatedFormComponent,
     AssessmentFundingComponent,
     AssessmentNonFundingComponent,
+    
   
   ],
   imports: [
