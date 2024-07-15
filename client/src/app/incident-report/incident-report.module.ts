@@ -28,7 +28,8 @@ import { AssessmentFundingComponent } from './assessment-funding/assessment-fund
 import { AssessmentNonFundingComponent } from './assessment-non-funding/assessment-non-funding.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { InvestigationDialogComponent } from './investigation-dialog/investigation-dialog.component';
+import { UserSelectionDialogComponent } from './user-selection-dialog/user-selection-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { BrowserModule } from '@angular/platform-browser';
     NonFundingRelatedFormComponent,
     AssessmentFundingComponent,
     AssessmentNonFundingComponent,
-    
+    InvestigationDialogComponent,
+    UserSelectionDialogComponent,
   
   ],
   imports: [

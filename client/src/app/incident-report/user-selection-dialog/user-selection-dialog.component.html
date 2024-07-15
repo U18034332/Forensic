@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+      <h1 mat-dialog-title>Select Users</h1>
+      <button mat-icon-button (click)="onCancel()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <mat-selection-list #users>
+        <mat-list-option *ngFor="let user of userList" [value]="user">
+          {{ user.name }}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button class="dialog-button" (click)="onAllocate(users.selectedOptions.selected)">Allocate</button>
+      <button mat-button class="dialog-button" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+  
