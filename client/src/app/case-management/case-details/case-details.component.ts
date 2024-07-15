@@ -1,26 +1,26 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog'; // Import MatDialog
-import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Import the new component
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog'; 
+import { Router } from '@angular/router';
+import { AnnexureADigitalFormComponent } from '../annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 
 @Component({
   selector: 'app-case-details',
   templateUrl: './case-details.component.html',
   styleUrls: ['./case-details.component.scss']
 })
-export class CaseDetailsComponent implements OnInit {
-  case: any; // Define the type of your case data here
+export class CaseDetailsComponent {
+    constructor(private router: Router, private dialog: MatDialog) {}
 
-  panelOpenState = false;
-  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialog: MatDialog) {} // Inject MatDialog
+  openAnnexureA() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '45%';
+    dialogConfig.maxHeight = '90vh';
+    // dialogConfig.panelClass = 'custom-dialog-container';
 
-  ngOnInit(): void {
-    this.case = this.data;
+    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, dialogConfig);
   }
 
-  presentAddAnnexureADialog() {
-    const dialogRef = this.dialog.open(AnnexureADigitalFormComponent, {
-      width: '30%'
-    });
+  navigateTo(route: string) {
+    this.router.navigate([route]);
   }
 }

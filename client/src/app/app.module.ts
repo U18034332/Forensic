@@ -18,7 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';  // Import MatRadioModule
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AuditTrailModule } from './audit-trail/audit-trail.module';
 import { DiscussModule } from './discuss/discuss.module';
 import { CalendarModule } from './calendar/calendar.module';
@@ -27,17 +30,14 @@ import { CommonModule } from '@angular/common';
 import { DocManagementModule } from './doc-management/doc-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
 import { MatTableModule } from '@angular/material/table';
-import { AnnexureADigitalFormComponent } from '../app/case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'
-
-
-
+import { AnnexureADigitalFormComponent } from './case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Corrected import path
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     // Components
     AppComponent,
     LoginComponent,
-   
     
   ],
   imports: [
@@ -68,10 +68,10 @@ import { AnnexureADigitalFormComponent } from '../app/case-management/annexures/
     CoreModule,
     MatDialogModule,
     MatTableModule,
-
-    
+    MatCheckboxModule,
+    DragDropModule,
+    BrowserModule
   ],
-  
   providers: [
     provideAnimationsAsync()
   ],

@@ -22,10 +22,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogRef } from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { CaseManagementTableComponent } from './case-management-table/case-management-table.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { AnnexureADigitalFormComponent } from '../case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Import the new component
+import { AnnexureADigitalFormComponent } from '../case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,7 @@ import { AnnexureADigitalFormComponent } from '../case-management/annexures/anne
     CaseManagementDigitalFormComponent,
     CaseDetailsComponent,
     CaseManagementTableComponent,
-    AnnexureADigitalFormComponent 
+    AnnexureADigitalFormComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +60,9 @@ import { AnnexureADigitalFormComponent } from '../case-management/annexures/anne
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckboxModule,
+    DragDropModule
   ]
 })
 export class CaseManagementModule {}

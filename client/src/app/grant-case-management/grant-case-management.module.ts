@@ -24,6 +24,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CaseDetailsGrantCaseManagementComponent } from './case-details-grant-case-management/case-details-grant-case-management.component';
 import { GrantCaseManagementTableComponent } from './grant-case-management-table/grant-case-management-table.component';
+import { AnnexureADigitalFormComponent } from './annexures-grant/annexure-a-digital-form/annexure-a-digital-form.component';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { GrantCaseManagementTableComponent } from './grant-case-management-table
     GrantCaseManagementComponent,
     GrantCaseManagementDigitalFormComponent,
     CaseDetailsGrantCaseManagementComponent,
-    GrantCaseManagementTableComponent
+    GrantCaseManagementTableComponent,
+    AnnexureADigitalFormComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +57,8 @@ import { GrantCaseManagementTableComponent } from './grant-case-management-table
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCheckbox
 
   ]
 })

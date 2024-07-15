@@ -72,7 +72,7 @@
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="primary" (click)="openCaseDetails(element)">
+            <button mat-raised-button color="primary" class="case-details-btn" (click)="openCaseDetails(element)">
               Case Details
             </button>
           </td>
