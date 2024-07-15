@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-assessment-funding',
   templateUrl: './assessment-funding.component.html',
@@ -9,7 +10,7 @@ export class AssessmentFundingComponent implements OnInit {
   @Input() dataSource: FundingIncidentReportData[] = [];
 
   displayedColumns: string[] = [
-    'reportID', 'startDate', 'dateReported', 'status', 'priority',
+    'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
 

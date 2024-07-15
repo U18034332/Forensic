@@ -9,7 +9,7 @@ import { FundingIncidentReportData } from "../dto/funding-related.interface";
 })
 export class FundingRelatedService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/incident-report/funding';
+  private apiUrl = 'http://localhost:8080/api/v1/admin-only/incident-report/funding';
   private token: string | null = null; // Initialize token as nullable string
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -25,6 +25,17 @@ export class FundingRelatedService {
         catchError(this.handleError)
       );
   }
+
+  getAllToBeAssessedFundingRelatedIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/unassigned`, {headers: this.getAuthHeaders() })
+    .pipe(
+      tap((response: any) => {
+        console.log(response); 
+      }),
+      catchError(this.handleError)
+    );
+  }
+  
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';

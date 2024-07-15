@@ -4,6 +4,7 @@ import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.enums.AcceptanceStatus
 import com.nlc.forensic.repository.FundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
@@ -35,6 +36,7 @@ class FundingIncidentReportService(
             require(sourceDetection.isNotBlank())
             require(priority.isNotBlank())
             require(allocatedDescription.isNotBlank())
+            require(caseSubType.isNotBlank())
         }
 
         val reportPrefix = when (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault())) {
@@ -55,6 +57,7 @@ class FundingIncidentReportService(
                     projectNumber = fundingIncidentReportDTO.projectNumber,
                     province = fundingIncidentReportDTO.province,
                     caseType = fundingIncidentReportDTO.caseType,
+                    caseSubType = fundingIncidentReportDTO.caseSubType,
                     channel = fundingIncidentReportDTO.channel,
                     priority = fundingIncidentReportDTO.priority,
                     status = fundingIncidentReportDTO.status,
@@ -78,6 +81,10 @@ class FundingIncidentReportService(
 
     fun getAllFundingReports(): List<FundingIncidentReport> {
         return fundingIncidentReportRepository.findAll()
+    }
+
+    fun getAllUnassignedReports(): List<FundingIncidentReport?> {
+        return fundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
     }
 
     fun evaluateReport(acceptanceDTO: CaseAcceptanceDTO) {

@@ -1,9 +1,8 @@
-import { NgModule  } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CaseManagementRoutingModule } from './case-management-routing.module';
 import { CaseManagementComponent } from './case-management.component';
-import { CaseManagementDigitalFormComponent } from "./case-management-digital-form/case-management-digital-form.component"
-
+import { CaseManagementDigitalFormComponent } from "./case-management-digital-form/case-management-digital-form.component";
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,16 +22,21 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogRef } from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CaseDetailsComponent } from './case-details/case-details.component';
-import { CaseManagementTableComponent } from './case-management-table/case-management-table.component'
-import {MatExpansionModule} from '@angular/material/expansion';
+import { CaseManagementTableComponent } from './case-management-table/case-management-table.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AnnexureADigitalFormComponent } from '../case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 
 @NgModule({
   declarations: [
     CaseManagementComponent,
-    CaseManagementDigitalFormComponent ,
+    CaseManagementDigitalFormComponent,
     CaseDetailsComponent,
-    CaseManagementTableComponent
+    CaseManagementTableComponent,
+    AnnexureADigitalFormComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +48,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CoreModule,
     MatDialogModule,
     MatButtonModule,
-    
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
@@ -57,8 +60,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatExpansionModule
-
-  ],
+    MatExpansionModule,
+    MatCheckboxModule,
+    DragDropModule
+  ]
 })
-export class CaseManagementModule { }
+export class CaseManagementModule {}

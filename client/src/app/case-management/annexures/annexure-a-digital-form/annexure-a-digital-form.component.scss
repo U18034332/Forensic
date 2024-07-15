@@ -1,0 +1,105 @@
+.annexure-a-card {
+    overflow-y: auto;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer; /* Set cursor to indicate draggable */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    position: relative; /* To support dragging */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+
+    div {
+        margin: 5px 0;
+        width: 95%;
+    }
+}
+
+.content {
+    overflow-y: auto;
+    align-self: center;
+    width: 95%;
+
+    div {
+        margin: 10px 0;
+        overflow-y: auto;
+    }
+
+    .mat-checkbox {
+        margin-right: 15px;
+    }
+
+    ol, ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .category-of-case {
+        overflow-y: hidden;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    margin-top: 15px;
+    margin-right: 10px;
+    background-color: #8382821f; /* Icon color */
+    color: #f62f2fdb;
+}
+
+.close-button:hover {
+    color: #0056b3; /* Icon color on hover */
+}
+
+/* Add this to your global styles or the respective component styles */
+.cdk-overlay-pane.draggable-dialog {
+    position: absolute !important;
+}
+
+/* New styles for the header */
+.annexure-a-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0;
+    border-bottom: 1px solid #454545;
+    width: 95%;
+}
+
+.header-logo {
+    width: 250px;
+    margin-bottom: 85%;
+    // padding-right: 20%;
+
+}
+
+.right {
+    text-align: right;
+    font-size: 14px; /* Reduced the font size */
+    font-weight: normal; /* Set the font weight to normal */
+    align-content: stretch;
+}
+
+.right div {
+    margin-left: 20px;
+}
+
+.left div {
+    margin-right: 20px;
+}
+
+.case-details {
+    color: red;
+    font-weight: bold;
+}
+
+.date {
+    color: black;
+}
