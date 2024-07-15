@@ -1,3 +1,5 @@
+import { MatButton } from "@angular/material/button";
+
 export interface FundingIncidentReportData {
   startDate?: Date;
   dateReported?: Date;
@@ -16,6 +18,8 @@ export interface FundingIncidentReportData {
   divisionDetected: string;
   assessmentStage: number;
 }
+  // Add other fields from your form
+
 
 export interface AssessmentFundedReport extends FundingIncidentReportData {
   status: string;

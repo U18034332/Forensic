@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
-
 @Component({
   selector: 'app-assessment-non-funding',
   templateUrl: './assessment-non-funding.component.html',
@@ -9,7 +8,14 @@ import { NonFundingIncidentReportData } from '../../dto/non-funding-report.inter
 export class AssessmentNonFundingComponent implements OnInit {
   @Input() dataSource: NonFundingIncidentReportData[] = [];
 
-  displayedColumns: string[] = ['reportID', 'startDate', 'dateReported','status', 'priority', 'actions'];
+  displayedColumns: string[] = [
+    'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
+    'actions'
+  ];
+
+  constructor() {}
 
   ngOnInit(): void {}
+
+ 
 }

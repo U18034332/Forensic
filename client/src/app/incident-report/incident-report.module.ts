@@ -26,6 +26,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'; 
 import { AssessmentFundingComponent } from './assessment-funding/assessment-funding.component';
 import { AssessmentNonFundingComponent } from './assessment-non-funding/assessment-non-funding.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { AssessmentNonFundingComponent } from './assessment-non-funding/assessme
     NonFundingRelatedFormComponent,
     AssessmentFundingComponent,
     AssessmentNonFundingComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -57,7 +60,10 @@ import { AssessmentNonFundingComponent } from './assessment-non-funding/assessme
     MatTableModule, 
     MatPaginatorModule,
     MatSortModule,
-    MatRadioModule
+    MatRadioModule,
+    BrowserAnimationsModule,
+    BrowserModule
   ],
+  
 })
 export class IncidentReportModule { }
