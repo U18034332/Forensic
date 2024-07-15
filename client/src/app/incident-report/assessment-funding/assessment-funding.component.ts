@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
-import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-assessment-funding',
   templateUrl: './assessment-funding.component.html',
   styleUrls: ['./assessment-funding.component.scss']
 })
-export class AssessmentFundingComponent implements OnInit {
+export class AssessmentFundingComponent {
   @Input() dataSource: FundingIncidentReportData[] = [];
 
   displayedColumns: string[] = [
@@ -14,9 +13,4 @@ export class AssessmentFundingComponent implements OnInit {
     'actions'
   ];
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
- 
 }

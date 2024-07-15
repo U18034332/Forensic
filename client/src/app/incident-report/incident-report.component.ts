@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
-import { IncidentReportService } from '../services/incident-report.service';
 import { AssessmentFundedReport } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
 import { NonFundedIncidentReportService } from '../services/non-funded-incident-report.service';
@@ -39,7 +38,7 @@ export class IncidentReportComponent implements OnInit {
     this.fundingReportService.getAllToBeAssessedFundingRelatedIncidentReports()
     .subscribe(reports => {
       console.log(reports);
-      this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
+      this.fundedAssessmentReports = reports.map((report: any) => [report]);
     }, (err) => {
       console.log(err);
       this.navigateTo('/403')
