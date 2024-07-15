@@ -18,8 +18,6 @@ export interface FundingIncidentReportData {
   divisionDetected: string;
   assessmentStage: number;
 }
-  // Add other fields from your form
-
 
 export interface AssessmentFundedReport extends FundingIncidentReportData {
   status: string;
