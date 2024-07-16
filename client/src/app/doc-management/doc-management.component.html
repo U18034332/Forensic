@@ -1,8 +1,11 @@
-<div class="container">
-  <div class="title">
-    Document Management
-  </div>
+<div class="doc-management-view-styling">
 
+<div class="title">
+  Document Management
+</div>
+
+<div class="container">
+ 
   <div class="doc-management-view" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
     <mat-card class="doc-management-card">
       <mat-card-content>
@@ -34,4 +37,6 @@
 
     <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
   </div>
+</div>
+
 </div>

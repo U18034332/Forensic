@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+      <h1 mat-dialog-title>Select Firm</h1>
+    </div>
+    <div mat-dialog-content>
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let firm of firmList" 
+           (click)="selectFirm(firm)" 
+           [class.selected]="selectedFirm === firm">
+          {{ firm.name }}
+          <mat-icon *ngIf="selectedFirm === firm" class="check-icon">check</mat-icon>
+        </a>
+      </mat-nav-list>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button class="dialog-button" (click)="onRefer()">Refer</button>
+      <button mat-button class="dialog-button" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+  

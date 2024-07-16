@@ -34,6 +34,13 @@ export class NonFundedIncidentReportService {
     );
   }
 
+  getReport(reportNumber: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}get-report/${reportNumber}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';

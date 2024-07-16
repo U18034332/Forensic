@@ -32,6 +32,9 @@ import { GrantCaseManagementModule } from './grant-case-management/grant-case-ma
 import { MatTableModule } from '@angular/material/table';
 import { AnnexureADigitalFormComponent } from './case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Corrected import path
 import { BrowserModule } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
+
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     CommonModule,
     //new layout starts here
+
     MatMenuModule,
     DashboardModule,
     IncidentReportModule,
@@ -70,7 +74,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MatTableModule,
     MatCheckboxModule,
     DragDropModule,
-    BrowserModule
+    BrowserModule,
+    FullCalendarModule
   ],
   providers: [
     provideAnimationsAsync()

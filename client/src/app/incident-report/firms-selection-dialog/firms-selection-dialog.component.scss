@@ -1,0 +1,57 @@
+.dialog-container {
+    width: 270px; /* Thinner panel width */
+    padding: 16px;
+  }
+  
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .dialog-button {
+    font-size: 1.2em; /* Larger button text */
+    padding: 12px 24px; /* Larger button padding */
+    margin: 8px; /* Space between buttons */
+    background-color: #1976d2; /* Blue button background */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .dialog-button:hover {
+    background-color: #1565c0; /* Darker blue on hover */
+  }
+  
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: space-between; /* Space buttons apart */
+    width: 100%; /* Ensure full width for alignment */
+  }
+  
+  .mat-nav-list a {
+    font-size: 1.1em; /* Larger font size */
+    padding: 10px 16px; /* Padding for list items */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .mat-nav-list a:hover {
+    background-color: #f0f0f0; /* Light grey on hover */
+  }
+  
+  .mat-nav-list a:active {
+    background-color: #e0e0e0; /* Darker grey on click */
+  }
+  
+  .mat-nav-list a.selected {
+    background-color: #d0d0d0; /* Light grey for selected firm */
+    font-weight: bold; /* Optional: make selected firm bold */
+  }
+  
+  .check-icon {
+    float: right; /* Position the check icon to the right */
+    color: green; /* Color of the check mark */
+  }
+  

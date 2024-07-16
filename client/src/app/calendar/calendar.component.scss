@@ -1,6 +1,23 @@
-.title {
-    margin-left: 15px;
-    margin-top: 45px;
-    font-size: 24px;
-    font-weight: bold;
-  }
+
+
+/* calendar.component.css */
+:host {
+  display: block;
+  padding-left: 75px;
+}
+
+full-calendar {
+  max-width: 90%;
+  padding-top: 10px;
+}
+
+.calendar-view{
+  padding-top: 75px;
+}
+
+.calender-title {
+  margin-left: 85px;
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}

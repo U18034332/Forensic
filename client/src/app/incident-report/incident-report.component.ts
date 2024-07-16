@@ -33,6 +33,10 @@ export class IncidentReportComponent implements OnInit {
     this.nonfundingReportService.getAllToBeAssessedNonFundingRelatedIncidentReports().subscribe(reports => {
       console.log(reports);
       this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
+    }, (err) => {
+      console.log(err);
+      
+      this.navigateTo('/403')
     });
 
     this.fundingReportService.getAllToBeAssessedFundingRelatedIncidentReports()
