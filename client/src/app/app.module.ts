@@ -33,6 +33,7 @@ import { MatTableModule } from '@angular/material/table';
 import { AnnexureADigitalFormComponent } from './case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component'; // Corrected import path
 import { BrowserModule } from '@angular/platform-browser';
 
+
 @NgModule({
   declarations: [
     // Components
@@ -70,7 +71,8 @@ import { BrowserModule } from '@angular/platform-browser';
     MatTableModule,
     MatCheckboxModule,
     DragDropModule,
-    BrowserModule
+    BrowserModule,
+    
   ],
   providers: [
     provideAnimationsAsync()

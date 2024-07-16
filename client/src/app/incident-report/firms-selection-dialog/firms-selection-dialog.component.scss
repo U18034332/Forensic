@@ -1,5 +1,5 @@
 .dialog-container {
-    width: 300px; /* Thinner panel width */
+    width: 270px; /* Thinner panel width */
     padding: 16px;
   }
   
@@ -20,10 +20,6 @@
     transition: background-color 0.3s; /* Smooth transition */
   }
   
-  .dialog-button mat-icon {
-    margin-right: 8px; /* Space between icon and text */
-  }
-  
   .dialog-button:hover {
     background-color: #1565c0; /* Darker blue on hover */
   }
@@ -34,27 +30,28 @@
     width: 100%; /* Ensure full width for alignment */
   }
   
-  .mat-icon-button {
-    color: #1976d2; /* Blue exit button color */
+  .mat-nav-list a {
+    font-size: 1.1em; /* Larger font size */
+    padding: 10px 16px; /* Padding for list items */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition */
   }
   
-  .mat-icon-button:hover {
-    color: #1565c0; /* Darker blue on hover */
+  .mat-nav-list a:hover {
+    background-color: #f0f0f0; /* Light grey on hover */
   }
   
-  .user-ellipse {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 8px; /* Space between ellipse and text */
+  .mat-nav-list a:active {
+    background-color: #e0e0e0; /* Darker grey on click */
   }
   
-  .high-workload {
-    background-color: red;
+  .mat-nav-list a.selected {
+    background-color: #d0d0d0; /* Light grey for selected firm */
+    font-weight: bold; /* Optional: make selected firm bold */
   }
   
-  .low-workload {
-    background-color: green;
+  .check-icon {
+    float: right; /* Position the check icon to the right */
+    color: green; /* Color of the check mark */
   }
   

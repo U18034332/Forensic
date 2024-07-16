@@ -50,6 +50,6 @@
 
 
 <mat-menu #actionMenu="matMenu">
-  <button mat-menu-item class= "not-Recommended" ><mat-icon>remove_circle_outline</mat-icon>Not Recommended for Investigation</button>
+  <button mat-menu-item class= "not-Recommended"(click)="openNotRecommendedDialog()" ><mat-icon>remove_circle_outline</mat-icon>Not Recommended for Investigation</button>
   <button mat-menu-item class="Recommended"(click)="openInvestigationDialog()"><mat-icon>check_circle_outline</mat-icon>Recommended for Investigation</button>
 </mat-menu>

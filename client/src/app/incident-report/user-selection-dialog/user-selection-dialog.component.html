@@ -1,13 +1,12 @@
 <div class="dialog-container">
     <div class="dialog-header">
       <h1 mat-dialog-title>Select Users</h1>
-      <button mat-icon-button (click)="onCancel()">
-        <mat-icon>close</mat-icon>
-      </button>
     </div>
     <div mat-dialog-content>
+      <p>Select one user or multiple to create a team:</p>
       <mat-selection-list #users>
         <mat-list-option *ngFor="let user of userList" [value]="user">
+          <span class="user-ellipse" [ngClass]="{'high-workload': user.workload > workloadThreshold, 'low-workload': user.workload <= workloadThreshold}"></span>
           {{ user.name }}
         </mat-list-option>
       </mat-selection-list>

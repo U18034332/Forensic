@@ -30,7 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { InvestigationDialogComponent } from './investigation-dialog/investigation-dialog.component';
 import { UserSelectionDialogComponent } from './user-selection-dialog/user-selection-dialog.component';
-
+import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
+import { FirmsSelectionDialogComponent } from './firms-selection-dialog/firms-selection-dialog.component';
+import { FiledReportsComponent } from './filed-reports/filed-reports.component';
 @NgModule({
   declarations: [
     IncidentReportComponent,
@@ -41,6 +43,9 @@ import { UserSelectionDialogComponent } from './user-selection-dialog/user-selec
     AssessmentNonFundingComponent,
     InvestigationDialogComponent,
     UserSelectionDialogComponent,
+    NotRecommendedDialogComponent,
+    FirmsSelectionDialogComponent,
+    FiledReportsComponent,
   
   ],
   imports: [
