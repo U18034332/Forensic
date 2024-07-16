@@ -26,7 +26,7 @@ export class AssessmentFundingComponent {
       width: '30%',
       data: element
     });
-
+    console.log(element);
   }
  
 }
