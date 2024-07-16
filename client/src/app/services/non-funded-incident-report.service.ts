@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from "rxjs";
 import { NonFundingIncidentReportData } from "../models/non-funding-report.interface";
 import { AuthService } from "./auth-service.service";
+import { IncidentReportEvaluation } from "../models/incident-report-evaluation";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,16 @@ export class NonFundedIncidentReportService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  assessIncidentReport(incidentReportAssessmentState: IncidentReportEvaluation): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assessment`,incidentReportAssessmentState ,{headers: this.getAuthHeaders() })
+    .pipe(
+      tap((res) => {
+        console.log("Successfully asssessed the report: ", res)
+      }), 
+      catchError(this.handleError)
+    )
   }
 
 
