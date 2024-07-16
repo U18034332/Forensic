@@ -1,5 +1,18 @@
-.calender-view{
-  padding-top: 90px;
+
+
+/* calendar.component.css */
+:host {
+  display: block;
+  padding-left: 75px;
+}
+
+full-calendar {
+  max-width: 90%;
+  padding-top: 10px;
+}
+
+.calendar-view{
+  padding-top: 75px;
 }
 
 .calender-title {

@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { CalendarOptions } from '@fullcalendar/core'; // useful for typechecking
+import dayGridPlugin from '@fullcalendar/daygrid';
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent {
-  constructor(private router: Router) {}
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+    plugins: [dayGridPlugin]
+  };
 
-  navigateTo(route: string) {
-    this.router.navigate([route]);
+  handleDateClick(eventInfo: any) {
+    console.log('Date clicked', eventInfo.dateStr);
+    // Handle date click logic here
+  }
+
+  handleEventClick(eventClickInfo: any) {
+    console.log('Event clicked', eventClickInfo.event.title);
+    // Handle event click logic here
   }
 }

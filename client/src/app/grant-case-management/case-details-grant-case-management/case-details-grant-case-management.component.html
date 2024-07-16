@@ -62,7 +62,14 @@
             <button mat-menu-item class="recommend-action-btn">Recommend</button>
           </mat-menu>
         </mat-action-row>
-        <p>Annexure B content here...</p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" aria-label="Annexure B" (click)="openAnnexureB()">
+              <mat-icon>attach_file</mat-icon>
+              Annexure B
+            </button>
+          </div>
+        </section>
       </mat-expansion-panel>
   
       <mat-expansion-panel>
@@ -76,7 +83,18 @@
             <button mat-menu-item class="recommend-action-btn">Recommend</button>
           </mat-menu>
         </mat-action-row>
-        <p>Annexure C content here...</p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" aria-label="Annexure C" (click)="uploadAnnexureC()">
+              <mat-icon>attach_file</mat-icon>
+              Annexure C
+            </button>
+          </div>
+          <div *ngIf="selectedFile" class="file-display">
+            <mat-icon>insert_drive_file</mat-icon>
+            <span>{{ selectedFile.name }}</span>
+          </div>
+        </section>
       </mat-expansion-panel>
   
       <mat-expansion-panel>
@@ -90,7 +108,14 @@
             <button mat-menu-item class="recommend-action-btn">Recommend</button>
           </mat-menu>
         </mat-action-row>
-        <p>Annexure D content here...</p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" aria-label="Annexure B" (click)="openAnnexureD()">
+              <mat-icon>attach_file</mat-icon>
+              Annexure D
+            </button>
+          </div>
+        </section>
       </mat-expansion-panel>
   
       <mat-expansion-panel>
@@ -104,7 +129,14 @@
             <button mat-menu-item class="recommend-action-btn">Recommend</button>
           </mat-menu>
         </mat-action-row>
-        <p>Annexure E content here...</p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" aria-label="Annexure B" (click)="openAnnexureE()">
+              <mat-icon>attach_file</mat-icon>
+              Annexure E
+            </button>
+          </div>
+        </section>
       </mat-expansion-panel>
   
       <mat-expansion-panel>
@@ -118,7 +150,14 @@
             <button mat-menu-item class="recommend-action-btn">Recommend</button>
           </mat-menu>
         </mat-action-row>
-        <p>Annexure F content here...</p>
+        <section>
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" aria-label="Annexure B" (click)="uploadAnnexureF()">
+              <mat-icon>attach_file</mat-icon>
+              Annexure F
+            </button>
+          </div>
+        </section>
       </mat-expansion-panel>
     </div>
   
