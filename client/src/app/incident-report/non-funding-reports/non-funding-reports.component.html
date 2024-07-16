@@ -15,15 +15,11 @@
       <mat-cell *matCellDef="let report"> {{report.datereported}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="user">
-        <mat-header-cell *matHeaderCellDef> User</mat-header-cell>
-        <mat-cell *matCellDef="let report"> {{report.user}} </mat-cell>
+    <ng-container matColumnDef="userorfirm">
+        <mat-header-cell *matHeaderCellDef> User/Firm</mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.userorfirm}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="firm">
-        <mat-header-cell *matHeaderCellDef> Firm </mat-header-cell>
-        <mat-cell *matCellDef="let report"> {{report.firm}} </mat-cell>
-      </ng-container>
 
       <ng-container matColumnDef="reason">
         <mat-header-cell *matHeaderCellDef> Reason </mat-header-cell>
