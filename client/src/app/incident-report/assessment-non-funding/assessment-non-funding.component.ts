@@ -28,6 +28,7 @@ export class AssessmentNonFundingComponent {
       width: '30%',
       data: element
     });
+  }
 
   openInvestigationDialog(): void {
     const dialogRef = this.dialog.open(InvestigationDialogComponent);

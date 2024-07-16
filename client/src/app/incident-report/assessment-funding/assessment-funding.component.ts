@@ -30,8 +30,7 @@ export class AssessmentFundingComponent {
     });
     console.log(element);
   }
- 
-}
+
   openInvestigationDialog(): void {
     const dialogRef = this.dialog.open(InvestigationDialogComponent);
 
@@ -51,4 +50,5 @@ export class AssessmentFundingComponent {
       }
     });
   }
+ 
 }
