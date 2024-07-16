@@ -53,6 +53,7 @@
 
 .dropdown-button mat-icon {
   margin-left: 0px;
+  
 }
 
 .dropdown-button:hover {
@@ -88,4 +89,28 @@
   outline: none;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
 }
-
+.not-Recommended {
+  
+  color: black;
+  text-align: center;
+  border-bottom:3px solid #acaaaa;
+}
+.not-Recommended:hover{
+  background-color: #303f9f;
+  color: white;
+}
+.Recommended {
+ 
+  color: black;
+  text-align: center;
+}
+.Recommended:hover{
+  background-color: #303f9f;
+  color: white;
+}
+.not-Recommended:hover mat-icon {
+  color : white;
+}
+.Recommended:hover mat-icon{
+  color : white
+}

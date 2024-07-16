@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <div class="dialog-header">
+      <h1 mat-dialog-title>Choose Investigation Type</h1>
+      <button mat-icon-button (click)="onClose()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div mat-dialog-content>
+      <p>Please allocate to a Users or refer to a Firms for investigation:</p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button class="dialog-button left" (click)="onSelect('users')">
+        <mat-icon>person</mat-icon> Users
+      </button>
+      <button mat-button class="dialog-button right" (click)="onSelect('firms')">
+        <mat-icon>business</mat-icon> Firms
+      </button>
+    </div>
+  </div>
+  

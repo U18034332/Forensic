@@ -10,6 +10,7 @@ mat-form-field {
   
   .mat-dialog-actions {
     justify-content: flex-end;
+    margin-left: 90%;
   }
   
   .custom-card {
@@ -19,7 +20,9 @@ mat-form-field {
     box-sizing: border-box; /* Ensure padding is included in width */
   }
 
-
+.mat-dialog-close{
+  align-items: end;
+}
  
   h2 {
     text-align: center; /* Center-align the text */

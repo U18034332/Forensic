@@ -1,24 +1,29 @@
-<div class="header">
-  <div class="title">Incident Report</div>
-  <button mat-raised-button color="primary" class="add-report-button" (click)="openAddReportDialog()">Add Report</button>
-</div>
+<div class="incident-report-view">
 
-<mat-tab-group>
-  <mat-tab label="Filed Reports">
-    <!-- Filed Reports content here -->
-  </mat-tab>
-  <mat-tab label="Assessment">
-    <div>
-      <h2>Non Funded Reports</h2>
-      <ng-container *ngFor="let table of nonFundedAssessmentReports">
-        <app-assessment-non-funding [dataSource]="table"></app-assessment-non-funding>
-      </ng-container>
-    </div>
-    <div>
-      <h2>Funded Reports</h2>
-      <ng-container *ngFor="let table of fundedAssessmentReports">
-        <app-assessment-funding [dataSource]="table"></app-assessment-funding>
-      </ng-container>
-    </div>
-  </mat-tab>
-</mat-tab-group>
+  <div class="header">
+    <div class="incident-report-title">Incident Report</div>
+    <button mat-raised-button color="primary" class="add-report-button" (click)="openAddReportDialog()">Add Report</button>
+  </div>
+  
+  <mat-tab-group>
+    <mat-tab label="Filed Reports">
+      <!-- Filed Reports content here -->
+    </mat-tab>
+    <mat-tab label="Assessment">
+      <div>
+        <h2>Non Funded Reports</h2>
+        <ng-container *ngFor="let table of nonFundedAssessmentReports">
+          <app-assessment-non-funding [dataSource]="table"></app-assessment-non-funding>
+        </ng-container>
+      </div>
+      <div>
+        <h2>Funded Reports</h2>
+        <ng-container *ngFor="let table of fundedAssessmentReports">
+          <app-assessment-funding [dataSource]="table"></app-assessment-funding>
+        </ng-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  
+  </div>
+  
