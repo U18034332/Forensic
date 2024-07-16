@@ -7,14 +7,14 @@
       <h3>Start Date</h3>
       <mat-form-field appearance="fill">
         <mat-label for="start-date">Select Start Date</mat-label>
-        <input matInput id="start-date" type="date" placeholder="Select start date">
+        <input matInput id="start-date" type="date" placeholder="Select start date"[(ngModel)]="report.startDate" name="startDate">
       </mat-form-field>
 
       <!-- Date Reported -->
       <h3>Date Reported</h3>
       <mat-form-field appearance="fill">
         <mat-label for="date-reported">Select Date Reported</mat-label>
-        <input matInput id="date-reported" type="date" placeholder="Select date reported">
+        <input matInput id="date-reported" type="date" placeholder="Select date reported"[(ngModel)]="report.dateReported" name="dateReported">>
       </mat-form-field>
 
       <!-- Project Number -->

@@ -14,7 +14,7 @@ export interface FundingIncidentReportData {
   teams: string;
   lastModified: Date;
   caseEndDate: Date;
- 
+  dateReported: string;
  
 }
   // Add other fields from your form
