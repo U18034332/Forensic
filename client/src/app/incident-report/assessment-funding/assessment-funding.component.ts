@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { AssessmentFundedReport, FundingIncidentReportData } from '../../dto/funding-related.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { FundingRelatedFormComponent } from '../funding-related-form/funding-related-form.component';
 @Component({
   selector: 'app-assessment-funding',
   templateUrl: './assessment-funding.component.html',
@@ -12,5 +14,19 @@ export class AssessmentFundingComponent {
     'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
+  nonFundedAssessmentReports: AssessmentFundedReport[][] = [];
 
+  constructor(
+    public dialog: MatDialog,
+  ) {}
+
+
+  openFundingRelatedReportDialog(element: any): void {
+    this.dialog.open(FundingRelatedFormComponent, {
+      width: '30%',
+      data: element
+    });
+
+  }
+ 
 }

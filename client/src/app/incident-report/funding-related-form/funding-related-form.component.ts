@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
 import { FundingRelatedService } from '../../services/funding-related.service';
@@ -9,7 +9,7 @@ import { FundingRelatedService } from '../../services/funding-related.service';
   templateUrl: './funding-related-form.component.html',
   styleUrls: ['./funding-related-form.component.scss']
 })
-export class FundingRelatedFormComponent {
+export class FundingRelatedFormComponent implements OnInit{
   @Output() formSubmit: EventEmitter<FundingIncidentReportData> = new EventEmitter<FundingIncidentReportData>();
 
   provinces: string[] = [
@@ -74,7 +74,16 @@ export class FundingRelatedFormComponent {
 
   report: FundingIncidentReportData = {} as FundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>, private incidentReportService: FundingRelatedService) {}
+  constructor(
+    public dialogRef: MatDialogRef<FundingRelatedFormComponent>,
+    private incidentReportService: FundingRelatedService,
+    @Inject(MAT_DIALOG_DATA) public data: FundingIncidentReportData,
+  ) {}
+  ngOnInit(): void {
+    if (this.data) {
+      this.report = { ...this.data };
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

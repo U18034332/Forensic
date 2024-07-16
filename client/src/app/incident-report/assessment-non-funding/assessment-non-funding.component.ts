@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { AssessmentNonFundedReport, NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { NonFundingRelatedFormComponent } from '../non-funding-related-form/non-funding-related-form.component';
 @Component({
   selector: 'app-assessment-non-funding',
   templateUrl: './assessment-non-funding.component.html',
@@ -12,4 +14,18 @@ export class AssessmentNonFundingComponent {
     'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
+  nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
+
+  constructor(
+    public dialog: MatDialog,
+  ) {}
+
+
+  openNonFundingRelatedReportDialog(element: any): void {
+    this.dialog.open(NonFundingRelatedFormComponent, {
+      width: '30%',
+      data: element
+    });
+
+  }
 }

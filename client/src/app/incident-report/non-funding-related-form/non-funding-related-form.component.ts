@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, EventEmitter, Inject, Output, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NonFundingIncidentReportData } from '../../models/non-funding-report.interface';
 import { NgForm } from '@angular/forms';
 import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
@@ -9,7 +9,7 @@ import { NonFundedIncidentReportService } from '../../services/non-funded-incide
   templateUrl: './non-funding-related-form.component.html',
   styleUrls: ['./non-funding-related-form.component.scss']
 })
-export class NonFundingRelatedFormComponent {
+export class NonFundingRelatedFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<NonFundingIncidentReportData> = new EventEmitter<NonFundingIncidentReportData>();
 
   provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'];
@@ -27,7 +27,17 @@ export class NonFundingRelatedFormComponent {
 
   report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>, private reportService: NonFundedIncidentReportService) {}
+  constructor(
+    public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: NonFundingIncidentReportData,
+    private reportService: NonFundedIncidentReportService
+  ) {}
+
+  ngOnInit(): void {
+    if (this.data) {
+      this.report = { ...this.data };
+    }
+  }
 
   submitForm(form: NgForm): void {
     if (form.valid) {
