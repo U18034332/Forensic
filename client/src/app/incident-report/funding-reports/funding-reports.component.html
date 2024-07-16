@@ -1,0 +1,54 @@
+<mat-table [dataSource]="fundingReports" class="mat-elevation-z8">
+    <ng-container matColumnDef="reportid">
+        <mat-header-cell *matHeaderCellDef> Report ID </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.reportid}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="decision">
+        <mat-header-cell *matHeaderCellDef> Decision </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.decision}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="datereported">
+        <mat-header-cell *matHeaderCellDef> Date Reported </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.datereported}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="user">
+          <mat-header-cell *matHeaderCellDef> User</mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.user}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="firm">
+          <mat-header-cell *matHeaderCellDef> Firm </mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.firm}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="reason">
+          <mat-header-cell *matHeaderCellDef> Reason </mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.reason}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.status}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="channel">
+          <mat-header-cell *matHeaderCellDef> Channel </mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.channel}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="casetype">
+          <mat-header-cell *matHeaderCellDef> Case Type</mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.casetype}} </mat-cell>
+        </ng-container>
+  
+        <ng-container matColumnDef="priority">
+          <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
+          <mat-cell *matCellDef="let report"> {{report.priority}} </mat-cell>
+        </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  

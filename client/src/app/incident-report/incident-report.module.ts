@@ -32,7 +32,8 @@ import { InvestigationDialogComponent } from './investigation-dialog/investigati
 import { UserSelectionDialogComponent } from './user-selection-dialog/user-selection-dialog.component';
 import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
 import { FirmsSelectionDialogComponent } from './firms-selection-dialog/firms-selection-dialog.component';
-import { FiledReportsComponent } from './filed-reports/filed-reports.component';
+import { FundingReportsComponent } from './funding-reports/funding-reports.component';
+import { NonFundingReportsComponent } from './non-funding-reports/non-funding-reports.component';
 @NgModule({
   declarations: [
     IncidentReportComponent,
@@ -45,7 +46,9 @@ import { FiledReportsComponent } from './filed-reports/filed-reports.component';
     UserSelectionDialogComponent,
     NotRecommendedDialogComponent,
     FirmsSelectionDialogComponent,
-    FiledReportsComponent,
+    FundingReportsComponent,
+    NonFundingReportsComponent,
+    
   
   ],
   imports: [
