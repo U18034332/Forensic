@@ -73,23 +73,25 @@ class NonFundingIncidentReportService(
 
 
     fun evaluateReport(acceptanceDTO: CaseAcceptanceDTO) {
-        require(acceptanceDTO.acceptance.isNotBlank() && acceptanceDTO.reportNumber.isNotBlank()) {
+        require(acceptanceDTO.reportNumber.isNotBlank()) {
             throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
         }
 
         val updatedCase = nonFundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
             ?: throw InvalidParameterException("The report number is invalid.")
 
-        updatedCase.acceptance = acceptanceDTO.acceptance
-
-        if (acceptanceDTO.acceptance.equals("accepted", ignoreCase = true)) {
-            userRepository.findByEmail(acceptanceDTO.allocateTo).let { userToAllocateTo ->
-                updatedCase.assignedTo = userToAllocateTo.get()
+        if (acceptanceDTO.allocateTo.isNotBlank()) {
+            val user = userRepository.findByEmail(acceptanceDTO.allocateTo)
+            if(user.isEmpty) {
+                throw InvalidParameterException("Invalid user email. Please check the email and allocate")
             }
+            updatedCase.assignedTo = user.get()
+            updatedCase.acceptance = "Recommended"
         } else {
             updatedCase.status = "Closed"
             updatedCase.assignedTo = null
-            updatedCase.declineReason = acceptanceDTO.reason
+            updatedCase.acceptance = "Not Recommended"
+            updatedCase.declineReason = acceptanceDTO.declineReason
         }
         nonFundingIncidentReportRepository.save(updatedCase)
     }
