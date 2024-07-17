@@ -4,12 +4,12 @@
   </a>
   <span class="spacer"></span>
 
-  <button mat-button>
-    <mat-icon>settings</mat-icon>
+  <button mat-button (click)="openNotificationSidePanel()">
+    <mat-icon>notifications</mat-icon>
   </button>
 
   <button mat-button>
-    <mat-icon>notifications</mat-icon>
+    <mat-icon>settings</mat-icon>
   </button>
 
   <button mat-button [matMenuTriggerFor]="userMenu">
@@ -19,7 +19,3 @@
     <app-user-dropdown></app-user-dropdown>
   </mat-menu>
 </mat-toolbar>
-
- 
-
-  

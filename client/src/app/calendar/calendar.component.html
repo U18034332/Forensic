@@ -1,14 +1,11 @@
 <div class="calendar-view">
-
-    <div class="calendar-title">
-    <h2>  Calendar</h2>
-    </div>
-
-    <div class="calendar-content">
-      <full-calendar
-        [options]="calendarOptions"
-      ></full-calendar>
-    </div>
-
+  <div class="calendar-title">
+    <h2>Calendar</h2>
+  </div>
+  <div class="calendar-content">
+    <button mat-raised-button color="primary" (click)="openEventDialog()">Add Event</button>
+    <full-calendar
+      [options]="calendarOptions"
+    ></full-calendar>
+  </div>
 </div>
-  

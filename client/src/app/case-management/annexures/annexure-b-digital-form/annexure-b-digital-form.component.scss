@@ -1,0 +1,108 @@
+.annexure-b-card {
+    overflow-y: auto;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer; /* Set cursor to indicate draggable */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    position: relative; /* To support dragging */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+    max-height: 100px;
+    
+
+    div {
+        margin: 5px 0;
+        width: 95%;
+    }
+}
+
+.content {
+    overflow-y: auto;
+    align-self: center;
+    width: 91%;
+    padding-top: 3%;
+    padding-left: 10%;
+
+
+    div {
+        margin: 10px 0;
+        overflow-y: auto;
+    }
+
+    .mat-checkbox {
+        margin-right: 15px;
+    }
+
+    ol, ul {
+        margin: 0;
+        padding-left: 20px;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    margin-top: 15px;
+    margin-right: 10px;
+    background-color: #8382821f; /* Icon color */
+    color: #f62f2fdb;
+}
+
+.close-button:hover {
+    color: #0056b3; /* Icon color on hover */
+}
+
+/* Add this to your global styles or the respective component styles */
+.cdk-overlay-pane.draggable-dialog {
+    position: absolute !important;
+}
+
+/* New styles for the header */
+.annexure-b-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px; /* Adjust padding as needed */
+    border-bottom: 1px solid #454545;
+    width: 95%;
+    max-height: 90%; /* Adjust max-height as needed */
+    
+}
+
+.header-logo {
+    width: auto; /* Adjust logo width */
+    height: 80px; /* Adjust logo height */
+    margin-bottom: 5px; /* Adjust margin as needed */
+}
+
+.right {
+    text-align: right;
+    font-size: 11px;
+    font-weight: normal;
+    flex: 1; /* Take remaining space */
+    padding-right: 20px; /* Adjust padding as needed */
+}
+
+.right div {
+    margin: 5px 0; /* Adjust margin as needed */
+}
+
+.left div {
+    margin: 5px 0;
+}
+
+.case-details {
+    color: red;
+    font-weight: bold;
+}
+
+.date {
+    color: black;
+}
