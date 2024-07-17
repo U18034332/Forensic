@@ -1,8 +1,6 @@
-import { MatButton } from "@angular/material/button";
-
 export interface FundingIncidentReportData {
-  startDate?: Date;
-  dateReported?: Date;
+  startDate: string;
+  dateReported: string;
   projectNumber: string;
   province: string;
   caseType: string;
