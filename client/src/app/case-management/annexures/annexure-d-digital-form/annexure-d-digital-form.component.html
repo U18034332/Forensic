@@ -1,1 +1,56 @@
-<p>annexure-d-digital-form works!</p>
+<mat-card class="annexure-d-card">
+    <!-- Close button -->
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+
+    <!-- Header section -->
+    <mat-card-header>
+        <mat-card-title>
+            <div class="annexure-d-header">
+                <div class="left">
+                    <img src="assets/annexure-a-header-logo.png" alt="NLC Header Logo" class="header-logo">
+                </div>
+                <div class="right">
+                    <div>Tel: +27(12)432 1300</div>
+                    <div>Info Centre: 086 00 65383</div>
+                    <div>Web: <a href="http://www.nlcsa.org.za" target="_blank">www.nlcsa.org.za</a></div>
+                    <div>National Lotteries Commission (NLC)</div>
+                    <div>P.O Box 1556, Brooklyn Square 0083, Pretoria</div>
+                    <div class="case-details">
+                        Case: <br>
+                        Ref: <br>
+                        NLC-INV: <span class="date">01/10/2023</span>
+                    </div>
+                </div>
+            </div>
+        </mat-card-title>
+    </mat-card-header>
+
+    <!-- Form content -->
+    <mat-card-content class="content">
+        <form #annexureDForm="ngForm" (ngSubmit)="submitForm(annexureDForm)">
+            <div class="declaration-section">
+                <h2>Declaration of Interest</h2>
+                <p>
+                    I <input matInput [(ngModel)]="declaration.employeeName" name="employeeName" placeholder="Your Name">, Employee number 
+                    <input matInput [(ngModel)]="declaration.employeeNumber" name="employeeNumber" placeholder="Employee Number">
+                    hereby declare that I have/have no interest to declare with regard to forensic investigation, Case no 
+                    <input matInput [(ngModel)]="declaration.caseNumber" name="caseNumber" placeholder="Case Number">.
+                </p>
+            </div>
+
+            <!-- Interest to be declared section -->
+            <div class="interest-section">
+                <h2>Interest to be declared</h2>
+                <textarea matInput placeholder="Type your interest declaration here..." [(ngModel)]="annexureD.interestToDeclare" name="interestToDeclare"></textarea>
+            </div>
+
+            <!-- Dialog actions -->
+            <mat-dialog-actions class="close-btn">
+                <button mat-button mat-dialog-close>Close</button>
+                <button mat-button color="primary" type="submit" [disabled]="!annexureDForm.valid">Submit</button>
+            </mat-dialog-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

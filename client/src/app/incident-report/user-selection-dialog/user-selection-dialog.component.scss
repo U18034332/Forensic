@@ -10,7 +10,8 @@
   }
   
   .dialog-button {
-    font-size: 1.2em; /* Larger button text */
+    font-size: 1.2em;
+    font-weight: lighter; /* Larger button text */
     padding: 12px 24px; /* Larger button padding */
     margin: 8px; /* Space between buttons */
     background-color: #1976d2; /* Blue button background */
@@ -57,4 +58,4 @@
   .low-workload {
     background-color: green;
   }
-  
+ 

@@ -11,6 +11,7 @@ import { CoreModule } from '../core/core.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
@@ -22,13 +23,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { MatDialogRef } from '@angular/material/dialog';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { CaseManagementTableComponent } from './case-management-table/case-management-table.component';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { AnnexureADigitalFormComponent } from '../case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component';
+import { AnnexureBDigitalFormComponent } from './annexures/annexure-b-digital-form/annexure-b-digital-form.component';
+import { AnnexureDDigitalFormComponent } from './annexures/annexure-d-digital-form/annexure-d-digital-form.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { AnnexureADigitalFormComponent } from '../case-management/annexures/anne
     CaseManagementDigitalFormComponent,
     CaseDetailsComponent,
     CaseManagementTableComponent,
-    AnnexureADigitalFormComponent
+    AnnexureADigitalFormComponent,
+    AnnexureBDigitalFormComponent,
+    AnnexureDDigitalFormComponent
   ],
   imports: [
     CommonModule,
@@ -60,9 +64,10 @@ import { AnnexureADigitalFormComponent } from '../case-management/annexures/anne
     MatRadioModule,
     MatPaginatorModule,
     MatSortModule,
-    MatExpansionModule,
     MatCheckboxModule,
-    DragDropModule
+    DragDropModule,
+    MatExpansionModule,
+    ReactiveFormsModule
   ]
 })
-export class CaseManagementModule {}
+export class CaseManagementModule { }
