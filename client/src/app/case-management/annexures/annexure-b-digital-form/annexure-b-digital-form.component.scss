@@ -8,13 +8,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background: #fff;
     position: relative; /* To support dragging */
+    overflow-x: hidden;
 }
 
 .header {
     text-align: center;
     margin-bottom: 10px;
-    max-height: 100px;
-    
 
     div {
         margin: 5px 0;
@@ -25,9 +24,9 @@
 .content {
     overflow-y: auto;
     align-self: center;
-    width: 91%;
+    width: 100%;
     padding-top: 3%;
-    padding-left: 10%;
+    padding-left: 13%;
 
 
     div {
@@ -69,33 +68,32 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px; /* Adjust padding as needed */
-    border-bottom: 1px solid #454545;
-    width: 95%;
-    max-height: 90%; /* Adjust max-height as needed */
+    padding-top: 25px;
+    gap: 45px;
+    width: 100%;
+    box-sizing: border-box;
     
 }
 
 .header-logo {
-    width: auto; /* Adjust logo width */
-    height: 80px; /* Adjust logo height */
-    margin-bottom: 5px; /* Adjust margin as needed */
+    width: 250px;
+    margin-bottom: 0;
 }
+
 
 .right {
     text-align: right;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: normal;
-    flex: 1; /* Take remaining space */
-    padding-right: 20px; /* Adjust padding as needed */
+    line-height: 1.2; 
 }
 
 .right div {
-    margin: 5px 0; /* Adjust margin as needed */
+    margin-left: 25px;
 }
 
 .left div {
-    margin: 5px 0;
+    margin-left: 25px;
 }
 
 .case-details {

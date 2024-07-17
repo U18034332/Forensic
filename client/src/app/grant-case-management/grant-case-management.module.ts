@@ -26,6 +26,9 @@ import { CaseDetailsGrantCaseManagementComponent } from './case-details-grant-ca
 import { GrantCaseManagementTableComponent } from './grant-case-management-table/grant-case-management-table.component';
 import { AnnexureADigitalFormComponent } from './annexures-grant/annexure-a-digital-form/annexure-a-digital-form.component';
 import { MatCheckbox } from '@angular/material/checkbox';
+import { AnnexureBDigitalFormComponent } from './annexures-grant/annexure-b-digital-form/annexure-b-digital-form.component';
+import { AnnexureDDigitalFormComponent } from './annexures-grant/annexure-d-digital-form/annexure-d-digital-form.component';
+import { AnnexureEDigitalFormComponent } from './annexures-grant/annexure-e-digital-form/annexure-e-digital-form.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { MatCheckbox } from '@angular/material/checkbox';
     GrantCaseManagementDigitalFormComponent,
     CaseDetailsGrantCaseManagementComponent,
     GrantCaseManagementTableComponent,
-    AnnexureADigitalFormComponent
+    AnnexureADigitalFormComponent,
+    AnnexureBDigitalFormComponent,
+    AnnexureDDigitalFormComponent,
+    AnnexureEDigitalFormComponent
   ],
   imports: [
     CommonModule,
