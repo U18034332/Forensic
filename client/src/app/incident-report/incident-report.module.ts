@@ -34,6 +34,7 @@ import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-reco
 import { FirmsSelectionDialogComponent } from './firms-selection-dialog/firms-selection-dialog.component';
 import { FundingReportsComponent } from './funding-reports/funding-reports.component';
 import { NonFundingReportsComponent } from './non-funding-reports/non-funding-reports.component';
+
 @NgModule({
   declarations: [
     IncidentReportComponent,
@@ -48,8 +49,6 @@ import { NonFundingReportsComponent } from './non-funding-reports/non-funding-re
     FirmsSelectionDialogComponent,
     FundingReportsComponent,
     NonFundingReportsComponent,
-    
-  
   ],
   imports: [
     CommonModule,
@@ -76,6 +75,5 @@ import { NonFundingReportsComponent } from './non-funding-reports/non-funding-re
     BrowserAnimationsModule,
     BrowserModule
   ],
-  
 })
 export class IncidentReportModule { }

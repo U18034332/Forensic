@@ -42,6 +42,13 @@ export class NonFundedIncidentReportService {
       );
   }
 
+  getFilledIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/assessed`, {headers: this.getAuthHeaders() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   assessIncidentReport(incidentReportAssessmentState: IncidentReportEvaluation): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/assessment`,incidentReportAssessmentState ,{headers: this.getAuthHeaders() })
     .pipe(

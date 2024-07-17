@@ -7,6 +7,7 @@ import { NotRecommendedDialogComponent } from '../not-recommended-dialog/not-rec
 import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
 import { IncidentReportEvaluation } from '../../models/incident-report-evaluation';
 import { IncidentReportComponent } from '../incident-report.component';
+import { NonFundingReportsComponent } from '../non-funding-reports/non-funding-reports.component';
 
 @Component({
   selector: 'app-assessment-non-funding',
@@ -25,7 +26,8 @@ export class AssessmentNonFundingComponent {
   constructor(
     public dialog: MatDialog,
     private incidentAssessmentService: NonFundedIncidentReportService,
-    private incidentReportComponent: IncidentReportComponent
+    private incidentReportComponent: IncidentReportComponent,
+    private nonFundingReport: NonFundingReportsComponent
   ) {}
 
   openNonFundingRelatedReportDialog(element: any): void {
@@ -57,6 +59,7 @@ export class AssessmentNonFundingComponent {
         this.incidentAssessmentService.assessIncidentReport(evaluation).subscribe(response => {
           console.log('Incident report assessed:', response);
           this.incidentReportComponent.reloadReports();
+          this.nonFundingReport.getFilledReports()
         }, error => {
           console.error('Error assessing incident report:', error);
         });

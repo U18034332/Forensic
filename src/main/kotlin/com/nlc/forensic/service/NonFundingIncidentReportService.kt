@@ -66,9 +66,12 @@ class NonFundingIncidentReportService(
         return newReport
     }
 
-
     fun findAcceptedReportsByReportNumber(reportNumber: String): NonFundingIncidentReport? {
         return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "accepted")
+    }
+
+    fun getAllAssessedFilledReports(): List<NonFundingIncidentReport> {
+        return nonFundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
     }
 
 
@@ -96,7 +99,6 @@ class NonFundingIncidentReportService(
         nonFundingIncidentReportRepository.save(updatedCase)
     }
 
-
     fun getAllNonFundingReports(): List<NonFundingIncidentReport> {
         return nonFundingIncidentReportRepository.findAll()
     }
@@ -104,7 +106,6 @@ class NonFundingIncidentReportService(
     fun getAllUnassignedReports(): List<NonFundingIncidentReport?> {
         return nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
     }
-
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {
         val latestReportId = nonFundingIncidentReportRepository.count()
