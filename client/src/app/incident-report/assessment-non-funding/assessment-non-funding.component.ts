@@ -26,8 +26,8 @@ export class AssessmentNonFundingComponent {
   constructor(
     public dialog: MatDialog,
     private incidentAssessmentService: NonFundedIncidentReportService,
-    private incidentReportComponent: IncidentReportComponent,
-    private nonFundingReport: NonFundingReportsComponent
+    private incidentReportComponent: IncidentReportComponent
+    //private nonFundingReport: NonFundingReportsComponent
   ) {}
 
   openNonFundingRelatedReportDialog(element: any): void {
@@ -59,7 +59,7 @@ export class AssessmentNonFundingComponent {
         this.incidentAssessmentService.assessIncidentReport(evaluation).subscribe(response => {
           console.log('Incident report assessed:', response);
           this.incidentReportComponent.reloadReports();
-          this.nonFundingReport.getFilledReports()
+          // this.nonFundingReport.getFilledReports()
         }, error => {
           console.error('Error assessing incident report:', error);
         });
