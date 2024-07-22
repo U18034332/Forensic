@@ -34,6 +34,8 @@ import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-reco
 import { FirmsSelectionDialogComponent } from './firms-selection-dialog/firms-selection-dialog.component';
 import { FundingReportsComponent } from './funding-reports/funding-reports.component';
 import { NonFundingReportsComponent } from './non-funding-reports/non-funding-reports.component';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     IncidentReportComponent,
@@ -74,7 +76,9 @@ import { NonFundingReportsComponent } from './non-funding-reports/non-funding-re
     MatSortModule,
     MatRadioModule,
     BrowserAnimationsModule,
-    BrowserModule
+    BrowserModule,
+    SplitButtonModule,
+    DialogModule,
   ],
   
 })
