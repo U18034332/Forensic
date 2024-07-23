@@ -1,8 +1,7 @@
 package com.nlc.forensic.entity
 
 import jakarta.persistence.*
-import org.springframework.data.annotation.LastModifiedBy
-import java.util.Date
+import java.sql.Date
 
 
 @Entity
