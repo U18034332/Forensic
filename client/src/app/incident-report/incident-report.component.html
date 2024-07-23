@@ -10,17 +10,17 @@
       <div>
         <h2>Non Funded Reports</h2>
         <ng-container>
-        <app-non-funding-reports></app-non-funding-reports>
-      </ng-container>
+          <app-non-funding-reports [dataSource]="nonFundedReports"></app-non-funding-reports>
+        </ng-container>
       </div>
       <div>
         <h2>Funded Reports</h2>
-      <ng-container>
-        <app-funding-reports></app-funding-reports>
-      </ng-container>
+        <ng-container>
+          <app-funding-reports [dataSource]="fundedReports"></app-funding-reports>
+        </ng-container>
       </div>
     </mat-tab>
-    <mat-tab label="Incident Report/Case  Assessment">
+    <mat-tab label="Incident Report/Case Assessment">
       <div>
         <h2>Non Funded Reports</h2>
         <ng-container *ngFor="let table of nonFundedAssessmentReports">
@@ -36,5 +36,6 @@
     </mat-tab>
   </mat-tab-group>
   
-  </div>
+</div>
+
   
