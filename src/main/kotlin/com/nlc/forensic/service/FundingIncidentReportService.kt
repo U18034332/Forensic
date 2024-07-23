@@ -84,6 +84,10 @@ class FundingIncidentReportService(
         return fundingIncidentReportRepository.findAll()
     }
 
+    fun getAllAssessedFilledReports(): List<FundingIncidentReport> {
+        return fundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
+    }
+
     fun getAllUnassignedReports(): List<FundingIncidentReport?> {
         return fundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
     }
