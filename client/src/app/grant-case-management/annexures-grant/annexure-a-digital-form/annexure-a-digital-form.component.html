@@ -10,54 +10,53 @@
                 <img src="assets/annexure-a-header-logo.png" alt="NLC Header Logo" class="header-logo">
             </div>
             <div class="right">
-                <div>Tel: +27(12)432 1300</div>
-                <div>Info Centre: 086 00 65383</div>
-                <div>Web: <a href="http://www.nlcsa.org.za" target="_blank">www.nlcsa.org.za</a></div>
-                <div>National Lotteries Commission (NLC)</div>
-                <div>P.O Box 1556, Brooklyn Square 0083, Pretoria</div>
-                <div class="case-details">
-                    Case: <br>
-                    Ref: <br>
-                    NLC-INV: <span class="date">01/10/2023</span>
-                </div>
+                Tel: +27(12)432 1300<br>
+                Info Centre: 086 00 65383<br>
+                Web: <a href="http://www.nlcsa.org.za" target="_blank">www.nlcsa.org.za</a><br>
+                National Lotteries Commission (NLC)<br>
+                P.O Box 1556, Brooklyn Square 0083, Pretoria<br>
+                Case: <br>
+                Ref: <br>
+                NLC-INV: <span class="date">01/10/2023</span>
             </div>
         </div>
     </mat-card-title>
 </mat-card-header>
 
   <mat-card-content class="content">
-    <form>
+    <form #annexureAForm="ngForm">
       <!-- 1. Case Ref -->
-      <div>
-        <strong>Case Ref:</strong> NLC-INV: 01/10/2023
-      </div>
+      <mat-form-field appearance="fill" class="case-id-dropdown">
+        <mat-label>Case Ref :</mat-label>
+        <mat-select [(ngModel)]="annexureA.caseID" name="caseId">
+          <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
+        </mat-select>
+      </mat-form-field>
     
       <!-- 2. Date and Source -->
       <div>
-        <strong>Date:</strong> <span>______</span>
-        <strong>Source:</strong> <span>______</span>
+         <!-- Start Date -->
+    <mat-form-field appearance="fill">
+      <mat-label for="start-date">Start Date</mat-label>
+      <input matInput id="start-date" type="date" placeholder="Selected start date" [(ngModel)]="annexureA.startDate" name="startDate">
+    </mat-form-field>
+
+    <!-- Date Reported -->
+    <mat-form-field appearance="fill">
+      <mat-label for="date-reported">Date Reported</mat-label>
+      <input matInput id="date-reported" type="date" placeholder="Select date reported" [(ngModel)]="annexureA.dateReported" name="dateReported">
+    </mat-form-field>
+
       </div>
     
       <!-- 3. Allegations -->
-      <div>
-        <strong>Allegations:</strong>
-        <ul>
-          <li>Corruption</li>
-          <li>Fraud</li>
-          <li>Forgery/Uttering</li>
-          <li>Ethical issue</li>
-          <li>Nepotism / HR</li>
-          <li>Supply Chain Management</li>
-          <li>Theft</li>
-          <li>Non Compliance</li>
-          <li>Misappropriation of funds</li>
-          <li>Conflict of interest</li>
-          <li>Collusion</li>
-          <li>Scam(s)</li>
-          <li>Misconduct</li>
-          <li>Other</li>
-        </ul>
-      </div>
+      <!-- Case Type -->
+    <mat-form-field appearance="fill">
+      <mat-label for="case-type">Selected Case Type</mat-label>
+      <mat-select id="case-type" [(ngModel)]="annexureA.caseType" name="caseType">
+        <mat-option *ngFor="let type of caseTypes" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
     
       <!-- 4. Classification of Allegations -->
       <div>
@@ -83,7 +82,11 @@
       <!-- 5. Perpetrators / Officials Implicated -->
       <div>
         <strong>Perpetrators / officials implicated:</strong>
-        <div>a) XXX</div>
+        <div>
+          <mat-form-field class="Perpetrators">
+            <mat-label>Enter Here </mat-label>
+            <input matInput placeholder="Piet Pompies" value="">
+          </mat-form-field></div>
       </div>
     
       <!-- 6. Categorisation -->
@@ -141,4 +144,8 @@
       </div>
     </form>
   </mat-card-content>
+  <mat-dialog-actions class="close-btn">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(annexureAForm)">Submit</button>
+  </mat-dialog-actions>
 </mat-card>

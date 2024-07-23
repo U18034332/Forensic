@@ -8,11 +8,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background: #fff;
     position: relative; /* To support dragging */
+    overflow-x: hidden;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     div {
         margin: 5px 0;
@@ -23,7 +24,7 @@
 .content {
     overflow-y: auto;
     align-self: center;
-    width: 95%;
+    width: 100%;
     padding-top: 3%;
     padding-left: 13%;
 
@@ -70,31 +71,31 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 0;
-    border-bottom: 1px solid #454545;
-    width: 95%;
+    padding-top: 25px;
+    gap: 45px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .header-logo {
     width: 250px;
-    margin-bottom: 85%;
-    // padding-right: 20%;
-
+    margin-bottom: 0;
 }
+
 
 .right {
     text-align: right;
-    font-size: 14px; /* Reduced the font size */
-    font-weight: normal; /* Set the font weight to normal */
-    align-content: stretch;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.2; 
 }
 
 .right div {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .left div {
-    margin-right: 20px;
+    margin-right: 25px;
 }
 
 .case-details {
