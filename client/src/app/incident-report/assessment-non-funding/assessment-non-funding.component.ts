@@ -7,7 +7,6 @@ import { NotRecommendedDialogComponent } from '../not-recommended-dialog/not-rec
 import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
 import { IncidentReportEvaluation } from '../../models/incident-report-evaluation';
 import { IncidentReportComponent } from '../incident-report.component';
-import { NonFundingReportsComponent } from '../non-funding-reports/non-funding-reports.component';
 
 @Component({
   selector: 'app-assessment-non-funding',
@@ -26,8 +25,7 @@ export class AssessmentNonFundingComponent {
   constructor(
     public dialog: MatDialog,
     private incidentAssessmentService: NonFundedIncidentReportService,
-    private incidentReportComponent: IncidentReportComponent
-    //private nonFundingReport: NonFundingReportsComponent
+    private incidentReportComponent: IncidentReportComponent,
   ) {}
 
   openNonFundingRelatedReportDialog(element: any): void {
