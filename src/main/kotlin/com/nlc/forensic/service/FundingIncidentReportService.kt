@@ -4,8 +4,6 @@ import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
-import com.nlc.forensic.entity.NonFundingIncidentReport
-import com.nlc.forensic.enums.AcceptanceStatus
 import com.nlc.forensic.repository.FundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
