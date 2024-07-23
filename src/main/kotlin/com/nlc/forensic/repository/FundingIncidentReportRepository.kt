@@ -14,4 +14,6 @@ interface FundingIncidentReportRepository: JpaRepository<FundingIncidentReport, 
     //fun findByAssignedToIsNullAndDeclineReasonIsEmpty(): List<FundingIncidentReport>
     @Query("SELECT n FROM FundingIncidentReport n WHERE n.assignedTo IS NULL AND n.declineReason = ''")
     fun findByAssignedToIsNullAndDeclineReasonIsEmpty(): List<FundingIncidentReport>
+    @Query("SELECT n FROM FundingIncidentReport n WHERE n.assignedTo IS NOT NULL OR n.declineReason <> ''")
+    fun findByAssignedToIsNotNullORDeclineReasonIsNotEmpty(): List<FundingIncidentReport>
 }

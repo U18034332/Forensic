@@ -4,8 +4,6 @@ import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
 import com.nlc.forensic.entity.FundingIncidentReport
-import com.nlc.forensic.entity.NonFundingIncidentReport
-import com.nlc.forensic.enums.AcceptanceStatus
 import com.nlc.forensic.repository.FundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
@@ -62,10 +60,11 @@ class FundingIncidentReportService(
                     priority = fundingIncidentReportDTO.priority,
                     status = fundingIncidentReportDTO.status,
                     organisation = fundingIncidentReportDTO.organisation,
-                    detectionDivision = fundingIncidentReportDTO.divisionDetected,
-                    description = fundingIncidentReportDTO.allocatedDescription,
-                    detectionLevel = fundingIncidentReportDTO.levelDetected,
+                    divisionDetected = fundingIncidentReportDTO.divisionDetected,
+                    allocatedDescription = fundingIncidentReportDTO.allocatedDescription,
+                    levelDetected = fundingIncidentReportDTO.levelDetected,
                     sector = fundingIncidentReportDTO.sector,
+                    sourceDetection = fundingIncidentReportDTO.sourceDetection,
                     assessmentStage = fundingIncidentReportDTO.assessmentStage
                 )
             }
@@ -81,6 +80,10 @@ class FundingIncidentReportService(
 
     fun getAllFundingReports(): List<FundingIncidentReport> {
         return fundingIncidentReportRepository.findAll()
+    }
+
+    fun getAllAssessedFilledReports(): List<FundingIncidentReport> {
+        return fundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
     }
 
     fun getAllUnassignedReports(): List<FundingIncidentReport?> {

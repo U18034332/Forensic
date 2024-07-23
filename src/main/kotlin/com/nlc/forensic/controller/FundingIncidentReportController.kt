@@ -66,6 +66,11 @@ class FundingIncidentReportController(
         }
     }
 
+    @GetMapping("get/assessed")
+    fun getAllAssessedReports(): ResponseEntity<List<FundingIncidentReport?>> {
+        return ResponseEntity.ok(fundingIncidentReportService.getAllAssessedFilledReports())
+    }
+
     @GetMapping("get/unassigned")
     fun getUnassignedIncidentReports(): ResponseEntity<List<FundingIncidentReport?>> {
         return ResponseEntity.ok(fundingIncidentReportService.getAllUnassignedReports())

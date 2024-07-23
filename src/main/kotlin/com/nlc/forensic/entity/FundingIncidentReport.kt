@@ -1,8 +1,7 @@
 package com.nlc.forensic.entity
 
 import jakarta.persistence.*
-import org.springframework.data.annotation.LastModifiedBy
-import java.util.Date
+import java.sql.Date
 
 
 @Entity
@@ -28,9 +27,10 @@ data class FundingIncidentReport(
     var status: String = "",
     var organisation: String = "",
     var sector: String = "",
-    var detectionDivision: String = "",
-    val description: String = "",
-    var detectionLevel: String = "",
+    var sourceDetection: String = "",
+    var divisionDetected: String = "",
+    val allocatedDescription: String = "",
+    var levelDetected: String = "",
     var assessmentStage: Int = 0,
     var startDate: Date? = null,
 )

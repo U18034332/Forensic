@@ -19,7 +19,11 @@ export class UserSelectionDialogComponent {
 
   onAllocate(selectedUsers: any): void {
     const selected = selectedUsers.map((option: any) => option.value);
-    this.dialogRef.close({ action: 'allocate', users: selected });
+    if (selected.length > 0) {
+      this.dialogRef.close({ action: 'allocate', users: selected });
+    } else {
+      alert('Please select users to allocate.');
+    }
   }
 
   onCancel(): void {

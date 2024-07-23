@@ -35,8 +35,7 @@ export class IncidentReportComponent implements OnInit {
       this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
     }, (err) => {
       console.log(err);
-      
-      this.navigateTo('/403')
+      this.navigateTo('/403');
     });
 
     this.fundingReportService.getAllToBeAssessedFundingRelatedIncidentReports()
@@ -45,7 +44,7 @@ export class IncidentReportComponent implements OnInit {
       this.fundedAssessmentReports = reports.map((report: any) => [report]);
     }, (err) => {
       console.log(err);
-      this.navigateTo('/403')
+      this.navigateTo('/403');
     });
   }
 
@@ -86,4 +85,9 @@ export class IncidentReportComponent implements OnInit {
   navigateTo(url: string) {
     this.router.navigateByUrl(url);
   }
+
+  reloadReports(): void {
+    this.loadAssessmentReports();
+  }
 }
+

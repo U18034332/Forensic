@@ -1,1 +1,141 @@
-<p>annexure-b-digital-form works!</p>
+<mat-card class="annexure-b-card">
+    <button mat-icon-button mat-dialog-close class="close-button">
+      <mat-icon>close</mat-icon>
+    </button>
+  
+    <mat-card-header>
+      <mat-card-title>
+          <div class="annexure-b-header">
+              <div class="left">
+                  <img src="assets/annexure-a-header-logo.png" alt="NLC Header Logo" class="header-logo">
+              </div>
+              <div class="right">
+                  Tel: +27(12)432 1300<br>
+                  Info Centre: 086 00 65383<br>
+                  Web: <a href="http://www.nlcsa.org.za" target="_blank">www.nlcsa.org.za</a><br>
+                  National Lotteries Commission (NLC)<br>
+                  P.O Box 1556, Brooklyn Square 0083, Pretoria<br>
+                  Case: <br>
+                  Ref: <br>
+                  NLC-INV: <span class="date">01/10/2023</span>
+              </div>
+          </div>
+      </mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content class="content">
+    <form #annexureBForm="ngForm">
+      <!-- 1. In the matter of -->
+      <mat-form-field appearance="fill">
+        <mat-label>In the matter of:</mat-label>
+        <input matInput placeholder="Enter matter" [(ngModel)]="annexureB.matter" name="matter">
+      </mat-form-field>
+  
+      <!-- 2. Address of Organisation -->
+      <mat-form-field appearance="fill">
+        <mat-label>Address of Organisation:</mat-label>
+        <input matInput placeholder="Enter address" [(ngModel)]="annexureB.organisationAddress" name="organisationAddress">
+      </mat-form-field>
+  
+      <!-- 3. Date of complaint -->
+      <mat-form-field appearance="fill">
+        <mat-label>Date of complaint:</mat-label>
+        <input matInput type="date" placeholder="Select date" [(ngModel)]="annexureB.dateOfComplaint" name="dateOfComplaint">
+      </mat-form-field>
+  
+      <!-- 4. Project Number -->
+      <mat-form-field appearance="fill">
+        <mat-label>Project Number:</mat-label>
+        <input matInput placeholder="Enter project number" [(ngModel)]="annexureB.projectNumber" name="projectNumber">
+      </mat-form-field>
+  
+      <!-- 5. Case Reference -->
+      <mat-form-field appearance="fill">
+        <mat-label>Case Reference:</mat-label>
+        <input matInput placeholder="Enter case reference" [(ngModel)]="annexureB.caseReference" name="caseReference">
+      </mat-form-field>
+  
+      <!-- 6. Summary of complaint -->
+      <mat-form-field appearance="fill">
+        <mat-label>Summary of complaint:</mat-label>
+        <textarea matInput placeholder="Enter summary" [(ngModel)]="annexureB.summaryOfComplaint" name="summaryOfComplaint"></textarea>
+      </mat-form-field>
+  
+      <!-- 7. Allegation/conduct to be investigated -->
+      <mat-form-field appearance="fill">
+        <mat-label>Allegation/conduct to be investigated:</mat-label>
+        <textarea matInput placeholder="Enter allegation" [(ngModel)]="annexureB.allegationToBeInvestigated" name="allegationToBeInvestigated"></textarea>
+      </mat-form-field>
+  
+      <!-- 8. Investigating Team -->
+      <mat-form-field appearance="fill">
+        <mat-label>Investigating Team:</mat-label>
+        <input matInput placeholder="Enter investigating team" [(ngModel)]="annexureB.investigatingTeam" name="investigatingTeam">
+      </mat-form-field>
+  
+      <!-- 9. Lead Investigator -->
+      <mat-form-field appearance="fill">
+        <mat-label>Lead Investigator:</mat-label>
+        <input matInput placeholder="Enter lead investigator" [(ngModel)]="annexureB.leadInvestigator" name="leadInvestigator">
+      </mat-form-field>
+  
+      <!-- 10. Supervised By -->
+      <mat-form-field appearance="fill">
+        <mat-label>Supervised By:</mat-label>
+        <input matInput placeholder="Enter supervisor" [(ngModel)]="annexureB.supervisedBy" name="supervisedBy">
+      </mat-form-field>
+  
+      <h2>PLAN OF ACTIVITIES</h2>
+  
+      <!-- 11. Task -->
+      <mat-form-field appearance="fill">
+        <mat-label>Task:</mat-label>
+        <input matInput placeholder="Enter task" [(ngModel)]="annexureB.task" name="task">
+      </mat-form-field>
+  
+      <!-- 12. Responsible Person -->
+      <mat-form-field appearance="fill">
+        <mat-label>Responsible Person:</mat-label>
+        <input matInput placeholder="Enter responsible person" [(ngModel)]="annexureB.responsiblePerson" name="responsiblePerson">
+      </mat-form-field>
+  
+      <!-- 13. Start Date -->
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date:</mat-label>
+        <input matInput type="date" placeholder="Select start date" [(ngModel)]="annexureB.startDate" name="startDate">
+      </mat-form-field>
+  
+      <!-- 14. End Date -->
+      <mat-form-field appearance="fill">
+        <mat-label>End Date:</mat-label>
+        <input matInput type="date" placeholder="Select end date" [(ngModel)]="annexureB.endDate" name="endDate">
+      </mat-form-field>
+  
+      <!-- 15. Achieved? (Y/N) (date) -->
+      <mat-form-field appearance="fill">
+        <mat-label>Achieved? (Y/N):</mat-label>
+        <input matInput placeholder="Enter achieved status" [(ngModel)]="annexureB.achieved" name="achieved">
+      </mat-form-field>
+  
+      <!-- 16. Comment -->
+      <mat-form-field appearance="fill">
+        <mat-label>Comment:</mat-label>
+        <textarea matInput placeholder="Enter comment" [(ngModel)]="annexureB.comment" name="comment"></textarea>
+      </mat-form-field>
+  
+      <!-- Bottom section -->
+      <div class="bottom-section">
+        <strong>Prepared:</strong> {{ annexureB.preparedBy }} <br>
+        <strong>Date:</strong> {{ annexureB.preparedDate }} <br>
+        <strong>Approved:</strong> {{ annexureB.approvedBy }} <br>
+        <strong>Date:</strong> {{ annexureB.approvedDate }} <br>
+      </div>
+    </form>
+  </mat-card-content>
+  
+    <mat-dialog-actions class="close-btn">
+      <button mat-button mat-dialog-close>Close</button>
+      <button mat-button color="primary" cdkFocusInitial (click)="submitForm(annexureBForm)">Submit</button>
+    </mat-dialog-actions>
+  </mat-card>
+  

@@ -1,6 +1,7 @@
 package com.nlc.forensic.dto
 
-import java.util.Date
+import java.sql.Date
+
 
 data class FundingIncidentReportDTO(
     var startDate: Date? = null,

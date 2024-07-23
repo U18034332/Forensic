@@ -1,16 +1,20 @@
 .dialog-container {
-    width: 400px; /* Thinner panel width */
-    padding: 16px;
+    width: 350px; /* Thinner panel width */
+    padding: 0px;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
   }
   
   .dialog-header {
     display: flex;
-    justify-content: center; /* Center the header text */
+    justify-content: flex-end; /* Center the header text */
     align-items: center;
   }
   
   .dialog-button {
-    font-size: 1.2em; /* Larger button text */
+    font-size: 1.2em;
+    font-weight: lighter; /* Larger button text */
     padding: 10px 20px; /* Larger button padding */
     margin: 30px; /* Space between buttons */
     background-color: #1976d2; /* Blue button background */
@@ -32,16 +36,23 @@
     display: flex;
     justify-content: space-between; /* Space buttons apart */
     width: 100%; /* Ensure full width for alignment */
+    margin-top: auto;
+    
   }
   
   .reason-field {
     width: 100%;
     align-content: center;
+    border: #1565c0;
+    
   }
   
   textarea.no-resize {
-    height: 100px; /* Make the textarea bigger */
+    height: 120px; /* Make the textarea bigger */
     resize: none; /* Disable resizing */
     width: 100px;
+    
   }
-  
+  .mdc-dialog__actions {
+    justify-content: flex-end;
+  }

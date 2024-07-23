@@ -1,5 +1,5 @@
 {
-  "name": "nlc-forensic",
+  "name": "nlc-forensic-main",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -24,8 +24,11 @@
     "@fullcalendar/core": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/list": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
+    "@mat-datetimepicker/core": "^14.0.0",
     "gapi-script": "^1.2.0",
+    "primeng": "^17.18.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

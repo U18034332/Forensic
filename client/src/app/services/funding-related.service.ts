@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { AuthService } from "./auth-service.service";
 import { FundingIncidentReportData } from "../dto/funding-related.interface";
+import { IncidentReportEvaluation } from "../models/incident-report-evaluation";
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,23 @@ export class FundingRelatedService {
         catchError(this.handleError)
       );
   }
+
+  getFilledIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/assessed`, {headers: this.getAuthHeaders() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
   
+  assessIncidentReport(incidentReportAssessmentState: IncidentReportEvaluation): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assessment`,incidentReportAssessmentState ,{headers: this.getAuthHeaders() })
+    .pipe(
+      tap((res) => {
+        console.log("Successfully asssessed the report: ", res)
+      }), 
+      catchError(this.handleError)
+    )
+  }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
