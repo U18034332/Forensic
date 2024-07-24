@@ -11,7 +11,7 @@ import { CaseManagementModule } from './case-management/case-management.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -36,51 +36,44 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
-@NgModule({
-  declarations: [
-    // Components
-    AppComponent,
-    LoginComponent,
-    
-  ],
-  imports: [
-    // Modules
-    AppRoutingModule,
-    CommonModule,
-    //new layout starts here
-
-    MatMenuModule,
-    DashboardModule,
-    IncidentReportModule,
-    CaseManagementModule,
-    GrantCaseManagementModule,
-    AuditTrailModule,
-    DiscussModule,
-    CalendarModule,
-    AgenciesAndFirmsModule,
-    DocManagementModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatIconModule, 
-    MatToolbarModule,
-    MatButtonModule,
-    MatCard,
-    MatCardModule,
-    MatRadioModule,
-    CoreModule,
-    MatDialogModule,
-    MatTableModule,
-    MatCheckboxModule,
-    DragDropModule,
-    BrowserModule,
-    FullCalendarModule
-  ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-})
+@NgModule({ declarations: [
+        // Components
+        AppComponent,
+        LoginComponent,
+    ],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [
+        // Modules
+        AppRoutingModule,
+        CommonModule,
+        //new layout starts here
+        MatMenuModule,
+        DashboardModule,
+        IncidentReportModule,
+        CaseManagementModule,
+        GrantCaseManagementModule,
+        AuditTrailModule,
+        DiscussModule,
+        CalendarModule,
+        AgenciesAndFirmsModule,
+        DocManagementModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCard,
+        MatCardModule,
+        MatRadioModule,
+        CoreModule,
+        MatDialogModule,
+        MatTableModule,
+        MatCheckboxModule,
+        DragDropModule,
+        BrowserModule,
+        FullCalendarModule], providers: [
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
