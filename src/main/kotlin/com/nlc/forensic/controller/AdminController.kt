@@ -4,6 +4,7 @@ import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.dto.UserDTO
 import com.nlc.forensic.entity.User
+import com.nlc.forensic.enums.UserRoles
 import com.nlc.forensic.service.AuthenticationService
 import com.nlc.forensic.service.UserService
 import org.springframework.http.ResponseEntity
@@ -48,6 +49,16 @@ class AdminController(private val authService: AuthenticationService, private va
     @GetMapping("/get/all/users")
     fun getUsers(): ResponseEntity<List<UserDTO>> {
         return ResponseEntity.ok(userService.getAllUsers())
+    }
+
+    @GetMapping("/users/role/user")
+    fun getUsersWithUserRole(): List<User?> {
+        return userService.findUsersWithUserRole()
+    }
+
+    @GetMapping("/users/role/admin")
+    fun getUsersWithAdminRole(): List<User?> {
+        return userService.findUsersWithAdminRole()
     }
 
 }

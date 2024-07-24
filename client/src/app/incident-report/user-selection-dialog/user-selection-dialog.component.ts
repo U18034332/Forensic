@@ -15,16 +15,22 @@ export class UserSelectionDialogComponent {
     // Add more users with workload data as needed
   ];
 
+  selectedUser: any = null;
+
   constructor(public dialogRef: MatDialogRef<UserSelectionDialogComponent>) {}
 
-  onAllocate(selectedUsers: any): void {
-    const selected = selectedUsers.map((option: any) => option.value);
-    if (selected.length > 0) {
-      this.dialogRef.close({ action: 'allocate', users: selected });
+  onAllocate(): void {
+    if (this.selectedUser) {
+      this.dialogRef.close({ action: 'allocate', user: this.selectedUser });
     } else {
-      alert('Please select users to allocate.');
+      alert('Please select a user to allocate.');
     }
   }
+
+  selectUser(user: any): void {
+    this.selectedUser = user;
+  }
+  
 
   onCancel(): void {
     this.dialogRef.close({ action: 'cancel' });

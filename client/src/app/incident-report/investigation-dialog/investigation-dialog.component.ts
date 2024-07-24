@@ -30,7 +30,7 @@ export class InvestigationDialogComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.action === 'allocate') {
-        console.log('Allocated users:', result.users);
+        console.log('Allocated users:', result.user);
         // Handle the allocation logic here
       }
     });

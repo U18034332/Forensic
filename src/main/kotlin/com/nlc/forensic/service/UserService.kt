@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
 import com.nlc.forensic.entity.User
+import com.nlc.forensic.enums.UserRoles
 
 
 @Service
@@ -45,5 +46,17 @@ class UserService: UserDetailsService {
             user.email?.let { user.firstName?.let { it1 -> user.lastName?.let { it2 -> UserDTO(it, it1, it2) } } }?.let { allUsers.add(it) }
         }
         return allUsers
+    }
+
+    fun findUsersByRole(role: UserRoles): List<User> {
+        return userRepository.findByRole(role)
+    }
+
+    fun findUsersWithUserRole(): List<User> {
+        return findUsersByRole(UserRoles.USER)
+    }
+
+    fun findUsersWithAdminRole(): List<User> {
+        return findUsersByRole(UserRoles.ADMIN)
     }
 }
