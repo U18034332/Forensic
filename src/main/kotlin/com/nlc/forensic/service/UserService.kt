@@ -52,11 +52,29 @@ class UserService: UserDetailsService {
         return userRepository.findByRole(role)
     }
 
-    fun findUsersWithUserRole(): List<User> {
-        return findUsersByRole(UserRoles.USER)
+    fun findUsersWithUserRole(): List<UserDTO> {
+        val users = findUsersByRole(UserRoles.USER)
+        val allUsers = mutableListOf<UserDTO>()
+
+        if (users.isEmpty()) {
+            return emptyList()
+        }
+        for (user in users) {
+            user.email?.let { user.firstName?.let { it1 -> user.lastName?.let { it2 -> UserDTO(it, it1, it2) } } }?.let { allUsers.add(it) }
+        }
+        return allUsers
     }
 
-    fun findUsersWithAdminRole(): List<User> {
-        return findUsersByRole(UserRoles.ADMIN)
+    fun findUsersWithAdminRole(): List<UserDTO> {
+        val admins = findUsersByRole(UserRoles.ADMIN)
+        val allAdmins = mutableListOf<UserDTO>()
+
+        if (admins.isEmpty()) {
+            return emptyList()
+        }
+        for (admin in admins) {
+            admin.email?.let { admin.firstName?.let { it1 -> admin.lastName?.let { it2 -> UserDTO(it, it1, it2) } } }?.let { allAdmins.add(it) }
+        }
+        return allAdmins
     }
 }

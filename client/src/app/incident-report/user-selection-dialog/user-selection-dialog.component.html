@@ -1,9 +1,8 @@
 <div class="dialog-container">
   <div class="dialog-header">
-    <h1 mat-dialog-title>Select User</h1>
+    <h1 mat-dialog-title>Select A User To Allocate To</h1>
   </div>
   <div mat-dialog-content>
-    <p>Select one user to create a team:</p>
     <mat-nav-list>
       <a mat-list-item *ngFor="let user of userList" 
          (click)="selectUser(user)" 
@@ -11,7 +10,7 @@
         <span class="user-ellipse" 
               [ngClass]="{'high-workload': user.workload > workloadThreshold, 'low-workload': user.workload <= workloadThreshold}">
         </span>
-        {{ user.name }}
+        {{ user.email }}
         <mat-icon *ngIf="selectedUser === user" class="check-icon">check</mat-icon>
       </a>
     </mat-nav-list>

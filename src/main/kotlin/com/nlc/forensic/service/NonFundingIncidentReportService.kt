@@ -3,12 +3,15 @@ package com.nlc.forensic.service
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.NonFundingIncidentReportDTO
+import com.nlc.forensic.dto.NonFundingIncidentReportResponseDTO
+import com.nlc.forensic.dto.UserDTO
 import com.nlc.forensic.entity.FundingIncidentReport
 import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.repository.NonFundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.security.InvalidParameterException
+import java.sql.Date
 import java.util.*
 
 
@@ -70,8 +73,34 @@ class NonFundingIncidentReportService(
         return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "accepted")
     }
 
-    fun getAllAssessedFilledReports(): List<NonFundingIncidentReport> {
-        return nonFundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
+    fun getAllAssessedFilledReports(): List<NonFundingIncidentReportResponseDTO> {
+        val reports = nonFundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
+        if (reports.isEmpty()) {
+            return emptyList()
+        }
+        val responseReports = mutableListOf<NonFundingIncidentReportResponseDTO>()
+        for (ir in reports){
+            val temp = NonFundingIncidentReportResponseDTO(
+                id = ir.id,
+                reportNumber = ir.reportNumber,
+                acceptance = ir.acceptance,
+                dateReported = ir.dateReported,
+                startDate = ir.startDate,
+                channel = ir.channel,
+                province = ir.province,
+                caseType = ir.caseType,
+                caseSubType = ir.caseSubType,
+                priority = ir.priority,
+                status = ir.status,
+                divisionDetected = ir.divisionDetected,
+                levelDetected = ir.levelDetected,
+                allocatedDescription = ir.allocatedDescription,
+                declineReason = ir.declineReason,
+                assignedTo = ir.assignedTo?.email
+            )
+            responseReports.add(temp)
+        }
+        return responseReports
     }
 
 
@@ -103,8 +132,34 @@ class NonFundingIncidentReportService(
         return nonFundingIncidentReportRepository.findAll()
     }
 
-    fun getAllUnassignedReports(): List<NonFundingIncidentReport?> {
-        return nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
+    fun getAllUnassignedReports(): List<NonFundingIncidentReportResponseDTO?> {
+        val reports = nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
+        if (reports.isEmpty()) {
+            return emptyList()
+        }
+        val responseReports = mutableListOf<NonFundingIncidentReportResponseDTO>()
+         for (ir in reports){
+             val temp = NonFundingIncidentReportResponseDTO(
+                 id = ir.id,
+                 reportNumber = ir.reportNumber,
+                 acceptance = ir.acceptance,
+                 dateReported = ir.dateReported,
+                 startDate = ir.startDate,
+                 channel = ir.channel,
+                 province = ir.province,
+                 caseType = ir.caseType,
+                 caseSubType = ir.caseSubType,
+                 priority = ir.priority,
+                 status = ir.status,
+                 divisionDetected = ir.divisionDetected,
+                 levelDetected = ir.levelDetected,
+                 allocatedDescription = ir.allocatedDescription,
+                 declineReason = ir.declineReason,
+                 assignedTo = ir.assignedTo?.email
+             )
+             responseReports.add(temp)
+         }
+        return responseReports
     }
 
     fun generateReportNumberFromDatabaseId(prefix: String): String {

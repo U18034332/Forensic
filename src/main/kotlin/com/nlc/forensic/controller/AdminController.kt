@@ -52,12 +52,12 @@ class AdminController(private val authService: AuthenticationService, private va
     }
 
     @GetMapping("/users/role/user")
-    fun getUsersWithUserRole(): List<User?> {
+    fun getUsersWithUserRole(): List<UserDTO?> {
         return userService.findUsersWithUserRole()
     }
 
     @GetMapping("/users/role/admin")
-    fun getUsersWithAdminRole(): List<User?> {
+    fun getUsersWithAdminRole(): List<UserDTO?> {
         return userService.findUsersWithAdminRole()
     }
 
