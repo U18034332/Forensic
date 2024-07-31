@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
 import * as echarts from 'echarts';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +8,15 @@ import * as echarts from 'echarts';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements AfterViewInit {
-  constructor(private router: Router) {}
 
-  navigateTo(path: string): void {
-    this.router.navigate([path]);
-  }
+  constructor(private http: HttpClient) {}
 
   ngAfterViewInit(): void {
     this.initChart();
+    this.initAdditionalCharts();
   }
 
+  
   initChart(): void {
     const chartDom = document.getElementById('echart') as HTMLDivElement;
     const chart = echarts.init(chartDom);
@@ -25,12 +24,6 @@ export class DashboardComponent implements AfterViewInit {
     const option: echarts.EChartsOption = {
       title: {
         text: 'Percentage Data for South African Provinces'
-      },
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'shadow'
-        }
       },
       xAxis: {
         type: 'value',
@@ -44,7 +37,7 @@ export class DashboardComponent implements AfterViewInit {
       yAxis: {
         type: 'category',
         data: [
-          'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 
+          'Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal',
           'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'
         ]
       },
@@ -63,47 +56,19 @@ export class DashboardComponent implements AfterViewInit {
     };
 
     chart.setOption(option);
-
     window.addEventListener('resize', () => {
       chart.resize();
     });
   }
+
   initAdditionalCharts(): void {
     const chart1Dom = document.getElementById('chart1') as HTMLDivElement;
     const chart1 = echarts.init(chart1Dom);
 
     const chart1Option: echarts.EChartsOption = {
       title: {
-        text: 'Additional Chart 1'
-      },
-      xAxis: {
-        type: 'category',
-        data: ['A', 'B', 'C', 'D']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          name: 'Series 1',
-          type: 'line',
-          data: [5, 20, 36, 10]
-        }
-      ]
-    };
-
-    chart1.setOption(chart1Option);
-    window.addEventListener('resize', () => {
-      chart1.resize();
-    });
-
-    const chart2Dom = document.getElementById('chart2') as HTMLDivElement;
-    const chart2 = echarts.init(chart2Dom);
-
-    const chart2Option: echarts.EChartsOption = {
-      title: {
-        text: 'Referer of a Website',
-        subtext: 'Fake Data',
+        text: 'Status - Pie Chart',
+        // subtext: 'Fake Data',
         left: 'center'
       },
       tooltip: {
@@ -119,11 +84,10 @@ export class DashboardComponent implements AfterViewInit {
           type: 'pie',
           radius: '50%',
           data: [
-            { value: 1048, name: 'Search Engine' },
-            { value: 735, name: 'Direct' },
-            { value: 580, name: 'Email' },
-            { value: 484, name: 'Union Ads' },
-            { value: 300, name: 'Video Ads' }
+            { value: 1048, name: 'Completed' },
+            { value: 735, name: 'New Cases' },
+            { value: 484, name: 'Closed Cases' },
+            { value: 300, name: 'In Progress Cases' }
           ],
           emphasis: {
             itemStyle: {
@@ -135,12 +99,12 @@ export class DashboardComponent implements AfterViewInit {
         }
       ]
     };
+    
+    
 
-    chart2.setOption(chart2Option);
+    chart1.setOption(chart1Option);
     window.addEventListener('resize', () => {
-      chart2.resize();
+      chart1.resize();
     });
   }
-
-  
 }
