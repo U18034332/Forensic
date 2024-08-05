@@ -1,7 +1,4 @@
-import { Component, Input, input, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
-import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-non-funding-reports',
