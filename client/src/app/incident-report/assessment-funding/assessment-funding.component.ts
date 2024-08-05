@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AssessmentFundedReport, FundingIncidentReportData } from '../../dto/funding-related.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { FundingRelatedFormComponent } from '../funding-related-form/funding-related-form.component';
