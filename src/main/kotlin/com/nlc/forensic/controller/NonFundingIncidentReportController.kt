@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.NonFundingIncidentReportDTO
-import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.service.NonFundingIncidentReportService
 import org.springframework.http.ResponseEntity
@@ -35,12 +35,12 @@ class NonFundingIncidentReportController(
     }
 
     @GetMapping("get/unassigned")
-    fun getUnassignedIncidentReports(): ResponseEntity<List<NonFundingIncidentReport?>> {
+    fun getUnassignedIncidentReports(): ResponseEntity<List<IncidentReportResponseDTO?>> {
         return ResponseEntity.ok(nonFundingIncidentReportService.getAllUnassignedReports())
     }
 
     @GetMapping("get/assessed")
-    fun getAllAssessedReports(): ResponseEntity<List<NonFundingIncidentReport?>> {
+    fun getAllAssessedReports(): ResponseEntity<List<IncidentReportResponseDTO?>> {
         return ResponseEntity.ok(nonFundingIncidentReportService.getAllAssessedFilledReports())
     }
 

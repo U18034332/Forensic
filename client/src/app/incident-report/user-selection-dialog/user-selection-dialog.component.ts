@@ -1,31 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-user-selection-dialog',
   templateUrl: './user-selection-dialog.component.html',
   styleUrl: './user-selection-dialog.component.scss'
 })
-export class UserSelectionDialogComponent {
+export class UserSelectionDialogComponent implements OnInit {
   workloadThreshold = 5; // Define a threshold for workload
-  userList = [
-    { name: 'User 1', workload: 3 },
-    { name: 'User 2', workload: 7 },
-    { name: 'User 3', workload: 2 },
-    { name: 'User 4', workload: 8 }
-    // Add more users with workload data as needed
-  ];
+  userList: any = [];
 
-  constructor(public dialogRef: MatDialogRef<UserSelectionDialogComponent>) {}
+  selectedUser: any = null;
+  ngOnInit(): void {
+    this.getAlltheUsersToAllocateTo()
+  }
 
-  onAllocate(selectedUsers: any): void {
-    const selected = selectedUsers.map((option: any) => option.value);
-    if (selected.length > 0) {
-      this.dialogRef.close({ action: 'allocate', users: selected });
+  constructor(
+    public dialogRef: MatDialogRef<UserSelectionDialogComponent>,
+    private userService: UserService
+  ) {}
+
+  onAllocate(): void {
+    if (this.selectedUser) {
+      this.dialogRef.close({ action: 'allocate', user: this.selectedUser });
     } else {
-      alert('Please select users to allocate.');
+      alert('Please select a user to allocate.');
     }
   }
 
+  getAlltheUsersToAllocateTo(): void {
+    this.userService.getAllUsers()
+      .subscribe((res)=> {
+        console.log(res);
+        this.userList = res
+        console.log(this.userList);
+      }, (err)=>{
+        console.log(err);
+      })
+  }
+
+  selectUser(user: any): void {
+    this.selectedUser = user;
+  }
+  
   onCancel(): void {
     this.dialogRef.close({ action: 'cancel' });
   }
