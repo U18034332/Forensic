@@ -36,20 +36,31 @@ export class AssessmentFundingComponent {
     console.log(element);
   }
 
-  openInvestigationDialog(): void {
+  openInvestigationDialog(element: any): void {
     const dialogRef = this.dialog.open(InvestigationDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed with result:', result);
-      // Handle the result here (e.g., navigate to a specific page or perform an action based on the selection)
+      if(result.allocatedUser) {
+        const evaluation: IncidentReportEvaluation = {
+          reportNumber: element.reportNumber,
+          allocateTo: result.allocatedUser.email,
+          declineReason: ''
+        };
+        this.incidentAssessmentService.assessIncidentReport(evaluation).subscribe((res)=> {
+          console.log('Successfully evaluated the fundinf related incident:',res);
+          this.incidentReportComponent.reloadReports()
+        }, err => {
+          console.log('Error in the funding report evaluateion:',err);
+          
+        });
+      }
+      console.log('Could not capture the allocated user funding related');
     });
   }
+  
   openNotRecommendedDialog(element: any): void {
     const dialogRef = this.dialog.open(NotRecommendedDialogComponent);
     console.log(element);
-    
-    
-
     dialogRef.afterClosed().subscribe(result => {
       if (result.action === 'submit') {
         const evaluation: IncidentReportEvaluation = {

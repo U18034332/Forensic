@@ -2,7 +2,7 @@ package com.nlc.forensic.dto
 
 import java.sql.Date
 
-data class NonFundingIncidentReportResponseDTO(
+data class IncidentReportResponseDTO(
     val id: Long = 0L,
     val reportNumber: String = "",
     var acceptance: String = "",

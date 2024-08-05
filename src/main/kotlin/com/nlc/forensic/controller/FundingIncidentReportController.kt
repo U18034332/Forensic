@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
+import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.FundingIncidentReport
 import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.service.FundingIncidentReportService
@@ -67,7 +68,7 @@ class FundingIncidentReportController(
     }
 
     @GetMapping("get/assessed")
-    fun getAllAssessedReports(): ResponseEntity<List<FundingIncidentReport?>> {
+    fun getAllAssessedReports(): ResponseEntity<List<IncidentReportResponseDTO?>> {
         return ResponseEntity.ok(fundingIncidentReportService.getAllAssessedFilledReports())
     }
 

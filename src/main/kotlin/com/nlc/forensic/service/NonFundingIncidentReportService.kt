@@ -3,15 +3,12 @@ package com.nlc.forensic.service
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.NonFundingIncidentReportDTO
-import com.nlc.forensic.dto.NonFundingIncidentReportResponseDTO
-import com.nlc.forensic.dto.UserDTO
-import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.repository.NonFundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.stereotype.Service
 import java.security.InvalidParameterException
-import java.sql.Date
 import java.util.*
 
 
@@ -73,14 +70,14 @@ class NonFundingIncidentReportService(
         return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "accepted")
     }
 
-    fun getAllAssessedFilledReports(): List<NonFundingIncidentReportResponseDTO> {
+    fun getAllAssessedFilledReports(): List<IncidentReportResponseDTO> {
         val reports = nonFundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
         if (reports.isEmpty()) {
             return emptyList()
         }
-        val responseReports = mutableListOf<NonFundingIncidentReportResponseDTO>()
+        val responseReports = mutableListOf<IncidentReportResponseDTO>()
         for (ir in reports){
-            val temp = NonFundingIncidentReportResponseDTO(
+            val temp = IncidentReportResponseDTO(
                 id = ir.id,
                 reportNumber = ir.reportNumber,
                 acceptance = ir.acceptance,
@@ -132,14 +129,14 @@ class NonFundingIncidentReportService(
         return nonFundingIncidentReportRepository.findAll()
     }
 
-    fun getAllUnassignedReports(): List<NonFundingIncidentReportResponseDTO?> {
+    fun getAllUnassignedReports(): List<IncidentReportResponseDTO?> {
         val reports = nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
         if (reports.isEmpty()) {
             return emptyList()
         }
-        val responseReports = mutableListOf<NonFundingIncidentReportResponseDTO>()
+        val responseReports = mutableListOf<IncidentReportResponseDTO>()
          for (ir in reports){
-             val temp = NonFundingIncidentReportResponseDTO(
+             val temp = IncidentReportResponseDTO(
                  id = ir.id,
                  reportNumber = ir.reportNumber,
                  acceptance = ir.acceptance,
