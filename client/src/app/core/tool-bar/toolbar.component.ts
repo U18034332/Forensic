@@ -1,8 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSidenav } from '@angular/material/sidenav';
-import { NotificationSidePanelComponent } from './notification-side-panel/notification-side-panel.component';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,17 +6,13 @@ import { NotificationSidePanelComponent } from './notification-side-panel/notifi
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  @ViewChild('drawer') drawer!: MatSidenav;
-
-  constructor(private router: Router, private dialog: MatDialog) {}
+  sidebarVisible2: boolean = false;
 
   openNotificationSidePanel() {
-    const dialogRef = this.dialog.open(NotificationSidePanelComponent, {
-      width: '30%'
-    });
+    this.sidebarVisible2 = true;
   }
 
-  navigateTo(route: string) {
-    this.router.navigate([route]);
+  closeNotificationSidePanel() {
+    this.sidebarVisible2 = false;
   }
 }

@@ -1,21 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-notification-side-panel',
   templateUrl: './notification-side-panel.component.html',
   styleUrls: ['./notification-side-panel.component.scss']
 })
-export class NotificationSidePanelComponent implements OnInit {
+export class NotificationSidePanelComponent {
+  @Input() visible: boolean = false;
+  @Output() visibleChange = new EventEmitter<boolean>();
 
-  constructor(
-    public dialogRef: MatDialogRef<NotificationSidePanelComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  ngOnInit(): void {
+  closeNotificationSidePanel() {
+    this.visible = false;
+    this.visibleChange.emit(this.visible);
   }
-
-  // Add methods and properties specific to your component
-
 }

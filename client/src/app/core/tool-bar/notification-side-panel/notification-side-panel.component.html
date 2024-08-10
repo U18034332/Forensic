@@ -1,8 +1,13 @@
-<mat-card class="case-details-card">
-    <button mat-icon-button class="close-button" (click)="dialogRef.close()">
-      <mat-icon>close</mat-icon>
-    </button>
-    <h2>Notifications</h2>
-    <!-- Add your notification content here -->
-  </mat-card>
-  
+<p-sidebar [(visible)]="visible" position="right" (onHide)="closeNotificationSidePanel()">
+  <p-card>
+    <ng-template pTemplate="header">
+      <button pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text" (click)="closeNotificationSidePanel()" aria-label="Close Notification Panel"></button>
+    </ng-template>
+    <ng-template pTemplate="title">
+      Notifications
+    </ng-template>
+    <ng-template pTemplate="content">
+      <!-- Add your notification content here -->
+    </ng-template>
+  </p-card>
+</p-sidebar>

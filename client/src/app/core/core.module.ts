@@ -13,13 +13,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NotificationSidePanelComponent } from './tool-bar/notification-side-panel/notification-side-panel.component';
 import { MatCard } from '@angular/material/card';
 import { RouterOutlet } from '@angular/router';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
     ToolbarComponent,
     UserDropdownComponent,
     SideNavComponent,
-    NotificationSidePanelComponent // Include NotificationSidePanelComponent
+    NotificationSidePanelComponent,
+    // Include NotificationSidePanelComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,10 @@ import { RouterOutlet } from '@angular/router';
     MatSidenavModule,
     MatDialogModule,
     MatCard,
-    RouterOutlet
+    RouterOutlet,
+    SidebarModule,
+    ButtonModule,
+    CardModule,
   ],
   exports: [
     ToolbarComponent,
