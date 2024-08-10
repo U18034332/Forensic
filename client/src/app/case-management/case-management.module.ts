@@ -31,6 +31,7 @@ import { CaseManagementTableComponent } from './case-management-table/case-manag
 import { AnnexureADigitalFormComponent } from '../case-management/annexures/annexure-a-digital-form/annexure-a-digital-form.component';
 import { AnnexureBDigitalFormComponent } from './annexures/annexure-b-digital-form/annexure-b-digital-form.component';
 import { AnnexureDDigitalFormComponent } from './annexures/annexure-d-digital-form/annexure-d-digital-form.component';
+import { AnnexureEDigitalFormComponent } from './annexures/annexure-e-digital-form/annexure-e-digital-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AnnexureDDigitalFormComponent } from './annexures/annexure-d-digital-fo
     CaseManagementTableComponent,
     AnnexureADigitalFormComponent,
     AnnexureBDigitalFormComponent,
-    AnnexureDDigitalFormComponent
+    AnnexureDDigitalFormComponent,
+    AnnexureEDigitalFormComponent
   ],
   imports: [
     CommonModule,

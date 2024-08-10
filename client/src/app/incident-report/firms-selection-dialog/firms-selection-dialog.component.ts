@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-firms-selection-dialog',
   templateUrl: './firms-selection-dialog.component.html',
-  styleUrl: './firms-selection-dialog.component.scss'
+  styleUrls: ['./firms-selection-dialog.component.scss']
 })
 export class FirmsSelectionDialogComponent {
   firmList = [
