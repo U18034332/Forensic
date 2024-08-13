@@ -69,10 +69,13 @@ html, body {
   }
 
 
-  .cdk-overlay-pane.draggable-dialog {
-    position: absolute !important;
-    display: block;
+  .cdk-overlay-container {
+    z-index: 10000 !important;
+  }
+  
+  .mat-menu-panel {
+    z-index: 10001 !important;
   }
 
 
-  
+ 

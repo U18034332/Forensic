@@ -16,6 +16,12 @@ import { RouterOutlet } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { CustomOverlayContainerDirective } from './tool-bar/notification-side-panel/custom-overlay-container.directive';
+import { MatCardModule } from '@angular/material/card';
+import { OverlayModule } from '@angular/cdk/overlay';
+
+
+
 
 @NgModule({
   declarations: [
@@ -23,6 +29,8 @@ import { CardModule } from 'primeng/card';
     UserDropdownComponent,
     SideNavComponent,
     NotificationSidePanelComponent,
+    CustomOverlayContainerDirective,
+    
     // Include NotificationSidePanelComponent
   ],
   imports: [
@@ -39,11 +47,16 @@ import { CardModule } from 'primeng/card';
     SidebarModule,
     ButtonModule,
     CardModule,
+    MatCardModule,
+    OverlayModule
+  
+    
   ],
   exports: [
     ToolbarComponent,
     SideNavComponent,
     NotificationSidePanelComponent // Export NotificationSidePanelComponent for external use
   ]
+  
 })
 export class CoreModule { }

@@ -1,13 +1,53 @@
-<p-sidebar [(visible)]="visible" position="right" (onHide)="closeNotificationSidePanel()">
-  <p-card>
-    <ng-template pTemplate="header">
-      <button pButton type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text" (click)="closeNotificationSidePanel()" aria-label="Close Notification Panel"></button>
-    </ng-template>
-    <ng-template pTemplate="title">
-      Notifications
-    </ng-template>
-    <ng-template pTemplate="content">
-      <!-- Add your notification content here -->
-    </ng-template>
-  </p-card>
+<p-sidebar
+  [(visible)]="visible"
+  position="right"
+  (onHide)="closeNotificationSidePanel()"
+  styleClass="notification-sidebar-modern"
+  customOverlayContainer
+>
+  <!-- Header Section with Notifications Heading and Filter Icon -->
+  <div class="header-section">
+    <h2 class="notifications-heading">Notifications</h2>
+    <button mat-icon-button [matMenuTriggerFor]="filterMenu" class="filter-button">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <mat-menu #filterMenu="matMenu" class="custom-menu">
+      <button mat-menu-item (click)="filterNotifications('all')">
+        <span class="circle yellow"></span> All
+      </button>
+      <button mat-menu-item (click)="filterNotifications('read')">
+        <span class="circle red"></span> Read
+      </button>
+      <button mat-menu-item (click)="filterNotifications('unread')">
+        <span class="circle green"></span> Unread
+      </button>
+    </mat-menu>
+  </div>
+
+  <!-- List of Notifications -->
+  <div class="content-area">
+    <div *ngFor="let notification of filteredNotifications" class="notification-list">
+      <div class="notification-item" [class.unread]="!notification.read">
+        <span class="circle" [ngClass]="notification.read ? 'red' : 'green'"></span>
+        <div class="message-container">
+          <div class="message-bubble">
+            <strong>Incident Report #{{ notification.incidentReportNumber }}</strong><br>
+            Assigned by: {{ notification.assignedBy }}
+          </div>
+          <!-- Mark as Read Button -->
+          <button class="mark-as-read-btn" *ngIf="!notification.read" (click)="markAsRead(notification)">
+            Mark as Read
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section with User Name and Icon -->
+  <div class="footer-section">
+    <div class="user-info">
+      <img src="assets/user.jpg" alt="User Icon" class="user-icon" />
+      <span class="user-name">{{ userName }}</span>
+    </div>
+  </div>
 </p-sidebar>
