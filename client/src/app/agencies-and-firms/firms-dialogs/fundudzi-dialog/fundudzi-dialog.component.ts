@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FundudziCaseDetailsDialogComponent } from './fundudzi-case-details-dialog/fundudzi-case-details-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface CaseData {
   caseID: string;
@@ -27,12 +29,30 @@ const CASE_DATA: CaseData[] = [
   styleUrl: './fundudzi-dialog.component.scss'
 })
 export class FundudziDialogComponent {
+  isDetailDialogOpen: boolean = false;
+  selectedCase: any;
+  subFilesExpanded: boolean = false;
+
   displayedColumns: string[] = ['caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'];
-  dataSource = CASE_DATA;
+  dataSource: any[] = CASE_DATA;
 
-  constructor(private dialogRef: MatDialogRef<FundudziDialogComponent>) {}
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<FundudziDialogComponent>) {}
 
-  openCaseDetails(caseData: CaseData) {
-    console.log('Opening case details for:', caseData);
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+
+    const dialogRef = this.dialog.open(FundudziCaseDetailsDialogComponent, {
+      data: { caseDetails }
+    });
+
+    // Handle dialog close if needed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  closeCaseDetails() {
+    this.isDetailDialogOpen = false;
   }
 }

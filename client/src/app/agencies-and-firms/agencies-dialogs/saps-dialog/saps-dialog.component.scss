@@ -8,7 +8,26 @@
     }
   }
   
-
+  .header-container {
+    display: flex;
+    justify-content: space-between; /* Space out the two sections */
+    align-items: center; /* Align items vertically */
+    padding: 5px;
+  }
+  
+  .left-section {
+    flex: 1; /* Allow this section to grow */
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2.5px; /* Space between each h3 */
+  }
+  
+  
+  
 
   /* case-management-table.component.scss */
 
@@ -89,5 +108,86 @@
       }
     }
   }
+
+  .case-management-view{
+    padding-top: 90px;
+  }
+  
+  .case-management-title {
+      margin-left: 85px;
+      margin-top: 5px;
+      font-size: 24px;
+      font-weight: bold;
+  }
+  
+  .table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    .search-input {
+      width: 15%;
+      padding: 10px;
+      margin-left: 40px;
+      margin-top: 40px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(78, 78, 78, 0.1);
+      font-size: 14px;
+      outline: none;
+    }
+    
+    .search-input:focus {
+      border-color: #5c5c5c;
+      box-shadow: 0 0 8px rgba(83, 83, 83, 0.5);
+    }
+    
+    .search-input:hover {
+      border-color: #bbb;
+    }
+    
+    .search-input::placeholder {
+      color: #999;
+    }
+    
+    .search-input:focus::placeholder {
+      color: #272727;
+    }
+    
+    @media (max-width: 768px) {
+      .search-input {
+        width: 80%;
+        margin-left: 0;
+        margin-bottom: 15px;
+      }
+    }
+    
+  
+    .button-group {
+      display: flex;
+      gap: 10px;
+  
+      button {
+        min-width: 100px;
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  /* Custom button styles */
+  button.mat-raised-button {
+    background-color: #636363;
+    color: white;
+  
+    &:hover {
+      background-color: #45a049;
+    }
+  }
+  
   
   

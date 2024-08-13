@@ -1,5 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DPCIDialogCaseDetailsDialogComponent } from './dpci-dialog-case-details-dialog/dpci-dialog-case-details-dialog.component';
 
 export interface CaseData {
   caseID: string;
@@ -27,12 +29,30 @@ const CASE_DATA: CaseData[] = [
   styleUrl: './dpci-dialog.component.scss'
 })
 export class DpciDialogComponent {
+  isDetailDialogOpen: boolean = false;
+  selectedCase: any;
+  subFilesExpanded: boolean = false;
+
   displayedColumns: string[] = ['caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'];
-  dataSource = CASE_DATA;
+  dataSource: any[] = CASE_DATA;
 
-  constructor(private dialogRef: MatDialogRef<DpciDialogComponent>) {}
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<DpciDialogComponent>) {}
 
-  openCaseDetails(caseData: CaseData) {
-    console.log('Opening case details for:', caseData);
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+
+    const dialogRef = this.dialog.open(DPCIDialogCaseDetailsDialogComponent, {
+      data: { caseDetails }
+    });
+
+    // Handle dialog close if needed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  closeCaseDetails() {
+    this.isDetailDialogOpen = false;
   }
 }

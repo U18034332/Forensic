@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SAndMDialogComponent } from './s-and-mdialog/s-and-mdialog.component';
 
 export interface CaseData {
   caseID: string;
@@ -27,12 +29,30 @@ const CASE_DATA: CaseData[] = [
   styleUrls: ['./sedupe-and-metja-dialog.component.scss']
 })
 export class SedupeAndMetjaDialogComponent {
+  isDetailDialogOpen: boolean = false;
+  selectedCase: any;
+  subFilesExpanded: boolean = false;
+
   displayedColumns: string[] = ['caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'];
-  dataSource = CASE_DATA;
+  dataSource: any[] = CASE_DATA;
 
-  constructor(private dialogRef: MatDialogRef<SedupeAndMetjaDialogComponent>) {}
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<SedupeAndMetjaDialogComponent>) {}
 
-  openCaseDetails(caseData: CaseData) {
-    console.log('Opening case details for:', caseData);
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+
+    const dialogRef = this.dialog.open(SAndMDialogComponent, {
+      data: { caseDetails }
+    });
+
+    // Handle dialog close if needed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  closeCaseDetails() {
+    this.isDetailDialogOpen = false;
   }
 }

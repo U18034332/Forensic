@@ -1,5 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SapsDialogCaseDetailsComponent } from './saps-dialog-case-details/saps-dialog-case-details.component';
 
 export interface CaseData {
   caseID: string;
@@ -20,18 +22,37 @@ const CASE_DATA: CaseData[] = [
   { caseID: '456', cases: 'Theft', startDate: '2024-07-15', status: 'Closed', priority: 'Medium', caseType: 'Criminal', province: 'Western Cape', channel: 'Phone', levelDetected: 'Low', teams: 'Team B', lastModified: '2024-07-20' },
   // Add more case data as needed
 ];
+
 @Component({
   selector: 'app-saps-dialog',
   templateUrl: './saps-dialog.component.html',
-  styleUrl: './saps-dialog.component.scss'
+  styleUrls: ['./saps-dialog.component.scss']
 })
 export class SapsDialogComponent {
+  isDetailDialogOpen: boolean = false;
+  selectedCase: any;
+  subFilesExpanded: boolean = false;
+
   displayedColumns: string[] = ['caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'];
-  dataSource = CASE_DATA;
+  dataSource: any[] = CASE_DATA;
 
-  constructor(private dialogRef: MatDialogRef<SapsDialogComponent>) {}
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<SapsDialogComponent>) {}
 
-  openCaseDetails(caseData: CaseData) {
-    console.log('Opening case details for:', caseData);
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+
+    const dialogRef = this.dialog.open(SapsDialogCaseDetailsComponent, {
+      data: { caseDetails }
+    });
+
+    // Handle dialog close if needed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  closeCaseDetails() {
+    this.isDetailDialogOpen = false;
   }
 }

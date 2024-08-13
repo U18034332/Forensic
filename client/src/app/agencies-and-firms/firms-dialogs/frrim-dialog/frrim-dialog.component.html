@@ -1,6 +1,16 @@
-<h2 mat-dialog-title>FRRIM</h2>
+<h2 mat-dialog-title>SAPS</h2>
 <mat-dialog-content class="mat-typography">
-  <h3>Referred Cases</h3>
+  <div class="header-container">
+    <div class="left-section">
+      <h3>Referred Cases :</h3>
+    </div>
+    <div class="right-section">
+      <h3>Phone: </h3>
+      <h3>e-Mail: </h3>
+      <h3>User Profile: </h3>
+    </div>
+  </div>
+  
   <div class="table-card-background-container">
     <div class="table-scroll">
       <table mat-table [dataSource]="dataSource" class="case-management-first-table">

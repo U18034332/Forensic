@@ -1,5 +1,7 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DSDDialogCaseDetailsDialogComponent } from './dsd-cd-d/dsd-dialog-case-details-dialog.component';
 
 export interface CaseData {
   caseID: string;
@@ -23,16 +25,34 @@ const CASE_DATA: CaseData[] = [
 
 @Component({
   selector: 'app-department-of-social-development-dialog',
-  templateUrl: './department-of-social-development-dialog.component.html',
-  styleUrl: './department-of-social-development-dialog.component.scss'
+  templateUrl: './dsd-cd-d.component.html',
+  styleUrl: './dsd-cd-d.component.scss'
 })
 export class DepartmentOfSocialDevelopmentDialogComponent {
+  isDetailDialogOpen: boolean = false;
+  selectedCase: any;
+  subFilesExpanded: boolean = false;
+
   displayedColumns: string[] = ['caseID', 'cases', 'startDate', 'status', 'priority', 'caseType', 'province', 'channel', 'levelDetected', 'teams', 'lastModified', 'caseEndDate'];
-  dataSource = CASE_DATA;
+  dataSource: any[] = CASE_DATA;
 
-  constructor(private dialogRef: MatDialogRef<DepartmentOfSocialDevelopmentDialogComponent>) {}
+  constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<DepartmentOfSocialDevelopmentDialogComponent>) {}
 
-  openCaseDetails(caseData: CaseData) {
-    console.log('Opening case details for:', caseData);
+  openCaseDetails(caseDetails: any) {
+    this.selectedCase = caseDetails;
+    this.isDetailDialogOpen = true;
+
+    const dialogRef = this.dialog.open(DSDDialogCaseDetailsDialogComponent, {
+      data: { caseDetails }
+    });
+
+    // Handle dialog close if needed
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed', result);
+    });
+  }
+
+  closeCaseDetails() {
+    this.isDetailDialogOpen = false;
   }
 }

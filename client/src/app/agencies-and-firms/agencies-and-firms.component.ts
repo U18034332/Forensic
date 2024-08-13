@@ -12,7 +12,7 @@ import { NexiaSabAndTDialogComponent } from './firms-dialogs/nexia-sab-and-t-dia
 import { SapsDialogComponent } from './agencies-dialogs/saps-dialog/saps-dialog.component';
 import { SarsDialogComponent } from './agencies-dialogs/sars-dialog/sars-dialog.component';
 import { SpecialInvestigationUnitDialogComponent } from './agencies-dialogs/special-investigation-unit-dialog/special-investigation-unit-dialog.component';
-import { DepartmentOfSocialDevelopmentDialogComponent } from './agencies-dialogs/department-of-social-development-dialog/department-of-social-development-dialog.component';
+import { DepartmentOfSocialDevelopmentDialogComponent } from './agencies-dialogs/department-of-social-development-dialog/dsd-cd-d.component';
 import { DpciDialogComponent } from './agencies-dialogs/dpci-dialog/dpci-dialog.component';
 import { DticDialogComponent } from './agencies-dialogs/dtic-dialog/dtic-dialog.component';
 import { NationalTreasuryDialogComponent } from './agencies-dialogs/national-treasury-dialog/national-treasury-dialog.component';
