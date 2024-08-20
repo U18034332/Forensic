@@ -5,6 +5,7 @@ import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.NonFundingIncidentReportDTO
 import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.NonFundingIncidentReport
+import com.nlc.forensic.enums.UserRoles
 import com.nlc.forensic.repository.NonFundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
 import org.springframework.security.core.context.SecurityContextHolder
@@ -161,12 +162,22 @@ class NonFundingIncidentReportService(
     }
 
     fun getReportsAssignedToCurrentUser(): List<IncidentReportResponseDTO> {
-        // Assuming that the logged-in user's email is the principal
+        // Retrieve the logged-in user's email
         val loggedInUserEmail = SecurityContextHolder.getContext().authentication.name
         val user = userRepository.findByEmail(loggedInUserEmail)
             .orElseThrow { IllegalArgumentException("Logged-in user not found in the system") }
 
-        val reports = nonFundingIncidentReportRepository.findByAssignedTo(user)
+        // Check if the user has an admin role
+        val isAdmin = user.role == UserRoles.ADMIN
+
+        // Fetch reports based on the user's role
+        val reports = if (isAdmin) {
+            nonFundingIncidentReportRepository.findAll()
+        } else {
+            nonFundingIncidentReportRepository.findByAssignedTo(user)
+        }
+
+        // Map the reports to IncidentReportResponseDTO
         return reports.map { ir ->
             IncidentReportResponseDTO(
                 id = ir.id,
@@ -188,4 +199,5 @@ class NonFundingIncidentReportService(
             )
         }
     }
+
 }
