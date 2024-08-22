@@ -24,7 +24,7 @@ export class CaseManagementDigitalFormComponent {
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
   incidentReportNumber = ''
-  incidentReportNumbers = ['Case ID 1', 'Case ID 2', 'Case ID 3'];
+  incidentReportNumbers = ['','Case ID 1', 'Case ID 2', 'Case ID 3'];
 
   case: CaseManagementReportData = {} as CaseManagementReportData;
 
