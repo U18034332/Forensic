@@ -23,7 +23,7 @@ export class CaseManagementDigitalFormComponent {
   sectors = ['Arts & Culture', 'Sports', 'Miscellaneous', 'Charities'];
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
-  incidentReportNumber = ''
+  incidentReportNumber = '';
   incidentReportNumbers = ['','Case ID 1', 'Case ID 2', 'Case ID 3'];
 
   case: CaseManagementReportData = {} as CaseManagementReportData;
