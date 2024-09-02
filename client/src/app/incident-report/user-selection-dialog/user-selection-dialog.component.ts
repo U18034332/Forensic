@@ -4,7 +4,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-user-selection-dialog',
   templateUrl: './user-selection-dialog.component.html',
-  styleUrls: ['./user-selection-dialog.component.scss']
+  styleUrl: './user-selection-dialog.component.scss'
 })
 export class UserSelectionDialogComponent implements OnInit {
   workloadThreshold = 5; // Define a threshold for workload
