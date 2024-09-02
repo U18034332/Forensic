@@ -13,13 +13,25 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NotificationSidePanelComponent } from './tool-bar/notification-side-panel/notification-side-panel.component';
 import { MatCard } from '@angular/material/card';
 import { RouterOutlet } from '@angular/router';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { CustomOverlayContainerDirective } from './tool-bar/notification-side-panel/custom-overlay-container.directive';
+import { MatCardModule } from '@angular/material/card';
+import { OverlayModule } from '@angular/cdk/overlay';
+
+
+
 
 @NgModule({
   declarations: [
     ToolbarComponent,
     UserDropdownComponent,
     SideNavComponent,
-    NotificationSidePanelComponent // Include NotificationSidePanelComponent
+    NotificationSidePanelComponent,
+    CustomOverlayContainerDirective,
+    
+    // Include NotificationSidePanelComponent
   ],
   imports: [
     CommonModule,
@@ -31,12 +43,20 @@ import { RouterOutlet } from '@angular/router';
     MatSidenavModule,
     MatDialogModule,
     MatCard,
-    RouterOutlet
+    RouterOutlet,
+    SidebarModule,
+    ButtonModule,
+    CardModule,
+    MatCardModule,
+    OverlayModule
+  
+    
   ],
   exports: [
     ToolbarComponent,
     SideNavComponent,
     NotificationSidePanelComponent // Export NotificationSidePanelComponent for external use
   ]
+  
 })
 export class CoreModule { }

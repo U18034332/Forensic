@@ -64,4 +64,9 @@ class NonFundingIncidentReportController(
             ResponseEntity.badRequest().body((gson.toJson(e.message)))
         }
     }
+
+    @GetMapping("get-assigned")
+    fun getAssignedToLoggedInUserReports(): List<IncidentReportResponseDTO> {
+        return nonFundingIncidentReportService.getReportsAssignedToCurrentUser()
+    }
 }

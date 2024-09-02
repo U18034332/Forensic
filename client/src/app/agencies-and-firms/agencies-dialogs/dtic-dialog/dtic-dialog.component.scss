@@ -1,0 +1,110 @@
+:host {
+    .mat-dialog-container {
+      width: 100%;          // Full width of the parent
+      max-width: 98vw;      // Maximum width to 90% of the viewport width
+      min-width: 400px;     // Minimum width to ensure it doesn’t get too small
+      height: auto;         // Adjust height automatically based on content
+      max-height: 90vh;     // Maximum height to 80% of the viewport height
+    }
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between; /* Space out the two sections */
+    align-items: center; /* Align items vertically */
+    padding: 10px;
+  }
+  
+  .left-section {
+    flex: 1; /* Allow this section to grow */
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px; /* Space between each h3 */
+  }
+  
+
+  /* case-management-table.component.scss */
+
+.table-card-background-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-scroll {
+    overflow-x: auto;
+    width: 100%;
+  }
+  
+  .case-management-first-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    color: #333;
+  
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 12px 16px;
+    }
+  
+    th {
+      background-color: #000000e5;
+      color: #fff;
+      font-weight: normal;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+      &.sortable {
+        cursor: pointer;
+        .sort-icon {
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  
+    td {
+      background-color: #f9f9f9;
+      
+      button {
+        margin: 5px 0;
+        max-width: 70%;
+      }
+    }
+  
+    th:first-child, td:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+  
+    th:last-child, td:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  
+    .sub-files-header {
+      background-color: #e0e0e0;
+  
+      h3 {
+        margin: 0;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+  
+  
