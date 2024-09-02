@@ -18,11 +18,11 @@ import { CoreModule } from './core/core.module';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core'; // Correct import for MatNativeDateModule
-
+import { IncidentReportModule } from './incident-report/incident-report.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { IncidentReportModule } from './incident-report/incident-report.module';
+
 import { CaseManagementModule } from './case-management/case-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
 import { AuditTrailModule } from './audit-trail/audit-trail.module';
@@ -30,6 +30,11 @@ import { DiscussModule } from './discuss/discuss.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { AgenciesAndFirmsModule } from './agencies-and-firms/agencies-and-firms.module';
 import { DocManagementModule } from './doc-management/doc-management.module';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+
+
 
 @NgModule({
   declarations: [
@@ -65,7 +70,11 @@ import { DocManagementModule } from './doc-management/doc-management.module';
     DocManagementModule,
     FullCalendarModule,
     MatDatepickerModule,
-    MatNativeDateModule, // Ensure MatNativeDateModule is imported here
+    MatNativeDateModule,
+    CardModule,
+    SidebarModule,
+    ButtonModule,
+    // Ensure MatNativeDateModule is imported here
   ],
   providers: [],
   bootstrap: [AppComponent],

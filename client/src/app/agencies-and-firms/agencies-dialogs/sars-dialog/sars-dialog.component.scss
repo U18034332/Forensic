@@ -1,0 +1,190 @@
+:host {
+  .mat-dialog-container {
+    width: 100%;          // Full width of the parent
+    max-width: 98vw;      // Maximum width to 90% of the viewport width
+    min-width: 400px;     // Minimum width to ensure it doesn’t get too small
+    height: auto;         // Adjust height automatically based on content
+    max-height: 90vh;     // Maximum height to 80% of the viewport height
+  }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Space out the two sections */
+  align-items: center; /* Align items vertically */
+  padding: 10px;
+}
+
+.left-section {
+  flex: 1; /* Allow this section to grow */
+}
+
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px; /* Space between each h3 */
+}
+
+
+/* case-management-table.component.scss */
+
+.table-card-background-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.case-management-first-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #333;
+
+  th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 12px 16px;
+  }
+
+  th {
+    background-color: #000000e5;
+    color: #fff;
+    font-weight: normal;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    &.sortable {
+      cursor: pointer;
+      .sort-icon {
+        margin-left: 5px;
+        font-size: 14px;
+      }
+    }
+  }
+
+  td {
+    background-color: #f9f9f9;
+    
+    button {
+      margin: 5px 0;
+      max-width: 70%;
+    }
+  }
+
+  th:first-child, td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  th:last-child, td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .sub-files-header {
+    background-color: #e0e0e0;
+
+    h3 {
+      margin: 0;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+}
+
+.case-management-view{
+  padding-top: 90px;
+}
+
+.case-management-title {
+    margin-left: 85px;
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .search-input {
+    width: 15%;
+    padding: 10px;
+    margin-left: 40px;
+    margin-top: 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(78, 78, 78, 0.1);
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .search-input:focus {
+    border-color: #5c5c5c;
+    box-shadow: 0 0 8px rgba(83, 83, 83, 0.5);
+  }
+  
+  .search-input:hover {
+    border-color: #bbb;
+  }
+  
+  .search-input::placeholder {
+    color: #999;
+  }
+  
+  .search-input:focus::placeholder {
+    color: #272727;
+  }
+  
+  @media (max-width: 768px) {
+    .search-input {
+      width: 80%;
+      margin-left: 0;
+      margin-bottom: 15px;
+    }
+  }
+  
+
+  .button-group {
+    display: flex;
+    gap: 10px;
+
+    button {
+      min-width: 100px;
+    }
+  }
+}
+
+
+
+
+
+/* Custom button styles */
+button.mat-raised-button {
+  background-color: #636363;
+  color: white;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+

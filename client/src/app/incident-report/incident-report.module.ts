@@ -26,14 +26,17 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort'; 
 import { AssessmentFundingComponent } from './assessment-funding/assessment-funding.component';
 import { AssessmentNonFundingComponent } from './assessment-non-funding/assessment-non-funding.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { InvestigationDialogComponent } from './investigation-dialog/investigation-dialog.component';
 import { UserSelectionDialogComponent } from './user-selection-dialog/user-selection-dialog.component';
 import { NotRecommendedDialogComponent } from './not-recommended-dialog/not-recommended-dialog.component';
 import { FirmsSelectionDialogComponent } from './firms-selection-dialog/firms-selection-dialog.component';
 import { FundingReportsComponent } from './funding-reports/funding-reports.component';
 import { NonFundingReportsComponent } from './non-funding-reports/non-funding-reports.component';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { DialogModule } from 'primeng/dialog';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -72,8 +75,11 @@ import { NonFundingReportsComponent } from './non-funding-reports/non-funding-re
     MatPaginatorModule,
     MatSortModule,
     MatRadioModule,
-    BrowserAnimationsModule,
-    BrowserModule
+    SplitButtonModule,
+    DialogModule,
+    MenuModule,
+    ButtonModule,
+    DropdownModule
   ],
 })
 export class IncidentReportModule { }

@@ -6,26 +6,26 @@
    <div class="container">
     <div class="section agencies">
       <h2>Agencies</h2>
-      <button mat-raised-button class="agency-button" id="saps">SAPS</button>
-      <button mat-raised-button class="agency-button" id="sars">SARS</button>
-      <button mat-raised-button class="agency-button" id="siu">Special Investigetion Unit (SIU)</button>
-      <button mat-raised-button class="agency-button" id="cipc">CIPC</button>
-      <button mat-raised-button class="agency-button" id="dsd">Depertment of Social Development</button>
-      <button mat-raised-button class="agency-button" id="dpci">DPCI</button>
-      <button mat-raised-button class="agency-button" id="dtic">DTIC</button>
-      <button mat-raised-button class="agency-button" id="national-treasury">National Treasury</button>
+      <button mat-raised-button class="agency-button" id="saps"(click)="openSapsDialog()">SAPS</button>
+      <button mat-raised-button class="agency-button" id="sars"(click)="openSarsDialog()">SARS</button>
+      <button mat-raised-button class="agency-button" id="siu"(click)="openSpecialInvestigationUnitDialog()">Special Investigetion Unit (SIU)</button>
+      <button mat-raised-button class="agency-button" id="cipc"(click)="openCpicDialog()">CIPC</button>
+      <button mat-raised-button class="agency-button" id="dsd"(click)="openDepartmentOfSocialDevelopmentDialog()">Depertment of Social Development</button>
+      <button mat-raised-button class="agency-button" id="dpci"(click)="openDpciDialog()">DPCI</button>
+      <button mat-raised-button class="agency-button" id="dtic"(click)="openDticDialog()">DTIC</button>
+      <button mat-raised-button class="agency-button" id="national-treasury"(click)="openNationalTreasurytDialog()">National Treasury</button>
     </div>
     <div class="section firms">
       <h2>Firms</h2>
-      <button mat-raised-button class="firm-button" id="sedupe-and-metja">Sedupe & Metja</button>
-      <button mat-raised-button class="firm-button" id="ubac">UBAC</button>
-      <button mat-raised-button class="firm-button" id="fundudzi">Fundudzi</button>
-      <button mat-raised-button class="firm-button" id="open-water">Open Water</button>
-      <button mat-raised-button class="firm-button" id="gfia">GFIA</button>
-      <button mat-raised-button class="firm-button" id="ffrim">FRRIM</button>
-      <button mat-raised-button class="firm-button" id="ligwa">LIGWA</button>
-      <button mat-raised-button class="firm-button" id="afis">AFIS</button>
-      <button mat-raised-button class="firm-button" id="nexia-sab&t">Nexia SAB&T</button>
+      <button mat-raised-button class="firm-button" id="sedupe-and-metja" (click)="openSedupeAndMetjaDialog()">Sedupe & Metja</button>
+      <button mat-raised-button class="firm-button" id="ubac"(click)=" openUbacDialog()">UBAC</button>
+      <button mat-raised-button class="firm-button" id="fundudzi"(click)=" openFundudziDialog()">Fundudzi</button>
+      <button mat-raised-button class="firm-button" id="open-water"(click)="openOpenWaterDailog()">Open Water</button>
+      <button mat-raised-button class="firm-button" id="gfia"(click)="openGfiaDialog()">GFIA</button>
+      <button mat-raised-button class="firm-button" id="ffrim"(click)="openFrrimDialog()">FRRIM</button>
+      <button mat-raised-button class="firm-button" id="ligwa"(click)="openLigwaDialog()">LIGWA</button>
+      <button mat-raised-button class="firm-button" id="afis"(click)="openAfisDialog()">AFIS</button>
+      <button mat-raised-button class="firm-button" id="nexia-sab&t"(click)="openNexiaSabAndTDialog()">Nexia SAB&T</button>
     </div>
    </div>
   

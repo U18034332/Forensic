@@ -6,7 +6,7 @@ import { FirmsSelectionDialogComponent } from '../firms-selection-dialog/firms-s
 @Component({
   selector: 'app-investigation-dialog',
   templateUrl: './investigation-dialog.component.html',
-  styleUrl: './investigation-dialog.component.scss'
+  styleUrls: ['./investigation-dialog.component.scss']
 })
 export class InvestigationDialogComponent {
 

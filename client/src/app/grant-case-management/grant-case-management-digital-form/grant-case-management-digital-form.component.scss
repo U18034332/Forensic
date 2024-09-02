@@ -1,35 +1,32 @@
 mat-form-field {
     width: 100%;
-  }
+}
 
-
-  
-  .mat-dialog-content {
+.mat-dialog-content {
     max-height: 600px; /* Set a max height for the content to make it scrollable */
     overflow-y: auto;
     max-width: 300px;
-  }
-  
-  .mat-dialog-actions {
+}
+
+.mat-dialog-actions {
     justify-content: flex-end;
-  }
-  
-  .custom-card {
+}
+
+.custom-card {
     width: 100%; /* Adjust the width as per your requirement */
     height: auto; /* Adjust the height as per your requirement */
     padding: 10px; /* Optional: Add padding to the card content */
     box-sizing: border-box; /* Ensure padding is included in width */
-  }
+}
 
-  .case-id-dropdown{
+.case-id-dropdown {
     padding-bottom: 23px;
-  }
+}
 
-  h2 {
-    text-align: center; /* Center-align the text */
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Show ellipsis for overflow */
-    max-width: 100%; /* Limit width to container's width */
-  }
-  
+.card-title {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';  // Import the Router service
+import { AuthService } from '../../services/auth-service.service';// Import your AuthService
 
 @Component({
   selector: 'app-user-dropdown',
@@ -12,5 +14,13 @@ export class UserDropdownComponent {
     role: 'Admin'
   };
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
+
+  logout() {
+    // Call the logout method from AuthService
+    this.authService.logout();
+
+    // Redirect to the login page
+    this.router.navigate(['/login']);
+  }
 }
