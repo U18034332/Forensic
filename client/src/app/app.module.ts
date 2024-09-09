@@ -36,8 +36,6 @@ import { DocManagementModule } from './doc-management/doc-management.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -60,8 +58,6 @@ import { MatSelectModule } from '@angular/material/select';
     DragDropModule,
     MatTableModule,
     MatMenuModule,
-    MatFormFieldModule,
-    MatSelectModule,
     AppRoutingModule,
     CoreModule,
     DashboardModule,

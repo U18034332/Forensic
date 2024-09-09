@@ -16,6 +16,7 @@ interface NonFundingIncidentReportRepository: JpaRepository<NonFundingIncidentRe
     fun findByAssignedToIsNullAndDeclineReasonIsEmpty(): List<NonFundingIncidentReport>
     @Query("SELECT n FROM NonFundingIncidentReport n WHERE n.assignedTo IS NOT NULL OR n.declineReason <> ''")
     fun findByAssignedToIsNotNullORDeclineReasonIsNotEmpty(): List<NonFundingIncidentReport>
+    fun findByAssignedToIsNotNull(): List<NonFundingIncidentReport>
 //    @Query(value = "SELECT * FROM Non_Funding_Incident_Report WHERE assigned_user IS NULL", nativeQuery = true)
 //    fun getReportsWithUnassignedUsers(): List<NonFundingIncidentReport?>?
 }

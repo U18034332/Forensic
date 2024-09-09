@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { CaseManagementReportData } from '../../dto/add-case-management-form.interface';
+import { CaseManagementServiceService } from '../../services/case-management-service.service';
 
 @Component({
   selector: 'app-case-management-digital-form',
   templateUrl: './case-management-digital-form.component.html',
   styleUrls: ['./case-management-digital-form.component.scss']
 })
-export class CaseManagementDigitalFormComponent {
+export class CaseManagementDigitalFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<CaseManagementReportData> = new EventEmitter<CaseManagementReportData>();
 
   provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'];
@@ -24,11 +25,31 @@ export class CaseManagementDigitalFormComponent {
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
   incidentReportNumber = '';
-  incidentReportNumbers = ['','Case ID 1', 'Case ID 2', 'Case ID 3'];
+  incidentReportNumbers = [''];
 
   case: CaseManagementReportData = {} as CaseManagementReportData;
 
-  constructor(public dialogRef: MatDialogRef<CaseManagementDigitalFormComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<CaseManagementDigitalFormComponent>,
+    private caseManagementService: CaseManagementServiceService
+
+  ) {}
+  ngOnInit(): void {
+    this.caseManagementService.getUserIncidentReports().subscribe((response)=> {
+      console.log(response);
+
+      // Initialize an empty array to hold report numbers
+      this.incidentReportNumbers = ['']
+    
+      // Use a for loop to iterate over the array of incident reports
+      for (const incidentReport of response) {
+        // Extract the report number and add it to the array
+        console.log(incidentReport.reportNumber);
+        
+        this.incidentReportNumbers.push(incidentReport.reportNumber);
+      }
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
