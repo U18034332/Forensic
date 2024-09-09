@@ -1,6 +1,7 @@
 package com.nlc.forensic.controller
 
 import com.nlc.forensic.constants.ResponseConstant
+import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.dto.NonFundingCaseDetailsDTO
 import com.nlc.forensic.entity.Case
 import com.nlc.forensic.entity.NonFundingIncidentReport
@@ -50,4 +51,10 @@ class CaseManagementController(
         }
         return ResponseEntity.ok(nonFundingIncidentReportService.findAcceptedReportsByReportNumber(reportNumber))
     }
+
+    @GetMapping("/get/user/reports")
+    fun getReportByReportNumber(): ResponseEntity<List<IncidentReportResponseDTO>> {
+        return ResponseEntity.ok(nonFundingIncidentReportService.getReportsAssignedToCurrentUser())
+    }
+
 }
