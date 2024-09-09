@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap, catchError, throwError } from 'rxjs';
 import { NonFundingIncidentReportData } from '../models/non-funding-report.interface';
@@ -44,11 +44,14 @@ export class CaseManagementServiceService {
       );
   }
 
-  getReport(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/get/unassigned`, {headers: this.getAuthHeaders() })
-    .pipe(
-      tap((response: any) => {
-        console.log(response); 
+  getReport(reportNumber: string): Observable<any> {
+    const url = `${this.apiUrl}/get-report`;
+    const headers = this.getAuthHeaders();
+    const params = new HttpParams().set('reportNumber', reportNumber);
+
+    return this.http.get<any>(url, { headers: headers, params: params }).pipe(
+      tap(response => {
+        console.log('Response:', response);
       }),
       catchError(this.handleError)
     );
