@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { CaseManagementReportData } from '../../dto/add-case-management-form.interface';
+import { CaseManagementServiceService } from '../../services/case-management-service.service';
 
 @Component({
   selector: 'app-case-management-digital-form',
   templateUrl: './case-management-digital-form.component.html',
   styleUrls: ['./case-management-digital-form.component.scss']
 })
-export class CaseManagementDigitalFormComponent {
+export class CaseManagementDigitalFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<CaseManagementReportData> = new EventEmitter<CaseManagementReportData>();
 
   provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'];
@@ -23,12 +24,32 @@ export class CaseManagementDigitalFormComponent {
   sectors = ['Arts & Culture', 'Sports', 'Miscellaneous', 'Charities'];
   levelsDetected = ['Divisional', 'Departmental', 'Sub Departmental', 'Process'];
   divisionsDetected = ['Division 1', 'Division 2', 'Division 3'];
-  caseId = ['1','2','3','4']
-  caseIds = ['Case ID 1', 'Case ID 2', 'Case ID 3'];
+  incidentReportNumber = '';
+  incidentReportNumbers = [''];
 
   case: CaseManagementReportData = {} as CaseManagementReportData;
 
-  constructor(public dialogRef: MatDialogRef<CaseManagementDigitalFormComponent>) {}
+  constructor(
+    public dialogRef: MatDialogRef<CaseManagementDigitalFormComponent>,
+    private caseManagementService: CaseManagementServiceService
+
+  ) {}
+  ngOnInit(): void {
+    this.caseManagementService.getUserIncidentReports().subscribe((response)=> {
+      console.log(response);
+
+      // Initialize an empty array to hold report numbers
+      this.incidentReportNumbers = ['']
+    
+      // Use a for loop to iterate over the array of incident reports
+      for (const incidentReport of response) {
+        // Extract the report number and add it to the array
+        console.log(incidentReport.reportNumber);
+        
+        this.incidentReportNumbers.push(incidentReport.reportNumber);
+      }
+    });
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -37,9 +58,32 @@ export class CaseManagementDigitalFormComponent {
   submitForm(form: NgForm) {
     if (form.valid) {
       this.formSubmit.emit(this.case);
+      console.log(this.case);
+      
       this.dialogRef.close();
     } else {
       console.log('Error in the form.');
     }
+  }
+
+  onCaseIdChange(): void {
+    // if (this.case.caseID) {
+    //   this.caseService.getCaseById(this.case.caseID).subscribe((data) => {
+    //     this.case = {
+    //       ...this.case,
+    //       startDate: data.startDate,
+    //       dateReported: data.dateReported,
+    //       province: data.province,
+    //       caseType: data.caseType,
+    //       caseSubType: data.caseSubType,
+    //       channel: data.channel,
+    //       priority: data.priority,
+    //       status: data.status,
+    //       levelDetected: data.levelDetected,
+    //       divisionDetected: data.divisionDetected,
+    //       allocatedDescription: data.allocatedDescription,
+    //     };
+    //   });
+    // }
   }
 }

@@ -1,38 +1,146 @@
-.case-details-card {
-    width: 400px; /* Adjust width as per your design */
-    height: calc(100vh - 66px); /* Adjust height based on available viewport height */
-    padding: 25px;
-    box-sizing: border-box;
-    position: fixed;
-    top: 64px; /* Adjust margin-top as needed */
-    right: 5px; /* Adjust right distance from the edge of the screen */
-    background-color: white; /* Example background color */
-    border: 1px solid #ccc; /* Example border style */
-    box-shadow: 0 2px 5px rgba(2, 2, 0, 0.1); /* Example shadow */
-    z-index: 1000; /* Ensure it's above other content */
-    overflow-y: auto; /* Enable vertical scrolling */
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    margin-top: 15px;
-    margin-right: 10px;
-    background-color: #8382821f; /* Icon color */
-    color: #f62f2fdb;
-  }
-  
-  .close-button:hover {
-    color: #0056b3; /* Icon color on hover */
-  }
-  
-  h2 {
-    text-align: left;
-    margin-left: 10px;
-    color: #000000;
-    font-weight: lighter;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-  
+.notification-sidebar-modern {
+  width: 400px;
+  height: calc(100vh - 66px);
+  padding: 20px;
+  background: linear-gradient(135deg, #e0f7fa, #007bff); /* Modern gradient background */
+  color: white; /* Text color */
+  border-radius: 30px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Softer, deeper shadow */
+  z-index: 1000;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section styling */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black; /* Subtle border */
+}
+
+.notifications-heading {
+  margin: 0;
+  font-size: 24px; /* Modern font size */
+  color: rgb(0, 0, 0);
+  font-weight: 600; /* Bold heading */
+  font-family: 'Roboto', sans-serif; /* Use a modern font */
+  letter-spacing: 0.5px; /* Slight spacing between letters for a cleaner look */
+}
+
+.filter-button {
+  color: rgb(0, 0, 0);
+}
+
+/* Custom menu styling */
+.custom-menu .mat-menu-panel {
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Modern shadow */
+  background-color: #ffffff; /* White background */
+}
+
+/* Circle indicators */
+.circle {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #ff3b30; /* Default color (red) */
+}
+
+.red {
+  background-color: #ff3b30; /* Modern red color */
+}
+
+.green {
+  background-color: #4cd964; /* Modern green color */
+}
+
+.yellow {
+  background-color: #ffcc00; /* Modern yellow color */
+}
+
+/* Content area styling to take up available space */
+.content-area {
+  flex-grow: 1;
+  overflow-y: auto; /* Scrollable if content overflows */
+  margin-bottom: 60px; /* Space for the footer */
+}
+
+/* Message bubble styling */
+.notification-list {
+  margin-top: 20px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  background-color: #e8e8e8b9; /* White background for the message bubble */
+  color: #333333; /* Dark text color */
+  padding: 15px 20px;
+  border-radius: 10px; /* Rounded corners for the bubble effect */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+  position: relative;
+  max-width: 300px;
+  margin-bottom: 10px; /* Space between bubble and button */
+}
+
+/* Mark as Read Button */
+.mark-as-read-btn {
+  background-color: transparent; /* Primary button color */
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.mark-as-read-btn:hover {
+  background-color: #0056b3; /* Darker on hover */
+}
+
+/* Footer Section with User Info */
+.footer-section {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border at the top */
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-name {
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+}

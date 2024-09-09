@@ -16,11 +16,11 @@
   <mat-divider></mat-divider>
   <button mat-menu-item>
     <mat-icon>https</mat-icon>
-    <span>UserID</span>
+    <span>{{userInfo.userID}}</span>
   </button>
   <mat-divider></mat-divider>
  
-  <button mat-menu-item>
+  <button mat-menu-item (click)="logout()">  <!-- Bind the logout method here -->
     <mat-icon>logout</mat-icon>
     <span>Logout</span>
   </button>

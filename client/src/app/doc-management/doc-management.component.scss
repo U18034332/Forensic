@@ -1,10 +1,7 @@
 /* Reset some default styles */
-.doc-management-view-styling{
+.doc-management-view-styling {
   padding-top: 90px;
 }
-
-
-
 
 * {
   box-sizing: border-box;
@@ -31,13 +28,58 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  overflow: hidden;
+}
+
+/* Styling for the case search dropdown */
+.case-search {
+  margin-bottom: 20px;
+  position:relative;
+  margin-left: 500px;
+}
+
+.case-search input {
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.case-search ul {
+  position: absolute;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000; /* Ensure the dropdown is on top */
+}
+
+.case-search li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.case-search li:hover {
+  background-color: #f0f0f0;
+}
+
 .doc-management-view {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
   flex: 1;
-  overflow: hidden; /* Ensure no overflow */
+  overflow: hidden;
 }
 
 .doc-management-card {
@@ -96,12 +138,6 @@ mat-progress-bar {
   width: 100%;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  overflow: hidden; /* Ensure no overflow */
-}
 /* Additional styles for the remove button */
 .uploaded-files ul {
   list-style-type: none;
@@ -132,4 +168,29 @@ mat-progress-bar {
 
 .uploaded-files li button:hover {
   color: red; /* Adjust color for hover effect */
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+.case-select {
+  width: 100%; /* Full width of the parent container */
+}
+
+.case-select {
+  display: flex;             /* Enable flexbox layout */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically (if needed) */
+  width: 100%;               /* Full width of the parent container */
+  height: 100%;              /* Full height of the parent container (optional) */
+  
+  mat-form-field {
+    width: 100%;             /* Ensure the form field takes full width of its container */
+    max-width: 400px;       /* Set a max-width if you want to limit the width */
+  }
+
+  mat-select {
+    width: 100%;             /* Ensure the select element takes full width of the form field */
+  }
 }

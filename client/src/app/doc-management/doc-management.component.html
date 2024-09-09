@@ -1,42 +1,53 @@
 <div class="doc-management-view-styling">
+  <div class="title">
+    Document Management
+  </div>
 
-<div class="title">
-  Document Management
-</div>
-
-<div class="container">
- 
-  <div class="doc-management-view" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
-    <mat-card class="doc-management-card">
-      <mat-card-content>
-        <div class="drop-area">
-          <div class="file-upload">
-            <label for="fileInput">
-              <mat-icon>backup</mat-icon>
-              <span>Drag & Drop files here or click to select</span>
-            </label>
-            <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple hidden>
-          </div>
-          <mat-progress-bar *ngIf="progress !== undefined" mode="determinate" [value]="progress"></mat-progress-bar>
-        </div>
-      </mat-card-content>
-    </mat-card>
-
-    <div class="uploaded-files" *ngIf="filesToUpload.length > 0">
-      <h3>Uploaded Files:</h3>
-      <ul>
-        <li *ngFor="let file of filesToUpload; let i = index">
-          {{ file.name }}
-          <button mat-icon-button color="warn" (click)="removeFile(i)">
-            <mat-icon>close</mat-icon>
-          </button>
-        </li>
-      </ul>
-      <button mat-raised-button color="primary" (click)="uploadFiles()">Upload All</button>
+  <div class="container">
+    
+    <!-- Dropdown for Selecting Cases -->
+    <div class="case-select">
+      <mat-form-field appearance="fill">
+        <mat-label for="case">Select Case</mat-label>
+        <mat-select id="case" [(ngModel)]="selectedCase" name="case">
+          <mat-option *ngFor="let caseItem of cases" [value]="caseItem">
+            {{ caseItem.id }} - {{ caseItem.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
-    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="doc-management-view" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+      <mat-card class="doc-management-card">
+        <mat-card-content>
+          <div class="drop-area">
+            <div class="file-upload">
+              <label for="fileInput">
+                <mat-icon>backup</mat-icon>
+                <span>Drag & Drop files here or click to select</span>
+              </label>
+              <input type="file" id="fileInput" (change)="onFileSelected($event)" multiple hidden>
+            </div>
+            <mat-progress-bar *ngIf="progress !== undefined" mode="determinate" [value]="progress"></mat-progress-bar>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <div class="uploaded-files" *ngIf="filesToUpload.length > 0">
+        <h3>Files to Upload:</h3>
+        <ul>
+          <li *ngFor="let file of filesToUpload; let i = index">
+            {{ file.name }}
+            <button mat-icon-button color="warn" (click)="removeFile(i)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+        </ul>
+        <button mat-raised-button color="primary" (click)="uploadFiles()">Upload All</button>
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
   </div>
 </div>
 
-</div>

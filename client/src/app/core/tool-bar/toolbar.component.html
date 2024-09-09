@@ -4,18 +4,20 @@
   </a>
   <span class="spacer"></span>
 
-  <button mat-button (click)="openNotificationSidePanel()">
+  <button mat-button (click)="openNotificationSidePanel()" aria-label="Open Notifications">
     <mat-icon>notifications</mat-icon>
   </button>
 
-  <button mat-button>
+  <button mat-button aria-label="Settings">
     <mat-icon>settings</mat-icon>
   </button>
 
-  <button mat-button [matMenuTriggerFor]="userMenu">
+  <button mat-button [matMenuTriggerFor]="userMenu" aria-label="User Menu">
     <mat-icon>person</mat-icon>
   </button>
   <mat-menu #userMenu="matMenu">
     <app-user-dropdown></app-user-dropdown>
   </mat-menu>
 </mat-toolbar>
+
+<app-notification-side-panel [(visible)]="sidebarVisible2"></app-notification-side-panel>
