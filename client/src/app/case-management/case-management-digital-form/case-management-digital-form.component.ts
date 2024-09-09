@@ -37,9 +37,32 @@ export class CaseManagementDigitalFormComponent {
   submitForm(form: NgForm) {
     if (form.valid) {
       this.formSubmit.emit(this.case);
+      console.log(this.case);
+      
       this.dialogRef.close();
     } else {
       console.log('Error in the form.');
     }
+  }
+
+  onCaseIdChange(): void {
+    // if (this.case.caseID) {
+    //   this.caseService.getCaseById(this.case.caseID).subscribe((data) => {
+    //     this.case = {
+    //       ...this.case,
+    //       startDate: data.startDate,
+    //       dateReported: data.dateReported,
+    //       province: data.province,
+    //       caseType: data.caseType,
+    //       caseSubType: data.caseSubType,
+    //       channel: data.channel,
+    //       priority: data.priority,
+    //       status: data.status,
+    //       levelDetected: data.levelDetected,
+    //       divisionDetected: data.divisionDetected,
+    //       allocatedDescription: data.allocatedDescription,
+    //     };
+    //   });
+    // }
   }
 }

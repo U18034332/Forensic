@@ -5,8 +5,10 @@ import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.NonFundingIncidentReportDTO
 import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.NonFundingIncidentReport
+import com.nlc.forensic.enums.UserRoles
 import com.nlc.forensic.repository.NonFundingIncidentReportRepository
 import com.nlc.forensic.repository.UserRepository
+import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
 import java.security.InvalidParameterException
 import java.util.*
@@ -18,19 +20,13 @@ class NonFundingIncidentReportService(
     private val nonFundingIncidentReportRepository: NonFundingIncidentReportRepository,
     private val userRepository: UserRepository
 ) {
-    fun createIncidentReport(reportDTO: NonFundingIncidentReportDTO)
-    : NonFundingIncidentReport? {
+
+    fun createIncidentReport(reportDTO: NonFundingIncidentReportDTO): NonFundingIncidentReport? {
         with(reportDTO) {
-            requireNotNull(dateReported)
-            requireNotNull(startDate)
-            require(priority.isNotBlank())
-            require(province.isNotBlank())
-            require(channel.isNotBlank())
-            require(caseType.isNotBlank())
-            require(divisionDetected.isNotBlank())
-            require(levelDetected.isNotBlank())
-            require(priority.isNotBlank())
-            require(allocatedDescription.isNotBlank())
+            requireNotNull(dateReported) { "Date reported cannot be null" }
+            requireNotNull(startDate) { "Start date cannot be null" }
+            listOf(priority, province, channel, caseType, divisionDetected, levelDetected, allocatedDescription)
+                .forEach { require(it.isNotBlank()) { "$it cannot be blank" } }
         }
 
         val reportPrefix = when (reportDTO.divisionDetected.lowercase(Locale.getDefault())) {
@@ -41,12 +37,13 @@ class NonFundingIncidentReportService(
             "operations" -> "RP-OPS"
             else -> "RP-LG"
         }
-        val newReport: NonFundingIncidentReport? = reportDTO.startDate?.let {
-            reportDTO.dateReported?.let { it1 ->
-                NonFundingIncidentReport (
+
+        val newReport = reportDTO.startDate?.let { startDate ->
+            reportDTO.dateReported?.let { dateReported ->
+                NonFundingIncidentReport(
                     reportNumber = generateReportNumberFromDatabaseId(reportPrefix),
-                    startDate = it,
-                    dateReported = it1,
+                    startDate = startDate,
+                    dateReported = dateReported,
                     province = reportDTO.province,
                     caseType = reportDTO.caseType,
                     caseSubType = reportDTO.caseSubType,
@@ -60,10 +57,10 @@ class NonFundingIncidentReportService(
                 )
             }
         }
-        if (newReport != null) {
-            nonFundingIncidentReportRepository.save(newReport)
+
+        return newReport?.apply {
+            nonFundingIncidentReportRepository.save(this)
         }
-        return newReport
     }
 
     fun findAcceptedReportsByReportNumber(reportNumber: String): NonFundingIncidentReport? {
@@ -71,13 +68,118 @@ class NonFundingIncidentReportService(
     }
 
     fun getAllAssessedFilledReports(): List<IncidentReportResponseDTO> {
-        val reports = nonFundingIncidentReportRepository.findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
-        if (reports.isEmpty()) {
-            return emptyList()
+        return nonFundingIncidentReportRepository
+            .findByAssignedToIsNotNullORDeclineReasonIsNotEmpty()
+            .takeIf { it.isNotEmpty() }
+            ?.map { ir ->
+                IncidentReportResponseDTO(
+                    id = ir.id,
+                    reportNumber = ir.reportNumber,
+                    acceptance = ir.acceptance,
+                    dateReported = ir.dateReported,
+                    startDate = ir.startDate,
+                    channel = ir.channel,
+                    province = ir.province,
+                    caseType = ir.caseType,
+                    caseSubType = ir.caseSubType,
+                    priority = ir.priority,
+                    status = ir.status,
+                    divisionDetected = ir.divisionDetected,
+                    levelDetected = ir.levelDetected,
+                    allocatedDescription = ir.allocatedDescription,
+                    declineReason = ir.declineReason,
+                    assignedTo = ir.assignedTo?.email
+                )
+            } ?: emptyList()
+    }
+
+    fun evaluateReport(acceptanceDTO: CaseAcceptanceDTO) {
+        require(acceptanceDTO.reportNumber.isNotBlank()) {
+            throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
         }
-        val responseReports = mutableListOf<IncidentReportResponseDTO>()
-        for (ir in reports){
-            val temp = IncidentReportResponseDTO(
+
+        val updatedCase = nonFundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
+            ?: throw InvalidParameterException("The report number is invalid.")
+
+        if (acceptanceDTO.allocateTo.isNotBlank()) {
+            val user = userRepository.findByEmail(acceptanceDTO.allocateTo)
+            if (user.isEmpty) {
+                throw InvalidParameterException("Invalid user email. Please check the email and allocate")
+            }
+            updatedCase.apply {
+                assignedTo = user.get()
+                acceptance = "Recommended"
+            }
+        } else {
+            updatedCase.apply {
+                status = "Closed"
+                assignedTo = null
+                acceptance = "Not Recommended"
+                declineReason = acceptanceDTO.declineReason
+            }
+        }
+        nonFundingIncidentReportRepository.save(updatedCase)
+    }
+
+    fun getAllNonFundingReports(): List<NonFundingIncidentReport> {
+        return nonFundingIncidentReportRepository.findAll()
+    }
+
+    fun getAllUnassignedReports(): List<IncidentReportResponseDTO?> {
+        return nonFundingIncidentReportRepository
+            .findByAssignedToIsNullAndDeclineReasonIsEmpty()
+            .takeIf { it.isNotEmpty() }
+            ?.map { ir ->
+                IncidentReportResponseDTO(
+                    id = ir.id,
+                    reportNumber = ir.reportNumber,
+                    acceptance = ir.acceptance,
+                    dateReported = ir.dateReported,
+                    startDate = ir.startDate,
+                    channel = ir.channel,
+                    province = ir.province,
+                    caseType = ir.caseType,
+                    caseSubType = ir.caseSubType,
+                    priority = ir.priority,
+                    status = ir.status,
+                    divisionDetected = ir.divisionDetected,
+                    levelDetected = ir.levelDetected,
+                    allocatedDescription = ir.allocatedDescription,
+                    declineReason = ir.declineReason,
+                    assignedTo = ir.assignedTo?.email
+                )
+            } ?: emptyList()
+    }
+
+    fun generateReportNumberFromDatabaseId(prefix: String): String {
+        val latestReportId = nonFundingIncidentReportRepository.count()
+        return "${prefix}-${latestReportId + 1}"
+    }
+
+    fun getIncidentReportByReportNumber(reportNumber: String): NonFundingIncidentReport? {
+        require(reportNumber.isNotBlank()) { "The report number cannot be empty" }
+        return nonFundingIncidentReportRepository.findByReportNumber(reportNumber)
+    }
+
+    fun getReportsAssignedToCurrentUser(): List<IncidentReportResponseDTO> {
+        // Retrieve the logged-in user's email
+        val loggedInUserEmail = SecurityContextHolder.getContext().authentication.name
+        val user = userRepository.findByEmail(loggedInUserEmail)
+            .orElseThrow { IllegalArgumentException("Logged-in user not found in the system") }
+
+        // Check if the user has an admin role
+        val isAdmin = user.role == UserRoles.ADMIN
+
+        // Fetch reports based on the user's role
+        val reports = if (isAdmin) {
+            nonFundingIncidentReportRepository.findAll()
+        } else {
+            nonFundingIncidentReportRepository.findByAssignedTo(user)
+        }
+
+        // Map the reports to IncidentReportResponseDTO
+        return reports.map { ir ->
+            IncidentReportResponseDTO(
                 id = ir.id,
                 reportNumber = ir.reportNumber,
                 acceptance = ir.acceptance,
@@ -95,79 +197,7 @@ class NonFundingIncidentReportService(
                 declineReason = ir.declineReason,
                 assignedTo = ir.assignedTo?.email
             )
-            responseReports.add(temp)
         }
-        return responseReports
     }
 
-
-    fun evaluateReport(acceptanceDTO: CaseAcceptanceDTO) {
-        require(acceptanceDTO.reportNumber.isNotBlank()) {
-            throw InvalidParameterException(ResponseConstant.REPORT_UPDATE_FAIL)
-        }
-
-        val updatedCase = nonFundingIncidentReportRepository.findByReportNumber(acceptanceDTO.reportNumber)
-            ?: throw InvalidParameterException("The report number is invalid.")
-
-        if (acceptanceDTO.allocateTo.isNotBlank()) {
-            val user = userRepository.findByEmail(acceptanceDTO.allocateTo)
-            if(user.isEmpty) {
-                throw InvalidParameterException("Invalid user email. Please check the email and allocate")
-            }
-            updatedCase.assignedTo = user.get()
-            updatedCase.acceptance = "Recommended"
-        } else {
-            updatedCase.status = "Closed"
-            updatedCase.assignedTo = null
-            updatedCase.acceptance = "Not Recommended"
-            updatedCase.declineReason = acceptanceDTO.declineReason
-        }
-        nonFundingIncidentReportRepository.save(updatedCase)
-    }
-
-    fun getAllNonFundingReports(): List<NonFundingIncidentReport> {
-        return nonFundingIncidentReportRepository.findAll()
-    }
-
-    fun getAllUnassignedReports(): List<IncidentReportResponseDTO?> {
-        val reports = nonFundingIncidentReportRepository.findByAssignedToIsNullAndDeclineReasonIsEmpty()
-        if (reports.isEmpty()) {
-            return emptyList()
-        }
-        val responseReports = mutableListOf<IncidentReportResponseDTO>()
-         for (ir in reports){
-             val temp = IncidentReportResponseDTO(
-                 id = ir.id,
-                 reportNumber = ir.reportNumber,
-                 acceptance = ir.acceptance,
-                 dateReported = ir.dateReported,
-                 startDate = ir.startDate,
-                 channel = ir.channel,
-                 province = ir.province,
-                 caseType = ir.caseType,
-                 caseSubType = ir.caseSubType,
-                 priority = ir.priority,
-                 status = ir.status,
-                 divisionDetected = ir.divisionDetected,
-                 levelDetected = ir.levelDetected,
-                 allocatedDescription = ir.allocatedDescription,
-                 declineReason = ir.declineReason,
-                 assignedTo = ir.assignedTo?.email
-             )
-             responseReports.add(temp)
-         }
-        return responseReports
-    }
-
-    fun generateReportNumberFromDatabaseId(prefix: String): String {
-        val latestReportId = nonFundingIncidentReportRepository.count()
-        return "${prefix}-${latestReportId + 1}"
-    }
-
-    fun getIncidentReportByReportNumber(reportNumber: String): NonFundingIncidentReport? {
-        if (reportNumber.isEmpty()) {
-            throw IllegalArgumentException("The report number can not be empty")
-        }
-        return nonFundingIncidentReportRepository.findByReportNumber(reportNumber)
-    }
 }

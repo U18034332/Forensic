@@ -23,9 +23,22 @@
     justify-content: center;
     margin: 16px;
     
+    
     /* Adjust the width as needed */
     /* Subtracting margins from width to avoid overflow */
     /* Adjust the margin if necessary */
+  }
+
+  .floating-card, .floating-card-2 , .floating-card-3, .floating-card-4 {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    color: #00000059;
+    background-color: #F3F3F3;
+    ;
+    mat-card-title{
+      align-items: center !important;
+    }
   }
   /* Optional hover effects */
   .floating-card:hover, .floating-card-2:hover, .floating-card-3:hover, .floating-card-4:hover {

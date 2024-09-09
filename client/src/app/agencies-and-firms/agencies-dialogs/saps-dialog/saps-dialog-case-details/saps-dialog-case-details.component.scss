@@ -1,0 +1,139 @@
+.case-details-card[_ngcontent-ng-c218271840] {
+  width: 400px;
+  padding: 25px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0px;
+  right: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(2, 2, 0, 0.1);
+  z-index: 1000;
+  max-height: 100vh; // Set the maximum height to the viewport height
+  overflow-y: auto; // Enable vertical scrolling
+}
+
+
+.close-button {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  margin-top: 15px;
+  margin-right: 10px;
+  background-color: #8382821f; /* Icon color */
+  color: #f62f2fdb;
+}
+
+.close-button:hover {
+  color: #0056b3; /* Icon color on hover */
+}
+
+.case-details-action-btn {
+  float: right;
+  background-color: transparent; /* Transparent background */
+  border: 0.5px;
+  color: #424242; /* Button text color */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out; /* Smooth color transition on hover */
+}
+
+.case-details-action-btn:hover {
+  color: #0056b3; /* Change text color on hover */
+}
+
+.mat-menu-panel {
+  background-color: #fff; /* Adjust the background color of the menu */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Example shadow */
+  float: right;
+}
+
+.mat-menu-item {
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.mat-menu-item:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+  color: #007bff; /* Text color on hover */
+}
+
+.refer-action-btn, .recommend-action-btn {
+  color: #000000; /* Button text color */
+}
+
+.refer-action-btn:hover, .recommend-action-btn:hover {
+  background-color: #f0f0f0; /* Background color on hover */
+  color: #000000; /* Text color on hover */
+}
+
+h2 {
+  text-align: left;
+  margin-left: 10px;
+  color: #000000;
+  font-weight: lighter;
+  text-overflow: ellipsis;
+  max-width: 100%;
+
+}
+
+
+
+.example-form {
+ 
+  padding: 25px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .example-full-width {
+    width: calc(100% - 40px);
+    margin-bottom: 20px;
+  }
+
+  mat-label {
+    font-weight: bold;
+    color: #333;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  input.mat-input-element,
+  textarea.mat-input-element {
+    background-color: #fff;
+    border-radius: 8px;
+  }
+}
+
+
+.comment-submit-btn {
+  display: block;
+  width: 100%;
+  max-width: 200px; /* Adjust maximum width as needed */
+  margin: 20px auto; /* Center the button horizontally with some margin */
+  padding: 20px; /* Padding around the button text */
+  padding-bottom: 30px;
+  font-size: 15px; /* Font size */
+  font-weight:normal;
+  text-transform: uppercase; 
+  color: #fff; /* Text color */
+  background-color: #2a0ff4; /* Background color */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.25s ease; /* Smooth background color transition */
+
+  &:hover {
+    background-color: #5b4bd4; /* Darker background color on hover */
+  }
+
+  &:focus {
+    outline: none; /* Remove outline on focus */
+  }
+}
+
+
+
