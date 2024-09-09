@@ -1,19 +1,20 @@
 <div class="doc-management-view-styling">
-
   <div class="title">
     Document Management
   </div>
 
   <div class="container">
     
-    <!-- Dropdown for Searching Cases -->
-    <div class="case-search">
-      <input [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search by Case ID..." />
-      <ul *ngIf="filteredCases.length > 0">
-        <li *ngFor="let caseItem of filteredCases" (click)="selectCase(caseItem)">
-          {{ caseItem.id }} - {{ caseItem.name }}
-        </li>
-      </ul>
+    <!-- Dropdown for Selecting Cases -->
+    <div class="case-select">
+      <mat-form-field appearance="fill">
+        <mat-label for="case">Select Case</mat-label>
+        <mat-select id="case" [(ngModel)]="selectedCase" name="case">
+          <mat-option *ngFor="let caseItem of cases" [value]="caseItem">
+            {{ caseItem.id }} - {{ caseItem.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
     <div class="doc-management-view" (drop)="onDrop($event)" (dragover)="onDragOver($event)">
@@ -48,5 +49,5 @@
       <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
   </div>
-
 </div>
+

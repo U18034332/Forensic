@@ -7,21 +7,32 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { CoreModule } from '../core/core.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
-@NgModule({
-  declarations: [
-    DocManagementComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule, // Import FormsModule for ngModel
-    DocManagementComponentRoutingModule,
-    MatCardModule,
-    MatProgressBarModule,
-    MatButtonModule,
-    MatIconModule,
-    HttpClientModule,
-  ]
-})
+@NgModule({ declarations: [
+        DocManagementComponent,
+    ], imports: [CommonModule,
+        DocManagementComponentRoutingModule,
+        MatCardModule,
+        MatProgressBarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        CoreModule,
+        MatSelectModule,
+        CoreModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class DocManagementModule { }
