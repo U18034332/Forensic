@@ -6,10 +6,11 @@
     <form #caseForm="ngForm">
       <!-- Case ID -->
       <mat-form-field appearance="fill" class="case-id-dropdown">
-        <mat-label>Report ID</mat-label>
-        <mat-select [(ngModel)]="case.caseID" name="caseId" (selectionChange)="onCaseIdChange()">
-          <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
+        <mat-label>Incident Report Number</mat-label>
+        <mat-select [(ngModel)]="case.reportNumber" name="incidentReportNumber" required>
+          <mat-option *ngFor="let id of incidentReportNumbers" [value]="id">{{ id }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="!case.reportNumber">This field is required</mat-error>
       </mat-form-field>
 
     
