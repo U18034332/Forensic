@@ -64,7 +64,7 @@ class NonFundingIncidentReportService(
     }
 
     fun findAcceptedReportsByReportNumber(reportNumber: String): NonFundingIncidentReport? {
-        return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "accepted")
+        return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "Recommended")
     }
 
     fun getAllAssessedFilledReports(): List<IncidentReportResponseDTO> {
