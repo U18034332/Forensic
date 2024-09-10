@@ -8,6 +8,7 @@ import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.repository.NonFundingIncidentReportRepository
 import com.nlc.forensic.service.CaseManagementService
 import com.nlc.forensic.service.NonFundingIncidentReportService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -45,12 +46,20 @@ class CaseManagementController(
     }
 
     @GetMapping("/get-report")
-    fun getReportByReportNumber(@RequestParam reportNumber: String): ResponseEntity<out Any> {
+    fun getReportByReportNumber(@RequestParam reportNumber: String): ResponseEntity<Any> {
         if (reportNumber.isEmpty()) {
-            return ResponseEntity.badRequest().body(ResponseConstant.REQUIRED_PARAMETERS_NOT_SET)
+            return ResponseEntity.badRequest().body(mapOf("error" to "Required parameters not set"))
         }
-        return ResponseEntity.ok(nonFundingIncidentReportService.findAcceptedReportsByReportNumber(reportNumber))
+
+        val report = nonFundingIncidentReportService.findAcceptedReportsByReportNumber(reportNumber)
+
+        return if (report != null) {
+            ResponseEntity.ok(report)
+        } else {
+            ResponseEntity.status(HttpStatus.NOT_FOUND).body(mapOf("error" to "Report not found"))
+        }
     }
+
 
     @GetMapping("/get/user/reports")
     fun getReportByReportNumber(): ResponseEntity<List<IncidentReportResponseDTO>> {
