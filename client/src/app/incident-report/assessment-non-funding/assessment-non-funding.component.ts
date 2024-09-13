@@ -1,45 +1,76 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { Component, Input } from '@angular/core';
+import { AssessmentNonFundedReport, NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
 import { MatDialog } from '@angular/material/dialog';
+import { NonFundingRelatedFormComponent } from '../non-funding-related-form/non-funding-related-form.component';
 import { InvestigationDialogComponent } from '../investigation-dialog/investigation-dialog.component';
 import { NotRecommendedDialogComponent } from '../not-recommended-dialog/not-recommended-dialog.component';
+import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
+import { IncidentReportEvaluation } from '../../models/incident-report-evaluation';
+import { IncidentReportComponent } from '../incident-report.component';
 
 @Component({
   selector: 'app-assessment-non-funding',
   templateUrl: './assessment-non-funding.component.html',
   styleUrls: ['./assessment-non-funding.component.scss']
 })
-export class AssessmentNonFundingComponent implements OnInit {
+export class AssessmentNonFundingComponent {
   @Input() dataSource: NonFundingIncidentReportData[] = [];
 
   displayedColumns: string[] = [
     'reportID', 'startDate', 'dateReported', 'status', 'priority', 'view',
     'actions'
   ];
+  nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private incidentAssessmentService: NonFundedIncidentReportService,
+    private incidentReportComponent: IncidentReportComponent,
+  ) {}
 
-  ngOnInit(): void {}
+  openNonFundingRelatedReportDialog(element: any): void {
+    this.dialog.open(NonFundingRelatedFormComponent, {
+      width: '30%',
+      data: element
+    });
+  }
 
-  
-
-  openInvestigationDialog(): void {
+  openInvestigationDialog(element: any): void {
     const dialogRef = this.dialog.open(InvestigationDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed with result:', result);
-      // Handle the result here (e.g., navigate to a specific page or perform an action based on the selection)
+      if(result.allocatedUser) {
+        const evaluation: IncidentReportEvaluation = {
+          reportNumber: element.reportNumber,
+          allocateTo: result.allocatedUser.email,
+          declineReason: ''
+        };
+        this.incidentAssessmentService.assessIncidentReport(evaluation).subscribe(response => {
+          console.log('Incident report assessed:', response);
+          this.incidentReportComponent.reloadReports();
+        }, error => {
+          console.error('Error assessing incident report:', error);
+        });
+      }
     });
   }
-  openNotRecommendedDialog(): void {
+
+  openNotRecommendedDialog(element: any): void {
     const dialogRef = this.dialog.open(NotRecommendedDialogComponent);
-    
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.action === 'submit') {
-        console.log('Reason for not recommending:', result.reason);
-        // Handle the reason here (e.g., save to the database or perform other actions)
+        const evaluation: IncidentReportEvaluation = {
+          reportNumber: element.reportNumber,
+          allocateTo: '',
+          declineReason: result.reason
+        };
+        this.incidentAssessmentService.assessIncidentReport(evaluation).subscribe(response => {
+          console.log('Incident report assessed:', response);
+          this.incidentReportComponent.reloadReports();
+        }, error => {
+          console.error('Error assessing incident report:', error);
+        });
       }
     });
   }

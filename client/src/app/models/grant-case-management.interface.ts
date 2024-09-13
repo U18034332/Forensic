@@ -1,6 +1,6 @@
 export interface CaseManagementReportData {
     caseID: string;
-    reportNumber: string
+    cases: string;
     startDate: string;
     status: string;
     priority: string;

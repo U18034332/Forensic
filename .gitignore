@@ -35,6 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+.angular
+META-INF
+node_modules
 
 ### Kotlin ###
 .kotlin
@@ -44,3 +47,4 @@ out/
 env
 node_modules
 META-INF
+package-lock.json

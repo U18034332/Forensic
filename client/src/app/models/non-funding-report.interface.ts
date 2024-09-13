@@ -1,7 +1,6 @@
-export interface GrantCaseManagementData {
+export interface NonFundingIncidentReportData {
     startDate: string;
     dateReported: string;
-    projectNumber: string;
     province: string;
     caseType: string;
     caseSubType: string
@@ -11,8 +10,5 @@ export interface GrantCaseManagementData {
     levelDetected: string;
     allocatedDescription: string;
     divisionDetected: string;
-    organisation: string;
-    sourceDetection: string;
-    sector: string;
-    caseId: string;
   }
+  

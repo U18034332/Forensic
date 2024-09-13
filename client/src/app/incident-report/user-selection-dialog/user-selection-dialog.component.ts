@@ -1,28 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-user-selection-dialog',
   templateUrl: './user-selection-dialog.component.html',
-  styleUrls: ['./user-selection-dialog.component.scss']
+  styleUrl: './user-selection-dialog.component.scss'
 })
-export class UserSelectionDialogComponent {
+export class UserSelectionDialogComponent implements OnInit {
   workloadThreshold = 5; // Define a threshold for workload
-  userList = [
-    { name: 'User 1', workload: 3 },
-    { name: 'User 2', workload: 7 },
-    { name: 'User 3', workload: 2 },
-    { name: 'User 4', workload: 8 }
-    // Add more users with workload data as needed
-  ];
+  userList: any = [];
 
   selectedUser: any = null;
-
-  constructor(public dialogRef: MatDialogRef<UserSelectionDialogComponent>) {}
-
-  selectUser(user: any): void {
-    this.selectedUser = user;
+  ngOnInit(): void {
+    this.getAlltheUsersToAllocateTo()
   }
+
+  constructor(
+    public dialogRef: MatDialogRef<UserSelectionDialogComponent>,
+    private userService: UserService
+  ) {}
 
   onAllocate(): void {
     if (this.selectedUser) {
@@ -32,6 +28,21 @@ export class UserSelectionDialogComponent {
     }
   }
 
+  getAlltheUsersToAllocateTo(): void {
+    this.userService.getAllUsers()
+      .subscribe((res)=> {
+        console.log(res);
+        this.userList = res
+        console.log(this.userList);
+      }, (err)=>{
+        console.log(err);
+      })
+  }
+
+  selectUser(user: any): void {
+    this.selectedUser = user;
+  }
+  
   onCancel(): void {
     this.dialogRef.close({ action: 'cancel' });
   }

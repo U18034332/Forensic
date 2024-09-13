@@ -6,7 +6,7 @@ import { FirmsSelectionDialogComponent } from '../firms-selection-dialog/firms-s
 @Component({
   selector: 'app-investigation-dialog',
   templateUrl: './investigation-dialog.component.html',
-  styleUrls: ['./investigation-dialog.component.scss']
+  styleUrl: './investigation-dialog.component.scss'
 })
 export class InvestigationDialogComponent {
 
@@ -30,8 +30,8 @@ export class InvestigationDialogComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.action === 'allocate') {
-        console.log('Allocated users:', result.users);
-        // Handle the allocation logic here
+        console.log('Allocated users:', result.user);
+        this.dialogRef.close({allocatedUser: result.user});
       }
     });
   }

@@ -4,7 +4,9 @@ import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.CaseAcceptanceDTO
 import com.nlc.forensic.dto.FundingIncidentReportDTO
+import com.nlc.forensic.dto.IncidentReportResponseDTO
 import com.nlc.forensic.entity.FundingIncidentReport
+import com.nlc.forensic.entity.NonFundingIncidentReport
 import com.nlc.forensic.service.FundingIncidentReportService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("/api/v1/incident-report/funding/")
+@RequestMapping("/api/v1/admin-only/incident-report/funding/")
 class FundingIncidentReportController(
     private val fundingIncidentReportService: FundingIncidentReportService,
     private val gson: Gson
@@ -27,7 +29,7 @@ class FundingIncidentReportController(
         return ResponseEntity.ok(fundingIncidentReportService.getAllTheDeclinedReports())
     }
 
-    @PostMapping("create")
+    @PostMapping("create-report")
     fun createReport(@RequestBody fundingIncidentReportDTO: FundingIncidentReportDTO): ResponseEntity<String> {
         return try {
             fundingIncidentReportService.createFundingIncidentReport(fundingIncidentReportDTO)
@@ -38,10 +40,10 @@ class FundingIncidentReportController(
         }
     }
 
-    @PostMapping("acceptance")
+    @PostMapping("assessment")
     fun reportAcceptance(@RequestBody acceptanceDTO: CaseAcceptanceDTO): ResponseEntity<String> {
         return try {
-            fundingIncidentReportService.acceptOrDeclineReport(acceptanceDTO)
+            fundingIncidentReportService.evaluateReport(acceptanceDTO)
             ResponseEntity.ok(gson.toJson(ResponseConstant.REPORT_ACCEPTANCE))
 
         } catch (e: Exception) {
@@ -62,6 +64,27 @@ class FundingIncidentReportController(
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid report number: $reportNumber")
         } catch (e: Exception) {
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An unexpected error occurred: ${e.message}")
+        }
+    }
+
+    @GetMapping("get/assessed")
+    fun getAllAssessedReports(): ResponseEntity<List<IncidentReportResponseDTO?>> {
+        return ResponseEntity.ok(fundingIncidentReportService.getAllAssessedFilledReports())
+    }
+
+    @GetMapping("get/unassigned")
+    fun getUnassignedIncidentReports(): ResponseEntity<List<FundingIncidentReport?>> {
+        return ResponseEntity.ok(fundingIncidentReportService.getAllUnassignedReports())
+    }
+
+    @GetMapping("get-report/{reportNumber}")
+    fun getReportWithReportNumber(@PathVariable reportNumber: String): ResponseEntity<out Any> {
+        try {
+            val report = fundingIncidentReportService.getReportByReportNumber(reportNumber)
+                ?: return ResponseEntity.notFound().build()
+            return ResponseEntity.ok().body(report)
+        } catch (e: Exception) {
+            return ResponseEntity.badRequest().body(e.message)
         }
     }
 

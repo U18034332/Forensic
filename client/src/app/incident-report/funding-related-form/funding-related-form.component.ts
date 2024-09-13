@@ -1,17 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatSelectChange } from '@angular/material/select';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { FundingIncidentReportData } from '../../dto/funding-related.interface';
-import { AssessmentFundedReport } from '../../dto/funding-related.interface';
-import { IncidentReportService } from '../../services/incident-report.service';
+import { FundingRelatedService } from '../../services/funding-related.service';
 
 @Component({
   selector: 'app-funding-related-form',
   templateUrl: './funding-related-form.component.html',
   styleUrls: ['./funding-related-form.component.scss']
 })
-export class FundingRelatedFormComponent {
+export class FundingRelatedFormComponent implements OnInit{
   @Output() formSubmit: EventEmitter<FundingIncidentReportData> = new EventEmitter<FundingIncidentReportData>();
 
   provinces: string[] = [
@@ -72,24 +70,20 @@ export class FundingRelatedFormComponent {
     'ICT', 'Operations', 'Legal'
   ];
 
-  selectedCaseType: string = '';
-  selectedProvince: string = '';
-  selectedStatus: string = '';
-  selectedSubType: string = ''; // Assuming you have a field for subtype
-  selectedChannel: string = '';
-  selectedPriority: string = '';
-  selectedOrganisation: string = '';
-  selectedSourceDetection: string = '';
-  selectedAllocatedDescription: string = '';
-  selectedSector: string = '';
-  selectedLevelDetected: string = '';
-  selectedDivisionDetected: string = '';
-
-  showSubType: boolean = false;
+  showSubType: boolean = true;
 
   report: FundingIncidentReportData = {} as FundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<FundingRelatedFormComponent>, private incidentReportService: IncidentReportService) {}
+  constructor(
+    public dialogRef: MatDialogRef<FundingRelatedFormComponent>,
+    private incidentReportService: FundingRelatedService,
+    @Inject(MAT_DIALOG_DATA) public data: FundingIncidentReportData,
+  ) {}
+  ngOnInit(): void {
+    if (this.data) {
+      this.report = { ...this.data };
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -97,19 +91,22 @@ export class FundingRelatedFormComponent {
 
   submitForm(form: NgForm): void {
     if (form.valid) {
-      const reportData: AssessmentFundedReport = {
-        ...this.report,
-        // status: 'New'
-      };
-      this.incidentReportService.addFundingReport(reportData);
-      //this.formSubmit.emit(this.report);
-      this.dialogRef.close();
+      console.log(this.report);
+      this.incidentReportService.addFundingRelatedReport(this.report)
+        .subscribe((response: any) => {
+          console.log(response);
+          this.formSubmit.emit(this.report);
+          this.dialogRef.close();
+          form.resetForm();
+        }, (error: any) => {
+          console.log(error);
+        });
     } else {
-      console.log('Error in the form.');
+      console.log("Error in the form.");
     }
   }
-  onCaseTypeChange(event: MatSelectChange): void {
-    this.selectedCaseType = event.value;
-    // Add any additional logic needed when the case type changes
-  }
+  // onCaseTypeChange(event: MatSelectChange): void {
+  //   this.selectedCaseType = event.value;
+  //   // Add any additional logic needed when the case type changes
+  // }
 }

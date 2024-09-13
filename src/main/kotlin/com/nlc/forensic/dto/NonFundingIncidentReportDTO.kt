@@ -10,6 +10,7 @@ data class NonFundingIncidentReportDTO(
     var channel: String = "",
     var province: String = "",
     var caseType: String = "",
+    val caseSubType: String = "",
     var priority: String = "",
     var status: String = "",
     var divisionDetected: String = "",

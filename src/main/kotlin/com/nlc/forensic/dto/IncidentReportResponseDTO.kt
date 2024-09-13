@@ -1,15 +1,8 @@
-package com.nlc.forensic.entity
+package com.nlc.forensic.dto
 
-import jakarta.persistence.*
 import java.sql.Date
 
-
-@Entity
-@Table(name = "NonFundingIncidentReport")
-data class NonFundingIncidentReport(
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "non_funding_report_id")
+data class IncidentReportResponseDTO(
     val id: Long = 0L,
     val reportNumber: String = "",
     var acceptance: String = "",
@@ -25,8 +18,6 @@ data class NonFundingIncidentReport(
     var levelDetected: String = "",
     var allocatedDescription: String = "",
     var declineReason: String = "",
-    @ManyToOne
-    @JoinColumn(name = "assigned_user")
-    var assignedTo: User? = null,
+    var assignedTo: String? = "",
     var assessmentStage: Int = 0,
 )

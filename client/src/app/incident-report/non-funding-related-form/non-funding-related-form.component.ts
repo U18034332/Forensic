@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { AssessmentNonFundedReport, NonFundingIncidentReportData } from '../../dto/non-funding-report.interface';
+import { Component, EventEmitter, Inject, Output, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NonFundingIncidentReportData } from '../../models/non-funding-report.interface';
 import { NgForm } from '@angular/forms';
-import { IncidentReportService } from '../../services/incident-report.service';
+import { NonFundedIncidentReportService } from '../../services/non-funded-incident-report.service';
+
 @Component({
   selector: 'app-non-funding-related-form',
   templateUrl: './non-funding-related-form.component.html',
   styleUrls: ['./non-funding-related-form.component.scss']
 })
-export class NonFundingRelatedFormComponent {
+export class NonFundingRelatedFormComponent implements OnInit {
   @Output() formSubmit: EventEmitter<NonFundingIncidentReportData> = new EventEmitter<NonFundingIncidentReportData>();
 
   provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape'];
@@ -26,25 +27,32 @@ export class NonFundingRelatedFormComponent {
 
   report: NonFundingIncidentReportData = {} as NonFundingIncidentReportData;
 
-  constructor(public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>, private incidentReportService: IncidentReportService) {}
+  constructor(
+    public dialogRef: MatDialogRef<NonFundingRelatedFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: NonFundingIncidentReportData,
+    private reportService: NonFundedIncidentReportService
+  ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  ngOnInit(): void {
+    if (this.data) {
+      this.report = { ...this.data };
+    }
   }
 
-  submitForm(form: NgForm) {
+  submitForm(form: NgForm): void {
     if (form.valid) {
-      const reportData: AssessmentNonFundedReport ={
-        ...this.report,
-      };
-     this.incidentReportService.addNonFundingReport(reportData);
-     this.dialogRef.close();
-    }else {
-      console.log('Error in the form');
+      console.log(this.report);
+      this.reportService.addNonFundingRelatedIncidentReport(this.report)
+        .subscribe((response) => {
+          console.log(response);
+          this.formSubmit.emit(this.report);
+          this.dialogRef.close();
+          form.resetForm();
+        }, (error) => {
+          console.log(error);
+        });
+    } else {
+      console.log("Error in the form.");
     }
   }
 }
-// this.formSubmit.emit(this.report);
-// this.dialogRef.close();
-// } else {
-// console.log('Error in the form.');

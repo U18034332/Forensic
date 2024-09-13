@@ -1,15 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, catchError, tap, throwError } from "rxjs";
-import { FundingIncidentReportData } from "../dto/funding-related.interface";
 import { AuthService } from "./auth-service.service";
+import { FundingIncidentReportData } from "../dto/funding-related.interface";
+import { IncidentReportEvaluation } from "../models/incident-report-evaluation";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FundingRelatedService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/incident-report/funding';
+  private apiUrl = 'http://localhost:8080/api/v1/admin-only/incident-report/funding';
   private token: string | null = null; // Initialize token as nullable string
 
   constructor(private http: HttpClient, private authService: AuthService) {
@@ -24,6 +25,40 @@ export class FundingRelatedService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  getAllToBeAssessedFundingRelatedIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/unassigned`, {headers: this.getAuthHeaders() })
+    .pipe(
+      tap((response: any) => {
+        console.log(response); 
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getReport(reportNumber: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}get-report/${reportNumber}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getFilledIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/assessed`, {headers: this.getAuthHeaders() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  
+  assessIncidentReport(incidentReportAssessmentState: IncidentReportEvaluation): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assessment`,incidentReportAssessmentState ,{headers: this.getAuthHeaders() })
+    .pipe(
+      tap((res) => {
+        console.log("Successfully asssessed the report: ", res)
+      }), 
+      catchError(this.handleError)
+    )
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

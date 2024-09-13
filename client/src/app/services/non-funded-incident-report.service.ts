@@ -1,15 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap, catchError, throwError } from "rxjs";
-import { NonFundingIncidentReportData } from "../dto/non-funding-report.interface";
+import { NonFundingIncidentReportData } from "../models/non-funding-report.interface";
 import { AuthService } from "./auth-service.service";
+import { IncidentReportEvaluation } from "../models/incident-report-evaluation";
 
 @Injectable({
   providedIn: 'root'
 })
 export class NonFundedIncidentReportService {
 
-  private apiUrl = 'http://localhost:8080/api/v1/incident-report/non-funding';
+  private apiUrl = 'http://localhost:8080/api/v1/admin-only/incident-report/non-funding';
   private token = this.authService.getToken();
 
   constructor(private http: HttpClient, private authService: AuthService) { }
@@ -22,6 +23,40 @@ export class NonFundedIncidentReportService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  getAllToBeAssessedNonFundingRelatedIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/unassigned`, {headers: this.getAuthHeaders() })
+    .pipe(
+      tap((response: any) => {
+        console.log(response); 
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getReport(reportNumber: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}get-report/${reportNumber}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getFilledIncidentReports(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/get/assessed`, {headers: this.getAuthHeaders() })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  assessIncidentReport(incidentReportAssessmentState: IncidentReportEvaluation): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assessment`,incidentReportAssessmentState ,{headers: this.getAuthHeaders() })
+    .pipe(
+      tap((res) => {
+        console.log("Successfully asssessed the report: ", res)
+      }), 
+      catchError(this.handleError)
+    )
   }
 
 

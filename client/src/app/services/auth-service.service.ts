@@ -1,22 +1,12 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-
-interface LoginResponse {
-  token: string;
-}
-
-interface RegisterResponse {
-  success: boolean;
-}
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable, tap, catchError, throwError } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  private apiUrl = 'http://localhost:8080/api/auth'
+  private apiUrl = 'http://localhost:8080/api/auth';
 
   private loggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -28,11 +18,10 @@ export class AuthService {
     this.loggedInSubject.next(!!this.getToken());
   }
 
-
-  login(email: string, passcode: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, { email, passcode })
+  login(email: string, passcode: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { email, passcode })
       .pipe(
-        tap((response: LoginResponse) => {
+        tap((response: any) => {
           this.storeToken(response.token);
           this.loggedInSubject.next(true);
         }),
@@ -45,8 +34,8 @@ export class AuthService {
     this.loggedInSubject.next(false);
   }
 
-  changePassword(username: string, email: string, password: string): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(`${this.apiUrl}/forgot_password`, { username, email, password })
+  changePassword(username: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/forgot_password`, { username, email, password })
       .pipe(
         catchError(this.handleError)
       );
@@ -69,3 +58,4 @@ export class AuthService {
     return throwError('Something went wrong; please try again later.');
   }
 }
+

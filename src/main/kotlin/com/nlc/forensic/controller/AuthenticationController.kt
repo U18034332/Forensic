@@ -1,10 +1,8 @@
 package com.nlc.forensic.controller
 
-import com.google.gson.Gson
 import com.nlc.forensic.constants.ResponseConstant
 import com.nlc.forensic.dto.AuthenticationResponse
 import com.nlc.forensic.dto.UserEmailDTO
-import com.nlc.forensic.dto.UserLoginRequest
 import com.nlc.forensic.entity.User
 import com.nlc.forensic.repository.UserRepository
 import com.nlc.forensic.service.AuthenticationService

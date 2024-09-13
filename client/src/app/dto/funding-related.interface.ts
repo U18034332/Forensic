@@ -1,24 +1,21 @@
-import { MatButton } from "@angular/material/button";
-
 export interface FundingIncidentReportData {
-  id?: number;
-  reportID: string;
-  cases: string;
-  startDate: Date;
-  status: string;
-  priority: string;
-  caseType: string;
-  province: string;
-  channel: string;
-  levelDetected: string;
-  teams: string;
-  lastModified: Date;
-  caseEndDate: Date;
+  startDate: string;
   dateReported: string;
- 
+  projectNumber: string;
+  province: string;
+  caseType: string;
+  caseSubType: string
+  channel: string;
+  priority: string;
+  status: string;
+  organisation: string;
+  sourceDetection: string;
+  sector: string;
+  levelDetected: string;
+  allocatedDescription: string;
+  divisionDetected: string;
+  assessmentStage: number;
 }
-  // Add other fields from your form
-
 
 export interface AssessmentFundedReport extends FundingIncidentReportData {
   status: string;

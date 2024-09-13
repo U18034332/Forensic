@@ -11,6 +11,8 @@ import { DiscussComponent } from './discuss/discuss.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AgenciesAndFirmsComponent } from './agencies-and-firms/agencies-and-firms.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
+import { CoreModule } from './core/core.module';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login by default
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   // Ensure settings module routes are loaded via lazy loading
   { path: 'Settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
+    path: 'forgot-password', component: ForgotPasswordComponent }, // Added Forgot Password route
+  { path: '403', component: ForbiddenComponent }
 ];
 
 @NgModule({

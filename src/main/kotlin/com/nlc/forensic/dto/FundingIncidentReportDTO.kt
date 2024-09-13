@@ -1,13 +1,16 @@
 package com.nlc.forensic.dto
 
-import java.util.Date
+import java.sql.Date
+
 
 data class FundingIncidentReportDTO(
+    val reportNumber: String = "",
     var startDate: Date? = null,
     var dateReported: Date? = null,
     var projectNumber: String = "",
     var province: String = "",
     var caseType: String = "",
+    val caseSubType: String = "",
     var channel: String = "",
     var priority: String = "",
     var status: String = "",

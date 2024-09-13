@@ -23,7 +23,7 @@ export class LoginComponent {
     this.authService.login(this.email, this.password).subscribe(
       response => {
         this.errorMessage = ''
-        console.log(response);
+        console.log(response.message);
         this.router.navigate(['/dashboard']);
       },
       error => {

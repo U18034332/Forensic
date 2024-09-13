@@ -1,8 +1,10 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,17 +14,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTableModule } from '@angular/material/table';
-import { MatMenuModule } from '@angular/material/menu';
-import { AppRoutingModule } from './app-routing.module';
-import { CoreModule } from './core/core.module';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; // Correct import for MatNativeDateModule
-import { IncidentReportModule } from './incident-report/incident-report.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { CommonModule } from '@angular/common';
+import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-
+import { IncidentReportModule } from './incident-report/incident-report.module';
 import { CaseManagementModule } from './case-management/case-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
 import { DiscussModule } from './discuss/discuss.module';
@@ -32,10 +33,10 @@ import { DocManagementModule } from './doc-management/doc-management.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-
 import { SettingsModule } from './settings/settings.module';
-
-
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { SettingsModule } from './settings/settings.module';
     MatTableModule,
     MatMenuModule,
     AppRoutingModule,
-    CoreModule, 
+    CoreModule,
     DashboardModule,
     IncidentReportModule,
     CaseManagementModule,
@@ -75,10 +76,12 @@ import { SettingsModule } from './settings/settings.module';
     SidebarModule,
     ButtonModule,
     SettingsModule
-
-    // Ensure MatNativeDateModule is imported here
+    CommonModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimations(),
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

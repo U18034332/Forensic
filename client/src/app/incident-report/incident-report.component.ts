@@ -3,12 +3,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { FundingRelatedFormComponent } from './funding-related-form/funding-related-form.component';
 import { NonFundingRelatedFormComponent } from './non-funding-related-form/non-funding-related-form.component';
 import { AddReportPanelComponent } from './add-report-panel/add-report-panel.component';
-import { IncidentReportService } from '../services/incident-report.service';
-import { FundingIncidentReportData } from '../dto/funding-related.interface';
-import { NonFundingIncidentReportData } from '../dto/non-funding-report.interface';
-import { AssessmentFundedReport } from '../dto/funding-related.interface';
+import { AssessmentFundedReport, FundingIncidentReportData } from '../dto/funding-related.interface';
 import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
-
+import { NonFundedIncidentReportService } from '../services/non-funded-incident-report.service';
+import { Router } from '@angular/router';
+import { FundingRelatedService } from '../services/funding-related.service';
+import { NonFundingIncidentReportData } from '../models/non-funding-report.interface';
 
 @Component({
   selector: 'app-incident-report',
@@ -16,38 +16,64 @@ import { AssessmentNonFundedReport } from '../dto/non-funding-report.interface';
   styleUrls: ['./incident-report.component.scss']
 })
 export class IncidentReportComponent implements OnInit {
-fundedAssessmentReports: AssessmentFundedReport[][] = [];
- nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
-
+  fundedAssessmentReports: AssessmentFundedReport[][] = [];
+  nonFundedAssessmentReports: AssessmentNonFundedReport[][] = [];
+  fundedReports: FundingIncidentReportData[] = [];
+  nonFundedReports: NonFundingIncidentReportData[] = [];
 
   constructor(
     public dialog: MatDialog,
-    private incidentReportService: IncidentReportService
+    private fundingReportService: FundingRelatedService,
+    private nonfundingReportService: NonFundedIncidentReportService,
+    private router: Router
   ) {}
 
-
   ngOnInit(): void {
+    this.loadReports();
     this.loadAssessmentReports();
   }
 
-
-  loadAssessmentReports(): void {
-    this.incidentReportService.getFundedAssessmentReports().subscribe(reports => {
-      this.fundedAssessmentReports = reports.map(report => [report]);
+  loadReports(): void {
+    this.nonfundingReportService.getFilledIncidentReports().subscribe(reports => {
+      console.log(reports);
+      this.nonFundedReports = reports;
+    }, (err) => {
+      console.log(err);
+      this.navigateTo('/403');
     });
 
-
-    this.incidentReportService.getNonFundedAssessmentReports().subscribe(reports => {
-      this.nonFundedAssessmentReports = reports.map(report => [report]);
+    this.fundingReportService.getFilledIncidentReports().subscribe(reports => {
+      console.log(reports);
+      this.fundedReports = reports;
+    }, (err) => {
+      console.log(err);
+      this.navigateTo('/403');
     });
   }
 
+  loadAssessmentReports(): void {
+    this.nonfundingReportService.getAllToBeAssessedNonFundingRelatedIncidentReports().subscribe(reports => {
+      console.log(reports);
+      this.nonFundedAssessmentReports = reports.map((report: any) => [report]);
+    }, (err) => {
+      console.log(err);
+      this.navigateTo('/403');
+    });
+
+    this.fundingReportService.getAllToBeAssessedFundingRelatedIncidentReports()
+    .subscribe(reports => {
+      console.log(reports);
+      this.fundedAssessmentReports = reports.map((report: any) => [report]);
+    }, (err) => {
+      console.log(err);
+      this.navigateTo('/403');
+    });
+  }
 
   openAddReportDialog(): void {
     const dialogRef = this.dialog.open(AddReportPanelComponent, {
       width: '250px'
     });
-
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'funding') {
@@ -58,41 +84,36 @@ fundedAssessmentReports: AssessmentFundedReport[][] = [];
     });
   }
 
-
   openFundingRelatedReportDialog(): void {
     const dialogRef = this.dialog.open(FundingRelatedFormComponent, {
       width: '30%'
     });
 
-
-    dialogRef.componentInstance.formSubmit.subscribe((formData: FundingIncidentReportData) => {
-      const fundingReport: AssessmentFundedReport = {
-        ...formData,
-        id: Date.now(),
-        status: 'new'
-      };
-
-
-      this.incidentReportService.addFundingReport(fundingReport);
+    dialogRef.componentInstance.formSubmit.subscribe(() => {
+      this.loadReports();
+      this.loadAssessmentReports();
     });
   }
-
 
   openNonFundingRelatedReportDialog(): void {
     const dialogRef = this.dialog.open(NonFundingRelatedFormComponent, {
       width: '30%'
     });
 
-
-    dialogRef.componentInstance.formSubmit.subscribe((formData: NonFundingIncidentReportData) => {
-      const nonFundingReport: AssessmentNonFundedReport = {
-        ...formData,
-        id: Date.now(),
-        status: 'assessment'
-      };
-
-
-      this.incidentReportService.addNonFundingReport(nonFundingReport);
+    dialogRef.componentInstance.formSubmit.subscribe(() => {
+      this.loadReports();
+      this.loadAssessmentReports();
     });
   }
+
+  navigateTo(url: string) {
+    this.router.navigateByUrl(url);
+  }
+
+  reloadReports(): void {
+    this.loadReports();
+    this.loadAssessmentReports();
+  }
 }
+
+

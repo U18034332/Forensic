@@ -1,29 +1,33 @@
-<mat-table [dataSource]="nonFundingReports" class="mat-elevation-z8">
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Define Columns -->
-    <ng-container matColumnDef="reportid">
+    <ng-container matColumnDef="reportNumber">
       <mat-header-cell *matHeaderCellDef> Report ID </mat-header-cell>
-      <mat-cell *matCellDef="let report"> {{report.reportid}} </mat-cell>
+      <mat-cell *matCellDef="let report"> {{report.reportNumber}} </mat-cell>
     </ng-container>
   
-    <ng-container matColumnDef="decision">
+    <ng-container matColumnDef="acceptance">
       <mat-header-cell *matHeaderCellDef> Decision </mat-header-cell>
-      <mat-cell *matCellDef="let report"> {{report.decision}} </mat-cell>
+      <mat-cell *matCellDef="let report"> {{report.acceptance}} </mat-cell>
     </ng-container>
   
-    <ng-container matColumnDef="datereported">
+    <ng-container matColumnDef="dateReported">
       <mat-header-cell *matHeaderCellDef> Date Reported </mat-header-cell>
-      <mat-cell *matCellDef="let report"> {{report.datereported}} </mat-cell>
+      <mat-cell *matCellDef="let report"> {{report.dateReported}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="userorfirm">
-        <mat-header-cell *matHeaderCellDef> User/Firm</mat-header-cell>
-        <mat-cell *matCellDef="let report"> {{report.userorfirm}} </mat-cell>
+    <ng-container matColumnDef="user">
+        <mat-header-cell *matHeaderCellDef> User</mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.assignedTo}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="firm">
+        <mat-header-cell *matHeaderCellDef> Firm </mat-header-cell>
+        <mat-cell *matCellDef="let report"> {{report.assignedTo}} </mat-cell>
+      </ng-container>
 
-      <ng-container matColumnDef="reason">
+      <ng-container matColumnDef="declineReason">
         <mat-header-cell *matHeaderCellDef> Reason </mat-header-cell>
-        <mat-cell *matCellDef="let report"> {{report.reason}} </mat-cell>
+        <mat-cell *matCellDef="let report"> {{report.declineReason}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">
@@ -36,9 +40,9 @@
         <mat-cell *matCellDef="let report"> {{report.channel}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="casetype">
+      <ng-container matColumnDef="caseType">
         <mat-header-cell *matHeaderCellDef> Case Type</mat-header-cell>
-        <mat-cell *matCellDef="let report"> {{report.casetype}} </mat-cell>
+        <mat-cell *matCellDef="let report"> {{report.caseType}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="priority">
