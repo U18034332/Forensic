@@ -17,12 +17,12 @@ class DocumentManagementController(
     private val documentManagerService: DocumentManagerService
 ) {
     @PostMapping("upload")
-    fun uploadFile(@RequestParam("file") file: MultipartFile,
-                   @RequestParam("caseNumber") caseNumber: String): ResponseEntity<String> {
+    fun uploadFiles(@RequestParam("files") files: List<MultipartFile>,
+                    @RequestParam("caseNumber") caseNumber: String): ResponseEntity<String> {
         return try {
-            val documentUploadDTO = DocumentUploadDTO(file, caseNumber)
-            val fileName = documentManagerService.storeFile(documentUploadDTO)
-            ResponseEntity.ok().body("File $fileName uploaded successfully")
+            val documentUploadDTOs = files.map { DocumentUploadDTO(it, caseNumber) }
+            val fileNames = documentManagerService.storeFiles(documentUploadDTOs)
+            ResponseEntity.ok().body("Files ${fileNames.joinToString(", ")} uploaded successfully")
 
         } catch (e: Exception) {
             ResponseEntity.badRequest().body(e.message)

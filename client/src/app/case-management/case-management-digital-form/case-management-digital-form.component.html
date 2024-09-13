@@ -6,10 +6,11 @@
     <form #caseForm="ngForm">
       <!-- Case ID -->
       <mat-form-field appearance="fill" class="case-id-dropdown">
-        <mat-label>Report ID</mat-label>
-        <mat-select [(ngModel)]="case.caseID" name="caseId" (selectionChange)="onCaseIdChange()">
-          <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
+        <mat-label>Incident Report Number</mat-label>
+        <mat-select [(ngModel)]="report.reportNumber" name="incidentReportNumber" (selectionChange)="onReportNumberChange($event.value)" required>
+          <mat-option *ngFor="let id of incidentReportNumbers" [value]="id">{{ id }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="!case.reportNumber">This field is required</mat-error>
       </mat-form-field>
 
     
@@ -17,88 +18,71 @@
       <!-- Start Date -->
       <mat-form-field appearance="fill">
         <mat-label for="start-date">Start Date</mat-label>
-        <input matInput id="start-date" type="date" placeholder="Selected start date" [(ngModel)]="case.startDate" name="startDate">
+        <input matInput id="start-date" type="date" placeholder="Select start date" [(ngModel)]="report.startDate" name="startDate" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Date Reported -->
       <mat-form-field appearance="fill">
         <mat-label for="date-reported">Date Reported</mat-label>
-        <input matInput id="date-reported" type="date" placeholder="Select date reported" [(ngModel)]="case.dateReported" name="dateReported">
+        <input matInput id="date-reported" type="date" placeholder="Select date reported" [(ngModel)]="report.dateReported" name="dateReported" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Province -->
       <mat-form-field appearance="fill">
-        <mat-label for="province">Selected Province</mat-label>
-        <mat-select id="province" [(ngModel)]="case.province" name="province">
-          
-        </mat-select>
+        <mat-label for="province">Province</mat-label>
+        <input matInput id="province" [(ngModel)]="report.province" name="province" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Case Type -->
       <mat-form-field appearance="fill">
-        <mat-label for="case-type">Selected Case Type</mat-label>
-        <mat-select id="case-type" [(ngModel)]="case.caseType" name="caseType">
-          
-        </mat-select>
+        <mat-label for="case-type">Case Type</mat-label>
+        <input matInput id="case-type" [(ngModel)]="report.caseType" name="caseType" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Sub-Type -->
       <mat-form-field appearance="fill">
-        <mat-label for="sub-type">Selected Sub-Type</mat-label>
-        <mat-select id="sub-type" [(ngModel)]="case.caseSubType" name="caseSubType">
-          
-        </mat-select>
+        <mat-label for="sub-type">Sub-Type</mat-label>
+        <input matInput id="sub-type" [(ngModel)]="report.caseSubType" name="caseSubType" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Channel -->
       <mat-form-field appearance="fill">
-        <mat-label for="channel">Selected Channel</mat-label>
-        <mat-select id="channel" [(ngModel)]="case.channel" name="channel">
-          
-        </mat-select>
+        <mat-label for="channel">Channel</mat-label>
+        <input matInput id="channel" [(ngModel)]="report.channel" name="channel" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Priority -->
       <mat-form-field appearance="fill">
-        <mat-label for="priority">Selected Priority</mat-label>
-        <mat-select id="priority" [(ngModel)]="case.priority" name="priority">
-         
-        </mat-select>
+        <mat-label for="priority">Priority</mat-label>
+        <input matInput id="priority" [(ngModel)]="report.priority" name="priority" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Status -->
       <mat-form-field appearance="fill">
         <mat-label for="status">Status</mat-label>
-        <mat-select id="status" [(ngModel)]="case.status" name="status">
-          
-        </mat-select>
+        <input matInput id="status" [(ngModel)]="report.status" name="status" [disabled]="isDisabled">
       </mat-form-field>
 
-      <h2> Report Detection :</h2>
+      <h2>Report Detection :</h2>
 
       <!-- Level Detected -->
       <mat-form-field appearance="fill">
-        <mat-label for="level-detected">Selected Level Detected</mat-label>
-        <mat-select id="level-detected" [(ngModel)]="case.levelDetected" name="levelDetected">
-         
-        </mat-select>
+        <mat-label for="level-detected">Level Detected</mat-label>
+        <input matInput id="level-detected" [(ngModel)]="report.levelDetected" name="levelDetected" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Division Detected -->
       <mat-form-field appearance="fill">
-        <mat-label for="division-detected">Selected Division Detected</mat-label>
-        <mat-select id="division-detected" [(ngModel)]="case.divisionDetected" name="divisionDetected">
-          
-        </mat-select>
+        <mat-label for="division-detected">Division Detected</mat-label>
+        <input matInput id="division-detected" [(ngModel)]="report.divisionDetected" name="divisionDetected" [disabled]="isDisabled">
       </mat-form-field>
 
       <!-- Allocated Description -->
       <mat-form-field appearance="fill">
-        <mat-label for="allocated-description">Selected Allocated Description</mat-label>
-        <mat-select id="allocated-description" [(ngModel)]="case.allocatedDescription" name="allocatedDescription">
-          
-        </mat-select>
+        <mat-label for="allocated-description">Allocated Description</mat-label>
+        <input matInput id="allocated-description" [(ngModel)]="report.allocatedDescription" name="allocatedDescription" [disabled]="isDisabled">
       </mat-form-field>
+
     </form>
   </mat-dialog-content>
   <mat-dialog-actions class="close-btn">

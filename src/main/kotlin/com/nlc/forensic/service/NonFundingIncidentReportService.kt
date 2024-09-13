@@ -82,7 +82,7 @@ class NonFundingIncidentReportService(
     }
 
     fun findAcceptedReportsByReportNumber(reportNumber: String): NonFundingIncidentReport? {
-        return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "accepted")
+        return nonFundingIncidentReportRepository.findByReportNumberAndAcceptance(reportNumber, "Recommended")
     }
 
     fun getAllAssessedFilledReports(): List<IncidentReportResponseDTO> {
@@ -190,11 +190,14 @@ class NonFundingIncidentReportService(
 
         // Fetch reports based on the user's role
         val reports = if (isAdmin) {
-            nonFundingIncidentReportRepository.findAll()
+            nonFundingIncidentReportRepository.findByAssignedToIsNotNull()
         } else {
             nonFundingIncidentReportRepository.findByAssignedTo(user)
         }
 
+        if (reports.isEmpty()){
+            return emptyList()
+        }
         // Map the reports to IncidentReportResponseDTO
         return reports.map { ir ->
             IncidentReportResponseDTO(

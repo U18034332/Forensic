@@ -174,3 +174,23 @@ mat-progress-bar {
   color: red;
   margin-top: 10px;
 }
+.case-select {
+  width: 100%; /* Full width of the parent container */
+}
+
+.case-select {
+  display: flex;             /* Enable flexbox layout */
+  justify-content: center;  /* Center horizontally */
+  align-items: center;      /* Center vertically (if needed) */
+  width: 100%;               /* Full width of the parent container */
+  height: 100%;              /* Full height of the parent container (optional) */
+  
+  mat-form-field {
+    width: 100%;             /* Ensure the form field takes full width of its container */
+    max-width: 400px;       /* Set a max-width if you want to limit the width */
+  }
+
+  mat-select {
+    width: 100%;             /* Ensure the select element takes full width of the form field */
+  }
+}

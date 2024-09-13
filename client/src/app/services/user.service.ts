@@ -7,13 +7,24 @@ import { AuthService } from './auth-service.service';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/v1/admin-only';
+  private adminApiUrl = 'http://localhost:8080/api/v1/admin-only';
+  private userApiUrl = 'http://localhost:8080/api/v1/users';
   private token = this.authService.getToken();
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   getAllAdmins(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/users/role/admin`, {headers: this.getAuthHeaders() })
+    return this.http.get<any>(`${this.adminApiUrl}/users/role/admin`, {headers: this.getAuthHeaders() })
+    .pipe(
+      tap((response: any) => {
+        console.log(response); 
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.http.get<any>(`${this.userApiUrl}/get/user`, {headers: this.getAuthHeaders() })
     .pipe(
       tap((response: any) => {
         console.log(response); 
@@ -23,7 +34,7 @@ export class UserService {
   }
 
   getAllUsers(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/users/role/user`, {headers: this.getAuthHeaders() })
+    return this.http.get<any>(`${this.adminApiUrl}/users/role/user`, {headers: this.getAuthHeaders() })
     .pipe(
       tap((response: any) => {
         console.log(response); 
