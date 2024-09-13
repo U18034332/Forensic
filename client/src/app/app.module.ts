@@ -30,9 +30,6 @@ import { DiscussModule } from './discuss/discuss.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { AgenciesAndFirmsModule } from './agencies-and-firms/agencies-and-firms.module';
 import { DocManagementModule } from './doc-management/doc-management.module';
-import { SidebarModule } from 'primeng/sidebar';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
 import { SettingsModule } from './settings/settings.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -75,7 +72,7 @@ import { AppRoutingModule } from './app-routing.module';
     CardModule,
     SidebarModule,
     ButtonModule,
-    SettingsModule
+    SettingsModule,
     CommonModule,
   ],
   providers: [
