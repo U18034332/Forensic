@@ -21,21 +21,34 @@ class FundingIncidentReportService(
         fundingIncidentReportDTO: FundingIncidentReportDTO)
             : FundingIncidentReport? {
 
+        if(fundingIncidentReportDTO.reportNumber != "") {
+            val existingReport = fundingIncidentReportRepository.findByReportNumber(fundingIncidentReportDTO.reportNumber)
+            if (existingReport != null) {
+                existingReport.startDate = fundingIncidentReportDTO.startDate
+                existingReport. dateReported = fundingIncidentReportDTO.dateReported
+                existingReport.province = fundingIncidentReportDTO.province
+                existingReport.projectNumber = fundingIncidentReportDTO.projectNumber
+                existingReport.caseType = fundingIncidentReportDTO.caseType
+                existingReport.caseSubType = fundingIncidentReportDTO.caseSubType
+                existingReport.channel = fundingIncidentReportDTO.channel
+                existingReport.priority = fundingIncidentReportDTO.priority
+                existingReport.status = fundingIncidentReportDTO.status
+                existingReport.divisionDetected = fundingIncidentReportDTO.divisionDetected
+                existingReport.allocatedDescription = fundingIncidentReportDTO.allocatedDescription
+                existingReport.levelDetected = fundingIncidentReportDTO.levelDetected
+                existingReport.sector = fundingIncidentReportDTO.sector
+                existingReport.organisation = fundingIncidentReportDTO.organisation
+                existingReport.sourceDetection = fundingIncidentReportDTO.sourceDetection
+                existingReport.assessmentStage = fundingIncidentReportDTO.assessmentStage
+                fundingIncidentReportRepository.save(existingReport)
+                return existingReport;
+            }
+        }
+
         // Check for required parameters
         with(fundingIncidentReportDTO) {
             requireNotNull(dateReported)
             requireNotNull(startDate)
-            require(projectNumber.isNotBlank())
-            require(channel.isNotBlank())
-            require(caseType.isNotBlank())
-            require(divisionDetected.isNotBlank())
-            require(levelDetected.isNotBlank())
-            require(organisation.isNotBlank())
-            require(sector.isNotBlank())
-            require(sourceDetection.isNotBlank())
-            require(priority.isNotBlank())
-            require(allocatedDescription.isNotBlank())
-            require(caseSubType.isNotBlank())
         }
 
         val reportPrefix = when (fundingIncidentReportDTO.divisionDetected.lowercase(Locale.getDefault())) {

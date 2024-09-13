@@ -22,11 +22,29 @@ class NonFundingIncidentReportService(
 ) {
 
     fun createIncidentReport(reportDTO: NonFundingIncidentReportDTO): NonFundingIncidentReport? {
+        if(reportDTO.reportNumber != "") {
+            val existingReport = nonFundingIncidentReportRepository.findByReportNumber(reportDTO.reportNumber)
+            if (existingReport != null) {
+                existingReport.startDate = reportDTO.startDate
+                existingReport. dateReported = reportDTO.dateReported
+                existingReport.province = reportDTO.province
+                existingReport.caseType = reportDTO.caseType
+                existingReport.caseSubType = reportDTO.caseSubType
+                existingReport.channel = reportDTO.channel
+                existingReport.priority = reportDTO.priority
+                existingReport.status = reportDTO.status
+                existingReport.divisionDetected = reportDTO.divisionDetected
+                existingReport.allocatedDescription = reportDTO.allocatedDescription
+                existingReport.levelDetected = reportDTO.levelDetected
+                existingReport.assessmentStage = reportDTO.assessmentStage
+                nonFundingIncidentReportRepository.save(existingReport)
+                return existingReport;
+            }
+        }
+
         with(reportDTO) {
             requireNotNull(dateReported) { "Date reported cannot be null" }
             requireNotNull(startDate) { "Start date cannot be null" }
-            listOf(priority, province, channel, caseType, divisionDetected, levelDetected, allocatedDescription)
-                .forEach { require(it.isNotBlank()) { "$it cannot be blank" } }
         }
 
         val reportPrefix = when (reportDTO.divisionDetected.lowercase(Locale.getDefault())) {

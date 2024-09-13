@@ -1,0 +1,24 @@
+<div class="settings-profiles-view">
+
+    <div class="settings-profiles-title">
+      Profiles
+    </div>
+    
+    <div class="profiles-settings-boxstyling">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let userType of userTypes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{ userType.icon }}</mat-icon> {{ userType.name }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ userType.description }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Telephone Number: {{ userType.contact }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  </div>
+  

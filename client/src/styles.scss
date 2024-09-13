@@ -1,81 +1,67 @@
 /* Global styles */
 html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-  }
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-  
-  /* Global container styles */
-  .example-container {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 2em;
-  }
+/* Global container styles */
+.example-container {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2em;
+}
 
-  
-  
-  .example-sidenav-content {
-    display: flex;
-    height: 100%;
-    align-items: start;
-    justify-content: start;
-  }
-  
-  .mat-tab-label {
-    font-size: 50px;
-  }
-  
-  .hedding {
-    margin-left: 50px;
-    margin-right: 50px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-  
-  /* Ensure border radius is visible on all sides */
-  .mat-drawer-container {
-    border-radius: 10px;
-    overflow: hidden; /* Ensure overflow is hidden to display rounded corners properly */
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: start;
+  justify-content: start;
+}
 
-  }
-  
-  // .title {
-  //   margin-left: 85px;
-  //   margin-top: 5px;
-  //   font-size: 24px;
-  //   font-weight: bold;
-  // }
-  
-  .button-group {
-    float: right;
-    margin-bottom: 20px;
-  }
-  
-  .addFile-c-m-button, .addCase-c-m-button {
-    border-radius: 5px;
-    margin-left: 5px; 
-    float: right;
-    margin-bottom: 15px;
-    margin-right: 45px;
-  }
-  
-  .custom-table {
-    margin-left: 20px;
-    overflow-y: auto;
-  }
-  
-  .sub-files-header {
-    cursor: pointer;
-  }
+.mat-tab-label {
+  font-size: 50px;
+}
 
+.hedding {
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
-  .cdk-overlay-container {
-    z-index: 10000 !important;
-  }
-  
-  .mat-menu-panel {
-    z-index: 10001 !important;
-  }
+/* Drawer container styling, targeting only the drawers that are not within settings-side-nav */
+.mat-drawer-container:not(.settings-sidenav-container) {
+  border-radius: 10px;
+  overflow: hidden; /* Ensure overflow is hidden to display rounded corners properly */
+}
 
+.button-group {
+  float: right;
+  margin-bottom: 20px;
+}
 
- 
+.addFile-c-m-button, .addCase-c-m-button {
+  border-radius: 5px;
+  margin-left: 5px;
+  float: right;
+  margin-bottom: 15px;
+  margin-right: 45px;
+}
+
+.custom-table {
+  margin-left: 20px;
+  overflow-y: auto;
+}
+
+.sub-files-header {
+  cursor: pointer;
+}
+
+/* Overlay container adjustments */
+.cdk-overlay-container {
+  z-index: 10000 !important;
+}
+
+.mat-menu-panel {
+  z-index: 10001 !important;
+}

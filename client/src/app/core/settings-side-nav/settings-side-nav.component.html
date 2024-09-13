@@ -1,0 +1,40 @@
+<mat-drawer-container class="settings-sidenav-container" autosize>
+  <mat-drawer #drawer class="settings-sidenav-content" mode="side">
+    <div class="settings-button-list">
+      <button mat-raised-button (click)="navigateTo('/Settings')" class="settings-mat-list-general">
+        <mat-icon class="settings-button-icon">settings</mat-icon>
+        Personal Settings
+      </button>
+      <button mat-raised-button class="settings-mat-list-users">
+        <mat-icon class="settings-button-icon">people</mat-icon>
+        Data Administration
+      </button>
+      <button mat-raised-button (click)="navigateTo('/Storage')" class="settings-mat-list-notifications">
+        <mat-icon class="settings-button-icon">file</mat-icon>
+        Storage
+      </button>
+      <button mat-raised-button (click)="navigateTo('/Audit-Logs')" class="settings-mat-list-security">
+        <mat-icon class="settings-button-icon">file</mat-icon>
+        Audit Logs
+      </button>
+      <button mat-raised-button (click)="navigateTo('/settings/general')" class="settings-mat-list-general">
+        <mat-icon class="settings-button-icon">people</mat-icon>
+        Manage Users
+      </button>
+      <button mat-raised-button (click)="navigateTo('/Portal-Users')" class="settings-mat-list-users">
+        <mat-icon class="settings-button-icon">file</mat-icon>
+        Portal Users 
+      </button>
+      <button mat-raised-button (click)="navigateTo('/Profiles')" class="settings-mat-list-notifications">
+        <mat-icon class="settings-button-icon">file</mat-icon>
+        Profiles
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <button mat-icon-button class="settings-menu-icon" (click)="toggleDrawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

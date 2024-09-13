@@ -19,8 +19,8 @@ import { CardModule } from 'primeng/card';
 import { CustomOverlayContainerDirective } from './tool-bar/notification-side-panel/custom-overlay-container.directive';
 import { MatCardModule } from '@angular/material/card';
 import { OverlayModule } from '@angular/cdk/overlay';
-
-
+import { SettingsSideNavComponent } from './settings-side-nav/settings-side-nav.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -30,8 +30,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     SideNavComponent,
     NotificationSidePanelComponent,
     CustomOverlayContainerDirective,
+    SettingsSideNavComponent
     
-    // Include NotificationSidePanelComponent
   ],
   imports: [
     CommonModule,
@@ -48,14 +48,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ButtonModule,
     CardModule,
     MatCardModule,
-    OverlayModule
-  
-    
+    OverlayModule,
+    MatCheckboxModule
+
   ],
   exports: [
     ToolbarComponent,
     SideNavComponent,
-    NotificationSidePanelComponent // Export NotificationSidePanelComponent for external use
+    NotificationSidePanelComponent,
+    SettingsSideNavComponent
   ]
   
 })

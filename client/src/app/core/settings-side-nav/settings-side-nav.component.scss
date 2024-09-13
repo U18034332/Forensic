@@ -1,0 +1,78 @@
+.settings-sidenav-container {
+  height: 100vh;
+}
+
+.settings-sidenav-content {
+  width: 350px;
+  overflow: hidden; /* Remove scroll completely */
+  position: absolute;
+  z-index: 100;
+  background-color: #fff; /* Ensure background remains white */
+}
+
+/* Define the button list structure */
+.settings-button-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 75px;
+}
+
+/* Style each button in the settings list */
+.settings-button-list button {
+  display: flex; /* Ensure icon and text are aligned horizontally */
+  align-items: center; /* Vertically center the icon and text */
+  padding-top: 10px; /* Adjust padding */
+  margin-bottom: 25px; /* Space below each button */
+  height: 60px; /* Button height */
+  line-height: 35px; /* Align text vertically */
+  text-align: left; /* Align text to the left */
+  padding-left: 15px; /* Add left padding to align the icon at the start */
+  justify-content: flex-start;
+}
+
+/* Icon styling for the settings buttons */
+.settings-button-icon {
+  margin-right: 20px; /* Space between icon and text */
+  font-size: 15px; /* Adjust icon size */
+}
+
+
+/* Menu icon for the settings side-nav */
+.settings-menu-icon {
+  position: absolute;
+  top: 90px;
+  left: 35px;
+}
+
+/* Individual settings list items */
+.settings-list-personal-settings,
+.settings-list-data-administration,
+.settings-list-manage-users,
+.settings-list-profiles {
+  margin-bottom: 2em;
+  transition: all 0.3s ease;
+  justify-content: start;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  padding: 10px; /* Adjust padding */
+  background-color: rgb(202, 200, 200); /* Light background color */
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1), 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle box-shadow */
+  padding-inline-end: 20px;
+  writing-mode: horizontal-tb;
+}
+
+/* Hover effect for settings list items */
+.settings-list-personal-settings:hover,
+.settings-list-data-administration:hover,
+.settings-list-manage-users:hover,
+.settings-list-profiles:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Apply padding to the drawer container and content */
+.mat-drawer-container,
+.mat-drawer-content {
+  padding: 5px;
+}
