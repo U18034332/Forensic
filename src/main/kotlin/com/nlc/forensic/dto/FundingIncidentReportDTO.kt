@@ -4,6 +4,7 @@ import java.sql.Date
 
 
 data class FundingIncidentReportDTO(
+    val reportNumber: String = "",
     var startDate: Date? = null,
     var dateReported: Date? = null,
     var projectNumber: String = "",

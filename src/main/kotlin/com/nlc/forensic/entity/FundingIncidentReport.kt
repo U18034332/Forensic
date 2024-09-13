@@ -12,7 +12,7 @@ data class FundingIncidentReport(
     @Column(name = "funding_report_id")
     var id: Long = 0L,
     val reportNumber: String = "",
-    val projectNumber: String,
+    var projectNumber: String,
     var acceptance: String = "",
     @ManyToOne
     @JoinColumn(name = "assigned_user")
@@ -29,7 +29,7 @@ data class FundingIncidentReport(
     var sector: String = "",
     var sourceDetection: String = "",
     var divisionDetected: String = "",
-    val allocatedDescription: String = "",
+    var allocatedDescription: String = "",
     var levelDetected: String = "",
     var assessmentStage: Int = 0,
     var startDate: Date? = null,
