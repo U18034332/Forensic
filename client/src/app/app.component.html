@@ -1,3 +1,8 @@
-<app-toolbar></app-toolbar>
-<app-side-nav></app-side-nav>
+<!-- Conditional rendering of the toolbar based on route -->
+<app-toolbar *ngIf="showToolbar"></app-toolbar>
+
+<!-- Conditional rendering based on settings page -->
+<app-settings-side-nav *ngIf="isSettingsPage"></app-settings-side-nav>
+<app-side-nav *ngIf="!isSettingsPage"></app-side-nav>
+
 <router-outlet></router-outlet>

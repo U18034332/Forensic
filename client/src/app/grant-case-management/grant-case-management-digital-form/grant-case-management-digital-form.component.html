@@ -1,92 +1,4 @@
 <mat-card class="custom-card">
-<<<<<<< Updated upstream
-  <h2 class="card-title">
-      Funding Related<br>Case Management Form
-  </h2>
-  <mat-dialog-content class="mat-typography">
-      <form #caseForm="ngForm" (ngSubmit)="submitForm(caseForm)">
-
-          <mat-form-field appearance="fill" class="case-id-dropdown">
-              <mat-label>Case ID</mat-label>
-              <mat-select [(ngModel)]="case.caseId" name="caseId">
-                <mat-option *ngFor="let id of caseIds" [value]="id">{{ id }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-          <mat-form-field appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input matInput [(ngModel)]="case.startDate" name="startDate" placeholder="Enter start date">
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Date Reported</mat-label>
-            <input matInput [(ngModel)]="case.dateReported" name="dateReported" placeholder="Enter date reported">
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Province</mat-label>
-            <mat-select [(ngModel)]="case.province" name="province">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Case Type</mat-label>
-            <mat-select [(ngModel)]="case.caseType" name="caseType">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Sub Type</mat-label>
-            <mat-select [(ngModel)]="case.caseSubType" name="caseSubType">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Channel</mat-label>
-            <mat-select [(ngModel)]="case.channel" name="channel">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Priority</mat-label>
-            <mat-select [(ngModel)]="case.priority" name="priority">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
-            <mat-select [(ngModel)]="case.status" name="status">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-          
-          <h2>Report Detection:</h2>
-          <mat-form-field appearance="fill">
-            <mat-label>Division Detected</mat-label>
-            <mat-select [(ngModel)]="case.divisionDetected" name="divisionDetected">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-        
-          <mat-form-field appearance="fill">
-            <mat-label>Allocated Description</mat-label>
-            <mat-select [(ngModel)]="case.allocatedDescription" name="allocatedDescription">
-              <!-- Populate with options -->
-            </mat-select>
-          </mat-form-field>
-
-        </form>
-        
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Close</button>
-    <button mat-button color="primary" cdkFocusInitial (click)="submitForm(caseForm)">Submit</button>
-=======
   <h2 class="form-title">
     Funding Related<br>Case Management Form
   </h2>
@@ -223,6 +135,5 @@
     >
       Submit
     </button>
->>>>>>> Stashed changes
   </mat-dialog-actions>
 </mat-card>

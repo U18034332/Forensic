@@ -1,38 +1,36 @@
 .main-sidenav-container {
   height: 100vh;
-  padding-top: 64px; /* Adjust this value to the height of your toolbar */
 }
 
 .main-sidenav-content {
   width: 350px; /* Fixed width for the drawer */
   overflow: hidden; /* Completely remove scroll */
   position: absolute;
-  top: 90px; /* Adjust this value to the height of your toolbar */
   z-index: 100; /* Ensure it's above the content */
 }
 
 .button-list {
   display: flex;
   flex-direction: column;
+  padding-top: 85px; /* Ensure top padding is adjusted */
 }
 
-/* Removed padding-top from the specific button selector */
+/* Ensure each button has specific class names for styling */
 .button-list button {
-  padding-top: 15px;
-  margin-bottom: 25px; /* Adds 15px space below each button */
+  padding-top: 10px; /* Adjust padding-top to avoid breaking layout */
+  margin-bottom: 25px; /* Adds 25px space below each button */
   height: 60px; /* Increase the height of the buttons to accommodate larger icons */
   line-height: 35px; /* Align text vertically */
   text-align: left; /* Align the text to the left */
 }
 
-.button-list .button-icon {
-  margin-right: 50px; /* Adds padding between the icon and text */
-  margin-left: 25px; /* Adds padding to the left side of the icon */
+.main-button-icon {
+  margin-right: 20px; /* Adds padding between the icon and text */
+  margin-left: 15px; /* Adds padding to the left side of the icon */
   font-size: 22px;
-
 }
 
-.menu-icon {
+.main-menu-icon {
   position: absolute;
   top: 90px;
   left: 35px;
@@ -43,15 +41,14 @@
   padding: 5px;
 }
 
-.mat-list-dashboard,
-.mat-list-incident-report,
-.mat-list-case-management,
-.mat-list-grant,
-.mat-list-referrals,
-.mat-list-docs,
-.mat-list-audi-trail,
-.mat-list-discuss,
-.mat-list-calendar {
+.main-list-dashboard,
+.main-list-incident-report,
+.main-list-case-management,
+.main-list-grant,
+.main-list-referrals,
+.main-list-docs,
+.main-list-discuss,
+.main-list-calendar {
   margin-bottom: 2em;
   transition: all 0.3s ease;
   justify-content: start;
@@ -65,15 +62,14 @@
   writing-mode: horizontal-tb;
 }
 
-.mat-list-dashboard:hover,
-.mat-list-incident-report:hover,
-.mat-list-case-management:hover,
-.mat-list-grant:hover,
-.mat-list-referrals:hover,
-.mat-list-docs:hover,
-.mat-list-audi-trail:hover,
-.mat-list-discuss:hover,
-.mat-list-calendar:hover {
+.main-list-dashboard:hover,
+.main-list-incident-report:hover,
+.main-list-case-management:hover,
+.main-list-grant:hover,
+.main-list-referrals:hover,
+.main-list-docs:hover,
+.main-list-discuss:hover,
+.main-list-calendar:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
 }

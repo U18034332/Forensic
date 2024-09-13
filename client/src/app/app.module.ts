@@ -25,7 +25,6 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { CaseManagementModule } from './case-management/case-management.module';
 import { GrantCaseManagementModule } from './grant-case-management/grant-case-management.module';
-import { AuditTrailModule } from './audit-trail/audit-trail.module';
 import { DiscussModule } from './discuss/discuss.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { AgenciesAndFirmsModule } from './agencies-and-firms/agencies-and-firms.module';
@@ -33,6 +32,8 @@ import { DocManagementModule } from './doc-management/doc-management.module';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+
+import { SettingsModule } from './settings/settings.module';
 
 
 
@@ -58,12 +59,11 @@ import { CardModule } from 'primeng/card';
     MatTableModule,
     MatMenuModule,
     AppRoutingModule,
-    CoreModule, // Import CoreModule here
+    CoreModule, 
     DashboardModule,
     IncidentReportModule,
     CaseManagementModule,
     GrantCaseManagementModule,
-    AuditTrailModule,
     DiscussModule,
     CalendarModule,
     AgenciesAndFirmsModule,
@@ -74,6 +74,8 @@ import { CardModule } from 'primeng/card';
     CardModule,
     SidebarModule,
     ButtonModule,
+    SettingsModule
+
     // Ensure MatNativeDateModule is imported here
   ],
   providers: [],
