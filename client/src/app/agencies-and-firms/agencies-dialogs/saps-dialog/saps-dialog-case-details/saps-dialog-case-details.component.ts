@@ -10,7 +10,7 @@ import { AnnexureEDigitalFormComponent } from '../../../../case-management/annex
 @Component({
   selector: 'app-notification-side-panel',
   templateUrl: './saps-dialog-case-details.component.html',
-  styleUrls: ['./saps-dialog-case-details.component.scss']
+  styleUrl: './saps-dialog-case-details.component.scss'
 })
 export class SapsDialogCaseDetailsComponent implements OnInit{
 

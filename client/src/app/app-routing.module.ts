@@ -6,7 +6,7 @@ import { IncidentReportComponent } from './incident-report/incident-report.compo
 import { CaseManagementComponent } from './case-management/case-management.component';
 import { GrantCaseManagementComponent } from './grant-case-management/grant-case-management.component';
 import { DocManagementComponent } from './doc-management/doc-management.component';
-import { AuditTrailComponent } from './audit-trail/audit-trail.component';
+
 import { DiscussComponent } from './discuss/discuss.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AgenciesAndFirmsComponent } from './agencies-and-firms/agencies-and-firms.component';
@@ -22,17 +22,21 @@ const routes: Routes = [
   { path: 'case-management', component: CaseManagementComponent },
   { path: 'grant-case-management', component: GrantCaseManagementComponent },
   { path: 'doc-management', component: DocManagementComponent },
-  { path: 'audit-trail', component: AuditTrailComponent },
+  
   { path: 'discuss', component: DiscussComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'agencies-and-firms', component: AgenciesAndFirmsComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent }, // Added Forgot Password route
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  // Ensure settings module routes are loaded via lazy loading
+  { path: 'Settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) }
+    path: 'forgot-password', component: ForgotPasswordComponent }, // Added Forgot Password route
   { path: '403', component: ForbiddenComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CoreModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
 export { routes };

@@ -1,0 +1,60 @@
+.settings-view {
+  padding-top: 95px;
+}
+
+.settings-title {
+  margin-left: 85px;
+  margin-top: 3px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-info {
+  margin-left: 85px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.user-card {
+  width: 600px;
+  padding: 20px;
+}
+
+.user-avatar {
+  background-color: #d8d8d8;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.settings-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 85px;
+  margin-right: 85px;
+}
+
+.task-notifications-card,
+.daily-summary-card {
+  width: 45%;
+  padding: 20px;
+}
+
+.notifications-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.frequency-settings {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 23%;
+}

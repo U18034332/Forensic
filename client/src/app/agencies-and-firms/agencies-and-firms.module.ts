@@ -104,7 +104,7 @@ import { NexiaSABAndTCaseDetailsDialogComponent } from './firms-dialogs/nexia-sa
     MatTableModule,
     MatCardModule,
     MatMenuModule,
-    MatIconModule, // Use MatIconModule instead of MatIcon
+    MatIconModule, 
     MatExpansionModule,
     MatFormFieldModule,
     MatIcon,
