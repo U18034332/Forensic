@@ -1,0 +1,39 @@
+<mat-card class="add-users">
+  <h2 mat-dialog-title>Add User</h2>
+  <mat-dialog-content>
+    <form class="users-form" #userForm="ngForm">
+      <!-- Username -->
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="newUser.username" name="username" placeholder="Enter username" required />
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [(ngModel)]="newUser.email" name="email" placeholder="Enter email" required />
+      </mat-form-field>
+
+      <!-- Telephone -->
+      <mat-form-field appearance="fill">
+        <mat-label>Telephone</mat-label>
+        <input type="tel" matInput [(ngModel)]="newUser.telephone" name="telephone" placeholder="Enter telephone" required />
+      </mat-form-field>
+
+      <!-- Role Dropdown -->
+      <mat-form-field appearance="fill">
+        <mat-label>Profile</mat-label>
+        <mat-select [(ngModel)]="newUser.profile" name="profile">
+          <mat-option *ngFor="let profile of profiles" [value]="profile.name">
+            {{ profile.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button color="primary" (click)="onSubmit()" [disabled]="!userForm.valid">Add</button>
+  </mat-dialog-actions>
+</mat-card>

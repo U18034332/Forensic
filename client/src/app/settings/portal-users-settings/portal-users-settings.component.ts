@@ -1,72 +1,103 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { UserListDTO } from '../../dto/user-list.interface';
+import { UserAddFormComponent } from './user-add-form/user-add-form.component';
+import { ChangeDetectorRef } from '@angular/core';
+import { UserRemoveConfirmationComponent } from './user-remove-confirmation/user-remove-confirmation.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-portal-users-settings',
   templateUrl: './portal-users-settings.component.html',
   styleUrls: ['./portal-users-settings.component.scss']
 })
-export class PortalUsersSettingsComponent {
+export class PortalUsersSettingsComponent implements OnInit {
+  users: UserListDTO[] = [];
+  displayedColumns: string[] = ['action', 'userID','username', 'email', 'telephone', 'role','profile' ,'invitationStatus', 'workload'];
+  expandedElement: UserListDTO | null = null;
 
-  users = [
-    {
-      username: 'John Doe',
-      email: 'john.doe@example.com',
-      telephone: '123-456-7890',
-      role: 'Manager',
-      userId: '1',
-      invitationStatus: 'Accepted',
-      workload: 20,
-      cases: [
-        { caseId: 'C1', severity: 'High', startDate: '2023-01-01', projectNumber: 'P1', status: 'Open', priority: 'High' },
-        { caseId: 'C2', severity: 'Low', startDate: '2023-02-01', projectNumber: 'P2', status: 'Open', priority: 'Low' },
-        { caseId: 'C3', severity: 'High', startDate: '2023-03-01', projectNumber: 'P3', status: 'Open', priority: 'High' },
-        { caseId: 'C4', severity: 'Low', startDate: '2023-04-01', projectNumber: 'P4', status: 'Open', priority: 'Low' },
-        { caseId: 'C5', severity: 'High', startDate: '2023-05-01', projectNumber: 'P5', status: 'Open', priority: 'High' },
-        { caseId: 'C6', severity: 'Low', startDate: '2023-06-01', projectNumber: 'P6', status: 'Open', priority: 'Low' },
-        { caseId: 'C7', severity: 'High', startDate: '2023-07-01', projectNumber: 'P7', status: 'Open', priority: 'High' },
-        { caseId: 'C8', severity: 'Low', startDate: '2023-08-01', projectNumber: 'P8', status: 'Open', priority: 'Low' },
-        { caseId: 'C9', severity: 'High', startDate: '2023-09-01', projectNumber: 'P9', status: 'Open', priority: 'High' },
-        { caseId: 'C10', severity: 'Low', startDate: '2023-10-01', projectNumber: 'P10', status: 'Open', priority: 'Low' },
-      ]
-    },
-    // Add more users as needed...
-  ];
+  constructor(public dialog: MatDialog, private cdr: ChangeDetectorRef,private snackBar: MatSnackBar,) {}
 
-  displayedColumns: string[] = ['action', 'username', 'email', 'telephone', 'role', 'userId', 'invitationStatus', 'workload'];
-
-  // Function to apply CSS classes based on workload value
-  getWorkloadClass(workload: number): string {
-    if (workload > 30) {
-      return 'workload-high';
-    } else if (workload > 15) {
-      return 'workload-medium';
-    } else {
-      return 'workload-low';
-    }
+  ngOnInit(): void {
+    this.loadUsers();
   }
 
-  // Function to apply CSS classes based on severity of cases
-  getSeverityClass(severity: string): string {
-    return severity === 'High' ? 'severity-high' : 'severity-low';
+  loadUsers(): void {
+    // Initialize with some dummy data
+    this.users = [
+      {
+        userId: '1',
+        username: 'testuser',
+        email: 'test@example.com',
+        telephone: '1234567890',
+        role: 'Admin',
+        invitationStatus: 'Pending',
+        workload: 1, // Set initial workload based on number of cases
+        profile: 'Default',
+        name: 'Test User',
+        userID: '1',
+        firstName: 'Test',
+        lastName: 'User',
+        showCases: false,
+        cases: [
+          {
+            caseId: 'C1',
+            severity: 'High',
+            startDate: '2024-01-01',
+            projectNumber: 'P1234',
+            status: 'Open',
+            priority: 'High',
+            incidentId: 'INC1',
+            description: 'Case description goes here',
+            username: 'testuser'
+          }
+        ]
+      },
+      // Add more users as needed
+    ];
   }
 
-  // Navigate to user popover and display the user’s assigned cases
-  navigateToUser(userId: string): void {
-    const element = document.getElementById(`user-${userId}`);
-    if (element) {
-      element.style.display = 'block';  // Ensure popover is visible
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.error('Element not found:', `user-${userId}`);
-    }
-  }
-
-  // Function to close the popover and return to user list
-  closePopover(event: Event): void {
-    event.preventDefault();
-    const popoverElements = document.querySelectorAll('.popover');
-    popoverElements.forEach(popover => {
-      popover.setAttribute('style', 'display: none;');
+  openAddUserForm(): void {
+    const dialogRef = this.dialog.open(UserAddFormComponent, {
+      width: '400px',
     });
+
+    dialogRef.afterClosed().subscribe((newUser: UserListDTO) => {
+      if (newUser) {
+        newUser.showCases = false;
+        newUser.workload = newUser.cases?.length || 0;
+        this.users = [...this.users, newUser];
+        this.snackBar.open('Successfully added user', 'Close', { duration: 3000 });
+        this.cdr.detectChanges();
+      } else {
+        this.snackBar.open('Failed to add user', 'Close', { duration: 3000 });
+      }
+    });
+  }
+
+  openRemoveUserDialog(user: UserListDTO): void {
+    const dialogRef = this.dialog.open(UserRemoveConfirmationComponent, {
+      width: '400px',
+      data: user
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.onUserRemoved(result);
+        this.snackBar.open('Successfully removed user', 'Close', { duration: 3000 });
+      } else {
+        this.snackBar.open('Failed to remove user', 'Close', { duration: 3000 });
+      }
+    });
+  }
+
+
+  onUserRemoved(userId: string): void {
+    this.users = this.users.filter(user => user.userId !== userId);
+    this.cdr.detectChanges(); // Update the UI
+  }
+
+  toggleUserCases(user: UserListDTO): void {
+    this.expandedElement = this.expandedElement === user ? null : user;
+    this.cdr.detectChanges();  // Ensure the UI updates
   }
 }
