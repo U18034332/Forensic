@@ -22,6 +22,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list'; 
 import { MatDividerModule } from '@angular/material/divider'; 
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UserAddFormComponent } from './portal-users-settings/user-add-form/user-add-form.component';
+import { UserRemoveConfirmationComponent } from './portal-users-settings/user-remove-confirmation/user-remove-confirmation.component';
+import { UserWorkloadTableComponent } from './portal-users-settings/user-workload-table/user-workload-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,6 +38,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ProfilesSettingsComponent,
     PortalUsersSettingsComponent,
     AuditLogsSettingsComponent,
+    UserAddFormComponent,
+    UserRemoveConfirmationComponent,
+    UserWorkloadTableComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -49,14 +61,22 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatExpansionModule,        
     MatListModule,            
     MatDividerModule,
-    MatCheckboxModule          
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatSortModule, 
+    MatDialogModule, 
+    MatInputModule,
+    MatSnackBarModule
+         
   ],
   exports: [
     SettingsComponent,
     StorageSettingsComponent,
     ProfilesSettingsComponent,
     PortalUsersSettingsComponent,
-    AuditLogsSettingsComponent
+    AuditLogsSettingsComponent,
+    
+    
   ]
 })
 export class SettingsModule { }

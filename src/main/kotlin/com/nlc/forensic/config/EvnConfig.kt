@@ -10,5 +10,6 @@ class EvnConfig {
     @Bean
     fun dotenv(): Dotenv {
         return Dotenv.load()
+          
     }
 }

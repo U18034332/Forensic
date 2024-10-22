@@ -1,0 +1,45 @@
+.mat-dialog-content {
+  max-height: 500px; /* More reasonable max height for the content area */
+  overflow-y: auto; /* Ensures that the form is scrollable when content overflows */
+  padding: 20px; /* Provides internal spacing */
+}
+
+.mat-form-field {
+  width: 100%; /* Ensures form fields use the full width */
+  margin-bottom: 20px; /* Adds spacing between form fields */
+}
+
+.mat-dialog-actions {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between; /* Space between Cancel and Add buttons */
+}
+
+.add-users {
+  max-width: 600px; /* Limits the width of the form for better visual structure */
+  margin: auto; /* Centers the card in the dialog */
+  padding: 24px; /* Provides padding around the content */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  border-radius: 10px;
+}
+
+.users-form {
+  display: flex;
+  flex-direction: column; /* Ensures form fields are stacked vertically */
+}
+
+button[mat-dialog-close] {
+  margin-right: 20px; /* Adds margin to the right of the cancel button for spacing */
+}
+
+button[mat-button] {
+  min-width: 100px; /* Ensures buttons have a minimum width */
+}
+
+/* Style adjustments for smaller screens */
+@media (max-width: 600px) {
+  .add-users {
+    padding: 15px; /* Smaller padding for small screens */
+    max-width: 100%; /* Full width on small screens */
+  }
+}
